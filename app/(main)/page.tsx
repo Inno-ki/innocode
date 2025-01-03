@@ -147,305 +147,334 @@ export default function Home() {
   }, [loading, generatedCode]);
 
   return (
-    <main className="mt-12 flex w-full flex-1 flex-col items-center px-4 text-center sm:mt-20">
-      <a
-        className="mb-4 inline-flex h-7 shrink-0 items-center gap-[9px] rounded-[50px] border-[0.5px] border-solid border-[#E6E6E6] bg-[rgba(234,238,255,0.65)] bg-gray-100 px-7 py-5 shadow-[0px_1px_1px_0px_rgba(0,0,0,0.25)]"
-        href="https://dub.sh/together-ai/?utm_source=example-app&utm_medium=llamacoder&utm_campaign=llamacoder-app-signup"
-        target="_blank"
-      >
-        <span className="text-center">
-          Powered by <span className="font-semibold">Together AI</span>. Used by
-          <span className="font-semibold"> 600k+ users. </span>
-        </span>
-      </a>
-      <h1 className="my-6 max-w-3xl text-4xl font-bold text-gray-800 sm:text-6xl">
-        Turn your <span className="text-blue-600">idea</span>
-        <br /> into an <span className="text-blue-600">app</span>
-      </h1>
+    <main className="min-h-screen pt-28 sm:pt-36">
+      <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col items-center px-4 text-center">
+        <div className="flex items-center gap-2 rounded-2xl bg-gray-900/5 px-4 py-1 ring-1 ring-gray-900/25">
+          <span className="text-sm text-gray-600">Neu</span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-blue-600/20 to-cyan-600/20 px-3 py-1 text-sm font-medium text-blue-600">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-600 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
+            </span>
+            KI-App-Generierung
+          </span>
+        </div>
 
-      <form className="w-full max-w-xl" onSubmit={createApp}>
-        <fieldset disabled={loading} className="disabled:opacity-75">
-          <div className="relative mt-5">
-            <div className="absolute -inset-2 rounded-[32px] bg-gray-300/50" />
-            <div className="relative flex rounded-3xl bg-white shadow-sm">
-              <div className="relative flex flex-grow items-stretch focus-within:z-10">
-                <textarea
-                  rows={3}
-                  required
-                  value={prompt}
-                  onChange={(e) => setPrompt(e.target.value)}
-                  name="prompt"
-                  className="w-full resize-none rounded-l-3xl bg-transparent px-6 py-5 text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
-                  placeholder="Build me a calculator app..."
-                />
+        <h1 className="mt-6 max-w-3xl bg-gradient-to-b from-gray-900 to-gray-700 bg-clip-text p-2 text-4xl font-bold text-transparent sm:text-6xl">
+          Aus Ideen werden
+          <br /> Apps in Sekunden
+        </h1>
+        <p className="mt-6 max-w-xl text-lg text-gray-600">
+          Erstelle sofort Apps mit der Power von KI. Sag einfach, was du bauen
+          willst.
+        </p>
+
+        <form className="mt-12 w-full max-w-xl" onSubmit={createApp}>
+          <fieldset disabled={loading} className="disabled:opacity-75">
+            <div className="relative">
+              <div className="absolute -inset-2 rounded-[32px] bg-gradient-to-r from-blue-100 to-cyan-100 opacity-50 transition-opacity group-hover:opacity-100" />
+              <div className="relative flex rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div className="relative flex flex-grow items-stretch focus-within:z-10">
+                  <textarea
+                    rows={3}
+                    required
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                    name="prompt"
+                    className="w-full resize-none rounded-l-3xl bg-transparent px-6 py-5 text-lg text-gray-900 placeholder-gray-400 focus-visible:outline-none"
+                    placeholder="Erstelle einen Taschenrechner..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-3xl px-6 py-2 text-sm font-semibold text-blue-600 hover:text-blue-700 focus-visible:outline-none disabled:text-gray-400"
+                >
+                  {status === "creating" ? (
+                    <LoadingDots color="currentColor" style="large" />
+                  ) : (
+                    <ArrowLongRightIcon className="-ml-0.5 size-6" />
+                  )}
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-3xl px-3 py-2 text-sm font-semibold text-blue-500 hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:text-gray-900"
-              >
-                {status === "creating" ? (
-                  <LoadingDots color="black" style="large" />
-                ) : (
-                  <ArrowLongRightIcon className="-ml-0.5 size-6" />
-                )}
-              </button>
             </div>
-          </div>
-          <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center justify-between gap-3 sm:grow sm:flex-col sm:items-start sm:justify-center sm:gap-2">
-              <p className="text-gray-500 sm:text-sm">Model</p>
-              <Select.Root
-                name="model"
-                disabled={loading}
-                value={model}
-                onValueChange={(value) => setModel(value)}
-              >
-                <Select.Trigger className="group flex w-60 max-w-xs items-center rounded-2xl border-[6px] border-gray-300 bg-white px-4 py-2 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
-                  <Select.Value />
-                  <Select.Icon className="ml-auto">
-                    <ChevronDownIcon className="size-6 text-gray-300 group-focus-visible:text-gray-500 group-enabled:group-hover:text-gray-500" />
-                  </Select.Icon>
-                </Select.Trigger>
-                <Select.Portal>
-                  <Select.Content className="overflow-hidden rounded-md bg-white shadow-lg">
-                    <Select.Viewport className="p-2">
-                      {models.map((model) => (
+            <div className="mt-6 flex flex-col justify-center gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center justify-between gap-3 sm:grow sm:flex-col sm:items-start sm:justify-center sm:gap-2">
+                <p className="text-sm font-medium text-gray-700">Modell</p>
+                <Select.Root
+                  name="model"
+                  disabled={loading}
+                  value={model}
+                  onValueChange={(value) => setModel(value)}
+                >
+                  <Select.Trigger className="group flex w-60 max-w-xs items-center rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                    <Select.Value />
+                    <Select.Icon className="ml-auto">
+                      <ChevronDownIcon className="size-5 text-gray-400 group-focus-visible:text-gray-600 group-enabled:group-hover:text-gray-600" />
+                    </Select.Icon>
+                  </Select.Trigger>
+                  <Select.Portal>
+                    <Select.Content className="overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                      <Select.Viewport className="p-1">
+                        {models.map((model) => (
+                          <Select.Item
+                            key={model.value}
+                            value={model.value}
+                            className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm text-gray-900 outline-none data-[highlighted]:bg-blue-50 data-[highlighted]:text-blue-600"
+                          >
+                            <Select.ItemText asChild>
+                              <span className="inline-flex items-center gap-2">
+                                <div className="size-2 rounded-full bg-blue-600" />
+                                {model.label}
+                              </span>
+                            </Select.ItemText>
+                            <Select.ItemIndicator className="ml-auto">
+                              <CheckIcon className="size-5 text-blue-600" />
+                            </Select.ItemIndicator>
+                          </Select.Item>
+                        ))}
+                      </Select.Viewport>
+                    </Select.Content>
+                  </Select.Portal>
+                </Select.Root>
+              </div>
+
+              <div className="flex h-full items-center justify-between gap-3 sm:flex-col sm:items-start sm:justify-center sm:gap-2">
+                <label
+                  className="text-sm font-medium text-gray-700"
+                  htmlFor="quality"
+                >
+                  Qualität
+                </label>
+                <Select.Root
+                  name="quality"
+                  disabled={loading}
+                  value={quality}
+                  onValueChange={setQuality}
+                >
+                  <Select.Trigger className="group flex w-56 max-w-xs items-center rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                    <Select.Value />
+                    <Select.Icon className="ml-auto">
+                      <ChevronDownIcon className="size-5 text-gray-400 group-focus-visible:text-gray-600 group-enabled:group-hover:text-gray-600" />
+                    </Select.Icon>
+                  </Select.Trigger>
+                  <Select.Portal>
+                    <Select.Content className="overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                      <Select.Viewport className="p-1">
                         <Select.Item
-                          key={model.value}
-                          value={model.value}
-                          className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm data-[highlighted]:bg-gray-100 data-[highlighted]:outline-none"
+                          value="low"
+                          className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm text-gray-900 outline-none data-[highlighted]:bg-blue-50 data-[highlighted]:text-blue-600"
                         >
                           <Select.ItemText asChild>
-                            <span className="inline-flex items-center gap-2 text-gray-500">
-                              <div className="size-2 rounded-full bg-green-500" />
-                              {model.label}
+                            <span className="inline-flex items-center gap-1.5">
+                              <LightningBoltIcon className="size-3 text-blue-600" />
+                              Quick & Dirty (schneller)
                             </span>
                           </Select.ItemText>
                           <Select.ItemIndicator className="ml-auto">
                             <CheckIcon className="size-5 text-blue-600" />
                           </Select.ItemIndicator>
                         </Select.Item>
-                      ))}
-                    </Select.Viewport>
-                    <Select.ScrollDownButton />
-                    <Select.Arrow />
-                  </Select.Content>
-                </Select.Portal>
-              </Select.Root>
+                        <Select.Item
+                          value="high"
+                          className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm text-gray-900 outline-none data-[highlighted]:bg-blue-50 data-[highlighted]:text-blue-600"
+                        >
+                          <Select.ItemText asChild>
+                            <span className="inline-flex items-center gap-1.5">
+                              <LightbulbIcon className="size-3 text-yellow-500" />
+                              Premium Style (dauert länger)
+                            </span>
+                          </Select.ItemText>
+                          <Select.ItemIndicator className="ml-auto">
+                            <CheckIcon className="size-5 text-blue-600" />
+                          </Select.ItemIndicator>
+                        </Select.Item>
+                      </Select.Viewport>
+                    </Select.Content>
+                  </Select.Portal>
+                </Select.Root>
+              </div>
+
+              <div className="flex h-full items-center justify-between gap-3 sm:flex-col sm:items-start sm:justify-center sm:gap-2">
+                <label
+                  className="text-sm font-medium text-gray-700"
+                  htmlFor="shadcn"
+                >
+                  shadcn/ui
+                </label>
+                <Switch.Root
+                  className="group flex h-7 w-16 items-center rounded-full border border-gray-200 bg-white px-1 shadow-sm transition-colors hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 data-[state=checked]:bg-blue-600"
+                  id="shadcn"
+                  name="shadcn"
+                  checked={shadcn}
+                  onCheckedChange={(value) => setShadcn(value)}
+                >
+                  <Switch.Thumb className="ease-spring-2 size-5 rounded-full bg-gray-500 shadow-sm transition-transform duration-100 data-[state=checked]:translate-x-[36px] data-[state=checked]:bg-white" />
+                </Switch.Root>
+              </div>
             </div>
+          </fieldset>
+        </form>
 
-            <div className="flex h-full items-center justify-between gap-3 sm:flex-col sm:items-start sm:justify-center sm:gap-2">
-              <label className="text-gray-500 sm:text-sm" htmlFor="shadcn">
-                Quality
-              </label>
-              <Select.Root
-                name="quality"
-                disabled={loading}
-                value={quality}
-                onValueChange={setQuality}
-              >
-                <Select.Trigger className="group flex w-56 max-w-xs items-center rounded-2xl border-[6px] border-gray-300 bg-white px-4 py-2 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
-                  <Select.Value />
-                  <Select.Icon className="ml-auto">
-                    <ChevronDownIcon className="size-6 text-gray-300 group-focus-visible:text-gray-500 group-enabled:group-hover:text-gray-500" />
-                  </Select.Icon>
-                </Select.Trigger>
-                <Select.Portal>
-                  <Select.Content className="overflow-hidden rounded-md bg-white shadow-lg">
-                    <Select.Viewport className="p-2">
-                      <Select.Item
-                        value="low"
-                        className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm data-[highlighted]:bg-gray-100 data-[highlighted]:outline-none"
-                      >
-                        <Select.ItemText asChild>
-                          <span className="inline-flex items-center gap-1.5 text-gray-500">
-                            <LightningBoltIcon className="size-3 text-blue-500" />
-                            Low-quality (faster)
-                          </span>
-                        </Select.ItemText>
-                        <Select.ItemIndicator className="ml-auto">
-                          <CheckIcon className="size-5 text-blue-600" />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                      <Select.Item
-                        value="high"
-                        className="flex cursor-pointer items-center rounded-md px-3 py-2 text-sm data-[highlighted]:bg-gray-100 data-[highlighted]:outline-none"
-                      >
-                        <Select.ItemText asChild>
-                          <span className="inline-flex items-center gap-1.5 text-gray-500">
-                            <LightbulbIcon className="size-3 text-yellow-500" />
-                            High-quality (slower)
-                          </span>
-                        </Select.ItemText>
-                        <Select.ItemIndicator className="ml-auto">
-                          <CheckIcon className="size-5 text-blue-600" />
-                        </Select.ItemIndicator>
-                      </Select.Item>
-                    </Select.Viewport>
-                    <Select.ScrollDownButton />
-                    <Select.Arrow />
-                  </Select.Content>
-                </Select.Portal>
-              </Select.Root>
-            </div>
-
-            <div className="flex h-full items-center justify-between gap-3 sm:flex-col sm:items-start sm:justify-center sm:gap-2">
-              <label className="text-gray-500 sm:text-sm" htmlFor="shadcn">
-                shadcn/ui
-              </label>
-              <Switch.Root
-                className="group flex w-20 max-w-xs items-center rounded-2xl border-[6px] border-gray-300 bg-white p-1.5 text-sm shadow-inner transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 data-[state=checked]:bg-blue-500"
-                id="shadcn"
-                name="shadcn"
-                checked={shadcn}
-                onCheckedChange={(value) => setShadcn(value)}
-              >
-                <Switch.Thumb className="size-7 rounded-lg bg-gray-200 shadow-[0_1px_2px] shadow-gray-400 transition data-[state=checked]:translate-x-7 data-[state=checked]:bg-white data-[state=checked]:shadow-gray-600" />
-              </Switch.Root>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-
-      <hr className="border-1 mb-20 h-px bg-gray-700 dark:bg-gray-700" />
-
-      {status !== "initial" && (
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{
-            height: "auto",
-            overflow: "hidden",
-            transitionEnd: { overflow: "visible" },
-          }}
-          transition={{ type: "spring", bounce: 0, duration: 0.5 }}
-          className="w-full pb-[25vh] pt-10"
-          onAnimationComplete={() => scrollTo()}
-          ref={ref}
-        >
-          <div className="mt-5 flex gap-4">
-            <form className="w-full" onSubmit={updateApp}>
-              <fieldset disabled={loading} className="group">
-                <div className="relative">
-                  <div className="relative flex rounded-3xl bg-white shadow-sm group-disabled:bg-gray-50">
+        {status !== "initial" && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: "auto",
+              opacity: 1,
+              overflow: "hidden",
+              transitionEnd: { overflow: "visible" },
+            }}
+            transition={{ type: "spring", bounce: 0, duration: 0.5 }}
+            className="mt-16 w-full"
+            onAnimationComplete={() => scrollTo()}
+            ref={ref}
+          >
+            <div className="flex gap-4">
+              <form className="w-full" onSubmit={updateApp}>
+                <fieldset disabled={loading} className="group">
+                  <div className="relative flex rounded-2xl bg-white shadow-sm ring-1 ring-gray-900/5 group-disabled:bg-gray-50">
                     <div className="relative flex flex-grow items-stretch focus-within:z-10">
                       <input
                         required
                         name="modification"
                         value={modification}
                         onChange={(e) => setModification(e.target.value)}
-                        className="w-full rounded-l-3xl bg-transparent px-6 py-5 text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed"
-                        placeholder="Make changes to your app here"
+                        className="w-full rounded-l-2xl bg-transparent px-4 py-3 text-base text-gray-900 placeholder-gray-400 focus-visible:outline-none disabled:cursor-not-allowed"
+                        placeholder="Sag was du an deiner App ändern willst"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={loading}
-                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-3xl px-3 py-2 text-sm font-semibold text-blue-500 hover:text-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 disabled:text-gray-900"
+                      className="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-2xl px-4 py-2 text-sm font-semibold text-blue-600 hover:text-blue-700 focus-visible:outline-none disabled:text-gray-400"
                     >
                       {loading ? (
-                        <LoadingDots color="black" style="large" />
+                        <LoadingDots color="currentColor" style="large" />
                       ) : (
-                        <ArrowLongRightIcon className="-ml-0.5 size-6" />
+                        <ArrowLongRightIcon className="-ml-0.5 size-5" />
                       )}
                     </button>
                   </div>
-                </div>
-              </fieldset>
-            </form>
-            <div>
-              <Toaster invert={true} />
-              <Tooltip.Provider>
-                <Tooltip.Root>
-                  <Tooltip.Trigger asChild>
-                    <button
-                      disabled={loading || isPublishing}
-                      onClick={async () => {
-                        setIsPublishing(true);
-                        let userMessages = messages.filter(
-                          (message) => message.role === "user",
-                        );
-                        let prompt =
-                          userMessages[userMessages.length - 1].content;
+                </fieldset>
+              </form>
+              <div>
+                <Toaster position="bottom-right" />
+                <Tooltip.Provider>
+                  <Tooltip.Root>
+                    <Tooltip.Trigger asChild>
+                      <button
+                        disabled={loading || isPublishing}
+                        onClick={async () => {
+                          setIsPublishing(true);
+                          let userMessages = messages.filter(
+                            (message) => message.role === "user",
+                          );
+                          let prompt =
+                            userMessages[userMessages.length - 1].content;
 
-                        const appId = await minDelay(
-                          shareApp({
-                            generatedCode,
-                            prompt,
-                            model: initialAppConfig.model,
-                          }),
-                          1000,
-                        );
-                        setIsPublishing(false);
-                        toast.success(
-                          `Your app has been published & copied to your clipboard! llamacoder.io/share/${appId}`,
-                        );
-                        navigator.clipboard.writeText(
-                          `${domain}/share/${appId}`,
-                        );
-                      }}
-                      className="inline-flex h-[68px] w-40 items-center justify-center gap-2 rounded-3xl bg-blue-500 transition enabled:hover:bg-blue-600 disabled:grayscale"
-                    >
-                      <span className="relative">
-                        {isPublishing && (
-                          <span className="absolute inset-0 flex items-center justify-center">
-                            <LoadingDots color="white" style="large" />
-                          </span>
-                        )}
+                          const appId = await minDelay(
+                            shareApp({
+                              generatedCode,
+                              prompt,
+                              model: initialAppConfig.model,
+                            }),
+                            1000,
+                          );
+                          setIsPublishing(false);
+                          toast.success(
+                            "Deine App ist online & in der Zwischenablage!",
+                            {
+                              description: `${domain}/share/${appId}`,
+                            },
+                          );
+                          navigator.clipboard.writeText(
+                            `${domain}/share/${appId}`,
+                          );
+                        }}
+                        className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 px-6 text-sm font-medium text-white transition enabled:hover:from-blue-700 enabled:hover:to-cyan-700 disabled:grayscale"
+                      >
+                        <span className="relative">
+                          {isPublishing && (
+                            <span className="absolute inset-0 flex items-center justify-center">
+                              <LoadingDots color="white" style="large" />
+                            </span>
+                          )}
 
-                        <ArrowUpOnSquareIcon
-                          className={`${isPublishing ? "invisible" : ""} size-5 text-xl text-white`}
-                        />
-                      </span>
+                          <ArrowUpOnSquareIcon
+                            className={`${isPublishing ? "invisible" : ""} size-5`}
+                          />
+                        </span>
+                        Teilen
+                      </button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                      <Tooltip.Content
+                        className="select-none rounded-lg bg-white px-3 py-2 text-sm leading-none text-gray-900 shadow-lg ring-1 ring-gray-900/5"
+                        sideOffset={5}
+                      >
+                        Teil deine App mit anderen
+                        <Tooltip.Arrow className="fill-white" />
+                      </Tooltip.Content>
+                    </Tooltip.Portal>
+                  </Tooltip.Root>
+                </Tooltip.Provider>
+              </div>
+            </div>
+            <div className="relative mt-8 w-full overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+              <div className="isolate">
+                <CodeViewer code={generatedCode} showEditor />
+              </div>
 
-                      <p className="text-lg font-medium text-white">
-                        Publish app
+              <AnimatePresence>
+                {loading && (
+                  <motion.div
+                    initial={status === "updating" ? { x: "100%" } : undefined}
+                    animate={status === "updating" ? { x: "0%" } : undefined}
+                    exit={{ x: "100%" }}
+                    transition={{
+                      type: "spring",
+                      bounce: 0,
+                      duration: 0.85,
+                      delay: 0.5,
+                    }}
+                    className="absolute inset-x-0 bottom-0 top-1/2 flex items-center justify-center rounded-r-2xl border-l border-gray-200 bg-white/95 backdrop-blur-sm md:inset-y-0 md:left-1/2 md:right-0"
+                  >
+                    <div className="flex flex-col items-center gap-4">
+                      <div className="h-8 w-8">
+                        <svg className="animate-spin" viewBox="0 0 24 24">
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
+                      </div>
+                      <p className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-3xl font-bold text-transparent">
+                        {status === "creating"
+                          ? "Deine App wird erstellt..."
+                          : "Deine App wird geupdated..."}
                       </p>
-                    </button>
-                  </Tooltip.Trigger>
-                  <Tooltip.Portal>
-                    <Tooltip.Content
-                      className="select-none rounded bg-white px-4 py-2.5 text-sm leading-none shadow-md shadow-black/20"
-                      sideOffset={5}
-                    >
-                      Publish your app to the internet.
-                      <Tooltip.Arrow className="fill-white" />
-                    </Tooltip.Content>
-                  </Tooltip.Portal>
-                </Tooltip.Root>
-              </Tooltip.Provider>
+                      <p className="text-sm text-gray-500">
+                        Dauert nur ein paar Sekunden
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-          </div>
-          <div className="relative mt-8 w-full overflow-hidden">
-            <div className="isolate">
-              <CodeViewer code={generatedCode} showEditor />
-            </div>
-
-            <AnimatePresence>
-              {loading && (
-                <motion.div
-                  initial={status === "updating" ? { x: "100%" } : undefined}
-                  animate={status === "updating" ? { x: "0%" } : undefined}
-                  exit={{ x: "100%" }}
-                  transition={{
-                    type: "spring",
-                    bounce: 0,
-                    duration: 0.85,
-                    delay: 0.5,
-                  }}
-                  className="absolute inset-x-0 bottom-0 top-1/2 flex items-center justify-center rounded-r border border-gray-400 bg-gradient-to-br from-gray-100 to-gray-300 md:inset-y-0 md:left-1/2 md:right-0"
-                >
-                  <p className="animate-pulse text-3xl font-bold">
-                    {status === "creating"
-                      ? "Building your app..."
-                      : "Updating your app..."}
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </div>
     </main>
   );
 }
