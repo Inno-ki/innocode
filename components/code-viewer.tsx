@@ -21,7 +21,7 @@ export default function CodeViewer({
     <Sandpack
       options={{
         showNavigator: true,
-        editorHeight: "80vh",
+        editorHeight: "85vh",
         showTabs: false,
         ...sharedOptions,
       }}
@@ -42,7 +42,7 @@ export default function CodeViewer({
       {...sharedProps}
     >
       <SandpackPreview
-        className="flex h-full w-full grow flex-col justify-center p-4 md:pt-16"
+        className="flex h-full w-full grow flex-col justify-center overflow-x-hidden"
         showOpenInCodeSandbox={false}
         showRefreshButton={false}
       />

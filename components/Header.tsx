@@ -8,7 +8,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <h1 className="text-xl font-bold">
               inno
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              <span className="bg-blue-600 bg-clip-text text-transparent">
                 code
               </span>
             </h1>
@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
           <Link
             href="/login"
-            className="rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 px-4 py-2 text-sm font-medium text-white hover:from-blue-700 hover:to-cyan-700"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:to-blue-700"
           >
             Sign in
           </Link>
