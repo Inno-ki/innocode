@@ -12,7 +12,7 @@ export default function Layout({
     <body className="bg-gradient-to-br from-gray-50 via-white to-gray-50 antialiased">
       <div className="isolate">
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center py-2">
-          <Header />
+          {/* <Header /> */}
           {children}
           <Footer />
         </div>
