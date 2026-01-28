@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import LogoDark from '../assets/logo-dark.svg';
 import LogoLight from '../assets/logo-light.svg';
-import Screenshot from '../assets/lander/screenshot-splash.png';
+import Screenshot from '../assets/lander/screenshot.png';
 
 const features = [
   { title: 'InnoGPT Models', desc: 'EU-hosted models with one API for all powerful models - Claude, GPT, Gemini and more' },
@@ -124,7 +124,7 @@ const faqs = [
 
     /* Screenshot */
     .screenshot { border: 4px solid #f5a623; border-radius: 4px; overflow: hidden; }
-    .screenshot img { width: 100%; display: block; }
+    .screenshot img { width: 100%; height: auto; display: block; object-fit: contain; }
 
     /* Features */
     .section-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; }
