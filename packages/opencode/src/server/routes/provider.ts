@@ -42,8 +42,22 @@ export const ProviderRoutes = lazy(() =>
         const allProviders = await ModelsDev.get()
         const filteredProviders: Record<string, (typeof allProviders)[string]> = {}
         for (const [key, value] of Object.entries(allProviders)) {
+          // Filter out "opencode" provider - InnoCode uses InnoGPT instead
+          if (key === "opencode") continue
           if ((enabled ? enabled.has(key) : true) && !disabled.has(key)) {
             filteredProviders[key] = value
+          }
+        }
+
+        // Add InnoGPT provider - this is InnoCode's primary provider
+        if (!filteredProviders["innogpt"] && (enabled ? enabled.has("innogpt") : true) && !disabled.has("innogpt")) {
+          filteredProviders["innogpt"] = {
+            id: "innogpt",
+            name: "InnoGPT",
+            api: "https://app.innogpt.de/api/ext/v1",
+            npm: "@ai-sdk/openai-compatible",
+            env: ["INNOGPT_API_KEY"],
+            models: {},
           }
         }
 

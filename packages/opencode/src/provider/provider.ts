@@ -13,6 +13,7 @@ import { Env } from "../env"
 import { Instance } from "../project/instance"
 import { Flag } from "../flag/flag"
 import { iife } from "@/util/iife"
+import { Installation } from "../installation"
 
 // Direct imports for bundled providers
 import { createAmazonBedrock, type AmazonBedrockProviderSettings } from "@ai-sdk/amazon-bedrock"
@@ -95,28 +96,6 @@ export namespace Provider {
               "claude-code-20250219,interleaved-thinking-2025-05-14,fine-grained-tool-streaming-2025-05-14",
           },
         },
-      }
-    },
-    async opencode(input) {
-      const hasKey = await (async () => {
-        const env = Env.all()
-        if (input.env.some((item) => env[item])) return true
-        if (await Auth.get(input.id)) return true
-        const config = await Config.get()
-        if (config.provider?.["opencode"]?.options?.apiKey) return true
-        return false
-      })()
-
-      if (!hasKey) {
-        for (const [key, value] of Object.entries(input.models)) {
-          if (value.cost.input === 0) continue
-          delete input.models[key]
-        }
-      }
-
-      return {
-        autoload: Object.keys(input.models).length > 0,
-        options: hasKey ? {} : { apiKey: "public" },
       }
     },
     // InnoGPT provider - OpenAI-compatible API for InnoGPT
@@ -832,7 +811,11 @@ export namespace Provider {
     using _ = log.time("state")
     const config = await Config.get()
     const modelsDev = await ModelsDev.get()
-    const database = mapValues(modelsDev, fromModelsDevProvider)
+    // Filter out "opencode" provider - InnoCode uses InnoGPT instead
+    const filteredModelsDev = Object.fromEntries(
+      Object.entries(modelsDev).filter(([id]) => id !== "opencode")
+    )
+    const database = mapValues(filteredModelsDev, fromModelsDevProvider)
 
     const disabled = new Set(config.disabled_providers ?? [])
     const enabled = config.enabled_providers ? new Set(config.enabled_providers) : null
@@ -1312,8 +1295,8 @@ export namespace Provider {
         "gemini-2.5-flash",
         "gpt-5-nano",
       ]
-      if (providerID.startsWith("opencode")) {
-        priority = ["gpt-5-nano"]
+      if (providerID.startsWith("innogpt")) {
+        priority = ["gpt-4o-mini", "claude-4-5-haiku"]
       }
       if (providerID.startsWith("github-copilot")) {
         // prioritize free models for github copilot
@@ -1326,10 +1309,10 @@ export namespace Provider {
       }
     }
 
-    // Check if opencode provider is available before using it
-    const opencodeProvider = await state().then((state) => state.providers["opencode"])
-    if (opencodeProvider && opencodeProvider.models["gpt-5-nano"]) {
-      return getModel("opencode", "gpt-5-nano")
+    // Check if innogpt provider is available before using it as fallback
+    const innogptProvider = await state().then((state) => state.providers["innogpt"])
+    if (innogptProvider && innogptProvider.models["gpt-4o-mini"]) {
+      return getModel("innogpt", "gpt-4o-mini")
     }
 
     return undefined
