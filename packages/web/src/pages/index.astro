@@ -42,7 +42,6 @@ const faqs = [
       --text-secondary: #a1a1a1;
       --text-muted: #666666;
       --border: #262626;
-      --accent: #ffffff;
       --font: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
     }
 
@@ -55,33 +54,19 @@ const faqs = [
       --text-secondary: #525252;
       --text-muted: #a1a1a1;
       --border: #e5e5e5;
-      --accent: #0f0f0f;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       font-family: var(--font);
       font-size: 14px;
       background: var(--bg);
       color: var(--text);
-      scroll-behavior: smooth;
     }
 
-    body {
-      min-height: 100vh;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Header */
     .header {
       position: sticky;
       top: 0;
@@ -99,36 +84,16 @@ const faqs = [
       justify-content: space-between;
     }
 
-    .logo img {
-      height: 20px;
-      width: auto;
-    }
-
+    .logo img { height: 20px; }
     .logo .light-logo { display: none; }
     :root.light .logo .dark-logo { display: none; }
     :root.light .logo .light-logo { display: block; }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
+    .nav { display: flex; align-items: center; gap: 1.5rem; }
+    .nav a { color: var(--text-secondary); font-size: 0.85rem; }
+    .nav a:hover { color: var(--text); }
 
-    .nav a {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .nav a:hover {
-      color: var(--text);
-    }
-
-    .nav-buttons {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .nav-buttons { display: flex; align-items: center; gap: 0.75rem; }
 
     .btn {
       padding: 0.4rem 0.75rem;
@@ -136,25 +101,13 @@ const faqs = [
       font-size: 0.8rem;
       font-family: var(--font);
       cursor: pointer;
-      transition: all 0.2s;
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text);
     }
-
-    .btn:hover {
-      background: var(--bg-secondary);
-    }
-
-    .btn-primary {
-      background: var(--text);
-      color: var(--bg);
-      border-color: var(--text);
-    }
-
-    .btn-primary:hover {
-      opacity: 0.85;
-    }
+    .btn:hover { background: var(--bg-secondary); }
+    .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .btn-primary:hover { opacity: 0.85; }
 
     .theme-toggle {
       background: none;
@@ -163,60 +116,14 @@ const faqs = [
       padding: 0.25rem;
       color: var(--text-secondary);
       font-size: 1rem;
-      line-height: 1;
     }
 
-    /* Main content */
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
+    main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* Announcement banner */
-    .announcement {
-      padding: 1.5rem 0;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-    }
+    .hero { padding: 3rem 0; }
+    .hero h1 { font-size: 2rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .hero-subtitle { font-size: 0.95rem; color: var(--text-secondary); max-width: 450px; line-height: 1.5; margin-bottom: 1.5rem; }
 
-    .announcement-badge {
-      display: inline-block;
-      background: var(--bg-tertiary);
-      color: var(--text);
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      font-size: 0.75rem;
-      margin-right: 0.5rem;
-    }
-
-    .announcement a {
-      color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 1rem 0 3rem;
-    }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      max-width: 450px;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Install box */
     .install-box {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -225,12 +132,7 @@ const faqs = [
       max-width: 500px;
     }
 
-    .install-tabs {
-      display: flex;
-      border-bottom: 1px solid var(--border);
-      padding: 0 0.5rem;
-    }
-
+    .install-tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 0.5rem; }
     .install-tab {
       padding: 0.6rem 0.75rem;
       background: none;
@@ -239,19 +141,11 @@ const faqs = [
       font-size: 0.8rem;
       font-family: var(--font);
       cursor: pointer;
-      transition: color 0.2s;
       border-bottom: 1px solid transparent;
       margin-bottom: -1px;
     }
-
-    .install-tab:hover {
-      color: var(--text-secondary);
-    }
-
-    .install-tab.active {
-      color: var(--text);
-      border-bottom-color: var(--text);
-    }
+    .install-tab:hover { color: var(--text-secondary); }
+    .install-tab.active { color: var(--text); border-bottom-color: var(--text); }
 
     .install-command {
       padding: 0.75rem 1rem;
@@ -260,16 +154,8 @@ const faqs = [
       justify-content: space-between;
       gap: 1rem;
     }
-
-    .install-command code {
-      font-family: var(--font);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .install-command code .hl {
-      color: var(--text);
-    }
+    .install-command code { font-family: var(--font); font-size: 0.85rem; color: var(--text-muted); }
+    .install-command code .hl { color: var(--text); }
 
     .copy-btn {
       background: none;
@@ -277,76 +163,26 @@ const faqs = [
       color: var(--text-muted);
       cursor: pointer;
       padding: 0.25rem;
-      transition: color 0.2s;
       display: flex;
-      align-items: center;
     }
+    .copy-btn:hover { color: var(--text); }
 
-    .copy-btn:hover {
-      color: var(--text);
-    }
-
-    /* Screenshot */
     .screenshot {
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--bg-card);
     }
+    .screenshot img { width: 100%; display: block; }
 
-    .screenshot img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .section { padding: 3rem 0; border-top: 1px solid var(--border); }
+    .section-title { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+    .section-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; }
 
-    /* Sections */
-    .section {
-      padding: 3rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-title {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    .section-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Features list */
-    .features-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .feature-item {
-      display: flex;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .feature-marker {
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    .feature-title {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .feature-desc {
-      color: var(--text-secondary);
-    }
+    .features-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .feature-item { display: flex; gap: 0.5rem; font-size: 0.9rem; line-height: 1.5; }
+    .feature-marker { color: var(--text-muted); }
+    .feature-title { color: var(--text); font-weight: 500; }
+    .feature-desc { color: var(--text-secondary); }
 
     .read-docs-btn {
       display: inline-block;
@@ -354,113 +190,21 @@ const faqs = [
       border: 1px solid var(--border);
       border-radius: 4px;
       font-size: 0.85rem;
-      transition: all 0.2s;
     }
+    .read-docs-btn:hover { background: var(--bg-secondary); }
 
-    .read-docs-btn:hover {
-      background: var(--bg-secondary);
-    }
-
-    /* Stats section */
-    .stats-section {
-      padding: 3rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .stats-header {
-      margin-bottom: 0.75rem;
-    }
-
-    .stats-header h2 {
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .stats-desc {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .stats-desc strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem;
-    }
-
-    .stat-chart {
-      height: 80px;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: flex-end;
-      gap: 2px;
-    }
-
-    .stat-bar {
-      flex: 1;
-      background: var(--border);
-      border-radius: 1px;
-      min-height: 4px;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .stat-label strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* Privacy card */
     .privacy-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 1.5rem;
     }
+    .privacy-card h2 { font-size: 1rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .privacy-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+    .privacy-card a { text-decoration: underline; }
 
-    .privacy-card h2 {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-
-    .privacy-card p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .privacy-card a {
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    /* FAQ */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
     .faq-question {
       display: flex;
       align-items: center;
@@ -475,133 +219,24 @@ const faqs = [
       padding: 1rem 0;
       cursor: pointer;
     }
+    .faq-icon { color: var(--text-muted); width: 1rem; text-align: center; }
+    .faq-icon::before { content: '+'; }
+    .faq-item.open .faq-icon::before { content: '−'; }
+    .faq-answer { display: none; padding: 0 0 1rem 1.75rem; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+    .faq-item.open .faq-answer { display: block; }
 
-    .faq-icon {
-      color: var(--text-muted);
-      font-size: 1rem;
-      width: 1rem;
-      text-align: center;
-    }
+    .footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.85rem; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom { display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.8rem; }
+    .footer-bottom a { color: var(--text-muted); }
 
-    .faq-answer {
-      display: none;
-      padding: 0 0 1rem 1.75rem;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .faq-item.open .faq-icon::before {
-      content: '−';
-    }
-
-    .faq-item .faq-icon::before {
-      content: '+';
-    }
-
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
-    /* Newsletter */
-    .newsletter {
-      padding: 3rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .newsletter h2 {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .newsletter p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 0.5rem;
-      max-width: 350px;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background: var(--bg-card);
-      color: var(--text);
-      font-size: 0.85rem;
-      font-family: var(--font);
-    }
-
-    .newsletter-form input::placeholder {
-      color: var(--text-muted);
-    }
-
-    /* Footer */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 0;
-    }
-
-    .footer-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--text);
-    }
-
-    .footer-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-
-    .footer-bottom a {
-      color: var(--text-muted);
-    }
-
-    .footer-bottom a:hover {
-      color: var(--text-secondary);
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .nav {
-        display: none;
-      }
-
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .newsletter-form {
-        flex-direction: column;
-      }
+      .nav { display: none; }
     }
 
-    /* Tab panels */
     .cmd-panel { display: none; }
     .cmd-panel.active { display: inline; }
   </style>
@@ -629,11 +264,6 @@ const faqs = [
   </header>
 
   <main>
-    <div class="announcement">
-      <span class="announcement-badge">New</span>
-      Desktop app available in beta on macOS, Windows, and Linux. <a href="/ide">Download Now</a>
-    </div>
-
     <section class="hero">
       <h1>The AI coding agent</h1>
       <p class="hero-subtitle">Free models included or connect any model from any provider, including Claude, GPT, Gemini and more.</p>
@@ -654,9 +284,9 @@ const faqs = [
             <span class="cmd-panel" data-cmd="brew">brew install <span class="hl">InnoKI/tap/innocode</span></span>
             <span class="cmd-panel" data-cmd="paru">paru -S <span class="hl">innocode-bin</span></span>
           </code>
-          <button class="copy-btn" id="copy-btn" aria-label="Copy to clipboard">
+          <button class="copy-btn" id="copy-btn" aria-label="Copy">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
           </button>
@@ -684,42 +314,6 @@ const faqs = [
       <a href="/intro" class="read-docs-btn">Read docs →</a>
     </section>
 
-    <section class="stats-section">
-      <div class="stats-header">
-        <h2>The AI coding agent</h2>
-      </div>
-      <p class="stats-desc">
-        [+] InnoCode is used and trusted by developers worldwide for AI-assisted coding.
-      </p>
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-chart">
-            {[20, 30, 25, 40, 35, 50, 45, 60, 55, 70, 65, 80].map(h => (
-              <div class="stat-bar" style={`height: ${h}%`}></div>
-            ))}
-          </div>
-          <div class="stat-label">Fig 1. <strong>GitHub Stars</strong></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-chart">
-            {[15, 20, 25, 22, 30, 28, 35, 40, 38, 45, 50, 55].map(h => (
-              <div class="stat-bar" style={`height: ${h}%`}></div>
-            ))}
-          </div>
-          <div class="stat-label">Fig 2. <strong>Contributors</strong></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-chart">
-            {[10, 15, 20, 30, 25, 40, 35, 50, 60, 55, 70, 80].map(h => (
-              <div class="stat-bar" style={`height: ${h}%`}></div>
-            ))}
-          </div>
-          <div class="stat-label">Fig 3. <strong>Monthly Devs</strong></div>
-        </div>
-      </div>
-    </section>
-
     <section class="section">
       <div class="privacy-card">
         <h2>Built for privacy first</h2>
@@ -741,15 +335,6 @@ const faqs = [
         ))}
       </div>
     </section>
-
-    <section class="newsletter">
-      <h2>Be the first to know when we release new products</h2>
-      <p>Join the waitlist for early access.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Email address" required />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-    </section>
   </main>
 
   <footer class="footer">
@@ -767,7 +352,6 @@ const faqs = [
   </footer>
 
   <script>
-    // Theme toggle
     const toggle = document.getElementById('theme-toggle');
     const darkIcon = toggle?.querySelector('.dark-icon') as HTMLElement | null;
     const lightIcon = toggle?.querySelector('.light-icon') as HTMLElement | null;
@@ -786,51 +370,40 @@ const faqs = [
     setTheme(saved ? saved === 'dark' : prefersDark);
 
     toggle?.addEventListener('click', () => {
-      const isDark = !document.documentElement.classList.contains('light');
-      setTheme(!isDark);
+      setTheme(document.documentElement.classList.contains('light'));
     });
 
-    // Install tabs
     const tabs = document.querySelectorAll('.install-tab');
     const panels = document.querySelectorAll('.cmd-panel');
-    const rawCommands: Record<string, string> = {
+    const cmds: Record<string, string> = {
       curl: 'curl -fsSL https://innocode.io/install | bash',
       npm: 'npm install -g @innogpt/innocode',
       bun: 'bun install -g @innogpt/innocode',
       brew: 'brew install InnoKI/tap/innocode',
       paru: 'paru -S innocode-bin',
     };
-    let currentCmd = 'curl';
+    let current = 'curl';
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        const cmd = (tab as HTMLElement).dataset.cmd || 'curl';
-        currentCmd = cmd;
+        current = (tab as HTMLElement).dataset.cmd || 'curl';
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        panels.forEach(p => {
-          p.classList.toggle('active', (p as HTMLElement).dataset.cmd === cmd);
-        });
+        panels.forEach(p => p.classList.toggle('active', (p as HTMLElement).dataset.cmd === current));
       });
     });
 
-    // Copy button
     const copyBtn = document.getElementById('copy-btn');
     copyBtn?.addEventListener('click', () => {
-      navigator.clipboard.writeText(rawCommands[currentCmd]);
+      navigator.clipboard.writeText(cmds[current]);
       if (copyBtn) copyBtn.textContent = '✓';
       setTimeout(() => {
-        if (copyBtn) {
-          copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
-        }
+        if (copyBtn) copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
       }, 2000);
     });
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.parentElement?.classList.toggle('open');
-      });
+      btn.addEventListener('click', () => btn.parentElement?.classList.toggle('open'));
     });
   </script>
 </body>
