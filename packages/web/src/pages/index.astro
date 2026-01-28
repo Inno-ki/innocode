@@ -14,14 +14,13 @@ const features = [
 ];
 
 const faqs = [
-  { q: 'What is InnoCode?', a: 'InnoCode is an open source AI coding agent that helps you write code in your terminal, IDE, or desktop.' },
+  { q: 'What is InnoCode?', a: 'InnoCode is an AI coding agent that helps you write code in your terminal, IDE, or desktop.' },
   { q: 'How do I use InnoCode?', a: 'Install InnoCode using one of the methods above, configure your API key, and start coding with AI assistance.' },
   { q: 'Do I need extra AI subscriptions to use InnoCode?', a: 'No, you can use InnoCode with your existing AI subscriptions like GitHub Copilot or ChatGPT Plus.' },
   { q: 'Can I use my existing AI subscriptions with InnoCode?', a: 'Yes! InnoCode supports GitHub Copilot, ChatGPT Plus/Pro, and many other providers.' },
   { q: 'Can I only use InnoCode in the terminal?', a: 'No, InnoCode is available as a terminal app, desktop app, and IDE extension.' },
-  { q: 'How much does InnoCode cost?', a: 'InnoCode is free and open source. You only pay for the AI provider you choose to use.' },
+  { q: 'How much does InnoCode cost?', a: 'InnoCode is free to use. You only pay for the AI provider you choose to use.' },
   { q: 'What about data and privacy?', a: 'InnoCode does not store your code or context data. All processing happens locally or through direct API calls to your AI provider.' },
-  { q: 'Is InnoCode open source?', a: 'Yes, InnoCode is fully open source under the MIT license.' },
 ];
 ---
 
@@ -30,32 +29,33 @@ const faqs = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>InnoCode - The open source AI coding agent</title>
+  <title>InnoCode - The AI coding agent</title>
   <meta name="description" content="Free models included or connect any model from any provider, including Claude, GPT, Gemini and more." />
   <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
   <style>
     :root {
-      --bg: #0d0d0d;
-      --bg-secondary: #1a1a1a;
-      --bg-tertiary: #262626;
+      --bg: #0f0f0f;
+      --bg-secondary: #171717;
+      --bg-tertiary: #1f1f1f;
+      --bg-card: #141414;
       --text: #ffffff;
-      --text-secondary: #a3a3a3;
-      --text-muted: #737373;
-      --border: #333333;
+      --text-secondary: #a1a1a1;
+      --text-muted: #666666;
+      --border: #262626;
       --accent: #ffffff;
-      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-      --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+      --font: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
     }
 
     :root.light {
-      --bg: #ffffff;
+      --bg: #fafafa;
       --bg-secondary: #f5f5f5;
-      --bg-tertiary: #e5e5e5;
-      --text: #0d0d0d;
+      --bg-tertiary: #ebebeb;
+      --bg-card: #ffffff;
+      --text: #0f0f0f;
       --text-secondary: #525252;
-      --text-muted: #737373;
-      --border: #d4d4d4;
-      --accent: #0d0d0d;
+      --text-muted: #a1a1a1;
+      --border: #e5e5e5;
+      --accent: #0f0f0f;
     }
 
     * {
@@ -66,6 +66,7 @@ const faqs = [
 
     html {
       font-family: var(--font);
+      font-size: 14px;
       background: var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
@@ -80,6 +81,7 @@ const faqs = [
       text-decoration: none;
     }
 
+    /* Header */
     .header {
       position: sticky;
       top: 0;
@@ -89,16 +91,16 @@ const faqs = [
     }
 
     .header-inner {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 0.75rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .logo img {
-      height: 28px;
+      height: 20px;
       width: auto;
     }
 
@@ -109,12 +111,12 @@ const faqs = [
     .nav {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .nav a {
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: color 0.2s;
     }
 
@@ -125,14 +127,14 @@ const faqs = [
     .nav-buttons {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .btn {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: var(--font);
       cursor: pointer;
       transition: all 0.2s;
       border: 1px solid var(--border);
@@ -151,67 +153,95 @@ const faqs = [
     }
 
     .btn-primary:hover {
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .theme-toggle {
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.5rem;
+      padding: 0.25rem;
       color: var(--text-secondary);
-      font-size: 1.2rem;
+      font-size: 1rem;
+      line-height: 1;
     }
 
+    /* Main content */
     main {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
+    /* Announcement banner */
+    .announcement {
+      padding: 1.5rem 0;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .announcement-badge {
+      display: inline-block;
+      background: var(--bg-tertiary);
+      color: var(--text);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+    }
+
+    .announcement a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Hero */
     .hero {
-      padding: 4rem 0;
-      text-align: center;
+      padding: 1rem 0 3rem;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 600;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
       letter-spacing: -0.02em;
     }
 
-    .hero p {
-      font-size: 1.1rem;
+    .hero-subtitle {
+      font-size: 0.95rem;
       color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 2rem;
+      max-width: 450px;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
     }
 
-    .install-section {
-      max-width: 600px;
-      margin: 0 auto 3rem;
-      background: var(--bg-secondary);
-      border-radius: 12px;
+    /* Install box */
+    .install-box {
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+      max-width: 500px;
     }
 
     .install-tabs {
       display: flex;
       border-bottom: 1px solid var(--border);
+      padding: 0 0.5rem;
     }
 
     .install-tab {
-      flex: 1;
-      padding: 0.75rem 1rem;
+      padding: 0.6rem 0.75rem;
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      font-family: var(--font);
       cursor: pointer;
-      transition: all 0.2s;
-      font-family: var(--font-mono);
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+      margin-bottom: -1px;
     }
 
     .install-tab:hover {
@@ -220,11 +250,11 @@ const faqs = [
 
     .install-tab.active {
       color: var(--text);
-      background: var(--bg-tertiary);
+      border-bottom-color: var(--text);
     }
 
     .install-command {
-      padding: 1rem 1.5rem;
+      padding: 0.75rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -232,12 +262,12 @@ const faqs = [
     }
 
     .install-command code {
-      font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: var(--text-secondary);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
-    .install-command code .highlight {
+    .install-command code .hl {
       color: var(--text);
     }
 
@@ -248,17 +278,20 @@ const faqs = [
       cursor: pointer;
       padding: 0.25rem;
       transition: color 0.2s;
+      display: flex;
+      align-items: center;
     }
 
     .copy-btn:hover {
       color: var(--text);
     }
 
+    /* Screenshot */
     .screenshot {
-      margin: 3rem 0;
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
+      background: var(--bg-card);
     }
 
     .screenshot img {
@@ -267,38 +300,47 @@ const faqs = [
       display: block;
     }
 
+    /* Sections */
     .section {
-      padding: 4rem 0;
+      padding: 3rem 0;
       border-top: 1px solid var(--border);
     }
 
     .section-title {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       margin-bottom: 1rem;
     }
 
     .section-desc {
       color: var(--text-secondary);
-      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
     }
 
-    .features {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .feature {
+    /* Features list */
+    .features-list {
       display: flex;
-      gap: 0.75rem;
-      align-items: baseline;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .feature-marker {
       color: var(--text-muted);
+      flex-shrink: 0;
     }
 
     .feature-title {
+      color: var(--text);
       font-weight: 500;
     }
 
@@ -306,126 +348,222 @@ const faqs = [
       color: var(--text-secondary);
     }
 
-    .read-docs {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
+    .read-docs-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      font-weight: 500;
+      border-radius: 4px;
+      font-size: 0.85rem;
       transition: all 0.2s;
     }
 
-    .read-docs:hover {
+    .read-docs-btn:hover {
       background: var(--bg-secondary);
     }
 
-    .privacy-section {
-      background: var(--bg-secondary);
-      border-radius: 12px;
-      padding: 2rem;
-      margin: 2rem 0;
+    /* Stats section */
+    .stats-section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
     }
 
-    .faq-list {
+    .stats-header {
+      margin-bottom: 0.75rem;
+    }
+
+    .stats-header h2 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .stats-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .stats-desc strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stats-grid {
       display: grid;
-      gap: 0;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .stat-chart {
+      height: 80px;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
+    .stat-bar {
+      flex: 1;
+      background: var(--border);
+      border-radius: 1px;
+      min-height: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .stat-label strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Privacy card */
+    .privacy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .privacy-card h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .privacy-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .privacy-card a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
     }
 
     .faq-item {
       border-bottom: 1px solid var(--border);
-      padding: 1rem 0;
     }
 
     .faq-question {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      cursor: pointer;
       width: 100%;
       background: none;
       border: none;
       color: var(--text);
-      font-size: 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font);
       text-align: left;
-      padding: 0.5rem 0;
-      font-family: inherit;
+      padding: 1rem 0;
+      cursor: pointer;
     }
 
-    .faq-question::before {
-      content: '+';
+    .faq-icon {
       color: var(--text-muted);
-      font-weight: 300;
-      font-size: 1.25rem;
-      width: 1.5rem;
+      font-size: 1rem;
+      width: 1rem;
+      text-align: center;
     }
 
     .faq-answer {
       display: none;
-      padding: 0.5rem 0 0.5rem 2.25rem;
+      padding: 0 0 1rem 1.75rem;
       color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
-    .faq-item.open .faq-question::before {
+    .faq-item.open .faq-icon::before {
       content: '−';
+    }
+
+    .faq-item .faq-icon::before {
+      content: '+';
     }
 
     .faq-item.open .faq-answer {
       display: block;
     }
 
+    /* Newsletter */
     .newsletter {
-      padding: 4rem 0;
-      text-align: center;
+      padding: 3rem 0;
       border-top: 1px solid var(--border);
+    }
+
+    .newsletter h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .newsletter-form {
       display: flex;
       gap: 0.5rem;
-      max-width: 400px;
-      margin: 1rem auto 0;
+      max-width: 350px;
     }
 
     .newsletter-form input {
       flex: 1;
-      padding: 0.75rem 1rem;
+      padding: 0.5rem 0.75rem;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg-secondary);
+      border-radius: 4px;
+      background: var(--bg-card);
       color: var(--text);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      font-family: var(--font);
     }
 
     .newsletter-form input::placeholder {
       color: var(--text-muted);
     }
 
+    /* Footer */
     .footer {
       border-top: 1px solid var(--border);
-      padding: 2rem;
+      padding: 1.5rem 0;
     }
 
     .footer-inner {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
+      padding: 0 1.5rem;
     }
 
     .footer-links {
       display: flex;
-      gap: 2rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links a {
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .footer-links a:hover {
@@ -433,47 +571,39 @@ const faqs = [
     }
 
     .footer-bottom {
-      color: var(--text-muted);
-      font-size: 0.85rem;
       display: flex;
+      flex-wrap: wrap;
       gap: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
     }
 
-    @media (max-width: 768px) {
-      .header-inner {
-        padding: 1rem;
-      }
+    .footer-bottom a {
+      color: var(--text-muted);
+    }
 
+    .footer-bottom a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
       .nav {
         display: none;
       }
 
-      main {
-        padding: 0 1rem;
-      }
-
-      .hero {
-        padding: 2rem 0;
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
 
       .newsletter-form {
         flex-direction: column;
       }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
     }
 
-    /* Hide command panels by default, show active one */
+    /* Tab panels */
     .cmd-panel { display: none; }
-    .cmd-panel.active { display: block; }
+    .cmd-panel.active { display: inline; }
   </style>
 </head>
 <body>
@@ -490,35 +620,42 @@ const faqs = [
       </nav>
       <div class="nav-buttons">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-          <span class="dark-icon">☀️</span>
-          <span class="light-icon" style="display:none">🌙</span>
+          <span class="dark-icon">☀</span>
+          <span class="light-icon" style="display:none">☾</span>
         </button>
-        <a href="/intro" class="btn btn-primary">Get Started</a>
+        <a href="/intro" class="btn btn-primary">↓ Free</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>The open source AI coding agent</h1>
-      <p>Free models included or connect any model from any provider, including Claude, GPT, Gemini and more.</p>
+    <div class="announcement">
+      <span class="announcement-badge">New</span>
+      Desktop app available in beta on macOS, Windows, and Linux. <a href="/ide">Download Now</a>
+    </div>
 
-      <div class="install-section">
+    <section class="hero">
+      <h1>The AI coding agent</h1>
+      <p class="hero-subtitle">Free models included or connect any model from any provider, including Claude, GPT, Gemini and more.</p>
+
+      <div class="install-box">
         <div class="install-tabs">
           <button class="install-tab active" data-cmd="curl">curl</button>
           <button class="install-tab" data-cmd="npm">npm</button>
-          <button class="install-tab" data-cmd="bun">bun</button>
-          <button class="install-tab" data-cmd="mise">mise</button>
+          <button class="install-tab" data-cmd="bun">Bun</button>
+          <button class="install-tab" data-cmd="brew">brew</button>
+          <button class="install-tab" data-cmd="paru">paru</button>
         </div>
         <div class="install-command">
           <code>
-            <span class="cmd-panel active" data-cmd="curl">curl -fsSL https://<span class="highlight">innocode.io/install</span> | bash</span>
-            <span class="cmd-panel" data-cmd="npm">npm install -g <span class="highlight">@innogpt/innocode</span></span>
-            <span class="cmd-panel" data-cmd="bun">bun install -g <span class="highlight">@innogpt/innocode</span></span>
-            <span class="cmd-panel" data-cmd="mise">mise use -g <span class="highlight">github:InnoKI/innocode</span></span>
+            <span class="cmd-panel active" data-cmd="curl">curl -fsSL https://<span class="hl">innocode.io/install</span> | bash</span>
+            <span class="cmd-panel" data-cmd="npm">npm install -g <span class="hl">@innogpt/innocode</span></span>
+            <span class="cmd-panel" data-cmd="bun">bun install -g <span class="hl">@innogpt/innocode</span></span>
+            <span class="cmd-panel" data-cmd="brew">brew install <span class="hl">InnoKI/tap/innocode</span></span>
+            <span class="cmd-panel" data-cmd="paru">paru -S <span class="hl">innocode-bin</span></span>
           </code>
           <button class="copy-btn" id="copy-btn" aria-label="Copy to clipboard">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
@@ -533,27 +670,60 @@ const faqs = [
 
     <section class="section">
       <h2 class="section-title">What is InnoCode?</h2>
-      <p class="section-desc">InnoCode is an open source agent that helps you write code in your terminal, IDE, or desktop.</p>
+      <p class="section-desc">InnoCode is an AI coding agent that helps you write code in your terminal, IDE, or desktop.</p>
 
-      <div class="features">
+      <div class="features-list">
         {features.map(f => (
-          <div class="feature">
+          <div class="feature-item">
             <span class="feature-marker">[+]</span>
-            <span class="feature-title">{f.title}</span>
-            <span class="feature-desc">{f.desc}</span>
+            <span><span class="feature-title">{f.title}</span> <span class="feature-desc">{f.desc}</span></span>
           </div>
         ))}
       </div>
 
-      <a href="/intro" class="read-docs">
-        Read docs →
-      </a>
+      <a href="/intro" class="read-docs-btn">Read docs →</a>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats-header">
+        <h2>The AI coding agent</h2>
+      </div>
+      <p class="stats-desc">
+        [+] InnoCode is used and trusted by developers worldwide for AI-assisted coding.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-chart">
+            {[20, 30, 25, 40, 35, 50, 45, 60, 55, 70, 65, 80].map(h => (
+              <div class="stat-bar" style={`height: ${h}%`}></div>
+            ))}
+          </div>
+          <div class="stat-label">Fig 1. <strong>GitHub Stars</strong></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-chart">
+            {[15, 20, 25, 22, 30, 28, 35, 40, 38, 45, 50, 55].map(h => (
+              <div class="stat-bar" style={`height: ${h}%`}></div>
+            ))}
+          </div>
+          <div class="stat-label">Fig 2. <strong>Contributors</strong></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-chart">
+            {[10, 15, 20, 30, 25, 40, 35, 50, 60, 55, 70, 80].map(h => (
+              <div class="stat-bar" style={`height: ${h}%`}></div>
+            ))}
+          </div>
+          <div class="stat-label">Fig 3. <strong>Monthly Devs</strong></div>
+        </div>
+      </div>
     </section>
 
     <section class="section">
-      <div class="privacy-section">
-        <h2 class="section-title">Built for privacy first</h2>
-        <p>[+] InnoCode does not store any of your code or context data, so that it can operate in privacy sensitive environments. <a href="/introenterprise" style="text-decoration: underline;">Learn more about privacy</a>.</p>
+      <div class="privacy-card">
+        <h2>Built for privacy first</h2>
+        <p>[+] InnoCode does not store any of your code or context data, so that it can operate in privacy sensitive environments. <a href="/enterprise">Learn more about privacy</a>.</p>
       </div>
     </section>
 
@@ -562,7 +732,10 @@ const faqs = [
       <div class="faq-list">
         {faqs.map(faq => (
           <div class="faq-item">
-            <button class="faq-question">{faq.q}</button>
+            <button class="faq-question">
+              <span class="faq-icon"></span>
+              {faq.q}
+            </button>
             <div class="faq-answer">{faq.a}</div>
           </div>
         ))}
@@ -570,8 +743,8 @@ const faqs = [
     </section>
 
     <section class="newsletter">
-      <h2 class="section-title">Be the first to know when we release new products</h2>
-      <p style="color: var(--text-secondary);">Join the waitlist for early access.</p>
+      <h2>Be the first to know when we release new products</h2>
+      <p>Join the waitlist for early access.</p>
       <form class="newsletter-form">
         <input type="email" placeholder="Email address" required />
         <button type="submit" class="btn btn-primary">Subscribe</button>
@@ -624,7 +797,8 @@ const faqs = [
       curl: 'curl -fsSL https://innocode.io/install | bash',
       npm: 'npm install -g @innogpt/innocode',
       bun: 'bun install -g @innogpt/innocode',
-      mise: 'mise use -g github:InnoKI/innocode',
+      brew: 'brew install InnoKI/tap/innocode',
+      paru: 'paru -S innocode-bin',
     };
     let currentCmd = 'curl';
 
@@ -647,7 +821,7 @@ const faqs = [
       if (copyBtn) copyBtn.textContent = '✓';
       setTimeout(() => {
         if (copyBtn) {
-          copyBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+          copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
         }
       }, 2000);
     });
