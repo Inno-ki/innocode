@@ -12,6 +12,7 @@ import { spawnSync } from "child_process"
 // https://astro.build/config
 export default defineConfig({
   site: config.url,
+  base: "/docs",
   output: "server",
   adapter: vercel({
     imageService: true,
