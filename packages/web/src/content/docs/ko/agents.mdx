@@ -15,7 +15,7 @@ description: 전문 에이전트를 구성하고 사용하세요.
 
 ## 유형
 
-OpenCode에는 두 가지 유형의 에이전트가 있습니다: 기본 에이전트(Primary Agent)와 서브 에이전트(Subagent).
+InnoCode에는 두 가지 유형의 에이전트가 있습니다: 기본 에이전트(Primary Agent)와 서브 에이전트(Subagent).
 
 ---
 
@@ -27,7 +27,7 @@ OpenCode에는 두 가지 유형의 에이전트가 있습니다: 기본 에이�
 세션 중에 **Tab** 키를 사용하여 기본 에이전트를 전환할 수 있습니다.
 :::
 
-OpenCode는 두 가지 내장 기본 에이전트, **Build** 및 **Plan**을 제공합니다. 아래에서 자세히 살펴봅니다.
+InnoCode는 두 가지 내장 기본 에이전트, **Build** 및 **Plan**을 제공합니다. 아래에서 자세히 살펴봅니다.
 
 ---
 
@@ -35,13 +35,13 @@ OpenCode는 두 가지 내장 기본 에이전트, **Build** 및 **Plan**을 제
 
 서브 에이전트는 기본 에이전트가 특정 작업을 위해 호출할 수 있는 전문 보조자입니다. 또한 메시지에서 **@멘션**을 통해 수동으로 호출할 수도 있습니다.
 
-OpenCode는 두 가지 내장 서브 에이전트, **General** 및 **Explore**를 제공합니다. 아래에서 자세히 살펴봅니다.
+InnoCode는 두 가지 내장 서브 에이전트, **General** 및 **Explore**를 제공합니다. 아래에서 자세히 살펴봅니다.
 
 ---
 
 ## 기본 제공
 
-OpenCode는 기본 에이전트와 두 개의 내장 서브 에이전트를 제공합니다.
+InnoCode는 기본 에이전트와 두 개의 내장 서브 에이전트를 제공합니다.
 
 ---
 
@@ -135,11 +135,11 @@ _모드_: `primary`
 
 ### JSON
 
-`opencode.json` config 파일에 에이전트 구성:
+`innocode.json` config 파일에 에이전트 구성:
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "build": {
       "mode": "primary",
@@ -180,10 +180,10 @@ _모드_: `primary`
 
 Markdown 파일을 사용하여 에이전트를 정의 할 수 있습니다. 그들에 게:
 
-- 글로벌: `~/.config/opencode/agents/`
-- 프로젝트: `.opencode/agents/`
+- 글로벌: `~/.config/innocode/agents/`
+- 프로젝트: `.innocode/agents/`
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/innocode/agents/review.md"
 ---
 description: Reviews code for quality and best practices
 mode: subagent
@@ -219,7 +219,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 
 `description` 옵션을 사용하여 에이전트가 무엇을 하고 언제 사용해야 하는지에 대한 간단한 설명을 제공합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "review": {
@@ -239,7 +239,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 
 값이 낮을수록 더 집중되고 결정적인 응답을 생성하며, 값이 높을수록 창의성과 가변성이 증가합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "plan": {
@@ -258,7 +258,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 - **0.3-0.5**: 창의성과 정확성의 균형, 일반 개발 작업에 좋음
 - **0.6-1.0**: 더 창의적이고 다양한 응답, 브레인스토밍 및 탐색에 유용함
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "analyze": {
@@ -276,7 +276,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 }
 ```
 
-온도가 지정되지 않은 경우, OpenCode는 모델별 기본값을 사용합니다. 일반적으로 대부분의 모델은 0, Qwen 모델의 경우 0.55입니다.
+온도가 지정되지 않은 경우, InnoCode는 모델별 기본값을 사용합니다. 일반적으로 대부분의 모델은 0, Qwen 모델의 경우 0.55입니다.
 
 ---
 
@@ -286,7 +286,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 
 설정되지 않은 경우, 에이전트는 모델이 중지하거나 사용자가 세션을 중단할 때까지 계속됩니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "quick-thinker": {
@@ -310,7 +310,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 
 `true`로 설정하여 에이전트를 비활성화합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "review": {
@@ -326,7 +326,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 
 `prompt` 구성으로 이 에이전트를 위한 사용자 정의 시스템 프롬프트 파일을 지정하십시오. 프롬프트 파일은 에이전트의 목적에 따른 지시를 포함해야 합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "review": {
@@ -336,7 +336,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 }
 ```
 
-이 경로는 구성 파일이 있는 위치를 기준으로 합니다. 따라서 글로벌 OpenCode 구성과 프로젝트별 구성 모두에서 작동합니다.
+이 경로는 구성 파일이 있는 위치를 기준으로 합니다. 따라서 글로벌 InnoCode 구성과 프로젝트별 구성 모두에서 작동합니다.
 
 ---
 
@@ -348,7 +348,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 모델을 지정하지 않는 경우, 기본 에이전트는 [전역 구성 모델](/docs/config#models)을 사용하며, 서브 에이전트는 자신을 호출한 기본 에이전트의 모델을 사용합니다.
 :::
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "plan": {
@@ -358,7 +358,7 @@ markdown 파일 이름은 에이전트 이름입니다. 예를 들어, `review.m
 }
 ```
 
-OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. 예를 들어, [OpenCode Zen](/docs/zen)을 사용한다면, GPT 5.1 Codex에 `opencode/gpt-5.1-codex`를 사용할 수 있습니다.
+InnoCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. 예를 들어, [InnoGPT](/docs/zen)을 사용한다면, GPT 5.1 Codex에 `innocode/gpt-5.1-codex`를 사용할 수 있습니다.
 
 ---
 
@@ -366,9 +366,9 @@ OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. �
 
 `tools` 구성으로 이 에이전트가 사용할 수 있는 도구를 제어합니다. `true` 또는 `false`로 설정하여 특정 도구를 활성화하거나 비활성화할 수 있습니다.
 
-```json title="opencode.json" {3-6,9-12}
+```json title="innocode.json" {3-6,9-12}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "tools": {
     "write": true,
     "bash": true
@@ -390,9 +390,9 @@ OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. �
 
 한 번에 여러 도구를 제어하기 위해 와일드카드를 사용할 수 있습니다. 예를 들어, MCP 서버에서 모든 도구를 비활성화하려면:
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "readonly": {
       "tools": {
@@ -417,9 +417,9 @@ OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. �
 - `"allow"` - 승인 없이 모든 작업 허용
 - `"deny"` - 도구 비활성화
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "deny"
   }
@@ -428,9 +428,9 @@ OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. �
 
 에이전트별로 이 권한을 재정의(override)할 수 있습니다.
 
-```json title="opencode.json" {3-5,8-10}
+```json title="innocode.json" {3-5,8-10}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "deny"
   },
@@ -446,7 +446,7 @@ OpenCode 구성의 모델 ID는 `provider/model-id` 형식을 사용합니다. �
 
 Markdown 에이전트에서도 권한을 설정할 수 있습니다.
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/innocode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent
@@ -465,9 +465,9 @@ Only analyze code and suggest changes.
 
 특정 bash 명령에 대한 권한을 설정할 수 있습니다.
 
-```json title="opencode.json" {7}
+```json title="innocode.json" {7}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "build": {
       "permission": {
@@ -483,9 +483,9 @@ Only analyze code and suggest changes.
 
 이것은 glob 패턴을 사용할 수 있습니다.
 
-```json title="opencode.json" {7}
+```json title="innocode.json" {7}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "build": {
       "permission": {
@@ -501,9 +501,9 @@ Only analyze code and suggest changes.
 또한 `*` 와일드카드를 사용하여 모든 명령에 대한 권한을 관리할 수 있습니다.
 마지막 일치 규칙이 우선하므로, `*` 와일드카드를 먼저 두고 특정 규칙을 나중에 두십시오.
 
-```json title="opencode.json" {8}
+```json title="innocode.json" {8}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "build": {
       "permission": {
@@ -525,7 +525,7 @@ Only analyze code and suggest changes.
 
 `mode` 구성으로 에이전트 모드를 제어합니다. `mode` 옵션은 에이전트가 어떻게 사용될 수 있는지 결정하는 데 사용됩니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "review": {
@@ -543,7 +543,7 @@ Only analyze code and suggest changes.
 
 `hidden: true`를 사용하여 `@` 자동 완성 메뉴에서 에이전트를 숨깁니다. 작업 도구를 통해 다른 에이전트에 의해 프로그래밍 방식으로 호출되어야 하는 내부 에이전트에 유용합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "internal-helper": {
@@ -566,7 +566,7 @@ Only analyze code and suggest changes.
 
 `permission.task`와 작업 도구를 통해 에이전트가 호출할 수 있는 서브 에이전트를 제어합니다. 유연한 일치를 위한 glob 패턴을 사용합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "orchestrator": {
@@ -601,7 +601,7 @@ Only analyze code and suggest changes.
 
 유효한 hex 색상(예: `#FF5733`) 또는 테마 색상을 사용하십시오: `primary`, `secondary`, `accent`, `success`, `warning`, `error`, `info`.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "creative": {
@@ -620,7 +620,7 @@ Only analyze code and suggest changes.
 
 `top_p` 옵션으로 응답의 다양성을 제어합니다. 무작위성 제어를 위한 온도의 대안입니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "agent": {
     "brainstorm": {
@@ -640,7 +640,7 @@ Only analyze code and suggest changes.
 
 예를 들어, OpenAI의 추론 모델과 함께, 추론 노력을 제어할 수 있습니다:
 
-```json title="opencode.json" {6,7}
+```json title="innocode.json" {6,7}
 {
   "agent": {
     "deep-thinker": {
@@ -656,7 +656,7 @@ Only analyze code and suggest changes.
 이 추가 옵션은 모델과 공급자별로 다릅니다. 사용 가능한 매개변수는 공급자의 문서를 확인하십시오.
 
 :::tip
-`opencode models`를 실행하여 사용 가능한 모델 목록을 볼 수 있습니다.
+`innocode models`를 실행하여 사용 가능한 모델 목록을 볼 수 있습니다.
 :::
 
 ---
@@ -666,7 +666,7 @@ Only analyze code and suggest changes.
 다음 명령을 사용하여 새로운 에이전트를 만들 수 있습니다:
 
 ```bash
-opencode agent create
+innocode agent create
 ```
 
 이 대화형 명령은:
@@ -696,14 +696,14 @@ opencode agent create
 여기에 유용 할 수있는 몇 가지 예 에이전트가 있습니다.
 
 :::tip
-공유하고 싶은 에이전트가 있습니까? [PR](https://github.com/anomalyco/opencode).
+공유하고 싶은 에이전트가 있습니까? [PR](https://github.com/anomalyco/innocode).
 :::
 
 ---
 
 ### 문서 에이전트
 
-```markdown title="~/.config/opencode/agents/docs-writer.md"
+```markdown title="~/.config/innocode/agents/docs-writer.md"
 ---
 description: Writes and maintains project documentation
 mode: subagent
@@ -725,7 +725,7 @@ Focus on:
 
 ## 보안 감사
 
-```markdown title="~/.config/opencode/agents/security-auditor.md"
+```markdown title="~/.config/innocode/agents/security-auditor.md"
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent

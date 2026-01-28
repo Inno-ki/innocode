@@ -3,7 +3,7 @@ title: 权限
 description: 控制哪些操作需要批准才能運行。
 ---
 
-opencode 使用`permission` 配置来决定给定的操作是否应自动运行、提示您或被阻止。
+innocode 使用`permission` 配置来决定给定的操作是否应自动运行、提示您或被阻止。
 
 从 `v1.1.1` 开始，旧版配置 `tools` 布尔已被废弃，并已合并到 `permission` 中。仍支持旧版的 `tools` 配置以实现平滑兼容。
 
@@ -23,9 +23,9 @@ opencode 使用`permission` 配置来决定给定的操作是否应自动运行�
 
 您可以全局设置权限（使用`*`），并覆盖特定工具。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "*": "ask",
     "bash": "allow",
@@ -36,9 +36,9 @@ opencode 使用`permission` 配置来决定给定的操作是否应自动运行�
 
 您还可以一次设置所有权限：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": "allow"
 }
 ```
@@ -49,9 +49,9 @@ opencode 使用`permission` 配置来决定给定的操作是否应自动运行�
 
 对于大多數权限，您可以使用对像根據工具輸入应用不同的操作。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "bash": {
       "*": "ask",
@@ -88,15 +88,15 @@ opencode 使用`permission` 配置来决定给定的操作是否应自动运行�
 
 ### 外部目录
 
-使用 `external_directory` 允许工具调用启动 opencode 的工作目录之外的路径。这适用于任何采用路径作为输入的工具（例如 `read`、`edit`、`list`、`glob`、`grep` 和许多Z`bash` 命令）。
+使用 `external_directory` 允许工具调用启动 innocode 的工作目录之外的路径。这适用于任何采用路径作为输入的工具（例如 `read`、`edit`、`list`、`glob`、`grep` 和许多Z`bash` 命令）。
 
 主扩展（如`~/...`）仅影响模式的编写方式。它不会使外部路径成为当前工作空间的一部分，因此仍然必须通过 `external_directory` 允许工作目录之外的路径。
 
 例如，这允许访问`~/projects/personal/`下的所有内容：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "external_directory": {
       "~/projects/personal/**": "allow"
@@ -107,9 +107,9 @@ opencode 使用`permission` 配置来决定给定的操作是否应自动运行�
 
 这里允许的任何目录都会继承与当前工作空间默认相同的值。自[`read`默认为`allow`](#defaults)起，也允许读取`external_directory`下面的边界，除非被覆盖。当工具应在这些路径中时添加显式规则，例如在保留读取的同时阻止编辑：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "external_directory": {
       "~/projects/personal/**": "allow"
@@ -154,7 +154,7 @@ opencode权限由工具名称和一些安全防护措施决定：
 - `doom_loop`和`external_directory`默认为`"ask"`。
 - `read` 是 `"allow"`，但 `.env` 文件默认被拒绝：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "permission": {
     "read": {
@@ -171,10 +171,10 @@ opencode权限由工具名称和一些安全防护措施决定：
 
 ## “询问”的作用是什么
 
-当 opencode 提示批准时，UI 会提供清晰的结果：
+当 innocode 提示批准时，UI 会提供清晰的结果：
 
 - `once` — 仅批准此请求
-- `always` — 批准与建议模式匹配的未来请求（对于当前 opencode 会话的其余部分）
+- `always` — 批准与建议模式匹配的未来请求（对于当前 innocode 会话的其余部分）
 - `reject` — 拒绝请求
 
 `always` 将批准的模式集由该工具提供（例如，bash 批准通常将安全端口（如 `git status*`）列入白名单）。
@@ -189,9 +189,9 @@ opencode权限由工具名称和一些安全防护措施决定：
 有关更详细的模式匹配示例，请参见上面的 [粒度规则（对象语法）](#granular-rules-object-syntax) 部分。
 :::
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "bash": {
       "*": "ask",
@@ -219,7 +219,7 @@ opencode权限由工具名称和一些安全防护措施决定：
 
 您还可以在 Markdown 中配置代理权限：
 
-```markdown title="~/.config/opencode/agents/review.md"
+```markdown title="~/.config/innocode/agents/review.md"
 ---
 description: Code review without edits
 mode: subagent

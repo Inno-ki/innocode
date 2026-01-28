@@ -113,7 +113,7 @@ export const dict = {
   "dialog.model.manage": "Administrer modeller",
   "dialog.model.manage.description": "Tilpass hvilke modeller som vises i modellvelgeren.",
 
-  "dialog.model.unpaid.freeModels.title": "Gratis modeller levert av OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Gratis modeller levert av InnoCode",
   "dialog.model.unpaid.addMore.title": "Legg til flere modeller fra populære leverandører",
 
   "dialog.provider.viewAll": "Vis flere leverandører",
@@ -135,7 +135,7 @@ export const dict = {
   "provider.connect.opencodeZen.line2":
     "Med én enkelt API-nøkkel får du tilgang til modeller som Claude, GPT, Gemini, GLM og flere.",
   "provider.connect.opencodeZen.visit.prefix": "Besøk ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
+  "provider.connect.opencodeZen.visit.link": "app.innogpt.de",
   "provider.connect.opencodeZen.visit.suffix": " for å hente API-nøkkelen din.",
   "provider.connect.oauth.code.visit.prefix": "Besøk ",
   "provider.connect.oauth.code.visit.link": "denne lenken",
@@ -302,7 +302,7 @@ export const dict = {
   "dialog.directory.empty": "Ingen mapper funnet",
 
   "dialog.server.title": "Servere",
-  "dialog.server.description": "Bytt hvilken OpenCode-server denne appen kobler til.",
+  "dialog.server.description": "Bytt hvilken InnoCode-server denne appen kobler til.",
   "dialog.server.search.placeholder": "Søk etter servere",
   "dialog.server.empty": "Ingen servere ennå",
   "dialog.server.add.title": "Legg til en server",
@@ -428,7 +428,7 @@ export const dict = {
   "toast.session.listFailed.title": "Kunne ikke laste sesjoner for {{project}}",
 
   "toast.update.title": "Oppdatering tilgjengelig",
-  "toast.update.description": "En ny versjon av OpenCode ({{version}}) er nå tilgjengelig for installasjon.",
+  "toast.update.description": "En ny versjon av InnoCode ({{version}}) er nå tilgjengelig for installasjon.",
   "toast.update.action.installRestart": "Installer og start på nytt",
   "toast.update.action.notYet": "Ikke nå",
 
@@ -439,7 +439,7 @@ export const dict = {
   "error.page.action.checking": "Sjekker...",
   "error.page.action.checkUpdates": "Se etter oppdateringer",
   "error.page.action.updateTo": "Oppdater til {{version}}",
-  "error.page.report.prefix": "Vennligst rapporter denne feilen til OpenCode-teamet",
+  "error.page.report.prefix": "Vennligst rapporter denne feilen til InnoCode-teamet",
   "error.page.report.discord": "på Discord",
   "error.page.version": "Versjon: {{version}}",
 
@@ -575,12 +575,12 @@ export const dict = {
   "sidebar.workspaces.enable": "Aktiver arbeidsområder",
   "sidebar.workspaces.disable": "Deaktiver arbeidsområder",
   "sidebar.gettingStarted.title": "Kom i gang",
-  "sidebar.gettingStarted.line1": "OpenCode inkluderer gratis modeller så du kan starte umiddelbart.",
+  "sidebar.gettingStarted.line1": "InnoCode inkluderer gratis modeller så du kan starte umiddelbart.",
   "sidebar.gettingStarted.line2": "Koble til en leverandør for å bruke modeller, inkl. Claude, GPT, Gemini osv.",
   "sidebar.project.recentSessions": "Nylige sesjoner",
   "sidebar.project.viewAllSessions": "Vis alle sesjoner",
 
-  "app.name.desktop": "OpenCode Desktop",
+  "app.name.desktop": "InnoCode Desktop",
 
   "settings.section.desktop": "Skrivebord",
   "settings.section.server": "Server",
@@ -588,7 +588,7 @@ export const dict = {
   "settings.tab.shortcuts": "Snarveier",
   "settings.desktop.section.wsl": "WSL",
   "settings.desktop.wsl.title": "WSL-integrasjon",
-  "settings.desktop.wsl.description": "Kjør OpenCode-serveren i WSL på Windows.",
+  "settings.desktop.wsl.description": "Kjør InnoCode-serveren i WSL på Windows.",
 
   "settings.general.section.appearance": "Utseende",
   "settings.general.section.notifications": "Systemvarsler",
@@ -597,11 +597,11 @@ export const dict = {
   "settings.general.section.display": "Skjerm",
 
   "settings.general.row.language.title": "Språk",
-  "settings.general.row.language.description": "Endre visningsspråket for OpenCode",
+  "settings.general.row.language.description": "Endre visningsspråket for InnoCode",
   "settings.general.row.appearance.title": "Utseende",
-  "settings.general.row.appearance.description": "Tilpass hvordan OpenCode ser ut på enheten din",
+  "settings.general.row.appearance.description": "Tilpass hvordan InnoCode ser ut på enheten din",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Tilpass hvordan OpenCode er tematisert.",
+  "settings.general.row.theme.description": "Tilpass hvordan InnoCode er tematisert.",
   "settings.general.row.font.title": "Skrift",
   "settings.general.row.font.description": "Tilpass mono-skriften som brukes i kodeblokker",
 
@@ -614,13 +614,13 @@ export const dict = {
   "settings.general.row.releaseNotes.description": 'Vis "Hva er nytt"-vinduer etter oppdateringer',
 
   "settings.updates.row.startup.title": "Se etter oppdateringer ved oppstart",
-  "settings.updates.row.startup.description": "Se automatisk etter oppdateringer når OpenCode starter",
+  "settings.updates.row.startup.description": "Se automatisk etter oppdateringer når InnoCode starter",
   "settings.updates.row.check.title": "Se etter oppdateringer",
   "settings.updates.row.check.description": "Se etter oppdateringer manuelt og installer hvis tilgjengelig",
   "settings.updates.action.checkNow": "Sjekk nå",
   "settings.updates.action.checking": "Sjekker...",
   "settings.updates.toast.latest.title": "Du er oppdatert",
-  "settings.updates.toast.latest.description": "Du bruker den nyeste versjonen av OpenCode.",
+  "settings.updates.toast.latest.description": "Du bruker den nyeste versjonen av InnoCode.",
   "font.option.ibmPlexMono": "IBM Plex Mono",
   "font.option.cascadiaCode": "Cascadia Code",
   "font.option.firaCode": "Fira Code",

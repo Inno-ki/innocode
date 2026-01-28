@@ -1,6 +1,6 @@
 ---
 title: TUI
-description: OpenCode 터미널 사용자 인터페이스 사용.
+description: InnoCode 터미널 사용자 인터페이스 사용.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
@@ -10,13 +10,13 @@ opencode는 LLM과 함께 프로젝트를 위해 대화형 terminal 인터페이
 opencode는 현재 디렉토리에 TUI를 시작합니다.
 
 ```bash
-opencode
+innocode
 ```
 
 또는 특정 작업 디렉토리에 대해 시작할 수 있습니다.
 
 ```bash
-opencode /path/to/project
+innocode /path/to/project
 ```
 
 TUI에 있다면 메시지가 표시됩니다.
@@ -57,7 +57,7 @@ How is auth handled in @packages/functions/src/api/index.ts?
 
 ## 명령
 
-opencode TUI를 사용할 때, `/`를 입력하여 명령 이름을 따라 작업을 신속하게 실행할 수 있습니다. 예를 들면:
+innocode TUI를 사용할 때, `/`를 입력하여 명령 이름을 따라 작업을 신속하게 실행할 수 있습니다. 예를 들면:
 
 ```bash frame="none"
 /help
@@ -355,11 +355,11 @@ VS Code와 같은 일부 편집기는 `--wait` 플래그와 함께 시작해야�
 
 ## 구성
 
-opencode config 파일을 통해 TUI 동작을 사용자 정의할 수 있습니다.
+innocode config 파일을 통해 TUI 동작을 사용자 정의할 수 있습니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {

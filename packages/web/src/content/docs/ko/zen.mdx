@@ -1,19 +1,19 @@
 ---
 title: Zen
-description: OpenCode가 제공하는 엄선된 모델 목록.
+description: InnoCode가 제공하는 엄선된 모델 목록.
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 export const email = `mailto:${config.email}`
 
-OpenCode Zen은 opencode 팀에서 제공하는 테스트 및 검증된 모델 목록입니다.
+InnoGPT은 innocode 팀에서 제공하는 테스트 및 검증된 모델 목록입니다.
 
 :::note
-OpenCode Zen은 현재 베타입니다.
+InnoGPT은 현재 베타입니다.
 :::
 
-Zen은 opencode의 다른 공급자와 같이 작동합니다. OpenCode Zen에 로그인하고
+Zen은 opencode의 다른 공급자와 같이 작동합니다. InnoGPT에 로그인하고
 API 키. 그것은 ** 완전 옵션 ** 당신은 사용할 필요가 없습니다
 opencode입니다.
 
@@ -41,17 +41,17 @@ OpenRouter와 같은 무언가를 통해 모델을 사용하고 있다면 결코
 3. 마지막으로, 우리는 model/provider의 조합을 벤치마크하고 올랐습니다
    우리가 좋은 권고를 느끼는 목록으로.
 
-OpenCode Zen은 이 모델에 액세스 할 수있는 AI 게이트웨이입니다.
+InnoGPT은 이 모델에 액세스 할 수있는 AI 게이트웨이입니다.
 
 ---
 
 ## 어떻게 작동합니까?
 
-OpenCode Zen은 opencode의 다른 공급자와 같습니다.
+InnoGPT은 opencode의 다른 공급자와 같습니다.
 
-1. 로그인 **<a href={console}>OpenCode Zen</a>**, 청구 추가
+1. 로그인 **<a href={console}>InnoGPT</a>**, 청구 추가
    세부 사항 및 API 키 복사.
-2. TUI에서 `/connect` 명령을 실행하고 OpenCode Zen을 선택하고 API 키를 붙여 넣으십시오.
+2. TUI에서 `/connect` 명령을 실행하고 InnoGPT을 선택하고 API 키를 붙여 넣으십시오.
 3. TUI의 `/models`를 실행하여 우리가 추천하는 모델 목록을 볼 수 있습니다.
 
 요청에 따라 청구되며 계정에 크레딧을 추가 할 수 있습니다.
@@ -64,39 +64,39 @@ OpenCode Zen은 opencode의 다른 공급자와 같습니다.
 
 | 모델               | 모델 ID            | 엔드포인트                                         | AI SDK 패키지               |
 | ------------------ | ------------------ | -------------------------------------------------- | --------------------------- |
-| GPT 5.2            | gpt-5.2            | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.2 Codex      | gpt-5.2-codex      | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1            | gpt-5.1            | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex      | gpt-5.1-codex      | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex Max  | gpt-5.1-codex-max  | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex Mini | gpt-5.1-codex-mini | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5              | gpt-5              | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5 Codex        | gpt-5-codex        | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5 Nano         | gpt-5-nano         | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
-| Claude Sonnet 4.5  | claude-sonnet-4-5  | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Sonnet 4    | claude-sonnet-4    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Haiku 4.5   | claude-haiku-4-5   | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Haiku 3.5   | claude-3-5-haiku   | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.6    | claude-opus-4-6    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.5    | claude-opus-4-5    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.1    | claude-opus-4-1    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| Gemini 3 Pro       | gemini-3-pro       | `https://opencode.ai/zen/v1/models/gemini-3-pro`   | `@ai-sdk/google`            |
-| Gemini 3 Flash     | gemini-3-flash     | `https://opencode.ai/zen/v1/models/gemini-3-flash` | `@ai-sdk/google`            |
-| MiniMax M2.1       | minimax-m2.1       | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| MiniMax M2.1 Free  | minimax-m2.1-free  | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
-| GLM 4.7            | glm-4.7            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| GLM 4.7 Free       | glm-4.7-free       | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| GLM 4.6            | glm-4.6            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2.5          | kimi-k2.5          | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2.5 Free     | kimi-k2.5-free     | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2 Thinking   | kimi-k2-thinking   | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2            | kimi-k2            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Qwen3 Coder 480B   | qwen3-coder        | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Big Pickle         | big-pickle         | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GPT 5.2            | gpt-5.2            | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.2 Codex      | gpt-5.2-codex      | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1            | gpt-5.1            | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex      | gpt-5.1-codex      | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex Max  | gpt-5.1-codex-max  | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex Mini | gpt-5.1-codex-mini | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5              | gpt-5              | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5 Codex        | gpt-5-codex        | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5 Nano         | gpt-5-nano         | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
+| Claude Sonnet 4.5  | claude-sonnet-4-5  | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Sonnet 4    | claude-sonnet-4    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Haiku 4.5   | claude-haiku-4-5   | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Haiku 3.5   | claude-3-5-haiku   | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Opus 4.6    | claude-opus-4-6    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Opus 4.5    | claude-opus-4-5    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Opus 4.1    | claude-opus-4-1    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| Gemini 3 Pro       | gemini-3-pro       | `https://app.innogpt.de/v1/models/gemini-3-pro`   | `@ai-sdk/google`            |
+| Gemini 3 Flash     | gemini-3-flash     | `https://app.innogpt.de/v1/models/gemini-3-flash` | `@ai-sdk/google`            |
+| MiniMax M2.1       | minimax-m2.1       | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| MiniMax M2.1 Free  | minimax-m2.1-free  | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
+| GLM 4.7            | glm-4.7            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GLM 4.7 Free       | glm-4.7-free       | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GLM 4.6            | glm-4.6            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2.5          | kimi-k2.5          | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2.5 Free     | kimi-k2.5-free     | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2 Thinking   | kimi-k2-thinking   | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2            | kimi-k2            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Qwen3 Coder 480B   | qwen3-coder        | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Big Pickle         | big-pickle         | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
 
-opencode config에서 [model id](/docs/config/#models)
-형식 `opencode/<model-id>`를 사용합니다. 예를 들어, GPT 5.2 Codex의 경우,
-설정에서 `opencode/gpt-5.2-codex`를 사용합니다.
+innocode config에서 [model id](/docs/config/#models)
+형식 `innocode/<model-id>`를 사용합니다. 예를 들어, GPT 5.2 Codex의 경우,
+설정에서 `innocode/gpt-5.2-codex`를 사용합니다.
 
 ---
 
@@ -105,7 +105,7 @@ opencode config에서 [model id](/docs/config/#models)
 사용할 수 있는 모델과 메타데이터의 전체 목록은 다음과 같습니다:
 
 ```
-https://opencode.ai/zen/v1/models
+https://app.innogpt.de/v1/models
 ```
 
 ---
@@ -246,7 +246,7 @@ Zen이 제공하는 것을 대신 사용하고 싶습니다.
 
 ## 목표
 
-OpenCode Zen을 생성했습니다.
+InnoGPT을 생성했습니다.
 
 1. **Benchmark ** 코딩 에이전트에 대한 최고의 모델 / 프로바이더.
 2. ** 고품질 ** 옵션에 액세스하고 더 싼 공급자에 고급 성능 또는 노선을 내리지 마십시오.

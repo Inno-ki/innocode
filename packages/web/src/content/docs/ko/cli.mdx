@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: opencode CLI 옵션과 명령어.
+description: innocode CLI 옵션과 명령어.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-opencode CLI는 인수 없이 실행하면 기본적으로 [TUI](/docs/tui)를 시작합니다.
+innocode CLI는 인수 없이 실행하면 기본적으로 [TUI](/docs/tui)를 시작합니다.
 
 ```bash
-opencode
+innocode
 ```
 
 이 페이지에 나온 것처럼 명령을 함께 전달할 수도 있습니다. 이를 통해 opencode를 프로그래밍 방식으로 사용할 수 있습니다.
 
 ```bash
-opencode run "Explain how closures work in JavaScript"
+innocode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-OpenCode 터미널 사용자 인터페이스를 시작합니다.
+InnoCode 터미널 사용자 인터페이스를 시작합니다.
 
 ```bash
-opencode [project]
+innocode [project]
 ```
 
 #### 플래그
@@ -44,7 +44,7 @@ opencode [project]
 
 ## 명령어
 
-opencode CLI는 아래 명령들도 제공합니다.
+innocode CLI는 아래 명령들도 제공합니다.
 
 ---
 
@@ -53,27 +53,27 @@ opencode CLI는 아래 명령들도 제공합니다.
 opencode용 에이전트를 관리합니다.
 
 ```bash
-opencode agent [command]
+innocode agent [command]
 ```
 
 ---
 
 ### attach
 
-`serve` 또는 `web` 명령으로 이미 실행 중인 opencode 백엔드 서버에 터미널을 연결합니다.
+`serve` 또는 `web` 명령으로 이미 실행 중인 innocode 백엔드 서버에 터미널을 연결합니다.
 
 ```bash
-opencode attach [url]
+innocode attach [url]
 ```
 
-원격 opencode 백엔드와 TUI를 연결해 사용할 수 있습니다. 예:
+원격 innocode 백엔드와 TUI를 연결해 사용할 수 있습니다. 예:
 
 ```bash
 # Start the backend server for web/mobile access
-opencode web --port 4096 --hostname 0.0.0.0
+innocode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-opencode attach http://10.20.30.40:4096
+innocode attach http://10.20.30.40:4096
 ```
 
 #### 플래그
@@ -90,7 +90,7 @@ opencode attach http://10.20.30.40:4096
 커스텀 설정으로 새 에이전트를 만듭니다.
 
 ```bash
-opencode agent create
+innocode agent create
 ```
 
 이 명령은 커스텀 시스템 프롬프트와 도구 설정을 사용해 새 에이전트를 만드는 과정을 안내합니다.
@@ -102,7 +102,7 @@ opencode agent create
 사용 가능한 모든 에이전트를 표시합니다.
 
 ```bash
-opencode agent list
+innocode agent list
 ```
 
 ---
@@ -112,20 +112,20 @@ opencode agent list
 provider 인증 정보와 로그인을 관리합니다.
 
 ```bash
-opencode auth [command]
+innocode auth [command]
 ```
 
 ---
 
 #### login
 
-OpenCode는 [Models.dev](https://models.dev)의 provider 목록을 기반으로 동작하므로, `opencode auth login`으로 원하는 provider의 API 키를 설정할 수 있습니다. 인증 정보는 `~/.local/share/opencode/auth.json`에 저장됩니다.
+InnoCode는 [Models.dev](https://models.dev)의 provider 목록을 기반으로 동작하므로, `innocode auth login`으로 원하는 provider의 API 키를 설정할 수 있습니다. 인증 정보는 `~/.local/share/innocode/auth.json`에 저장됩니다.
 
 ```bash
-opencode auth login
+innocode auth login
 ```
 
-OpenCode 시작 시 인증 파일에서 provider 정보를 불러오며, 시스템 환경 변수나 프로젝트의 `.env`에 정의된 키도 함께 로드합니다.
+InnoCode 시작 시 인증 파일에서 provider 정보를 불러오며, 시스템 환경 변수나 프로젝트의 `.env`에 정의된 키도 함께 로드합니다.
 
 ---
 
@@ -134,13 +134,13 @@ OpenCode 시작 시 인증 파일에서 provider 정보를 불러오며, 시스�
 인증 파일에 저장된 provider 목록을 표시합니다.
 
 ```bash
-opencode auth list
+innocode auth list
 ```
 
 축약형도 사용할 수 있습니다.
 
 ```bash
-opencode auth ls
+innocode auth ls
 ```
 
 ---
@@ -150,7 +150,7 @@ opencode auth ls
 인증 파일에서 provider 정보를 제거해 로그아웃합니다.
 
 ```bash
-opencode auth logout
+innocode auth logout
 ```
 
 ---
@@ -160,7 +160,7 @@ opencode auth logout
 저장소 자동화를 위한 GitHub 에이전트를 관리합니다.
 
 ```bash
-opencode github [command]
+innocode github [command]
 ```
 
 ---
@@ -170,7 +170,7 @@ opencode github [command]
 저장소에 GitHub 에이전트를 설치합니다.
 
 ```bash
-opencode github install
+innocode github install
 ```
 
 필요한 GitHub Actions 워크플로를 설정하고 구성 과정을 안내합니다. [더 알아보기](/docs/github).
@@ -182,7 +182,7 @@ opencode github install
 GitHub 에이전트를 실행합니다. 보통 GitHub Actions에서 사용합니다.
 
 ```bash
-opencode github run
+innocode github run
 ```
 
 ##### 플래그
@@ -199,7 +199,7 @@ opencode github run
 Model Context Protocol 서버를 관리합니다.
 
 ```bash
-opencode mcp [command]
+innocode mcp [command]
 ```
 
 ---
@@ -209,7 +209,7 @@ opencode mcp [command]
 구성에 MCP 서버를 추가합니다.
 
 ```bash
-opencode mcp add
+innocode mcp add
 ```
 
 이 명령은 로컬 또는 원격 MCP 서버를 추가하는 과정을 안내합니다.
@@ -221,13 +221,13 @@ opencode mcp add
 구성된 MCP 서버와 연결 상태를 표시합니다.
 
 ```bash
-opencode mcp list
+innocode mcp list
 ```
 
 축약형도 사용할 수 있습니다.
 
 ```bash
-opencode mcp ls
+innocode mcp ls
 ```
 
 ---
@@ -237,7 +237,7 @@ opencode mcp ls
 OAuth를 지원하는 MCP 서버를 인증합니다.
 
 ```bash
-opencode mcp auth [name]
+innocode mcp auth [name]
 ```
 
 서버 이름을 입력하지 않으면 OAuth 지원 서버 목록에서 선택하라는 안내가 표시됩니다.
@@ -245,13 +245,13 @@ opencode mcp auth [name]
 OAuth 지원 서버와 인증 상태를 목록으로 볼 수도 있습니다.
 
 ```bash
-opencode mcp auth list
+innocode mcp auth list
 ```
 
 축약형도 사용할 수 있습니다.
 
 ```bash
-opencode mcp auth ls
+innocode mcp auth ls
 ```
 
 ---
@@ -261,7 +261,7 @@ opencode mcp auth ls
 MCP 서버의 OAuth 인증 정보를 제거합니다.
 
 ```bash
-opencode mcp logout [name]
+innocode mcp logout [name]
 ```
 
 ---
@@ -271,7 +271,7 @@ opencode mcp logout [name]
 MCP 서버의 OAuth 연결 문제를 디버그합니다.
 
 ```bash
-opencode mcp debug <name>
+innocode mcp debug <name>
 ```
 
 ---
@@ -281,7 +281,7 @@ opencode mcp debug <name>
 구성된 provider에서 사용 가능한 모델 목록을 표시합니다.
 
 ```bash
-opencode models [provider]
+innocode models [provider]
 ```
 
 이 명령은 구성된 provider 전체에서 사용 가능한 모델을 `provider/model` 형식으로 출력합니다.
@@ -291,7 +291,7 @@ opencode models [provider]
 특정 provider ID를 넘겨 해당 provider의 모델만 필터링할 수도 있습니다.
 
 ```bash
-opencode models anthropic
+innocode models anthropic
 ```
 
 #### 플래그
@@ -301,10 +301,10 @@ opencode models anthropic
 | `--refresh` | models.dev에서 모델 캐시 새로고침                 |
 | `--verbose` | 더 자세한 모델 출력 사용(비용 등 메타데이터 포함) |
 
-`--refresh` 플래그를 사용하면 캐시된 모델 목록을 갱신할 수 있습니다. provider에 새 모델이 추가된 뒤 OpenCode에서 바로 확인하고 싶을 때 유용합니다.
+`--refresh` 플래그를 사용하면 캐시된 모델 목록을 갱신할 수 있습니다. provider에 새 모델이 추가된 뒤 InnoCode에서 바로 확인하고 싶을 때 유용합니다.
 
 ```bash
-opencode models --refresh
+innocode models --refresh
 ```
 
 ---
@@ -314,23 +314,23 @@ opencode models --refresh
 프롬프트를 직접 전달해 비대화형 모드로 opencode를 실행합니다.
 
 ```bash
-opencode run [message..]
+innocode run [message..]
 ```
 
 스크립트, 자동화, 또는 전체 TUI를 띄우지 않고 빠른 응답이 필요할 때 유용합니다. 예:
 
-```bash "opencode run"
-opencode run Explain the use of context in Go
+```bash "innocode run"
+innocode run Explain the use of context in Go
 ```
 
-매번 MCP 서버 콜드 부트가 발생하지 않도록, 실행 중인 `opencode serve` 인스턴스에 붙어서 실행할 수도 있습니다.
+매번 MCP 서버 콜드 부트가 발생하지 않도록, 실행 중인 `innocode serve` 인스턴스에 붙어서 실행할 수도 있습니다.
 
 ```bash
 # Start a headless server in one terminal
-opencode serve
+innocode serve
 
 # In another terminal, run commands that attach to it
-opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### 플래그
@@ -347,20 +347,20 @@ opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | `--file`     | `-f` | 메시지에 첨부할 파일                                                   |
 | `--format`   |      | 출력 형식: default(포맷됨) 또는 json(원시 JSON 이벤트)                 |
 | `--title`    |      | 세션 제목(값이 없으면 프롬프트를 잘라 자동 생성)                       |
-| `--attach`   |      | 실행 중인 opencode 서버에 연결(예: http://localhost:4096)              |
+| `--attach`   |      | 실행 중인 innocode 서버에 연결(예: http://localhost:4096)              |
 | `--port`     |      | 로컬 서버 포트(기본값: 랜덤 포트)                                      |
 
 ---
 
 ### serve
 
-API 접근용 headless OpenCode 서버를 시작합니다. 전체 HTTP 인터페이스는 [server docs](/docs/server)를 참고하세요.
+API 접근용 headless InnoCode 서버를 시작합니다. 전체 HTTP 인터페이스는 [server docs](/docs/server)를 참고하세요.
 
 ```bash
-opencode serve
+innocode serve
 ```
 
-이 명령은 TUI 없이 opencode 기능에 접근할 수 있는 HTTP 서버를 시작합니다. `OPENCODE_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `opencode`).
+이 명령은 TUI 없이 innocode 기능에 접근할 수 있는 HTTP 서버를 시작합니다. `OPENCODE_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `innocode`).
 
 #### 플래그
 
@@ -375,20 +375,20 @@ opencode serve
 
 ### session
 
-OpenCode 세션을 관리합니다.
+InnoCode 세션을 관리합니다.
 
 ```bash
-opencode session [command]
+innocode session [command]
 ```
 
 ---
 
 #### list
 
-OpenCode 세션 목록을 표시합니다.
+InnoCode 세션 목록을 표시합니다.
 
 ```bash
-opencode session list
+innocode session list
 ```
 
 ##### 플래그
@@ -402,10 +402,10 @@ opencode session list
 
 ### stats
 
-OpenCode 세션의 토큰 사용량과 비용 통계를 표시합니다.
+InnoCode 세션의 토큰 사용량과 비용 통계를 표시합니다.
 
 ```bash
-opencode stats
+innocode stats
 ```
 
 #### 플래그
@@ -424,7 +424,7 @@ opencode stats
 세션 데이터를 JSON으로 내보냅니다.
 
 ```bash
-opencode export [sessionID]
+innocode export [sessionID]
 ```
 
 세션 ID를 지정하지 않으면 사용 가능한 세션에서 선택하라는 안내가 표시됩니다.
@@ -433,30 +433,30 @@ opencode export [sessionID]
 
 ### import
 
-JSON 파일 또는 OpenCode 공유 URL에서 세션 데이터를 가져옵니다.
+JSON 파일 또는 InnoCode 공유 URL에서 세션 데이터를 가져옵니다.
 
 ```bash
-opencode import <file>
+innocode import <file>
 ```
 
-로컬 파일이나 OpenCode 공유 URL에서 가져올 수 있습니다.
+로컬 파일이나 InnoCode 공유 URL에서 가져올 수 있습니다.
 
 ```bash
-opencode import session.json
-opencode import https://opncd.ai/s/abc123
+innocode import session.json
+innocode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-웹 인터페이스를 포함한 headless OpenCode 서버를 시작합니다.
+웹 인터페이스를 포함한 headless InnoCode 서버를 시작합니다.
 
 ```bash
-opencode web
+innocode web
 ```
 
-이 명령은 HTTP 서버를 시작하고 웹 브라우저를 열어 웹 인터페이스로 OpenCode에 접속합니다. `OPENCODE_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `opencode`).
+이 명령은 HTTP 서버를 시작하고 웹 브라우저를 열어 웹 인터페이스로 InnoCode에 접속합니다. `OPENCODE_SERVER_PASSWORD`를 설정하면 HTTP basic auth가 활성화됩니다(기본 사용자명: `innocode`).
 
 #### 플래그
 
@@ -474,7 +474,7 @@ opencode web
 ACP(Agent Client Protocol) 서버를 시작합니다.
 
 ```bash
-opencode acp
+innocode acp
 ```
 
 이 명령은 nd-JSON 형식으로 stdin/stdout을 통해 통신하는 ACP 서버를 시작합니다.
@@ -491,10 +491,10 @@ opencode acp
 
 ### uninstall
 
-OpenCode를 제거하고 관련 파일을 삭제합니다.
+InnoCode를 제거하고 관련 파일을 삭제합니다.
 
 ```bash
-opencode uninstall
+innocode uninstall
 ```
 
 #### 플래그
@@ -513,19 +513,19 @@ opencode uninstall
 opencode를 최신 버전 또는 특정 버전으로 업데이트합니다.
 
 ```bash
-opencode upgrade [target]
+innocode upgrade [target]
 ```
 
 최신 버전으로 업그레이드:
 
 ```bash
-opencode upgrade
+innocode upgrade
 ```
 
 특정 버전으로 업그레이드:
 
 ```bash
-opencode upgrade v0.1.48
+innocode upgrade v0.1.48
 ```
 
 #### 플래그
@@ -538,7 +538,7 @@ opencode upgrade v0.1.48
 
 ## 전역 플래그
 
-opencode CLI는 아래 전역 플래그를 지원합니다.
+innocode CLI는 아래 전역 플래그를 지원합니다.
 
 | 플래그         | 축약 | 설명                                |
 | -------------- | ---- | ----------------------------------- |
@@ -551,7 +551,7 @@ opencode CLI는 아래 전역 플래그를 지원합니다.
 
 ## 환경 변수
 
-OpenCode는 환경 변수로도 구성할 수 있습니다.
+InnoCode는 환경 변수로도 구성할 수 있습니다.
 
 | 변수                                  | 타입    | 설명                                           |
 | ------------------------------------- | ------- | ---------------------------------------------- |
@@ -577,7 +577,7 @@ OpenCode는 환경 변수로도 구성할 수 있습니다.
 | `OPENCODE_CLIENT`                     | string  | 클라이언트 식별자(기본값: `cli`)               |
 | `OPENCODE_ENABLE_EXA`                 | boolean | Exa 웹 검색 도구 활성화                        |
 | `OPENCODE_SERVER_PASSWORD`            | string  | `serve`/`web` 기본 인증 활성화                 |
-| `OPENCODE_SERVER_USERNAME`            | string  | 기본 인증 사용자명 오버라이드(기본 `opencode`) |
+| `OPENCODE_SERVER_USERNAME`            | string  | 기본 인증 사용자명 오버라이드(기본 `innocode`) |
 | `OPENCODE_MODELS_URL`                 | string  | 모델 설정을 가져올 사용자 지정 URL             |
 
 ---

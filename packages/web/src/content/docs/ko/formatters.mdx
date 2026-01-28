@@ -55,11 +55,11 @@ opencode가 파일을 작성하거나 편집할 때:
 
 ## 구성
 
-opencode config의 `formatter` 섹션을 통해 형식기를 사용자 정의 할 수 있습니다.
+innocode config의 `formatter` 섹션을 통해 형식기를 사용자 정의 할 수 있습니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "formatter": {}
 }
 ```
@@ -81,18 +81,18 @@ opencode config의 `formatter` 섹션을 통해 형식기를 사용자 정의 �
 
 모든 포매터를 비활성화하려면 `formatter`를 `false`로 설정하십시오:
 
-```json title="opencode.json" {3}
+```json title="innocode.json" {3}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "formatter": false
 }
 ```
 
 **특정** 포매터의 경우, `disabled`를 `true`로 설정하십시오:
 
-```json title="opencode.json" {5}
+```json title="innocode.json" {5}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -107,9 +107,9 @@ opencode config의 `formatter` 섹션을 통해 형식기를 사용자 정의 �
 
 내장 형식자를 무시하거나 명령, 환경 변수 및 파일 확장을 지정하여 새로운 것을 추가 할 수 있습니다.
 
-```json title="opencode.json" {4-14}
+```json title="innocode.json" {4-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

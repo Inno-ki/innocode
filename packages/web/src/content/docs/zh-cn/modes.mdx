@@ -8,10 +8,10 @@ description: 不同的模式適用于不同的用例。
 `mode` 选项现已废弃。 [了解更多](/docs/agents)。
 :::
 
-opencode 中的模式允许自定义不同的示例行为、工具和提示。
+innocode 中的模式允许自定义不同的示例行为、工具和提示。
 
 它具有两种内置模式：**构建**和**计划**。您可以定制
-这些或通过 opencode 配置配置您自己的。
+这些或通过 innocode 配置配置您自己的。
 
 您可以在会话期間在模式之間切換或在配置文件中配置它們。
 
@@ -19,7 +19,7 @@ opencode 中的模式允许自定义不同的示例行为、工具和提示。
 
 ## 内置
 
-opencode 有两种内置模式。
+innocode 有两种内置模式。
 
 ---
 
@@ -34,7 +34,7 @@ opencode 有两种内置模式。
 专为規劃和分析而設計的受限模式。在計劃模式下，默認情况下禁用以下工具：
 
 - `write` - 无法创建新文件
-- `edit` - 无法修改现有文件，位于 `.opencode/plans/*.md` 的用于详细说明计划本身的文件另外
+- `edit` - 无法修改现有文件，位于 `.innocode/plans/*.md` 的用于详细说明计划本身的文件另外
 - `patch` - 无法应用补丁
 - `bash` - 无法执行 shell 命令
 
@@ -56,11 +56,11 @@ opencode 有两种内置模式。
 
 ### JSON 配置
 
-在 `opencode.json` 配置文件中配置模式：
+在 `innocode.json` 配置文件中配置模式：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "mode": {
     "build": {
       "model": "anthropic/claude-sonnet-4-20250514",
@@ -87,10 +87,10 @@ opencode 有两种内置模式。
 
 您还可以使用 Markdown 文件定义模式。将它们放入：
 
-- 全球：`~/.config/opencode/modes/`
-- 项目：`.opencode/modes/`
+- 全球：`~/.config/innocode/modes/`
+- 项目：`.innocode/modes/`
 
-```markdown title="~/.config/opencode/modes/review.md"
+```markdown title="~/.config/innocode/modes/review.md"
 ---
 model: anthropic/claude-sonnet-4-20250514
 temperature: 0.1
@@ -120,7 +120,7 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 
 使用`model`配置覆盖此模式的默认模型。对于使用针对不同任务优化的不同模型很有帮助。例如，更快的规划模型、更强大的实施模型。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "mode": {
     "plan": {
@@ -136,7 +136,7 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 
 使用`temperature`配置控制AI响应的随机性和创造。较低的值使响应更加集中和确定，而较高的值则增加创造力和可变性。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "mode": {
     "plan": {
@@ -155,7 +155,7 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 - **0.3-0.5**：平衡型响应，兼顾稳定性与创造力
 - **0.6-1.0**：响应更有创意和多样性，适合头脑风暴和探索
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "mode": {
     "analyze": {
@@ -181,7 +181,7 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 
 使用 `prompt` 配置为模式指定自定义系统提示文件。提示文件应包含特定于该模式用途的指令。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "mode": {
     "review": {
@@ -247,9 +247,9 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 
 ### 使用 JSON 配置
 
-```json title="opencode.json" {4-14}
+```json title="innocode.json" {4-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "mode": {
     "docs": {
       "prompt": "{file:./prompts/documentation.txt}",
@@ -268,9 +268,9 @@ Markdown 文件名成为模式名称（例如，`review.md` 创建`review` 模�
 
 ### 使用 Markdown 文件
 
-在`.opencode/modes/`中为项目特定模式创建模式文件，在`~/.config/opencode/modes/`中为全局模式创建模式文件：
+在`.innocode/modes/`中为项目特定模式创建模式文件，在`~/.config/innocode/modes/`中为全局模式创建模式文件：
 
-```markdown title=".opencode/modes/debug.md"
+```markdown title=".innocode/modes/debug.md"
 ---
 temperature: 0.1
 tools:
@@ -294,7 +294,7 @@ Focus on:
 Do not make any changes to files. Only investigate and report.
 ```
 
-```markdown title="~/.config/opencode/modes/refactor.md"
+```markdown title="~/.config/innocode/modes/refactor.md"
 ---
 model: anthropic/claude-sonnet-4-20250514
 temperature: 0.2

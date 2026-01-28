@@ -3,7 +3,7 @@ title: 故障排除
 description: 常見問題以及如何解決它們。
 ---
 
-要排除 opencode 的问题，请首先检查其存储在磁碟上的日志和本地数据。
+要排除 innocode 的问题，请首先检查其存储在磁碟上的日志和本地数据。
 
 ---
 
@@ -11,12 +11,12 @@ description: 常見問題以及如何解決它們。
 
 日誌文件寫入：
 
-- **macOS/Linux**: `~/.local/share/opencode/log/`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\opencode\log`
+- **macOS/Linux**: `~/.local/share/innocode/log/`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\innocode\log`
 
 日志档案以时间命名（例如`2025-01-09T123456.log`），并保留最近10个日志档案。
 
-You can set the log level with the `--log-level` command-line option to get more detailed debug information. For example, `opencode --log-level DEBUG`.
+You can set the log level with the `--log-level` command-line option to get more detailed debug information. For example, `innocode --log-level DEBUG`.
 
 ---
 
@@ -24,8 +24,8 @@ You can set the log level with the `--log-level` command-line option to get more
 
 opencode程序将会话数据和其他应用程序数据存储在磁碟上：
 
-- **macOS/Linux**: `~/.local/share/opencode/`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\opencode`
+- **macOS/Linux**: `~/.local/share/innocode/`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.local\share\innocode`
 
 该目录包含：
 
@@ -39,13 +39,13 @@ opencode程序将会话数据和其他应用程序数据存储在磁碟上：
 
 ## 桌面应用程序
 
-opencode Desktop runs a local opencode server (the `opencode-cli` sidecar) in the background. Most issues are caused by a misbehaving plugin, a corrupted cache, or a bad server setting.
+innocode Desktop runs a local innocode server (the `innocode-cli` sidecar) in the background. Most issues are caused by a misbehaving plugin, a corrupted cache, or a bad server setting.
 
 ### 快速检查
 
 - 完全退出并重新启动应用程序。
 - 如果应用程序显示错误界面，请单击“**重新启动**”并复制错误详细信息。
-- macOS only: `OpenCode` menu -> **Reload Webview** (helps if the UI is blank/frozen).
+- macOS only: `InnoCode` menu -> **Reload Webview** (helps if the UI is blank/frozen).
 
 ---
 
@@ -57,28 +57,28 @@ opencode Desktop runs a local opencode server (the `opencode-cli` sidecar) in th
 
 开启全域性文件并查询`plugin`键。
 
-- **macOS/Linux**: `~/.config/opencode/opencode.jsonc` (or `~/.config/opencode/opencode.json`)
-- **macOS/Linux** (older installs): `~/.local/share/opencode/opencode.jsonc`
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\opencode\opencode.jsonc`
+- **macOS/Linux**: `~/.config/innocode/innocode.jsonc` (or `~/.config/innocode/innocode.json`)
+- **macOS/Linux** (older installs): `~/.local/share/innocode/innocode.jsonc`
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\innocode\innocode.jsonc`
 
 如果您配置了插件，请通过删除密钥或将其设置为空数组來暂时禁用它們：
 
 ```jsonc
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "plugin": [],
 }
 ```
 
 #### 检查插件目录
 
-opencode 还可以从磁碟加载本地外挂。暂时将它们移开（或重新命名资料夹）并重新启动桌面应用程序：
+innocode 还可以从磁碟加载本地外挂。暂时将它们移开（或重新命名资料夹）并重新启动桌面应用程序：
 
 - **全域性插件**
-  - **macOS/Linux**: `~/.config/opencode/plugins/`
-  - **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\opencode\plugins`
+  - **macOS/Linux**: `~/.config/innocode/plugins/`
+  - **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.config\innocode\plugins`
 - **专案插件**（仅当您使用每个专案配置時）
-  - `<your-project>/.opencode/plugins/`
+  - `<your-project>/.innocode/plugins/`
 
 如果应用程序再次開始工作，请一次重新启用一个插件，以找出導致問題的插件。
 
@@ -88,20 +88,20 @@ opencode 还可以从磁碟加载本地外挂。暂时将它们移开（或重�
 
 如果取消外挂没有帮助（或者外挂安装被卡住），请清除缓存，方便opencode可以重建它。
 
-1. 完全退出 opencode 桌面。
+1. 完全退出 innocode 桌面。
 2. 删除缓存目录：
 
-- **macOS**: Finder -> `Cmd+Shift+G` -> paste `~/.cache/opencode`
-- **Linux**: delete `~/.cache/opencode` (or run `rm -rf ~/.cache/opencode`)
-- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.cache\opencode`
+- **macOS**: Finder -> `Cmd+Shift+G` -> paste `~/.cache/innocode`
+- **Linux**: delete `~/.cache/innocode` (or run `rm -rf ~/.cache/innocode`)
+- **Windows**: Press `WIN+R` and paste `%USERPROFILE%\.cache\innocode`
 
-3. 重新启动 opencode 桌面。
+3. 重新启动 innocode 桌面。
 
 ---
 
 ### 修復服务器连接問題
 
-opencode Desktop 可以启动自己的本地服务器（默认配置）或连线到您的服务器 URL。
+innocode Desktop 可以启动自己的本地服务器（默认配置）或连线到您的服务器 URL。
 
 如果您看到**“连线失败”**对话中断（或者应用程序永远无法穿透启动萤幕），请检查自定义服务器URL。
 
@@ -111,7 +111,7 @@ opencode Desktop 可以启动自己的本地服务器（默认配置）或连线
 
 #### 从配置中删除 `server.port` / `server.hostname`
 
-If your `opencode.json(c)` contains a `server` section, temporarily remove it and restart the desktop app.
+If your `innocode.json(c)` contains a `server` section, temporarily remove it and restart the desktop app.
 
 #### 检查环境变量
 
@@ -132,21 +132,21 @@ If your `opencode.json(c)` contains a `server` section, temporarily remove it an
 
 ### Windows：WebView2执行时
 
-在 Windows 上，opencode 桌面需要 Microsoft Edge **WebView2 执行时**。如果应用程序打开为空白视窗或无法启动，请 install/update WebView2 并重试。
+在 Windows 上，innocode 桌面需要 Microsoft Edge **WebView2 执行时**。如果应用程序打开为空白视窗或无法启动，请 install/update WebView2 并重试。
 
 ---
 
 ### Windows：一般问题
 
-If you're experiencing slow performance, file access issues, or terminal problems on Windows, try using [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). WSL provides a Linux environment that works more seamlessly with opencode's features.
+If you're experiencing slow performance, file access issues, or terminal problems on Windows, try using [WSL (Windows Subsystem for Linux)](/docs/windows-wsl). WSL provides a Linux environment that works more seamlessly with innocode's features.
 
 ---
 
 ### 通知不显示
 
-opencode 桌面仅在以下情况下显示系统通知：
+innocode 桌面仅在以下情况下显示系统通知：
 
-- 在您的作业系统中设置为 opencode 启用了通知，并且
+- 在您的作业系统中设置为 innocode 启用了通知，并且
 - 应用程序視窗未聚焦。
 
 ---
@@ -155,11 +155,11 @@ opencode 桌面仅在以下情况下显示系统通知：
 
 如果应用程序无法并且启动您无法从 UI 内部清除设置，请重置桌面应用程序的存储状态。
 
-1. 退出 opencode 桌面。
-2. 查询并删除这些文件（它们位于 opencode 桌面应用程序数据目录中）：
+1. 退出 innocode 桌面。
+2. 查询并删除这些文件（它们位于 innocode 桌面应用程序数据目录中）：
 
-- `opencode.settings.dat` (desktop default server URL)
-- `opencode.global.dat` and `opencode.workspace.*.dat` (UI state like recent servers/projects)
+- `innocode.settings.dat` (desktop default server URL)
+- `innocode.global.dat` and `innocode.workspace.*.dat` (UI state like recent servers/projects)
 
 快速找到目录：
 
@@ -171,13 +171,13 @@ opencode 桌面仅在以下情况下显示系统通知：
 
 ## 寻求帮助
 
-如果您遇到 opencode 问题：
+如果您遇到 innocode 问题：
 
 1. **报告 GitHub** 上的问题
 
    报告错误或请求功能的最佳方式是利用我们的 GitHub 存储库：
 
-   [**github.com/anomalyco/opencode/issues**](https://github.com/anomalyco/opencode/issues)
+   [**github.com/anomalyco/innocode/issues**](https://github.com/anomalyco/innocode/issues)
 
    在建立新問題之前，请搜索現有問題以查看您的問題是否已被報告。
 
@@ -185,7 +185,7 @@ opencode 桌面仅在以下情况下显示系统通知：
 
    获得实时帮助和社群讨论，请加入我们的Discord服务器：
 
-   [**opencode.ai/discord**](https://opencode.ai/discord)
+   [**innocode.ai/discord**](https://innocode.ai/discord)
 
 ---
 
@@ -195,11 +195,11 @@ opencode 桌面仅在以下情况下显示系统通知：
 
 ---
 
-### opencode 无法启动
+### innocode 无法启动
 
 1. 检查日誌中是否有错误消息
 2. 尝试使用 `--print-logs` 执行以查看终端中的输出
-3. Ensure you have the latest version with `opencode upgrade`
+3. Ensure you have the latest version with `innocode upgrade`
 
 ---
 
@@ -225,9 +225,9 @@ opencode 桌面仅在以下情况下显示系统通知：
 
 - `openai/gpt-4.1`
 - `openrouter/google/gemini-2.5-flash`
-- `opencode/kimi-k2`
+- `innocode/kimi-k2`
 
-To figure out what models you have access to, run `opencode models`
+To figure out what models you have access to, run `innocode models`
 
 ---
 
@@ -241,10 +241,10 @@ To figure out what models you have access to, run `opencode models`
 2. 如果問題仍然存在，请嘗試清除儲存的配置：
 
    ```bash
-   rm -rf ~/.local/share/opencode
+   rm -rf ~/.local/share/innocode
    ```
 
-   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.local\share\opencode`
+   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.local\share\innocode`
 
 3. 使用 TUI 中的 `/connect` 命令指示您的企业重新进行身份验证。
 
@@ -252,21 +252,21 @@ To figure out what models you have access to, run `opencode models`
 
 ### AI_API_CallError 和提供包问题
 
-如果您遇到 API 呼叫错误，这可能是由于过去提供包造成的。 opencode 根据需要动态安装提供包（OpenAI、Anthropic、Google 等）将其缓存放在本地。
+如果您遇到 API 呼叫错误，这可能是由于过去提供包造成的。 innocode 根据需要动态安装提供包（OpenAI、Anthropic、Google 等）将其缓存放在本地。
 
 要解決provider 包問題：
 
 1. 清除provider 包缓存：
 
    ```bash
-   rm -rf ~/.cache/opencode
+   rm -rf ~/.cache/innocode
    ```
 
-   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.cache\opencode`
+   On Windows, press `WIN+R` and delete: `%USERPROFILE%\.cache\innocode`
 
-2. 重新启动 opencode 以重新安装最新的提供包
+2. 重新启动 innocode 以重新安装最新的提供包
 
-这将需要 opencode 下载最新版本的提供包，这通常可以解决模型参数和 API 更改的兼容性问题。
+这将需要 innocode 下载最新版本的提供包，这通常可以解决模型参数和 API 更改的兼容性问题。
 
 ---
 
@@ -297,4 +297,4 @@ Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 export DISPLAY=:99.0
 ```
 
-opencode 将检测您是否正在使用 Wayland 并更喜欢 `wl-clipboard`，否则将尝试按以下顺序剪贴簿工具：`xclip` 和 `xsel`。
+innocode 将检测您是否正在使用 Wayland 并更喜欢 `wl-clipboard`，否则将尝试按以下顺序剪贴簿工具：`xclip` 和 `xsel`。

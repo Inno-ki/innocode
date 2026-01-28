@@ -1,25 +1,25 @@
 ---
 title: GitLab
-description: 在 GitLab 问题和合并请求中使用 opencode。
+description: 在 GitLab 问题和合并请求中使用 innocode。
 ---
 
-opencode 通过 GitLab CI/CD 管道或与 GitLab Duo 与您的 GitLab 工作流程集成。
+innocode 通过 GitLab CI/CD 管道或与 GitLab Duo 与您的 GitLab 工作流程集成。
 
-在这两种情况下，opencode 都会在您的 GitLab 运行器上运行。
+在这两种情况下，innocode 都会在您的 GitLab 运行器上运行。
 
 ---
 
 ## GitLab CI
 
-opencode 在常规 GitLab 管道中工作。您可以将其构建为管道 [CI 组件](https://docs.gitlab.com/ee/ci/components/)
+innocode 在常规 GitLab 管道中工作。您可以将其构建为管道 [CI 组件](https://docs.gitlab.com/ee/ci/components/)
 
-在这里，我们使用社区创建的 opencode CI/CD 组件 — [nagyv/gitlab-opencode](https://gitlab.com/nagyv/gitlab-opencode)。
+在这里，我们使用社区创建的 innocode CI/CD 组件 — [nagyv/gitlab-innocode](https://gitlab.com/nagyv/gitlab-innocode)。
 
 ---
 
 ### 功能
 
-- **Use custom configuration per job**: 使用自定义配置目录配置 opencode，例如 `./config/#custom-directory` 以启用或禁用 opencode 调用的功能。
+- **Use custom configuration per job**: 使用自定义配置目录配置 innocode，例如 `./config/#custom-directory` 以启用或禁用 innocode 调用的功能。
 - **Authentication**: Uses OIDC for secure authentication
 - **Flexible**: CI 组件支持多种输入来自定义其行为
 
@@ -27,42 +27,42 @@ opencode 在常规 GitLab 管道中工作。您可以将其构建为管道 [CI �
 
 ### 设置
 
-1. 将 opencode 身份验证 JSON 作为文件类型 CI 环境变量存储在 **Settings** > **CI/CD** > **Variables** 下。确保将它们标记为“隐藏和隐藏”。
+1. 将 innocode 身份验证 JSON 作为文件类型 CI 环境变量存储在 **Settings** > **CI/CD** > **Variables** 下。确保将它们标记为“隐藏和隐藏”。
 2. 将以下内容添加到您的 `.gitlab-ci.yml` 文件中。
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-opencode/opencode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-innocode/innocode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/opencode-config
-         auth_json: $OPENCODE_AUTH_JSON # The variable name for your OpenCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/innocode-config
+         auth_json: $OPENCODE_AUTH_JSON # The variable name for your InnoCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-有关此组件的更多输入和示例[查看文档](https://gitlab.com/explore/catalog/nagyv/gitlab-opencode)。
+有关此组件的更多输入和示例[查看文档](https://gitlab.com/explore/catalog/nagyv/gitlab-innocode)。
 
 ---
 
 ## GitLab Duo
 
-opencode 与您的 GitLab 工作流程集成。
-在评论中提及 `@opencode`，opencode 将在您的 GitLab CI 管道中执行任务。
+innocode 与您的 GitLab 工作流程集成。
+在评论中提及 `@innocode`，innocode 将在您的 GitLab CI 管道中执行任务。
 
 ---
 
 ### 功能
 
-- **Triage issues**: 要求 opencode 调查问题并向您解释。
-- **Fix and implement**: 要求 opencode 修复问题或实施功能。
+- **Triage issues**: 要求 innocode 调查问题并向您解释。
+- **Fix and implement**: 要求 innocode 修复问题或实施功能。
   它将创建一个新分支并提出包含更改的合并请求。
-- **Secure**: opencode 在您的 GitLab 运行器上运行。
+- **Secure**: innocode 在您的 GitLab 运行器上运行。
 
 ---
 
 ### 设置
 
-opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
+innocode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
 
 :::tip
 查看 [**GitLab docs**](https://docs.gitlab.com/user/duo_agent_platform/agent_assistant/) 获取最新说明。
@@ -82,8 +82,8 @@ opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing opencode"
-      - npm install --global opencode-ai
+      - echo "Installing innocode"
+      - npm install --global innocode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OPENCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,10 +91,10 @@ opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating OpenCode auth configuration"
-      - mkdir --parents ~/.local/share/opencode
+      - echo "Creating InnoCode auth configuration"
+      - mkdir --parents ~/.local/share/innocode
       - |
-        cat > ~/.local/share/opencode/auth.json << EOF
+        cat > ~/.local/share/innocode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "opencode@gitlab.com"
-      - git config --global user.name "OpenCode"
+      - git config --global user.email "innocode@gitlab.com"
+      - git config --global user.name "InnoCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running OpenCode"
+      - echo "Running InnoCode"
       - |
-        opencode run "
+        innocode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -158,10 +158,10 @@ opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
 
 ### 示例
 
-以下是如何在 GitLab 中使用 opencode 的一些示例。
+以下是如何在 GitLab 中使用 innocode 的一些示例。
 
 :::tip
-您可以配置使用与 `@opencode` 不同的触发词。
+您可以配置使用与 `@innocode` 不同的触发词。
 :::
 
 - **Explain an issue**
@@ -169,27 +169,27 @@ opencode 在您的 GitLab CI/CD 管道中运行，您需要进行以下设置：
   在 GitLab 问题中添加此评论。
 
   ```
-  @opencode explain this issue
+  @innocode explain this issue
   ```
 
-  opencode 将阅读该问题并回复并提供清晰的解释。
+  innocode 将阅读该问题并回复并提供清晰的解释。
 
 - **Fix an issue**
 
   在 GitLab 问题中，说：
 
   ```
-  @opencode fix this
+  @innocode fix this
   ```
 
-  opencode 将创建一个新分支，实施更改，并打开包含更改的合并请求。
+  innocode 将创建一个新分支，实施更改，并打开包含更改的合并请求。
 
 - **Review merge requests**
 
   对 GitLab 合并请求留下以下评论。
 
   ```
-  @opencode review this merge request
+  @innocode review this merge request
   ```
 
-  opencode 将审核合并请求并提供反馈。
+  innocode 将审核合并请求并提供反馈。

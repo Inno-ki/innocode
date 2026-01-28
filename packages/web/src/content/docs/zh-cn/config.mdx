@@ -1,21 +1,21 @@
 ---
 title: 配置
-description: 使用 opencode JSON 配置。
+description: 使用 innocode JSON 配置。
 ---
 
-您可以使用 JSON 配置文件配置 opencode。
+您可以使用 JSON 配置文件配置 innocode。
 
 ---
 
 ## 格式
 
-opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
+innocode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
-```jsonc title="opencode.jsonc"
+```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   // Theme configuration
-  "theme": "opencode",
+  "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
   "autoupdate": true,
 }
@@ -33,7 +33,7 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 配置文件被合并在一起，而不是被替换。以下配置位置的设置被合并。仅当密钥冲突时，后面的配置才会覆盖前面的配置。保留所有配置中的非冲突设置。
 
-例如，如果您的全局配置设置 `theme: "opencode"` 和 `autoupdate: true`，并且您的项目配置设置 `model: "anthropic/claude-sonnet-4-5"`，则最终配置将包括所有三个设置。
+例如，如果您的全局配置设置 `theme: "innocode"` 和 `autoupdate: true`，并且您的项目配置设置 `model: "anthropic/claude-sonnet-4-5"`，则最终配置将包括所有三个设置。
 
 ---
 
@@ -41,30 +41,30 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 配置源按以下顺序加载（后面的源覆盖前面的源）：
 
-1. **Remote config** (来自 `.well-known/opencode`) - 组织默认值
-2. **Global config** (`~/.config/opencode/opencode.json`) - 用户首选项
+1. **Remote config** (来自 `.well-known/innocode`) - 组织默认值
+2. **Global config** (`~/.config/innocode/innocode.json`) - 用户首选项
 3. **Custom config** (`OPENCODE_CONFIG` env var) - 自定义覆盖
-4. **Project config** (项目中的 `opencode.json`) - 项目特定的设置
-5. **`.opencode` 目录** - 代理、命令、插件
+4. **Project config** (项目中的 `innocode.json`) - 项目特定的设置
+5. **`.innocode` 目录** - 代理、命令、插件
 6. **Inline config** (`OPENCODE_CONFIG_CONTENT` env var) - 运行时覆盖
 
 这意味着项目配置可以覆盖全局默认值，全局配置可以覆盖远程组织默认值。
 
 :::note
-`.opencode` 和 `~/.config/opencode` 目录对子目录使用 **复数名称**：`agents/`、`commands/`、`modes/`、`plugins/`、`skills/`、`tools/` 和 `themes/`。为了向后兼容，还支持单数名称（例如 `agent/`）。
+`.innocode` 和 `~/.config/innocode` 目录对子目录使用 **复数名称**：`agents/`、`commands/`、`modes/`、`plugins/`、`skills/`、`tools/` 和 `themes/`。为了向后兼容，还支持单数名称（例如 `agent/`）。
 :::
 
 ---
 
 ### 远程
 
-组织可以通过 `.well-known/opencode` 端点提供默认配置。当您向支持的提供商进行身份验证时，会自动获取该信息。
+组织可以通过 `.well-known/innocode` 端点提供默认配置。当您向支持的提供商进行身份验证时，会自动获取该信息。
 
 首先加载远程配置，作为基础层。所有其他配置源（全局、项目）都可以覆盖这些默认值。
 
 例如，如果您的组织提供默认禁用的 MCP 服务器：
 
-```json title="Remote config from .well-known/opencode"
+```json title="Remote config from .well-known/innocode"
 {
   "mcp": {
     "jira": {
@@ -78,7 +78,7 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 您可以在本地配置中启用特定服务器：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
   "mcp": {
     "jira": {
@@ -94,7 +94,7 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 ### 全局
 
-将全局 opencode 配置放在 `~/.config/opencode/opencode.json` 中。使用全局配置来实现用户范围的首选项，例如主题、提供商或按键绑定。
+将全局 innocode 配置放在 `~/.config/innocode/innocode.json` 中。使用全局配置来实现用户范围的首选项，例如主题、提供商或按键绑定。
 
 全局配置覆盖远程组织默认值。
 
@@ -102,13 +102,13 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 ### 项目级
 
-在项目根目录中添加 `opencode.json`。项目配置在标准配置文件中具有最高优先级 - 它覆盖全局配置和远程配置。
+在项目根目录中添加 `innocode.json`。项目配置在标准配置文件中具有最高优先级 - 它覆盖全局配置和远程配置。
 
 :::tip
 将项目特定配置放在项目的根目录中。
 :::
 
-当 opencode 启动时，它会在当前目录中查找配置文件或向上遍历到最近的 Git 目录。
+当 innocode 启动时，它会在当前目录中查找配置文件或向上遍历到最近的 Git 目录。
 
 这也可以安全地签入 Git 并使用与全局模式相同的架构。
 
@@ -120,7 +120,7 @@ opencode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 ```bash
 export OPENCODE_CONFIG=/path/to/my/custom-config.json
-opencode run "Hello world"
+innocode run "Hello world"
 ```
 
 自定义配置按优先顺序在全局配置和项目配置之间加载。
@@ -129,20 +129,20 @@ opencode run "Hello world"
 
 ### 自定义目录
 
-使用 `OPENCODE_CONFIG_DIR` 环境变量指定自定义配置目录。将在该目录中搜索代理、命令、模式和插件，就像标准 `.opencode` 目录一样，并且应该遵循相同的结构。
+使用 `OPENCODE_CONFIG_DIR` 环境变量指定自定义配置目录。将在该目录中搜索代理、命令、模式和插件，就像标准 `.innocode` 目录一样，并且应该遵循相同的结构。
 
 ```bash
 export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
-opencode run "Hello world"
+innocode run "Hello world"
 ```
 
-自定义目录在全局配置和 `.opencode` 目录加载后，因此 **可以覆盖** 它们的设置。
+自定义目录在全局配置和 `.innocode` 目录加载后，因此 **可以覆盖** 它们的设置。
 
 ---
 
 ## 模式
 
-配置文件具有在 [**`opencode.ai/config.json`**](https://opencode.ai/config.json) 中定义的架构。
+配置文件具有在 [**`innocode.ai/config.json`**](https://innocode.ai/config.json) 中定义的架构。
 
 您的编辑器应该能够根据架构进行验证和自动完成。
 
@@ -152,9 +152,9 @@ opencode run "Hello world"
 
 您可以通过 `tui` 选项配置特定于 TUI 的设置。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -177,11 +177,11 @@ opencode run "Hello world"
 
 ### 服务器
 
-您可以通过 `opencode serve` 选项为 `opencode web` 和 `server` 命令配置服务器设置。
+您可以通过 `innocode serve` 选项为 `innocode web` 和 `server` 命令配置服务器设置。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -196,8 +196,8 @@ opencode run "Hello world"
 
 - `port` - 监听端口。
 - `hostname` - 监听的主机名。当 `mdns` 启用且未设置主机名时，默认为 `0.0.0.0`。
-- `mdns` - 启用 mDNS 服务发现。这允许网络上的其他设备发现您的 opencode 服务器。
-- `mdnsDomain` - mDNS 服务的自定义域名。默认为 `opencode.local`。对于在同一个网络上运行多个实例很有帮助。
+- `mdns` - 启用 mDNS 服务发现。这允许网络上的其他设备发现您的 innocode 服务器。
+- `mdnsDomain` - mDNS 服务的自定义域名。默认为 `innocode.local`。对于在同一个网络上运行多个实例很有帮助。
 - `cors` - 从基于浏览器的客户端使用 HTTP 服务器时允许 CORS 的其他来源。值必须是完整来源（协议+主机+可选端口），例如 `https://app.example.com`。
 
 [在此处了解有关服务器的更多信息](/docs/server)。
@@ -208,9 +208,9 @@ opencode run "Hello world"
 
 您可以通过 `tools` 选项管理 LLM 可以使用的工具。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -224,24 +224,24 @@ opencode run "Hello world"
 
 ### 模型
 
-您可以通过 `provider`、`model` 和 `small_model` 选项来配置要在 opencode 配置中使用的提供商和模型。
+您可以通过 `provider`、`model` 和 `small_model` 选项来配置要在 innocode 配置中使用的提供商和模型。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
 }
 ```
 
-`small_model` 选项为标题生成等轻量级任务配置单独的模型。默认情况下，如果您的提供商可以提供更便宜的模型，opencode 会尝试使用更便宜的模型，否则它会退回到您的主模型。
+`small_model` 选项为标题生成等轻量级任务配置单独的模型。默认情况下，如果您的提供商可以提供更便宜的模型，innocode 会尝试使用更便宜的模型，否则它会退回到您的主模型。
 
 提供商选项可以包括 `timeout` 和 `setCacheKey`：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -268,9 +268,9 @@ opencode run "Hello world"
 
 Amazon Bedrock 支持 AWS 特定配置：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -297,11 +297,11 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ### 主题
 
-您可以通过 opencode 配置中的 `theme` 选项配置要使用的主题。
+您可以通过 innocode 配置中的 `theme` 选项配置要使用的主题。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "theme": ""
 }
 ```
@@ -314,9 +314,9 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 您可以通过 `agent` 选项为特定任务配置专用代理。
 
-```jsonc title="opencode.jsonc"
+```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -332,7 +332,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 }
 ```
 
-您还可以使用 `~/.config/opencode/agents/` 或 `.opencode/agents/` 中的 markdown 文件定义代理。 [在这里了解更多](/docs/agents)。
+您还可以使用 `~/.config/innocode/agents/` 或 `.innocode/agents/` 中的 markdown 文件定义代理。 [在这里了解更多](/docs/agents)。
 
 ---
 
@@ -340,16 +340,16 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 您可以使用 `default_agent` 选项设置默认代理。当没有明确指定时，这将确定使用哪个代理。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "default_agent": "plan"
 }
 ```
 
-默认代理必须是 Primary 代理（不是 Subagent）。这可以是内置代理（如 `"build"` 或 `"plan"`），也可以是您定义的 [Custom Agent](/docs/agents)。如果指定的代理不存在或者是子代理，opencode 将回退到 `"build"` 并发出警告。
+默认代理必须是 Primary 代理（不是 Subagent）。这可以是内置代理（如 `"build"` 或 `"plan"`），也可以是您定义的 [Custom Agent](/docs/agents)。如果指定的代理不存在或者是子代理，innocode 将回退到 `"build"` 并发出警告。
 
-此设置适用于所有界面：TUI、CLI (`opencode run`)、桌面应用程序和 GitHub Action。
+此设置适用于所有界面：TUI、CLI (`innocode run`)、桌面应用程序和 GitHub Action。
 
 ---
 
@@ -357,9 +357,9 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 您可以通过 `share` 选项配置 [分享](/docs/share) 功能。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "share": "manual"
 }
 ```
@@ -378,9 +378,9 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 您可以通过 `command` 选项为重复任务配置自定义命令。
 
-```jsonc title="opencode.jsonc"
+```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -396,7 +396,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 }
 ```
 
-您还可以使用 `~/.config/opencode/commands/` 或 `.opencode/commands/` 中的 Markdown 文件定义命令。 [在这里了解更多](/docs/commands)。
+您还可以使用 `~/.config/innocode/commands/` 或 `.innocode/commands/` 中的 Markdown 文件定义命令。 [在这里了解更多](/docs/commands)。
 
 ---
 
@@ -404,9 +404,9 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 您可以通过 `keybinds` 选项自定义您的按键绑定。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "keybinds": {}
 }
 ```
@@ -417,11 +417,11 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ### 自动更新
 
-opencode 将在启动时自动下载任何新的更新。您可以使用 `autoupdate` 选项禁用此功能。
+innocode 将在启动时自动下载任何新的更新。您可以使用 `autoupdate` 选项禁用此功能。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "autoupdate": false
 }
 ```
@@ -435,9 +435,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `formatter` 选项配置代码格式化程序。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -459,13 +459,13 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ### 权限
 
-默认情况下，opencode **允许所有操作**，无需明确批准。您可以使用 `permission` 选项更改此设置。
+默认情况下，innocode **允许所有操作**，无需明确批准。您可以使用 `permission` 选项更改此设置。
 
 例如，要确保 `edit` 和 `bash` 工具需要用户批准：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -481,9 +481,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `compaction` 选项控制上下文压缩行为。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -500,9 +500,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `watcher` 选项配置文件观察器忽略模式。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -517,9 +517,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `mcp` 选项配置要使用的 MCP 服务器。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "mcp": {}
 }
 ```
@@ -530,14 +530,14 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ### 插件
 
-[Plugins](/docs/plugins) 使用自定义工具、挂钩和集成扩展 opencode。
+[Plugins](/docs/plugins) 使用自定义工具、挂钩和集成扩展 innocode。
 
-将插件文件放置在 `.opencode/plugins/` 或 `~/.config/opencode/plugins/` 中。您还可以通过 `plugin` 选项从 npm 加载插件。
+将插件文件放置在 `.innocode/plugins/` 或 `~/.config/innocode/plugins/` 中。您还可以通过 `plugin` 选项从 npm 加载插件。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-helicone-session", "@my-org/custom-plugin"]
+  "$schema": "https://innocode.ai/config.json",
+  "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
 
@@ -549,9 +549,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `instructions` 选项配置您正在使用的模型的说明。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -564,9 +564,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `disabled_providers` 选项禁用自动加载的提供商。当您想要阻止加载某些提供商（即使其凭据可用）时，这非常有用。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -587,14 +587,14 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 您可以通过 `enabled_providers` 选项指定允许的提供商列表。设置后，仅启用指定的提供商，所有其他提供商将被忽略。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
 
-当您想要限制 opencode 仅使用特定的提供商而不是逐一禁用它们时，这非常有用。
+当您想要限制 innocode 仅使用特定的提供商而不是逐一禁用它们时，这非常有用。
 
 :::note
 `disabled_providers` 优先于 `enabled_providers`。
@@ -608,9 +608,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 `experimental` 键包含正在积极开发的选项。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "experimental": {}
 }
 ```
@@ -631,9 +631,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 使用 `{env:VARIABLE_NAME}` 替换环境变量：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -654,9 +654,9 @@ opencode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 使用 `{file:path/to/file}` 替换文件的内容：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

@@ -1,30 +1,30 @@
 ---
 title: 提供商
-description: 在 opencode 中使用任意 LLM 提供商。
+description: 在 innocode 中使用任意 LLM 提供商。
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 
-opencode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.dev)，支持 **75+ LLM 提供商**，也支持运行本地模型。
+innocode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.dev)，支持 **75+ LLM 提供商**，也支持运行本地模型。
 
 要添加提供商，你需要：
 
 1. 使用 `/connect` 命令添加提供商的 API 密钥。
-2. 在 opencode 配置中设置该提供商。
+2. 在 innocode 配置中设置该提供商。
 
 ---
 
 ### 凭据
 
 当你使用 `/connect` 命令添加提供商 API 后，凭据会存储在
-`~/.local/share/opencode/auth.json`。
+`~/.local/share/innocode/auth.json`。
 
 ---
 
 ### 配置
 
-你可以使用 opencode 配置中的 `provider` 部分自定义提供商配置。
+你可以使用 innocode 配置中的 `provider` 部分自定义提供商配置。
 
 ---
 
@@ -32,9 +32,9 @@ opencode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.de
 
 您可以通过设置 `baseURL` 选项来自定义任何提供商的基本 URL。这在使用代理服务或自定义端点时非常有用。
 
-```json title="opencode.json" {6}
+```json title="innocode.json" {6}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -47,16 +47,16 @@ opencode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.de
 
 ---
 
-## OpenCode Zen
+## InnoGPT
 
-OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
+InnoGPT 是opencode团队提供的模型列表，这些模型已被
 经测试和验证可与opencode良好配合。 [了解更多](/docs/zen)。
 
 :::tip
-如果您是新手，我们建议您从 OpenCode Zen 开始。
+如果您是新手，我们建议您从 InnoGPT 开始。
 :::
 
-1. Run the `/connect` command in the TUI, select opencode, and head to [opencode.ai/auth](https://opencode.ai/auth).
+1. Run the `/connect` command in the TUI, select innocode, and head to [innocode.ai/auth](https://innocode.ai/auth).
 
    ```txt
    /connect
@@ -79,7 +79,7 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
    /models
    ```
 
-它的工作方式与 opencode 中的任何其他提供的程序相同，并且完全可以选择使用。
+它的工作方式与 innocode 中的任何其他提供的程序相同，并且完全可以选择使用。
 
 ---
 
@@ -123,7 +123,7 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
 
 ### Amazon Bedrock
 
-相当于 Amazon Bedrock 与 opencode 结合使用：
+相当于 Amazon Bedrock 与 innocode 结合使用：
 
 1. 前往 Amazon Bedrock 控制台中的 **模型目录** 并请求
    访问您想要的模型。
@@ -136,17 +136,17 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
 
    #### 环境变量（快速启动）
 
-   执行 opencode 时设置以下环境变量之一：
+   执行 innocode 时设置以下环境变量之一：
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY opencode
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY innocode
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile opencode
+   AWS_PROFILE=my-profile innocode
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX opencode
+   AWS_BEARER_TOKEN_BEDROCK=XXX innocode
    ```
 
    或者将它们添加到您的 bash 配置文件中：
@@ -158,11 +158,11 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
 
    #### 配置文件（推薦）
 
-   For project-specific or persistent configuration, use `opencode.json`:
+   For project-specific or persistent configuration, use `innocode.json`:
 
-   ```json title="opencode.json"
+   ```json title="innocode.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -187,9 +187,9 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
 
    如果您使用 Bedrock 的 VPC 终端节点：
 
-   ```json title="opencode.json"
+   ```json title="innocode.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -231,9 +231,9 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
 :::note
 对于自定义推理配置文件，请在按键中使用模型并提供商名称，并将 `id` 属性设置为 arn。这确保了正确的缓存：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -278,7 +278,7 @@ OpenCode Zen 是opencode团队提供的模型列表，这些模型已被
    ```
 
 :::info
-Using your Claude Pro/Max subscription in opencode is not officially supported by [Anthropic](https://anthropic.com).
+Using your Claude Pro/Max subscription in innocode is not officially supported by [Anthropic](https://anthropic.com).
 :::
 
 ##### 使用 API 键
@@ -323,7 +323,7 @@ Using your Claude Pro/Max subscription in opencode is not officially supported b
 5. 将您的资源名称设置为环境变量：
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX opencode
+   AZURE_RESOURCE_NAME=XXX innocode
    ```
 
    或者将其添加内容添加到您的 bash 配置文件中：
@@ -370,7 +370,7 @@ Using your Claude Pro/Max subscription in opencode is not officially supported b
 5. 将您的资源名称设置为环境变量：
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX opencode
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX innocode
    ```
 
    或者将其添加内容添加到您的 bash 配置文件中：
@@ -483,9 +483,9 @@ Cloudflare AI Gateway lets you access models from OpenAI, Anthropic, Workers AI,
 
    您还可以使用opencode配置添加模型。
 
-   ```json title="opencode.json"
+   ```json title="innocode.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -661,7 +661,7 @@ GitLab Duo 通过 GitLab 的人工代理提供具有本机工具呼叫功能的�
    #### 使用个人访问Tokens
    1. Go to [GitLab User Settings > Access Tokens](https://gitlab.com/-/user_settings/personal_access_tokens)
    2. 单击**添加新Tokens**
-   3. Name: `OpenCode`, Scopes: `api`
+   3. Name: `InnoCode`, Scopes: `api`
    4. 复制Tokens（以 `glpat-` 发起人）
    5. 在终端中輸入
 
@@ -684,14 +684,14 @@ GitLab Duo 通过 GitLab 的人工代理提供具有本机工具呼叫功能的�
 ##### 自托管 GitLab
 
 :::note[合规笔记]
-opencode 使用一个小模型来执行一些 AI 任务，例如生成会话标题。
-情况下，其配置为使用 gpt-5-nano，由 Zen 托管。默认 opencode
+innocode 使用一个小模型来执行一些 AI 任务，例如生成会话标题。
+情况下，其配置为使用 gpt-5-nano，由 Zen 托管。默认 innocode
 只需使用您自己的 GitLab 托管示例项，即可将以下内容添加到您的
-`opencode.json` file. It is also recommended to disable session sharing.
+`innocode.json` file. It is also recommended to disable session sharing.
 
 ```json
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -745,15 +745,15 @@ export GITLAB_TOKEN=glpat-...
 export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 ```
 
-More documentation on [opencode-gitlab-auth](https://www.npmjs.com/package/@gitlab/opencode-gitlab-auth) homepage.
+More documentation on [innocode-gitlab-auth](https://www.npmjs.com/package/@gitlab/innocode-gitlab-auth) homepage.
 
 ##### 配置
 
-Customize through `opencode.json`:
+Customize through `innocode.json`:
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -772,10 +772,10 @@ Customize through `opencode.json`:
 
 要访问GitLab工具（合并请求、问题、管道、CI/CD等）：
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
-  "plugin": ["@gitlab/opencode-gitlab-plugin"]
+  "$schema": "https://innocode.ai/config.json",
+  "plugin": ["@gitlab/innocode-gitlab-plugin"]
 }
 ```
 
@@ -785,7 +785,7 @@ Customize through `opencode.json`:
 
 ### GitHub Copilot
 
-相当于您的 GitHub Copilot 订阅与 opencode 一起使用：
+相当于您的 GitHub Copilot 订阅与 innocode 一起使用：
 
 :::note
 某些模型可能需要 [Pro+
@@ -822,7 +822,7 @@ Some models need to be manually enabled in your [GitHub Copilot settings](https:
 
 ### Google Vertex AI
 
-Google Vertex AI 与 opencode 结合使用：
+Google Vertex AI 与 innocode 结合使用：
 
 1. 前往 Google Cloud Console 中的 **模型花园** 并检查
    您所在地区提供的模型。
@@ -838,10 +838,10 @@ Google Vertex AI 与 opencode 结合使用：
      - `GOOGLE_APPLICATION_CREDENTIALS`：服务帐户 JSON 密钥文件的路径
      - 使用 gcloud CLI 进行身份验证：`gcloud auth application-default login`
 
-   在执行 opencode 时设置它们。
+   在执行 innocode 时设置它们。
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id opencode
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id innocode
    ```
 
    或者将它们添加到您的 bash 配置文件中。
@@ -955,9 +955,9 @@ For more providers and advanced features like caching and rate limiting, check t
 
 Here's [Helicone's Model Directory](https://helicone.ai/models), you'll need this to grab the IDs of the models you want to add.
 
-```jsonc title="~/.config/opencode/opencode.jsonc"
+```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -983,9 +983,9 @@ Here's [Helicone's Model Directory](https://helicone.ai/models), you'll need thi
 
 Helicone 支持快速获取、用户跟踪和会话管理等功能的自定义标头。使用 `options.headers` 将它们添加到您提供的方案配置中：
 
-```jsonc title="~/.config/opencode/opencode.jsonc"
+```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -994,7 +994,7 @@ Helicone 支持快速获取、用户跟踪和会话管理等功能的自定义�
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "opencode",
+          "Helicone-User-Id": "innocode",
         },
       },
     },
@@ -1004,21 +1004,21 @@ Helicone 支持快速获取、用户跟踪和会话管理等功能的自定义�
 
 ##### 会话跟蹤
 
-Helicone's [Sessions](https://docs.helicone.ai/features/sessions) feature lets you group related LLM requests together. Use the [opencode-helicone-session](https://github.com/H2Shami/opencode-helicone-session) plugin to automatically log each opencode conversation as a session in Helicone.
+Helicone's [Sessions](https://docs.helicone.ai/features/sessions) feature lets you group related LLM requests together. Use the [innocode-helicone-session](https://github.com/H2Shami/innocode-helicone-session) plugin to automatically log each innocode conversation as a session in Helicone.
 
 ```bash
-npm install -g opencode-helicone-session
+npm install -g innocode-helicone-session
 ```
 
 将其添加到您的配置中。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "plugin": ["opencode-helicone-session"]
+  "plugin": ["innocode-helicone-session"]
 }
 ```
 
-该外挂将 `Helicone-Session-Id` 和 `Helicone-Session-Name` 标头注入您的请求中。在 Helicone 的会话页面中，您将看到每个 opencode 对话都是单独的会话。
+该外挂将 `Helicone-Session-Id` 和 `Helicone-Session-Name` 标头注入您的请求中。在 Helicone 的会话页面中，您将看到每个 innocode 对话都是单独的会话。
 
 ##### 常见螺旋接头
 
@@ -1035,11 +1035,11 @@ See the [Helicone Header Directory](https://docs.helicone.ai/helicone-headers/he
 
 ### llama.cpp
 
-You can configure opencode to use local models through [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server utility
+You can configure innocode to use local models through [llama.cpp's](https://github.com/ggml-org/llama.cpp) llama-server utility
 
-```json title="opencode.json" "llama.cpp" {5, 6, 8, 10-15}
+```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1104,9 +1104,9 @@ IO.NET提供了17种针对各种例子进行优化的模型：
 
 您可以通过使用本地模型来使用 LM Studio 配置opencode。
 
-```json title="opencode.json" "lmstudio" {5, 6, 8, 10-14}
+```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1219,15 +1219,15 @@ IO.NET提供了17种针对各种例子进行优化的模型：
 
 ### Ollama
 
-您可以使用 Ollama 配置 opencode 本地模型。
+您可以使用 Ollama 配置 innocode 本地模型。
 
 :::tip
-Ollama can automatically configure itself for opencode. See the [Ollama integration docs](https://docs.ollama.com/integrations/opencode) for details.
+Ollama can automatically configure itself for innocode. See the [Ollama integration docs](https://docs.ollama.com/integrations/innocode) for details.
 :::
 
-```json title="opencode.json" "ollama" {5, 6, 8, 10-14}
+```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1261,13 +1261,13 @@ Ollama can automatically configure itself for opencode. See the [Ollama integrat
 
 ### Ollama Cloud
 
-相当于 Ollama Cloud 与 opencode 一起使用：
+相当于 Ollama Cloud 与 innocode 一起使用：
 
 1. 前往 [https://ollama.com/](https://ollama.com/) 并登录或建立账户。
 
 2. 导航至**设置** > **API 密钥**，然后单击**添加API 密钥**以生成新的API 密钥。
 
-3. 复制 API 密钥以在 opencode 中使用。
+3. 复制 API 密钥以在 innocode 中使用。
 
 4. 执行 `/connect` 命令并搜索 **Ollama Cloud**。
 
@@ -1331,19 +1331,19 @@ We recommend signing up for [ChatGPT Plus or Pro](https://chatgpt.com/pricing).
 
 ---
 
-### OpenCode Zen
+### InnoGPT
 
-OpenCode Zen 是 opencode 团队提供的经过测试和验证的模型列表。 [了解更多](/docs/zen)。
+InnoGPT 是 innocode 团队提供的经过测试和验证的模型列表。 [了解更多](/docs/zen)。
 
-1. 登录 **<a href={console}>OpenCode Zen</a>** 并单击 **创建 API 密钥**。
+1. 登录 **<a href={console}>InnoGPT</a>** 并单击 **创建 API 密钥**。
 
-2. 执行 `/connect` 命令并搜索 **OpenCode Zen**。
+2. 执行 `/connect` 命令并搜索 **InnoGPT**。
 
    ```txt
    /connect
    ```
 
-3. 输入您的 opencode API 密钥。
+3. 输入您的 innocode API 密钥。
 
    ```txt
    ┌ API key
@@ -1387,9 +1387,9 @@ OpenCode Zen 是 opencode 团队提供的经过测试和验证的模型列表。
 
    您还可以通过opencode配置添加其他模型。
 
-   ```json title="opencode.json" {6}
+   ```json title="innocode.json" {6}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1402,9 +1402,9 @@ OpenCode Zen 是 opencode 团队提供的经过测试和验证的模型列表。
 
 5. 您还可以使用opencode配置自定义它们。这是指定的示例
 
-   ```json title="opencode.json"
+   ```json title="innocode.json"
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1452,7 +1452,7 @@ SAP AI Core跨统一平台提供对OpenAI、Anthropic、Google、Amazon、Meta�
    或者设置`AICORE_SERVICE_KEY`环境变量：
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' opencode
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' innocode
    ```
 
    或者将其添加内容添加到您的 bash 配置文件中：
@@ -1464,7 +1464,7 @@ SAP AI Core跨统一平台提供对OpenAI、Anthropic、Google、Amazon、Meta�
 4. （可选）设置部署ID和资源组：
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group opencode
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group innocode
    ```
 
    :::笔记
@@ -1616,11 +1616,11 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
    /models
    ```
 
-您还可以穿透 opencode 配置自定义模型。以下是指定提供商路由顺序的示例。
+您还可以穿透 innocode 配置自定义模型。以下是指定提供商路由顺序的示例。
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1728,9 +1728,9 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 
    您还可以通过opencode配置添加其他模型。
 
-   ```json title="opencode.json" {6}
+   ```json title="innocode.json" {6}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -1748,7 +1748,7 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 要添加 `/connect` 命令中未列出的任何 **OpenAI 兼容**提供商：
 
 :::tip
-您可以将任何 OpenAI 兼容的提供商与 opencode 一起使用。大多数 AI 提供商都提供 OpenAI 兼容 API。
+您可以将任何 OpenAI 兼容的提供商与 innocode 一起使用。大多数 AI 提供商都提供 OpenAI 兼容 API。
 :::
 
 1. 执行`/connect`命令并逐步升级到**其他**。
@@ -1787,18 +1787,18 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 
    ┌  Add credential
    │
-   ▲  This only stores a credential for myprovider - you will need to configure it in opencode.json, check the docs for examples.
+   ▲  This only stores a credential for myprovider - you will need to configure it in innocode.json, check the docs for examples.
    │
    ◇  Enter your API key
    │  sk-...
    └
    ```
 
-4. Create or update your `opencode.json` file in your project directory:
+4. Create or update your `innocode.json` file in your project directory:
 
-   ```json title="opencode.json" ""myprovider"" {5-15}
+   ```json title="innocode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://opencode.ai/config.json",
+     "$schema": "https://innocode.ai/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1834,9 +1834,9 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 
 以下是设置 `apiKey`、`headers` 和模型 `limit` 选项的示例。
 
-```json title="opencode.json" {9,11,17-20}
+```json title="innocode.json" {9,11,17-20}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1869,7 +1869,7 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 - **limit.context**：模型接受的最大输入标记。
 - **limit.output**：模型可以生成的最大Tokens。
 
-`limit` 栏位允许 opencode 了解您还剩下多少上下文。标准提供商会自动从 models.dev 中提取这些内容。
+`limit` 栏位允许 innocode 了解您还剩下多少上下文。标准提供商会自动从 models.dev 中提取这些内容。
 
 ---
 
@@ -1877,12 +1877,12 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
 
 如果您在配置提供商時遇到問題，请检查以下內容：
 
-1. **Check the auth setup**: Run `opencode auth list` to see if the credentials
+1. **Check the auth setup**: Run `innocode auth list` to see if the credentials
    提供商的配置已添加到您的配置中。
 
    这并不利于 Amazon Bedrock 等依赖环境变数进行身份验证的工作。
 
-2. 对于自定义提供的程序，请检查 opencode 配置并：
-   - 确保 `/connect` 命令中使用的提供商 ID 与 opencode 配置中的 ID 匹配。
+2. 对于自定义提供的程序，请检查 innocode 配置并：
+   - 确保 `/connect` 命令中使用的提供商 ID 与 innocode 配置中的 ID 匹配。
    - 正确的 npm 包用于提供商。例如，对 Cerebras 使用 `@ai-sdk/cerebras`。对于所有其他 OpenAI 相内容的提供商，请使用 `@ai-sdk/openai-compatible`。
    - 检查 `options.baseURL` 栏位中使用的 API 端点是否正确。

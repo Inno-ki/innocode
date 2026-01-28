@@ -1,17 +1,17 @@
 ---
 title: GitHub
-description: 在 GitHub Issues 和拉取請求中使用 opencode。
+description: 在 GitHub Issues 和拉取請求中使用 innocode。
 ---
 
-opencode 與您的 GitHub 工作流程整合。在評論中提及 `/opencode` 或 `/oc`，opencode 將在您的 GitHub Actions Runner 中執行任務。
+innocode 與您的 GitHub 工作流程整合。在評論中提及 `/innocode` 或 `/oc`，innocode 將在您的 GitHub Actions Runner 中執行任務。
 
 ---
 
 ## 功能
 
-- **分類問題**：要求 opencode 調查問題並向您解釋。
-- **修復和實作**：要求 opencode 修復問題或實作功能。它將在一個新分支中工作並提交包含所有變更的 PR。
-- **安全**：opencode 在 GitHub 的 Runner 中執行。
+- **分類問題**：要求 innocode 調查問題並向您解釋。
+- **修復和實作**：要求 innocode 修復問題或實作功能。它將在一個新分支中工作並提交包含所有變更的 PR。
+- **安全**：innocode 在 GitHub 的 Runner 中執行。
 
 ---
 
@@ -20,7 +20,7 @@ opencode 與您的 GitHub 工作流程整合。在評論中提及 `/opencode` �
 在 GitHub 儲存庫中的專案中執行以下指令：
 
 ```bash
-opencode github install
+innocode github install
 ```
 
 這將引導您完成安裝 GitHub 應用程式、建立工作流程和設定 Secrets。
@@ -33,14 +33,14 @@ opencode github install
 
 1. **安裝 GitHub 應用程式**
 
-   前往 [**github.com/apps/opencode-agent**](https://github.com/apps/opencode-agent)。確保它已安裝在目標儲存庫上。
+   前往 [**github.com/apps/innocode-agent**](https://github.com/apps/innocode-agent)。確保它已安裝在目標儲存庫上。
 
 2. **新增工作流程**
 
-   將以下工作流程檔案新增到儲存庫中的 `.github/workflows/opencode.yml` 中。確保在 `env` 中設定適當的 `model` 和所需的 API 金鑰。
+   將以下工作流程檔案新增到儲存庫中的 `.github/workflows/innocode.yml` 中。確保在 `env` 中設定適當的 `model` 和所需的 API 金鑰。
 
-   ```yml title=".github/workflows/opencode.yml" {24,26}
-   name: opencode
+   ```yml title=".github/workflows/innocode.yml" {24,26}
+   name: innocode
 
    on:
      issue_comment:
@@ -49,10 +49,10 @@ opencode github install
        types: [created]
 
    jobs:
-     opencode:
+     innocode:
        if: |
          contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/opencode')
+         contains(github.event.comment.body, '/innocode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -63,8 +63,8 @@ opencode github install
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run OpenCode
-           uses: anomalyco/opencode/github@latest
+          - name: Run InnoCode
+           uses: anomalyco/innocode/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
            with:
@@ -81,13 +81,13 @@ opencode github install
 
 ## 設定
 
-- `model`：與 opencode 一起使用的模型。採用 `provider/model` 格式。這是**必需的**。
+- `model`：與 innocode 一起使用的模型。採用 `provider/model` 格式。這是**必需的**。
 - `agent`: 使用的代理。必須是主要代理。如果未找到，則從設定退回到 `default_agent` 或 `"build"`。
-- `share`：是否分享 opencode 工作階段。對於公共儲存庫，預設為 **true**。
-- `prompt`：可選的自定義提示以覆寫預設行為。使用它來自定義 opencode 處理請求的方式。
-- `token`：可選的 GitHub 存取權杖，用於執行建立評論、提交變更和打開拉取請求等操作。預設情況下，opencode 使用來自 opencode GitHub 應用程式的安裝存取權杖，因此提交、評論和拉取請求顯示為來自應用程式。
+- `share`：是否分享 innocode 工作階段。對於公共儲存庫，預設為 **true**。
+- `prompt`：可選的自定義提示以覆寫預設行為。使用它來自定義 innocode 處理請求的方式。
+- `token`：可選的 GitHub 存取權杖，用於執行建立評論、提交變更和打開拉取請求等操作。預設情況下，innocode 使用來自 innocode GitHub 應用程式的安裝存取權杖，因此提交、評論和拉取請求顯示為來自應用程式。
 
-  或者，您可以使用 GitHub Action Runner 的 [內建 `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)，而無需安裝 opencode GitHub 應用程式。只需確保在您的工作流程中授予所需的權限：
+  或者，您可以使用 GitHub Action Runner 的 [內建 `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token)，而無需安裝 innocode GitHub 應用程式。只需確保在您的工作流程中授予所需的權限：
 
   ```yaml
   permissions:
@@ -97,36 +97,36 @@ opencode github install
     issues: write
   ```
 
-  **注意**：使用 `GITHUB_TOKEN` 時，opencode 執行的操作（如提交和評論）將不會觸發其他工作流程。
+  **注意**：使用 `GITHUB_TOKEN` 時，innocode 執行的操作（如提交和評論）將不會觸發其他工作流程。
 
 ---
 
 ## 支援的事件
 
-opencode 可以由以下 GitHub 事件觸發：
+innocode 可以由以下 GitHub 事件觸發：
 
 | 事件類型                      | 觸發條件                       | 詳情                                                                                    |
 | ----------------------------- | ------------------------------ | --------------------------------------------------------------------------------------- |
-| `issue_comment`               | 對問題或 PR 發表評論           | 在評論中提及 `/opencode` 或 `/oc`。 opencode 讀取上下文並可以建立分支、打開 PR 或回覆。 |
-| `pull_request_review_comment` | 對 PR 中的特定程式碼行進行評論 | 在檢查程式碼時提及 `/opencode` 或 `/oc`。 opencode 接收檔案路徑、行號和 diff 上下文。   |
-| `issues`                      | 問題已打開或已編輯             | 建立或修改問題時自動觸發 opencode。需要 `prompt` 輸入。                                 |
-| `pull_request`                | PR 已開啟或已更新              | 當 PR 被開啟、同步或重新開啟時自動觸發 opencode。對於自動評論很有用。                   |
-| `schedule`                    | 基於 Cron 的排程               | 按排程執行 opencode。需要 `prompt` 輸入。輸出進入日誌和 PR（沒有可評論的問題）。        |
-| `workflow_dispatch`           | 從 GitHub UI 手動觸發          | 透過「Actions」標籤按需觸發 opencode。需要 `prompt` 輸入。輸出進入日誌和 PR。           |
+| `issue_comment`               | 對問題或 PR 發表評論           | 在評論中提及 `/innocode` 或 `/oc`。 innocode 讀取上下文並可以建立分支、打開 PR 或回覆。 |
+| `pull_request_review_comment` | 對 PR 中的特定程式碼行進行評論 | 在檢查程式碼時提及 `/innocode` 或 `/oc`。 innocode 接收檔案路徑、行號和 diff 上下文。   |
+| `issues`                      | 問題已打開或已編輯             | 建立或修改問題時自動觸發 innocode。需要 `prompt` 輸入。                                 |
+| `pull_request`                | PR 已開啟或已更新              | 當 PR 被開啟、同步或重新開啟時自動觸發 innocode。對於自動評論很有用。                   |
+| `schedule`                    | 基於 Cron 的排程               | 按排程執行 innocode。需要 `prompt` 輸入。輸出進入日誌和 PR（沒有可評論的問題）。        |
+| `workflow_dispatch`           | 從 GitHub UI 手動觸發          | 透過「Actions」標籤按需觸發 innocode。需要 `prompt` 輸入。輸出進入日誌和 PR。           |
 
 ### 排程範例
 
-按排程執行 opencode 以執行自動化任務：
+按排程執行 innocode 以執行自動化任務：
 
-```yaml title=".github/workflows/opencode-scheduled.yml"
-name: Scheduled OpenCode Task
+```yaml title=".github/workflows/innocode-scheduled.yml"
+name: Scheduled InnoCode Task
 
 on:
   schedule:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  opencode:
+  innocode:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -139,8 +139,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run OpenCode
-        uses: anomalyco/opencode/github@latest
+      - name: Run InnoCode
+        uses: anomalyco/innocode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
@@ -150,7 +150,7 @@ jobs:
             If you find issues worth addressing, open an issue to track them.
 ```
 
-對於排程事件，`prompt` 輸入是**必需的**，因為沒有註釋可從中提取指令。排程工作流程在沒有使用者上下文的情況下執行以進行權限檢查，因此如果您希望 opencode 建立分支或 PR，工作流程必須授予 `contents: write` 和 `pull-requests: write`。
+對於排程事件，`prompt` 輸入是**必需的**，因為沒有註釋可從中提取指令。排程工作流程在沒有使用者上下文的情況下執行以進行權限檢查，因此如果您希望 innocode 建立分支或 PR，工作流程必須授予 `contents: write` 和 `pull-requests: write`。
 
 ---
 
@@ -158,8 +158,8 @@ jobs:
 
 打開或更新 PR 時自動審閱：
 
-```yaml title=".github/workflows/opencode-review.yml"
-name: opencode-review
+```yaml title=".github/workflows/innocode-review.yml"
+name: innocode-review
 
 on:
   pull_request:
@@ -177,7 +177,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: anomalyco/opencode/github@latest
+      - uses: anomalyco/innocode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -191,7 +191,7 @@ jobs:
             - Suggest improvements
 ```
 
-對於 `pull_request` 事件，如果未提供 `prompt`，opencode 將預設審閱拉取請求。
+對於 `pull_request` 事件，如果未提供 `prompt`，innocode 將預設審閱拉取請求。
 
 ---
 
@@ -199,7 +199,7 @@ jobs:
 
 自動分類新問題。此範例過濾超過 30 天的帳號以減少垃圾訊息：
 
-```yaml title=".github/workflows/opencode-triage.yml"
+```yaml title=".github/workflows/innocode-triage.yml"
 name: Issue Triage
 
 on:
@@ -233,7 +233,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: anomalyco/opencode/github@latest
+      - uses: anomalyco/innocode/github@latest
         if: steps.check.outputs.result == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -252,10 +252,10 @@ jobs:
 
 ## 自定義提示
 
-覆寫預設提示，為您的工作流程自定義 opencode 的行為。
+覆寫預設提示，為您的工作流程自定義 innocode 的行為。
 
-```yaml title=".github/workflows/opencode.yml"
-- uses: anomalyco/opencode/github@latest
+```yaml title=".github/workflows/innocode.yml"
+- uses: anomalyco/innocode/github@latest
   with:
     model: anthropic/claude-sonnet-4-5
     prompt: |
@@ -271,27 +271,27 @@ jobs:
 
 ## 範例
 
-以下是如何在 GitHub 中使用 opencode 的一些範例。
+以下是如何在 GitHub 中使用 innocode 的一些範例。
 
 - **解釋一個問題**
 
   在 GitHub Issue 中添加此評論。
 
   ```
-  /opencode explain this issue
+  /innocode explain this issue
   ```
 
-  opencode 將閱讀整個討論串，包括所有評論，並回覆並提供清晰的解釋。
+  innocode 將閱讀整個討論串，包括所有評論，並回覆並提供清晰的解釋。
 
 - **解決問題**
 
   在 GitHub Issue 中，說：
 
   ```
-  /opencode fix this
+  /innocode fix this
   ```
 
-  opencode 將建立一個新分支，實作變更，並使用變更打開 PR。
+  innocode 將建立一個新分支，實作變更，並使用變更打開 PR。
 
 - **審閱 PR 並進行變更**
 
@@ -301,18 +301,18 @@ jobs:
   Delete the attachment from S3 when the note is removed /oc
   ```
 
-  opencode 將實作請求的變更並將其推送到分支。
+  innocode 將實作請求的變更並將其推送到分支。
 
 - **查看特定程式碼行**
 
-  直接在 PR 的「Files」標籤中的程式碼行上留下評論。 opencode 自動檢測檔案、行號和 diff 上下文以提供精確的回應。
+  直接在 PR 的「Files」標籤中的程式碼行上留下評論。 innocode 自動檢測檔案、行號和 diff 上下文以提供精確的回應。
 
   ```
   [Comment on specific lines in Files tab]
   /oc add error handling here
   ```
 
-  opencode 將查看：
+  innocode 將查看：
   - 正在審閱的確切檔案
   - 具體程式碼行
   - 周圍的 diff 上下文

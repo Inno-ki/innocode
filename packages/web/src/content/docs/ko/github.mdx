@@ -3,7 +3,7 @@ title: GitHub
 description: GitHub 이슈 및 풀 리퀘스트에서 opencode를 사용하세요.
 ---
 
-opencode는 GitHub 워크플로우와 통합됩니다. Mention `/opencode` 또는 `/oc` 당신의 의견에, 그리고 opencode는 당신의 GitHub 활동 주자 안에 작업을 실행할 것입니다.
+opencode는 GitHub 워크플로우와 통합됩니다. Mention `/innocode` 또는 `/oc` 당신의 의견에, 그리고 opencode는 당신의 GitHub 활동 주자 안에 작업을 실행할 것입니다.
 
 ---
 
@@ -20,7 +20,7 @@ opencode는 GitHub 워크플로우와 통합됩니다. Mention `/opencode` 또�
 GitHub 저장소에서 다음과 같은 명령을 실행:
 
 ```bash
-opencode github install
+innocode github install
 ```
 
 GitHub 앱을 설치하고 워크플로를 만들고 비밀을 설정할 수 있습니다.
@@ -33,14 +33,14 @@ GitHub 앱을 설치하고 워크플로를 만들고 비밀을 설정할 수 있
 
 1. **GitHub 앱 설치**
 
-[**github.com/apps/opencode-agent**](https://github.com/apps/opencode-agent)로 이동합니다. 대상 저장소에 설치되어 있는지 확인하십시오.
+[**github.com/apps/innocode-agent**](https://github.com/apps/innocode-agent)로 이동합니다. 대상 저장소에 설치되어 있는지 확인하십시오.
 
 2. **워크플로우 추가**
 
-저장소에 `.github/workflows/opencode.yml`에 다음 작업 흐름 파일을 추가합니다. 적절한 `model`를 설정하고 `env`의 API 키가 필요합니다.
+저장소에 `.github/workflows/innocode.yml`에 다음 작업 흐름 파일을 추가합니다. 적절한 `model`를 설정하고 `env`의 API 키가 필요합니다.
 
-```yml title=".github/workflows/opencode.yml" {24,26}
-   name: opencode
+```yml title=".github/workflows/innocode.yml" {24,26}
+   name: innocode
 
    on:
      issue_comment:
@@ -49,10 +49,10 @@ GitHub 앱을 설치하고 워크플로를 만들고 비밀을 설정할 수 있
        types: [created]
 
    jobs:
-     opencode:
+     innocode:
        if: |
          contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/opencode')
+         contains(github.event.comment.body, '/innocode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -63,8 +63,8 @@ GitHub 앱을 설치하고 워크플로를 만들고 비밀을 설정할 수 있
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run OpenCode
-           uses: anomalyco/opencode/github@latest
+          - name: Run InnoCode
+           uses: anomalyco/innocode/github@latest
            env:
              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
            with:
@@ -83,11 +83,11 @@ GitHub 앱을 설치하고 워크플로를 만들고 비밀을 설정할 수 있
 
 - `model`: opencode를 사용하는 모형. `provider/model`의 형식을 가져 가라. **필수**입니다.
 - `agent`: 사용을 위한 에이전트. 주요 에이전트이어야 합니다. `default_agent`로 돌아와서 config 또는 `"build"`에서 찾을 수 없습니다.
-- `share`: opencode 세션을 공유하는 것. Defaults to **true** for public 저장소.
-- `prompt` : 기본 동작을 무시하기 위해 옵션 사용자 정의 프롬프트. opencode 프로세스 요청을 사용자 정의하기 위해 이것을 사용합니다.
-- `token`: 코멘트를 생성, 커밋 변경 및 오프닝 풀 요청과 같은 작업을 수행하기위한 옵션 GitHub 액세스 토큰. 기본적으로 opencode는 opencode GitHub App에서 설치 액세스 토큰을 사용하므로 커밋, 코멘트 및 풀 요청은 앱에서 오는 것과 같이 나타납니다.
+- `share`: innocode 세션을 공유하는 것. Defaults to **true** for public 저장소.
+- `prompt` : 기본 동작을 무시하기 위해 옵션 사용자 정의 프롬프트. innocode 프로세스 요청을 사용자 정의하기 위해 이것을 사용합니다.
+- `token`: 코멘트를 생성, 커밋 변경 및 오프닝 풀 요청과 같은 작업을 수행하기위한 옵션 GitHub 액세스 토큰. 기본적으로 opencode는 innocode GitHub App에서 설치 액세스 토큰을 사용하므로 커밋, 코멘트 및 풀 요청은 앱에서 오는 것과 같이 나타납니다.
 
-대안으로, GitHub Action runner의 [붙박이 `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github token)을 사용하여 opencode GitHub 앱을 설치하지 않고 사용할 수 있습니다. 워크플로우에서 필요한 권한을 부여하는 것을 확인하십시오.
+대안으로, GitHub Action runner의 [붙박이 `GITHUB_TOKEN`](https://docs.github.com/en/actions/tutorials/authenticate-with-github token)을 사용하여 innocode GitHub 앱을 설치하지 않고 사용할 수 있습니다. 워크플로우에서 필요한 권한을 부여하는 것을 확인하십시오.
 
 ```yaml
 permissions:
@@ -107,26 +107,26 @@ opencode는 다음 GitHub 이벤트에 의해 트리거 될 수 있습니다:
 
 | 이벤트 타입                   | Triggered by              | 상세                                                                                                                |
 | ----------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `issue_comment`               | 이슈 또는 PR 댓글         | 멘션 `/opencode` 또는 `/oc` 당신의 의견. opencode는 컨텍스트를 읽고, 지점을 만들 수 있습니다, 열린 PR, 또는 대답. · |
-| `pull_request_review_comment` | PR의 특정 코드 라인 댓글  | Mention `/opencode` 또는 `/oc` 코드 검토 중. opencode는 파일 경로, 줄 번호 및 diff 컨텍스트를 수신합니다. ·         |
+| `issue_comment`               | 이슈 또는 PR 댓글         | 멘션 `/innocode` 또는 `/oc` 당신의 의견. opencode는 컨텍스트를 읽고, 지점을 만들 수 있습니다, 열린 PR, 또는 대답. · |
+| `pull_request_review_comment` | PR의 특정 코드 라인 댓글  | Mention `/innocode` 또는 `/oc` 코드 검토 중. opencode는 파일 경로, 줄 번호 및 diff 컨텍스트를 수신합니다. ·         |
 | `issues`                      | 이슈가 열리거나 편집됨    | 이슈가 생성되거나 수정될 때 자동으로 opencode를 트리거합니다. `prompt` 입력이 필요합니다.                           |
-| `pull_request`                | PR 오픈 또는 업데이트     | PR이 열릴 때 자동 트리거 opencode 자동 리뷰에 대한 유용한 정보                                                      |
+| `pull_request`                | PR 오픈 또는 업데이트     | PR이 열릴 때 자동 트리거 innocode 자동 리뷰에 대한 유용한 정보                                                      |
 | `schedule`                    | 크론 기반 일정            | 일정에 opencode를 실행합니다. `prompt` 입력을 요구합니다. 출력 로그 및 PR에 간다 (댓글이 없습니다).                 |
-| `workflow_dispatch`           | GitHub UI에서 수동 트리거 | 액션 탭을 통해 까다로운 Trigger opencode. `prompt` 입력을 요구합니다. 출력 로그 및 PR에 간다.                       |
+| `workflow_dispatch`           | GitHub UI에서 수동 트리거 | 액션 탭을 통해 까다로운 Trigger innocode. `prompt` 입력을 요구합니다. 출력 로그 및 PR에 간다.                       |
 
 ### 일정 예제
 
 자동화된 작업을 수행하는 일정에 opencode를 실행:
 
-```yaml title=".github/workflows/opencode-scheduled.yml"
-name: Scheduled OpenCode Task
+```yaml title=".github/workflows/innocode-scheduled.yml"
+name: Scheduled InnoCode Task
 
 on:
   schedule:
     - cron: "0 9 * * 1" # Every Monday at 9am UTC
 
 jobs:
-  opencode:
+  innocode:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -139,8 +139,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run OpenCode
-        uses: anomalyco/opencode/github@latest
+      - name: Run InnoCode
+        uses: anomalyco/innocode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
@@ -158,8 +158,8 @@ jobs:
 
 자동 검토 PR 때 그들은 열려있거나 업데이트 :
 
-```yaml title=".github/workflows/opencode-review.yml"
-name: opencode-review
+```yaml title=".github/workflows/innocode-review.yml"
+name: innocode-review
 
 on:
   pull_request:
@@ -177,7 +177,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
-      - uses: anomalyco/opencode/github@latest
+      - uses: anomalyco/innocode/github@latest
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -191,7 +191,7 @@ jobs:
             - Suggest improvements
 ```
 
-`pull_request` 이벤트의 경우 `prompt`가 제공되지 않은 경우, 풀 요청을 검토하는 opencode 기본값.
+`pull_request` 이벤트의 경우 `prompt`가 제공되지 않은 경우, 풀 요청을 검토하는 innocode 기본값.
 
 ---
 
@@ -199,7 +199,7 @@ jobs:
 
 자동으로 새로운 문제를 삼는다. 이 예제는 스팸을 줄이기 위해 30 일 이상 계정 필터 :
 
-```yaml title=".github/workflows/opencode-triage.yml"
+```yaml title=".github/workflows/innocode-triage.yml"
 name: Issue Triage
 
 on:
@@ -233,7 +233,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: anomalyco/opencode/github@latest
+      - uses: anomalyco/innocode/github@latest
         if: steps.check.outputs.result == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -254,8 +254,8 @@ jobs:
 
 opencode의 작업 흐름을 사용자 정의하는 기본 프롬프트를 부여합니다.
 
-```yaml title=".github/workflows/opencode.yml"
-- uses: anomalyco/opencode/github@latest
+```yaml title=".github/workflows/innocode.yml"
+- uses: anomalyco/innocode/github@latest
   with:
     model: anthropic/claude-sonnet-4-5
     prompt: |
@@ -278,7 +278,7 @@ GitHub에서 opencode를 사용할 수있는 몇 가지 예입니다.
 GitHub 문제에서 이 의견 추가.
 
 ```
-  /opencode explain this issue
+  /innocode explain this issue
 ```
 
 opencode는 모든 코멘트를 포함하여 전체 스레드를 읽고, 명확한 설명과 대답.
@@ -288,7 +288,7 @@ opencode는 모든 코멘트를 포함하여 전체 스레드를 읽고, 명확�
 GitHub 문제에서:
 
 ```
-  /opencode fix this
+  /innocode fix this
 ```
 
 opencode는 새로운 지점을 만들 것이며 변경 사항을 실행하고 PR을 변경합니다.

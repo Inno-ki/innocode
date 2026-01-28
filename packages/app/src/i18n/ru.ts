@@ -110,7 +110,7 @@ export const dict = {
   "dialog.model.manage": "Управление моделями",
   "dialog.model.manage.description": "Настройте какие модели появляются в выборе модели",
 
-  "dialog.model.unpaid.freeModels.title": "Бесплатные модели от OpenCode",
+  "dialog.model.unpaid.freeModels.title": "Бесплатные модели от InnoCode",
   "dialog.model.unpaid.addMore.title": "Добавьте больше моделей от популярных провайдеров",
 
   "dialog.provider.viewAll": "Показать больше провайдеров",
@@ -132,7 +132,7 @@ export const dict = {
   "provider.connect.opencodeZen.line2":
     "С одним API ключом вы получите доступ к таким моделям как Claude, GPT, Gemini, GLM и другим.",
   "provider.connect.opencodeZen.visit.prefix": "Посетите ",
-  "provider.connect.opencodeZen.visit.link": "opencode.ai/zen",
+  "provider.connect.opencodeZen.visit.link": "app.innogpt.de",
   "provider.connect.opencodeZen.visit.suffix": " чтобы получить ваш API ключ.",
   "provider.connect.oauth.code.visit.prefix": "Посетите ",
   "provider.connect.oauth.code.visit.link": "эту ссылку",
@@ -299,7 +299,7 @@ export const dict = {
   "dialog.directory.empty": "Папки не найдены",
 
   "dialog.server.title": "Серверы",
-  "dialog.server.description": "Переключите сервер OpenCode к которому подключается приложение.",
+  "dialog.server.description": "Переключите сервер InnoCode к которому подключается приложение.",
   "dialog.server.search.placeholder": "Поиск серверов",
   "dialog.server.empty": "Серверов пока нет",
   "dialog.server.add.title": "Добавить сервер",
@@ -426,7 +426,7 @@ export const dict = {
   "toast.session.listFailed.title": "Не удалось загрузить сессии для {{project}}",
 
   "toast.update.title": "Доступно обновление",
-  "toast.update.description": "Новая версия OpenCode ({{version}}) доступна для установки.",
+  "toast.update.description": "Новая версия InnoCode ({{version}}) доступна для установки.",
   "toast.update.action.installRestart": "Установить и перезапустить",
   "toast.update.action.notYet": "Пока нет",
 
@@ -437,7 +437,7 @@ export const dict = {
   "error.page.action.checking": "Проверка...",
   "error.page.action.checkUpdates": "Проверить обновления",
   "error.page.action.updateTo": "Обновить до {{version}}",
-  "error.page.report.prefix": "Пожалуйста, сообщите об этой ошибке команде OpenCode",
+  "error.page.report.prefix": "Пожалуйста, сообщите об этой ошибке команде InnoCode",
   "error.page.report.discord": "в Discord",
   "error.page.version": "Версия: {{version}}",
 
@@ -573,20 +573,20 @@ export const dict = {
   "sidebar.workspaces.enable": "Включить рабочие пространства",
   "sidebar.workspaces.disable": "Отключить рабочие пространства",
   "sidebar.gettingStarted.title": "Начало работы",
-  "sidebar.gettingStarted.line1": "OpenCode включает бесплатные модели, чтобы вы могли начать сразу.",
+  "sidebar.gettingStarted.line1": "InnoCode включает бесплатные модели, чтобы вы могли начать сразу.",
   "sidebar.gettingStarted.line2":
     "Подключите любого провайдера для использования моделей, включая Claude, GPT, Gemini и др.",
   "sidebar.project.recentSessions": "Недавние сессии",
   "sidebar.project.viewAllSessions": "Посмотреть все сессии",
 
-  "app.name.desktop": "OpenCode Desktop",
+  "app.name.desktop": "InnoCode Desktop",
   "settings.section.desktop": "Приложение",
   "settings.section.server": "Сервер",
   "settings.tab.general": "Основные",
   "settings.tab.shortcuts": "Горячие клавиши",
   "settings.desktop.section.wsl": "WSL",
   "settings.desktop.wsl.title": "Интеграция с WSL",
-  "settings.desktop.wsl.description": "Запускать сервер OpenCode внутри WSL на Windows.",
+  "settings.desktop.wsl.description": "Запускать сервер InnoCode внутри WSL на Windows.",
 
   "settings.general.section.appearance": "Внешний вид",
   "settings.general.section.notifications": "Системные уведомления",
@@ -595,11 +595,11 @@ export const dict = {
   "settings.general.section.display": "Дисплей",
 
   "settings.general.row.language.title": "Язык",
-  "settings.general.row.language.description": "Изменить язык отображения OpenCode",
+  "settings.general.row.language.description": "Изменить язык отображения InnoCode",
   "settings.general.row.appearance.title": "Внешний вид",
-  "settings.general.row.appearance.description": "Настройте как OpenCode выглядит на вашем устройстве",
+  "settings.general.row.appearance.description": "Настройте как InnoCode выглядит на вашем устройстве",
   "settings.general.row.theme.title": "Тема",
-  "settings.general.row.theme.description": "Настройте оформление OpenCode.",
+  "settings.general.row.theme.description": "Настройте оформление InnoCode.",
   "settings.general.row.font.title": "Шрифт",
   "settings.general.row.font.description": "Настройте моноширинный шрифт для блоков кода",
 
@@ -612,13 +612,13 @@ export const dict = {
   "settings.general.row.releaseNotes.description": 'Показывать всплывающие окна "Что нового" после обновлений',
 
   "settings.updates.row.startup.title": "Проверять обновления при запуске",
-  "settings.updates.row.startup.description": "Автоматически проверять обновления при запуске OpenCode",
+  "settings.updates.row.startup.description": "Автоматически проверять обновления при запуске InnoCode",
   "settings.updates.row.check.title": "Проверить обновления",
   "settings.updates.row.check.description": "Проверить обновления вручную и установить, если доступны",
   "settings.updates.action.checkNow": "Проверить сейчас",
   "settings.updates.action.checking": "Проверка...",
   "settings.updates.toast.latest.title": "У вас последняя версия",
-  "settings.updates.toast.latest.description": "Вы используете последнюю версию OpenCode.",
+  "settings.updates.toast.latest.description": "Вы используете последнюю версию InnoCode.",
   "font.option.ibmPlexMono": "IBM Plex Mono",
   "font.option.cascadiaCode": "Cascadia Code",
   "font.option.firaCode": "Fira Code",

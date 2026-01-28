@@ -13,9 +13,9 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 `permission` 필드를 사용하여 도구 동작을 제어합니다. 각 도구에 대한 승인이 필요할 수 있습니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "deny",
     "bash": "ask",
@@ -26,9 +26,9 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 한 번에 여러 도구를 제어 할 와일드 카드를 사용할 수 있습니다. 예를 들어, MCP 서버의 모든 도구에 대한 승인을 요구합니다.
 
-```json title="opencode.json"
+```json title="innocode.json"
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "mymcp_*": "ask"
   }
@@ -49,9 +49,9 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 프로젝트 환경에서 shell 명령을 실행합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "bash": "allow"
   }
@@ -66,9 +66,9 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 정확한 문자열 교체를 사용하여 기존 파일을 수정합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "allow"
   }
@@ -83,9 +83,9 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 새로운 파일을 만들거나 기존의 것을 덮어쓰기.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "allow"
   }
@@ -104,9 +104,9 @@ LLM을 사용하여 새 파일을 만듭니다. 이미 존재하는 경우 기�
 
 codebase에서 파일 내용을 읽으십시오.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "read": "allow"
   }
@@ -121,9 +121,9 @@ codebase에서 파일 내용을 읽으십시오.
 
 정규 표현식을 사용하여 파일 내용을 검색합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "grep": "allow"
   }
@@ -138,9 +138,9 @@ Codebase에서 빠른 콘텐츠 검색. 전체 regex 문법 및 파일 패턴 �
 
 패턴 매칭으로 파일 찾기.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "glob": "allow"
   }
@@ -155,9 +155,9 @@ Codebase에서 빠른 콘텐츠 검색. 전체 regex 문법 및 파일 패턴 �
 
 주어진 경로의 파일 및 디렉토리 목록.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "list": "allow"
   }
@@ -176,9 +176,9 @@ Codebase에서 빠른 콘텐츠 검색. 전체 regex 문법 및 파일 패턴 �
 이 도구는 `OPENCODE_EXPERIMENTAL_LSP_TOOL=true` (또는 `OPENCODE_EXPERIMENTAL=true`) 때만 유효합니다.
 :::
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "lsp": "allow"
   }
@@ -195,9 +195,9 @@ LSP 서버가 프로젝트에 사용할 수 있는 구성하려면 [LSP Servers]
 
 파일에 패치를 적용합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "edit": "allow"
   }
@@ -216,9 +216,9 @@ LSP 서버가 프로젝트에 사용할 수 있는 구성하려면 [LSP Servers]
 
 [skill](/docs/skills) (`SKILL.md` 파일)을로드하고 대화의 내용을 반환합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "skill": "allow"
   }
@@ -231,9 +231,9 @@ LSP 서버가 프로젝트에 사용할 수 있는 구성하려면 [LSP Servers]
 
 코딩 세션 중에 todo 목록을 관리합니다.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "todowrite": "allow"
   }
@@ -252,9 +252,9 @@ LSP 서버가 프로젝트에 사용할 수 있는 구성하려면 [LSP Servers]
 
 기존의 todo 목록 읽기.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "todoread": "allow"
   }
@@ -273,9 +273,9 @@ LSP 서버가 프로젝트에 사용할 수 있는 구성하려면 [LSP Servers]
 
 Fetch 웹 콘텐츠.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "webfetch": "allow"
   }
@@ -291,19 +291,19 @@ LLM을 fetch 및 웹 페이지를 읽을 수 있습니다. 온라인 리소스�
 웹 검색
 
 :::note
-이 도구는 opencode 제공 업체 또는 `OPENCODE_ENABLE_EXA` 환경 변수가 모든 진실 값 (예 : `true` 또는 `1`)로 설정할 때만 사용할 수 있습니다.
+이 도구는 innocode 제공 업체 또는 `OPENCODE_ENABLE_EXA` 환경 변수가 모든 진실 값 (예 : `true` 또는 `1`)로 설정할 때만 사용할 수 있습니다.
 
 opencode를 실행할 때 활성화:
 
 ```bash
-OPENCODE_ENABLE_EXA=1 opencode
+OPENCODE_ENABLE_EXA=1 innocode
 ```
 
 :::
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "websearch": "allow"
   }
@@ -324,9 +324,9 @@ API 키가 필요하지 않습니다 - 도구는 인증없이 Exa AI의 호스�
 
 실행 중에 사용자의 질문 요청.
 
-```json title="opencode.json" {4}
+```json title="innocode.json" {4}
 {
-  "$schema": "https://opencode.ai/config.json",
+  "$schema": "https://innocode.ai/config.json",
   "permission": {
     "question": "allow"
   }

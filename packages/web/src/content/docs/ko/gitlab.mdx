@@ -13,41 +13,41 @@ opencode는 GitLab CI/CD 파이프라인 또는 GitLab Duo를 통해 GitLab 워�
 
 opencode는 일반 GitLab 파이프라인에서 작동합니다. [CI 컴포넌트](https://docs.gitlab.com/ee/ci/components/)로 파이프라인에 구축할 수 있습니다.
 
-여기에서 우리는 opencode에 대한 커뮤니티 생성 CI / CD 구성품을 사용하고 있습니다. [nagyv/gitlab-opencode](https://gitlab.com/nagyv/gitlab-opencode).
+여기에서 우리는 opencode에 대한 커뮤니티 생성 CI / CD 구성품을 사용하고 있습니다. [nagyv/gitlab-innocode](https://gitlab.com/nagyv/gitlab-innocode).
 
 ---
 
 ### 기능
 
-- **실행별 사용자 지정 구성 사용**: 사용자 정의 구성 디렉토리와 opencode 구성, 예를 들어 `./config/#custom-directory`는 opencode 실행마다 활성화하거나 비활성화 할 수 있습니다.
-- ** 최소 설정**: CI 구성 요소는 opencode를 배경으로 설정하면 opencode 구성과 초기 프롬프트를 만들 필요가 있습니다.
+- **실행별 사용자 지정 구성 사용**: 사용자 정의 구성 디렉토리와 innocode 구성, 예를 들어 `./config/#custom-directory`는 innocode 실행마다 활성화하거나 비활성화 할 수 있습니다.
+- ** 최소 설정**: CI 구성 요소는 opencode를 배경으로 설정하면 innocode 구성과 초기 프롬프트를 만들 필요가 있습니다.
 - **Flexible**: CI 구성 요소는 여러 입력을 지원합니다.
 
 ---
 
 ## 설정
 
-1. opencode 인증 JSON을 **Settings** > **CI/CD** > **Variables**에서 파일 유형 CI 환경 변수로 저장하십시오. "Masked and hidden"로 표시하십시오.
+1. innocode 인증 JSON을 **Settings** > **CI/CD** > **Variables**에서 파일 유형 CI 환경 변수로 저장하십시오. "Masked and hidden"로 표시하십시오.
 2. `.gitlab-ci.yml` 파일에 뒤에 추가하십시오.
 
    ```yaml title=".gitlab-ci.yml"
    include:
-     - component: $CI_SERVER_FQDN/nagyv/gitlab-opencode/opencode@2
+     - component: $CI_SERVER_FQDN/nagyv/gitlab-innocode/innocode@2
        inputs:
-         config_dir: ${CI_PROJECT_DIR}/opencode-config
-         auth_json: $OPENCODE_AUTH_JSON # The variable name for your OpenCode authentication JSON
+         config_dir: ${CI_PROJECT_DIR}/innocode-config
+         auth_json: $OPENCODE_AUTH_JSON # The variable name for your InnoCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```
 
-더 많은 입력 및 사용 사례 [docs를 체크 아웃](https://gitlab.com/explore/catalog/nagyv/gitlab-opencode) 이 구성 요소에 대한.
+더 많은 입력 및 사용 사례 [docs를 체크 아웃](https://gitlab.com/explore/catalog/nagyv/gitlab-innocode) 이 구성 요소에 대한.
 
 ---
 
 ## GitLab Duo
 
 opencode는 GitLab 워크플로우와 통합됩니다.
-코멘트에 Mention `@opencode`, opencode는 GitLab CI 파이프라인 내에서 작업을 실행합니다.
+코멘트에 Mention `@innocode`, opencode는 GitLab CI 파이프라인 내에서 작업을 실행합니다.
 
 ---
 
@@ -82,8 +82,8 @@ opencode는 GitLab CI/CD 파이프라인에서 실행되며, 여기서 설정해
     ```yaml
     image: node:22-slim
     commands:
-      - echo "Installing opencode"
-      - npm install --global opencode-ai
+      - echo "Installing innocode"
+      - npm install --global innocode-ai
       - echo "Installing glab"
       - export GITLAB_TOKEN=$GITLAB_TOKEN_OPENCODE
       - apt-get update --quiet && apt-get install --yes curl wget gpg git && rm --recursive --force /var/lib/apt/lists/*
@@ -91,10 +91,10 @@ opencode는 GitLab CI/CD 파이프라인에서 실행되며, 여기서 설정해
       - apt-get install --yes glab
       - echo "Configuring glab"
       - echo $GITLAB_HOST
-      - echo "Creating OpenCode auth configuration"
-      - mkdir --parents ~/.local/share/opencode
+      - echo "Creating InnoCode auth configuration"
+      - mkdir --parents ~/.local/share/innocode
       - |
-        cat > ~/.local/share/opencode/auth.json << EOF
+        cat > ~/.local/share/innocode/auth.json << EOF
         {
           "anthropic": {
             "type": "api",
@@ -103,13 +103,13 @@ opencode는 GitLab CI/CD 파이프라인에서 실행되며, 여기서 설정해
         }
         EOF
       - echo "Configuring git"
-      - git config --global user.email "opencode@gitlab.com"
-      - git config --global user.name "OpenCode"
+      - git config --global user.email "innocode@gitlab.com"
+      - git config --global user.name "InnoCode"
       - echo "Testing glab"
       - glab issue list
-      - echo "Running OpenCode"
+      - echo "Running InnoCode"
       - |
-        opencode run "
+        innocode run "
         You are an AI assistant helping with GitLab operations.
 
         Context: $AI_FLOW_CONTEXT
@@ -161,7 +161,7 @@ opencode는 GitLab CI/CD 파이프라인에서 실행되며, 여기서 설정해
 다음은 GitLab에서 opencode를 사용할 수있는 몇 가지 예입니다.
 
 :::tip
-`@opencode`보다 다른 트리거 구문을 사용할 수 있습니다.
+`@innocode`보다 다른 트리거 구문을 사용할 수 있습니다.
 :::
 
 - **이슈 설명**
@@ -169,7 +169,7 @@ opencode는 GitLab CI/CD 파이프라인에서 실행되며, 여기서 설정해
 GitLab 문제에서이 코멘트를 추가하십시오.
 
 ```
-  @opencode explain this issue
+  @innocode explain this issue
 ```
 
 opencode는 문제와 대답을 명확하게 설명합니다.
@@ -179,7 +179,7 @@ opencode는 문제와 대답을 명확하게 설명합니다.
 GitLab 문제에서, 말한다:
 
 ```
-  @opencode fix this
+  @innocode fix this
 ```
 
 opencode는 새로운 지점을 만들 것이며 변경 사항을 구현하고 변경 사항을 병합 요청을 엽니다.
@@ -189,7 +189,7 @@ opencode는 새로운 지점을 만들 것이며 변경 사항을 구현하고 �
 GitLab 병합 요청에 대한 다음 의견을 남겨주세요.
 
 ```
-  @opencode review this merge request
+  @innocode review this merge request
 ```
 
 opencode는 병합 요청을 검토하고 피드백을 제공합니다.
