@@ -20,6 +20,6 @@ export default {
   slack: "#", // TODO: Add Slack invite link
   headerLinks: [
     { name: "app.header.home", url: "/" },
-    { name: "app.header.docs", url: "/docs/" },
+    { name: "app.header.docs", url: "/" },
   ],
 }
