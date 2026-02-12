@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 import { $ } from "bun"
 import pkg from "../package.json"
-import { Script } from "@innogpt/innocode-script"
+import { Script } from "@opencode-ai/script"
 import { fileURLToPath } from "url"
 
 const dir = fileURLToPath(new URL("..", import.meta.url))
@@ -178,7 +178,6 @@ if (!Script.preview) {
   await $`cd ./dist/homebrew-tap && git add innocode.rb`
   await $`cd ./dist/homebrew-tap && git commit -m "Update to v${Script.version}"`
   await $`cd ./dist/homebrew-tap && git push`
-||||||| parent of 539a29961 (feat: replace OpenCode Zen with InnoGPT as default provider)
   const image = "ghcr.io/inno-ki/innocode"
   const platforms = "linux/amd64,linux/arm64"
   const tags = [`${image}:${Script.version}`, `${image}:latest`]

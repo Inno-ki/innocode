@@ -96,6 +96,7 @@ export const dict = {
   "dialog.provider.group.popular": "Popular",
   "dialog.provider.group.other": "Other",
   "dialog.provider.tag.recommended": "Recommended",
+  "dialog.provider.innogpt.note": "Curated models for coding with a single InnoGPT key",
   "dialog.provider.opencode.note": "Curated models including Claude, GPT, Gemini and more",
   "dialog.provider.anthropic.note": "Direct access to Claude models, including Pro and Max",
   "dialog.provider.copilot.note": "Claude models for coding assistance",
@@ -134,6 +135,12 @@ export const dict = {
   "provider.connect.opencodeZen.visit.prefix": "Visit ",
   "provider.connect.opencodeZen.visit.link": "app.innogpt.de",
   "provider.connect.opencodeZen.visit.suffix": " to collect your API key.",
+  "provider.connect.innogpt.line1": "InnoGPT gives you access to reliable models optimized for coding agents.",
+  "provider.connect.innogpt.line2":
+    "With a single API key you'll get access to models such as Claude, GPT, Gemini, GLM and more.",
+  "provider.connect.innogpt.visit.prefix": "Visit ",
+  "provider.connect.innogpt.visit.link": "app.innogpt.de",
+  "provider.connect.innogpt.visit.suffix": " to collect your API key.",
   "provider.connect.oauth.code.visit.prefix": "Visit ",
   "provider.connect.oauth.code.visit.link": "this link",
   "provider.connect.oauth.code.visit.suffix":
