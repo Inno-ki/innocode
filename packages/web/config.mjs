@@ -16,7 +16,7 @@ export default {
   console: stage === "production" ? "https://innocode.io/auth" : `https://${stage}.innocode.io/auth`,
   email: "contact@innogpt.de",
   socialCard: "https://social-cards.sst.dev",
-  github: "https://github.com/InnoKI/innocode",
+  github: "https://github.com/Inno-ki/innocode",
   slack: "#", // TODO: Add Slack invite link
   headerLinks: [
     { name: "app.header.home", url: "/" },
