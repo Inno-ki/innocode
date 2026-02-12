@@ -5,23 +5,21 @@ import LogoLight from '../assets/logo-light.svg';
 import Screenshot from '../assets/lander/screenshot.png';
 
 const features = [
-  { title: 'InnoGPT Models', desc: 'EU-hosted models with one API for all powerful models - Claude, GPT, Gemini and more' },
-  { title: 'LSP enabled', desc: 'Automatically loads the right LSPs for the LLM' },
-  { title: 'Multi-session', desc: 'Start multiple agents in parallel on the same project' },
-  { title: 'GitHub Copilot', desc: 'Log in with GitHub to use your Copilot account' },
-  { title: 'ChatGPT Plus/Pro', desc: 'Log in with OpenAI to use your ChatGPT Plus or Pro account' },
-  { title: 'Any model', desc: '75+ LLM providers through Models.dev, including local models' },
-  { title: 'Any editor', desc: 'Available as a terminal interface, desktop app, and IDE extension' },
+  { title: 'InnoGPT Models', desc: 'EU-hosted, GDPR-first models with a single API key' },
+  { title: 'Privacy by default', desc: 'Your code stays local and is never used for training' },
+  { title: 'LSP enabled', desc: 'Automatically loads the right LSPs for the model you use' },
+  { title: 'Multi-session', desc: 'Run multiple agents in parallel on the same project' },
+  { title: 'Every surface', desc: 'CLI, desktop, and IDE extension with consistent behavior' },
+  { title: 'Enterprise-ready', desc: 'Central config, access control, and compliance-friendly hosting' },
 ];
 
 const faqs = [
-  { q: 'What is InnoCode?', a: 'InnoCode is an AI coding agent that helps you write and run code with any AI model. It\'s available as a terminal-based interface, desktop app, or IDE extension.' },
-  { q: 'How do I use InnoCode?', a: 'Install InnoCode using one of the methods above, configure your API key, and start coding with AI assistance.' },
-  { q: 'Do I need extra AI subscriptions to use InnoCode?', a: 'No, you can use InnoGPT\'s EU-hosted models directly, or connect your existing subscriptions like GitHub Copilot or ChatGPT Plus.' },
-  { q: 'Can I use my existing AI subscriptions with InnoCode?', a: 'Yes! InnoCode supports GitHub Copilot, ChatGPT Plus/Pro, and many other providers.' },
-  { q: 'Can I only use InnoCode in the terminal?', a: 'No, InnoCode is available as a terminal app, desktop app, and IDE extension.' },
-  { q: 'How much does InnoCode cost?', a: 'InnoCode is free to use. You only pay for the AI provider you choose to use.' },
-  { q: 'What about data and privacy?', a: 'InnoCode does not store your code or context data. All processing happens locally or through direct API calls to your chosen provider.' },
+  { q: 'What is InnoCode?', a: 'InnoCode is an AI coding agent for the terminal, desktop, and IDE. It ships with InnoGPT — our EU-hosted model gateway.' },
+  { q: 'How do I get started?', a: 'Install InnoCode, sign in to InnoGPT to create an API key, and start coding.' },
+  { q: 'Do I need other AI subscriptions?', a: 'No. InnoCode is optimized for InnoGPT, so a single InnoGPT key powers everything.' },
+  { q: 'Can I use other providers?', a: 'Not by default. InnoCode is configured for InnoGPT to guarantee GDPR-grade hosting and consistent behavior.' },
+  { q: 'Where is my data processed?', a: 'Requests route through InnoGPT’s EU-hosted infrastructure. InnoCode does not store your code or context.' },
+  { q: 'Is there a desktop app?', a: 'Yes — InnoCode Desktop is available for macOS, Windows, and Linux.' },
 ];
 ---
 
@@ -34,30 +32,47 @@ const faqs = [
   <meta name="description" content="EU-hosted AI models with one API. Connect Claude, GPT, Gemini and more." />
   <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap");
+
     :root {
-      --bg: #131313;
-      --bg-card: #1a1a1a;
-      --text: #e8e8e8;
-      --text-secondary: #888;
-      --text-muted: #555;
-      --border: #2a2a2a;
-      --font: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+      --bg: #0e1110;
+      --bg-card: #141818;
+      --text: #f3f4f5;
+      --text-secondary: #b1b7b4;
+      --text-muted: #6e7673;
+      --border: #242a28;
+      --accent: #62e6b8;
+      --accent-2: #f2a93b;
+      --font: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     }
 
     :root.light {
-      --bg: #fafafa;
-      --bg-card: #fff;
-      --text: #1a1a1a;
-      --text-secondary: #666;
-      --text-muted: #999;
-      --border: #e0e0e0;
+      --bg: #f7f7f6;
+      --bg-card: #ffffff;
+      --text: #121313;
+      --text-secondary: #4e5552;
+      --text-muted: #8a918e;
+      --border: #e1e4e2;
+      --accent: #2f9f75;
+      --accent-2: #c87b12;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+    html { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; color-scheme: dark; }
+    :root.light { color-scheme: light; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(98, 230, 184, 0.12), transparent 55%),
+        radial-gradient(900px 500px at -10% 20%, rgba(242, 169, 59, 0.12), transparent 55%),
+        var(--bg);
+      -webkit-tap-highlight-color: transparent;
+    }
     a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    .page { max-width: 900px; margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); min-height: 100vh; }
+    .page { max-width: 960px; margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); min-height: 100vh; }
 
     /* Header */
     .header { padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
@@ -76,26 +91,26 @@ const faqs = [
       gap: 0.5rem;
       padding: 0.5rem 1rem;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 999px;
       font-size: 0.9rem;
-      background: var(--bg-card);
+      background: linear-gradient(120deg, rgba(98, 230, 184, 0.15), rgba(242, 169, 59, 0.1));
     }
-    .btn-free:hover { background: var(--border); }
+    .btn-free:hover { background: linear-gradient(120deg, rgba(98, 230, 184, 0.3), rgba(242, 169, 59, 0.2)); }
 
     .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 1rem; padding: 0.25rem; }
 
     /* Sections */
-    .section { padding: 3rem 2rem; border-bottom: 1px solid var(--border); }
+    .section { padding: 3.2rem 2rem; border-bottom: 1px solid var(--border); animation: fadeUp 0.6s ease both; animation-delay: var(--delay, 0s); }
 
     /* Announcement */
-    .announcement { font-size: 0.9rem; color: var(--text-secondary); }
-    .announcement-badge { display: inline-block; background: var(--border); color: var(--text); padding: 0.1rem 0.4rem; border-radius: 2px; font-size: 0.8rem; margin-right: 0.5rem; }
+    .announcement { font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .announcement-badge { display: inline-block; background: rgba(98, 230, 184, 0.15); color: var(--accent); padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.78rem; margin-right: 0.3rem; }
     .announcement a { color: var(--text-secondary); }
     .announcement a:hover { color: var(--text); }
 
     /* Hero */
-    .hero h1 { font-size: 2.2rem; font-weight: 400; margin: 2rem 0 1rem; letter-spacing: -0.02em; }
-    .hero-sub { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 600; margin: 1.5rem 0 1rem; letter-spacing: -0.03em; text-wrap: balance; }
+    .hero-sub { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 34rem; text-wrap: balance; }
 
     /* Install box */
     .install-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 3rem; }
@@ -115,7 +130,7 @@ const faqs = [
     .install-tab.active { color: var(--text); border-bottom-color: var(--text); }
 
     .install-cmd { padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
-    .install-cmd code { font-family: var(--font); color: var(--text-secondary); }
+    .install-cmd code { font-family: var(--mono); color: var(--text-secondary); }
     .install-cmd code .hl { color: var(--text); }
     .install-cmd code .pipe { color: var(--text-muted); margin: 0 0.5rem; }
 
@@ -123,11 +138,11 @@ const faqs = [
     .copy-btn:hover { color: var(--text); }
 
     /* Screenshot */
-    .screenshot { border: 4px solid #f5a623; border-radius: 4px; overflow: hidden; }
+    .screenshot { border: 4px solid var(--accent-2); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); }
     .screenshot img { width: 100%; height: auto; display: block; object-fit: contain; }
 
     /* Features */
-    .section-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
     .section-intro { color: var(--text-secondary); margin-bottom: 2rem; }
 
     .features-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
@@ -142,7 +157,7 @@ const faqs = [
       gap: 0.5rem;
       padding: 0.6rem 1.25rem;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 999px;
       font-size: 0.9rem;
     }
     .read-btn:hover { background: var(--bg-card); }
@@ -198,7 +213,7 @@ const faqs = [
     .newsletter-form button:hover { background: var(--border); }
 
     /* Footer */
-    .footer-links { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--border); }
+    .footer-links { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--border); }
     .footer-link { padding: 1.5rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; border-right: 1px solid var(--border); }
     .footer-link:last-child { border-right: none; }
     .footer-link:hover { color: var(--text); }
@@ -217,34 +232,59 @@ const faqs = [
 
     .cmd-panel { display: none; }
     .cmd-panel.active { display: inline; }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 1rem;
+      background: var(--accent);
+      color: #0b0b0b;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      z-index: 10;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
+    <a href="#main" class="skip-link">Skip to content</a>
     <header class="header">
       <a href="/" class="logo">
         <img src={LogoDark.src} alt="InnoCode" class="dark-logo" />
         <img src={LogoLight.src} alt="InnoCode" class="light-logo" />
       </a>
       <nav class="nav">
-        <a href="https://github.com/InnoKI/innocode" target="_blank">GitHub</a>
+        <a href="https://github.com/InnoKI/innocode" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="/intro">Docs</a>
         <a href="/enterprise">Enterprise</a>
+        <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer">Console</a>
       </nav>
       <div style="display: flex; align-items: center; gap: 0.75rem;">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀</button>
-        <a href="/intro" class="btn-free">↓ Free</a>
+        <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer" class="btn-free">Get API key</a>
       </div>
     </header>
 
-    <section class="section announcement">
+    <section class="section announcement" style="--delay: 0.05s;">
       <span class="announcement-badge">New</span>
-      Desktop app available in beta on macOS, Windows, and Linux. <a href="/ide">Download now</a>
+      InnoCode Desktop is in beta for macOS, Windows, and Linux. <a href="/ide">Download now</a>
     </section>
 
-    <section class="section">
+    <main id="main">
+    <section class="section" style="--delay: 0.1s;">
       <h1 class="hero h1">The AI coding agent</h1>
-      <p class="hero-sub">EU-hosted models included or connect any model from any provider, including Claude, GPT, Gemini and more.</p>
+      <p class="hero-sub">Built for GDPR‑grade privacy. InnoCode ships with InnoGPT — EU‑hosted models and one API key for everything.</p>
 
       <div class="install-box">
         <div class="install-tabs">
@@ -257,8 +297,8 @@ const faqs = [
         <div class="install-cmd">
           <code>
             <span class="cmd-panel active" data-cmd="curl">curl -fsSL https://<span class="hl">innocode.io/install</span><span class="pipe">|</span>bash</span>
-            <span class="cmd-panel" data-cmd="npm">npm install -g <span class="hl">@innogpt/innocode</span></span>
-            <span class="cmd-panel" data-cmd="bun">bun install -g <span class="hl">@innogpt/innocode</span></span>
+            <span class="cmd-panel" data-cmd="npm">npm install -g <span class="hl">innocode</span></span>
+            <span class="cmd-panel" data-cmd="bun">bun install -g <span class="hl">innocode</span></span>
             <span class="cmd-panel" data-cmd="brew">brew install <span class="hl">InnoKI/tap/innocode</span></span>
             <span class="cmd-panel" data-cmd="paru">paru -S <span class="hl">innocode-bin</span></span>
           </code>
@@ -276,9 +316,9 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="--delay: 0.15s;">
       <h2 class="section-title">What is InnoCode?</h2>
-      <p class="section-intro">InnoCode is an AI coding agent that helps you write code in your terminal, IDE, or desktop.</p>
+      <p class="section-intro">InnoCode is an AI coding agent that helps you build faster in your terminal, IDE, or desktop.</p>
 
       <div class="features-list">
         {features.map(f => (
@@ -292,12 +332,12 @@ const faqs = [
       <a href="/intro" class="read-btn">Read docs →</a>
     </section>
 
-    <section class="section">
+    <section class="section" style="--delay: 0.2s;">
       <h2 class="section-title">Built for privacy first</h2>
-      <p class="privacy-text">[*] InnoCode does not store any of your code or context data, so that it can operate in privacy sensitive environments. Learn more about <a href="/enterprise">privacy</a>.</p>
+      <p class="privacy-text">[*] InnoCode does not store your code or context. InnoGPT routes requests through EU‑hosted infrastructure designed for privacy‑sensitive teams. Learn more about <a href="/enterprise">privacy</a>.</p>
     </section>
 
-    <section class="section">
+    <section class="section" style="--delay: 0.25s;">
       <h2 class="section-title">FAQ</h2>
       <div class="faq-list">
         {faqs.map(faq => (
@@ -312,25 +352,27 @@ const faqs = [
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="--delay: 0.3s;">
       <h2 class="section-title">Be the first to know when we release new products</h2>
       <p style="color: var(--text-secondary); margin-bottom: 0;">Join the waitlist for early access.</p>
       <form class="newsletter-form">
-        <input type="email" placeholder="Email address" required />
+        <input type="email" name="email" inputmode="email" autocomplete="email" placeholder="Email address…" aria-label="Email address" required />
         <button type="submit">Subscribe</button>
       </form>
     </section>
+    </main>
 
     <footer>
       <div class="footer-links">
-        <a href="https://github.com/InnoKI/innocode" target="_blank" class="footer-link">GitHub</a>
+        <a href="https://github.com/InnoKI/innocode" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
         <a href="/intro" class="footer-link">Docs</a>
-        <a href="https://github.com/InnoKI/innocode/releases" target="_blank" class="footer-link"><span>Changelog</span></a>
+        <a href="https://github.com/InnoKI/innocode/releases" target="_blank" rel="noopener noreferrer" class="footer-link"><span>Changelog</span></a>
+        <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer" class="footer-link">Console</a>
         <a href="#" class="footer-link">Slack</a>
         <a href="#" class="footer-link">X</a>
       </div>
       <div class="footer-bottom">
-        <span>©2026 InnoGPT</span>
+        <span>©2026 InnoCode</span>
         <a href="/enterprise">Privacy</a>
       </div>
     </footer>
@@ -351,8 +393,8 @@ const faqs = [
     const panels = document.querySelectorAll('.cmd-panel');
     const cmds: Record<string, string> = {
       curl: 'curl -fsSL https://innocode.io/install | bash',
-      npm: 'npm install -g @innogpt/innocode',
-      bun: 'bun install -g @innogpt/innocode',
+      npm: 'npm install -g innocode',
+      bun: 'bun install -g innocode',
       brew: 'brew install InnoKI/tap/innocode',
       paru: 'paru -S innocode-bin',
     };

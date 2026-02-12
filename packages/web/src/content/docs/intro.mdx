@@ -25,7 +25,7 @@ To use InnoCode in your terminal, you'll need:
    - [Ghostty](https://ghostty.org), Linux and macOS
    - [Kitty](https://sw.kovidgoyal.net/kitty/), Linux and macOS
 
-2. API keys for the LLM providers you want to use.
+2. An InnoGPT API key.
 
 ---
 
@@ -45,28 +45,28 @@ You can also install it with the following commands:
 
       <TabItem label="npm">
       ```bash
-      npm install -g @innogpt/innocode
+      npm install -g innocode
       ```
 
           </TabItem>
 
         <TabItem label="Bun">
         ```bash
-        bun install -g @innogpt/innocode
+        bun install -g innocode
         ```
 
           </TabItem>
 
         <TabItem label="pnpm">
         ```bash
-        pnpm install -g @innogpt/innocode
+        pnpm install -g innocode
         ```
 
           </TabItem>
 
         <TabItem label="Yarn">
         ```bash
-        yarn global add @innogpt/innocode
+        yarn global add innocode
         ```
 
       </TabItem>
@@ -104,7 +104,7 @@ You can also install it with the following commands:
 - **Using NPM**
 
   ```bash
-  npm install -g @innogpt/innocode
+  npm install -g innocode
   ```
 
 - **Using Mise**
@@ -127,13 +127,9 @@ You can also grab the binary from the [Releases](https://github.com/InnoKI/innoc
 
 ## Configure
 
-With InnoCode you can use any LLM provider by configuring their API keys.
+InnoCode is configured to use **InnoGPT** by default for GDPR-grade hosting and consistent behavior.
 
-If you are new to using LLM providers, we recommend using [InnoCode Zen](/docs/zen).
-It's a curated list of models that have been tested and verified by the InnoCode
-team.
-
-1. Run the `/connect` command in the TUI, select innocode, and head to [innocode.io/auth](https://innocode.io/auth).
+1. Run the `/connect` command in the TUI, select **InnoGPT**, and head to [app.innogpt.de](https://app.innogpt.de).
 
    ```txt
    /connect
@@ -150,7 +146,7 @@ team.
    └ enter
    ```
 
-Alternatively, you can select one of the other providers. [Learn more](/docs/providers#directory).
+InnoCode uses InnoGPT as the default and only supported provider.
 
 ---
 

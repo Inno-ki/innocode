@@ -109,7 +109,7 @@ innocode agent list
 
 ### auth
 
-Command to manage credentials and login for providers.
+Command to manage credentials and login for InnoGPT.
 
 ```bash
 innocode auth [command]
@@ -119,19 +119,19 @@ innocode auth [command]
 
 #### login
 
-InnoCode is powered by the provider list at [Models.dev](https://models.dev), so you can use `innocode auth login` to configure API keys for any provider you'd like to use. This is stored in `~/.local/share/innocode/auth.json`.
+InnoCode is configured for InnoGPT, so use `innocode auth login` to store your InnoGPT API key. This is stored in `~/.local/share/innocode/auth.json`.
 
 ```bash
 innocode auth login
 ```
 
-When InnoCode starts up it loads the providers from the credentials file. And if there are any keys defined in your environments or a `.env` file in your project.
+When InnoCode starts up it loads the InnoGPT key from the credentials file and environment variables.
 
 ---
 
 #### list
 
-Lists all the authenticated providers as stored in the credentials file.
+Lists the authenticated InnoGPT key stored in the credentials file.
 
 ```bash
 innocode auth list
@@ -147,7 +147,7 @@ innocode auth ls
 
 #### logout
 
-Logs you out of a provider by clearing it from the credentials file.
+Logs you out by clearing the InnoGPT key from the credentials file.
 
 ```bash
 innocode auth logout

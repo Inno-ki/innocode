@@ -234,6 +234,39 @@ export namespace Config {
 
     if (!result.username) result.username = os.userInfo().username
 
+    const defaults = {
+      provider: "innogpt",
+      model: "innogpt/gpt-4o",
+      small: "innogpt/gpt-4o-mini",
+      baseURL: "https://app.innogpt.de/api/ext/v1",
+    }
+
+    result.enabled_providers = [defaults.provider]
+
+    if (!result.model || !result.model.startsWith(`${defaults.provider}/`)) {
+      result.model = defaults.model
+    }
+    if (!result.small_model || !result.small_model.startsWith(`${defaults.provider}/`)) {
+      result.small_model = defaults.small
+    }
+
+    result.provider ??= {}
+
+    const innogpt = result.provider[defaults.provider]
+    if (!innogpt) {
+      result.provider[defaults.provider] = {
+        npm: "@ai-sdk/openai-compatible",
+        options: {
+          baseURL: defaults.baseURL,
+        },
+      }
+    }
+
+    if (innogpt) {
+      innogpt.options ??= {}
+      if (!innogpt.options.baseURL) innogpt.options.baseURL = defaults.baseURL
+    }
+
     // Handle migration from autoshare to share field
     if (result.autoshare === true && !result.share) {
       result.share = "auto"

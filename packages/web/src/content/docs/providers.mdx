@@ -1,45 +1,45 @@
 ---
 title: Providers
-description: Using any LLM provider in InnoCode.
+description: InnoGPT is the only supported provider in InnoCode.
 ---
 
 import config from "../../../config.mjs"
 export const console = config.console
 
-InnoCode uses the [AI SDK](https://ai-sdk.dev/) and [Models.dev](https://models.dev) to support **75+ LLM providers** and it supports running local models.
+InnoCode is configured to use **InnoGPT** by default. Other providers are disabled to guarantee GDPR-grade hosting and consistent behavior.
 
-To add a provider you need to:
+To get started you need to:
 
-1. Add the API keys for the provider using the `/connect` command.
-2. Configure the provider in your InnoCode config.
+1. Add your InnoGPT API key using the `/connect` command.
+2. Use InnoGPT models in your InnoCode config.
 
 ---
 
 ### Credentials
 
-When you add a provider's API keys with the `/connect` command, they are stored
+When you add your InnoGPT API key with the `/connect` command, it is stored
 in `~/.local/share/innocode/auth.json`.
 
 ---
 
 ### Config
 
-You can customize the providers through the `provider` section in your InnoCode
+You can customize InnoGPT through the `provider` section in your InnoCode
 config.
 
 ---
 
 #### Base URL
 
-You can customize the base URL for any provider by setting the `baseURL` option. This is useful when using proxy services or custom endpoints.
+You can customize the base URL for InnoGPT by setting the `baseURL` option. This is useful for proxy services or custom endpoints.
 
 ```json title="innocode.json" {6}
 {
   "$schema": "https://innocode.io/config.json",
   "provider": {
-    "anthropic": {
+    "innogpt": {
       "options": {
-        "baseURL": "https://api.anthropic.com/v1"
+        "baseURL": "https://app.innogpt.de/api/ext/v1"
       }
     }
   }
@@ -57,7 +57,7 @@ tested and verified to work well with InnoCode. [Learn more](/docs/zen).
 If you are new, we recommend starting with InnoGPT.
 :::
 
-1. Run the `/connect` command in the TUI, select innocode, and head to [innocode.ai/auth](https://innocode.ai/auth).
+1. Run the `/connect` command in the TUI, select **InnoGPT**, and head to [app.innogpt.de](https://app.innogpt.de).
 
    ```txt
    /connect
