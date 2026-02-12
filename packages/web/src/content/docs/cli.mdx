@@ -360,7 +360,7 @@ Start a headless InnoCode server for API access. Check out the [server docs](/do
 innocode serve
 ```
 
-This starts an HTTP server that provides API access to innocode functionality without the TUI interface. Set `OPENCODE_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `innocode`).
+This starts an HTTP server that provides API access to innocode functionality without the TUI interface. Set `INNOCODE_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `innocode`).
 
 #### Flags
 
@@ -456,7 +456,7 @@ Start a headless InnoCode server with a web interface.
 innocode web
 ```
 
-This starts an HTTP server and opens a web browser to access InnoCode through a web interface. Set `OPENCODE_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `innocode`).
+This starts an HTTP server and opens a web browser to access InnoCode through a web interface. Set `INNOCODE_SERVER_PASSWORD` to enable HTTP basic auth (username defaults to `innocode`).
 
 #### Flags
 
@@ -555,30 +555,30 @@ InnoCode can be configured using environment variables.
 
 | Variable                              | Type    | Description                                       |
 | ------------------------------------- | ------- | ------------------------------------------------- |
-| `OPENCODE_AUTO_SHARE`                 | boolean | Automatically share sessions                      |
-| `OPENCODE_GIT_BASH_PATH`              | string  | Path to Git Bash executable on Windows            |
+| `INNOCODE_AUTO_SHARE`                 | boolean | Automatically share sessions                      |
+| `INNOCODE_GIT_BASH_PATH`              | string  | Path to Git Bash executable on Windows            |
 | `INNOCODE_CONFIG`                     | string  | Path to config file                               |
 | `INNOCODE_CONFIG_DIR`                 | string  | Path to config directory                          |
 | `INNOCODE_CONFIG_CONTENT`             | string  | Inline json config content                        |
-| `OPENCODE_DISABLE_AUTOUPDATE`         | boolean | Disable automatic update checks                   |
-| `OPENCODE_DISABLE_PRUNE`              | boolean | Disable pruning of old data                       |
-| `OPENCODE_DISABLE_TERMINAL_TITLE`     | boolean | Disable automatic terminal title updates          |
-| `OPENCODE_PERMISSION`                 | string  | Inlined json permissions config                   |
-| `OPENCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Disable default plugins                           |
-| `OPENCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Disable automatic LSP server downloads            |
-| `OPENCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Enable experimental models                        |
-| `OPENCODE_DISABLE_AUTOCOMPACT`        | boolean | Disable automatic context compaction              |
-| `OPENCODE_DISABLE_CLAUDE_CODE`        | boolean | Disable reading from `.claude` (prompt + skills)  |
-| `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Disable reading `~/.claude/CLAUDE.md`             |
-| `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Disable loading `.claude/skills`                  |
-| `OPENCODE_DISABLE_MODELS_FETCH`       | boolean | Disable fetching models from remote sources       |
-| `OPENCODE_FAKE_VCS`                   | string  | Fake VCS provider for testing purposes            |
-| `OPENCODE_DISABLE_FILETIME_CHECK`     | boolean | Disable file time checking for optimization       |
-| `OPENCODE_CLIENT`                     | string  | Client identifier (defaults to `cli`)             |
-| `OPENCODE_ENABLE_EXA`                 | boolean | Enable Exa web search tools                       |
-| `OPENCODE_SERVER_PASSWORD`            | string  | Enable basic auth for `serve`/`web`               |
-| `OPENCODE_SERVER_USERNAME`            | string  | Override basic auth username (default `innocode`) |
-| `OPENCODE_MODELS_URL`                 | string  | Custom URL for fetching models configuration      |
+| `INNOCODE_DISABLE_AUTOUPDATE`         | boolean | Disable automatic update checks                   |
+| `INNOCODE_DISABLE_PRUNE`              | boolean | Disable pruning of old data                       |
+| `INNOCODE_DISABLE_TERMINAL_TITLE`     | boolean | Disable automatic terminal title updates          |
+| `INNOCODE_PERMISSION`                 | string  | Inlined json permissions config                   |
+| `INNOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Disable default plugins                           |
+| `INNOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Disable automatic LSP server downloads            |
+| `INNOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Enable experimental models                        |
+| `INNOCODE_DISABLE_AUTOCOMPACT`        | boolean | Disable automatic context compaction              |
+| `INNOCODE_DISABLE_CLAUDE_CODE`        | boolean | Disable reading from `.claude` (prompt + skills)  |
+| `INNOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Disable reading `~/.claude/CLAUDE.md`             |
+| `INNOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Disable loading `.claude/skills`                  |
+| `INNOCODE_DISABLE_MODELS_FETCH`       | boolean | Disable fetching models from remote sources       |
+| `INNOCODE_FAKE_VCS`                   | string  | Fake VCS provider for testing purposes            |
+| `INNOCODE_DISABLE_FILETIME_CHECK`     | boolean | Disable file time checking for optimization       |
+| `INNOCODE_CLIENT`                     | string  | Client identifier (defaults to `cli`)             |
+| `INNOCODE_ENABLE_EXA`                 | boolean | Enable Exa web search tools                       |
+| `INNOCODE_SERVER_PASSWORD`            | string  | Enable basic auth for `serve`/`web`               |
+| `INNOCODE_SERVER_USERNAME`            | string  | Override basic auth username (default `innocode`) |
+| `INNOCODE_MODELS_URL`                 | string  | Custom URL for fetching models configuration      |
 
 ---
 
@@ -588,16 +588,16 @@ These environment variables enable experimental features that may change or be r
 
 | Variable                                        | Type    | Description                             |
 | ----------------------------------------------- | ------- | --------------------------------------- |
-| `OPENCODE_EXPERIMENTAL`                         | boolean | Enable all experimental features        |
-| `OPENCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Enable icon discovery                   |
-| `OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Disable copy on select in TUI           |
-| `OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Default timeout for bash commands in ms |
-| `OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Max output tokens for LLM responses     |
-| `OPENCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Enable file watcher for entire dir      |
-| `OPENCODE_EXPERIMENTAL_OXFMT`                   | boolean | Enable oxfmt formatter                  |
-| `OPENCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Enable experimental LSP tool            |
-| `OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Disable file watcher                    |
-| `OPENCODE_EXPERIMENTAL_EXA`                     | boolean | Enable experimental Exa features        |
-| `OPENCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Enable experimental LSP type checking   |
-| `OPENCODE_EXPERIMENTAL_MARKDOWN`                | boolean | Enable experimental markdown features   |
-| `OPENCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Enable plan mode                        |
+| `INNOCODE_EXPERIMENTAL`                         | boolean | Enable all experimental features        |
+| `INNOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Enable icon discovery                   |
+| `INNOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Disable copy on select in TUI           |
+| `INNOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Default timeout for bash commands in ms |
+| `INNOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Max output tokens for LLM responses     |
+| `INNOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Enable file watcher for entire dir      |
+| `INNOCODE_EXPERIMENTAL_OXFMT`                   | boolean | Enable oxfmt formatter                  |
+| `INNOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Enable experimental LSP tool            |
+| `INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Disable file watcher                    |
+| `INNOCODE_EXPERIMENTAL_EXA`                     | boolean | Enable experimental Exa features        |
+| `INNOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Enable experimental LSP type checking   |
+| `INNOCODE_EXPERIMENTAL_MARKDOWN`                | boolean | Enable experimental markdown features   |
+| `INNOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Enable plan mode                        |

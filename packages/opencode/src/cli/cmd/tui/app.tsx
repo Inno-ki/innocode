@@ -523,7 +523,7 @@ function App() {
       title: "Open docs",
       value: "docs.open",
       onSelect: () => {
-        open("https://opencode.ai/docs").catch(() => {})
+        open("https://innocode.io/docs").catch(() => {})
         dialog.clear()
       },
       category: "System",

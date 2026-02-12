@@ -173,7 +173,7 @@ This tool allows the LLM to run terminal commands like `npm install`, `git statu
 与您配置的LSP服务器交互，通知计划码智慧功能，例如定义、引用、悬停资讯和呼叫层次结构。
 
 :::note
-This tool is only available when `OPENCODE_EXPERIMENTAL_LSP_TOOL=true` (or `OPENCODE_EXPERIMENTAL=true`).
+This tool is only available when `INNOCODE_EXPERIMENTAL_LSP_TOOL=true` (or `INNOCODE_EXPERIMENTAL=true`).
 :::
 
 ```json title="innocode.json" {4}
@@ -291,12 +291,12 @@ To configure which LSP servers are available for your project, see [LSP Servers]
 在網路上搜索資訊。
 
 :::note
-仅当使用 innocode 提供或 `OPENCODE_ENABLE_EXA` 程序环境变量设置为任何真值（例如 `true` 或 `1`）时，此工具才可用。
+仅当使用 innocode 提供或 `INNOCODE_ENABLE_EXA` 程序环境变量设置为任何真值（例如 `true` 或 `1`）时，此工具才可用。
 
 要在启动 innocode 时启用：
 
 ```bash
-OPENCODE_ENABLE_EXA=1 innocode
+INNOCODE_ENABLE_EXA=1 innocode
 ```
 
 :::

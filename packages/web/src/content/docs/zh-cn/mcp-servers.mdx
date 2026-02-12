@@ -3,7 +3,7 @@ title: MCP 服务器
 description: 添加本地和远程MCP工具。
 ---
 
-您可以使用“模型上下文协议”或MCP将外部工具添加到opencode。opencode支持本地和远程服务器。
+您可以使用“模型上下文协议”或MCP将外部工具添加到innocode。innocode支持本地和远程服务器。
 
 添加使用后，MCP工具将自动与内置工具一起供LLM。
 
@@ -23,7 +23,7 @@ MCP服务器会添加到您的上下文中，因此您需要小心启用哪些�
 
 ## 启用
 
-您可以在`mcp`下的[opencode配置](https://innocode.ai/docs/config/)中定义MCP服务器。为每个MCP添加唯一的名称。当提示LLM时，您可以通过名称引用该MCP。
+您可以在`mcp`下的[innocode配置](https://innocode.ai/docs/config/)中定义MCP服务器。为每个MCP添加唯一的名称。当提示LLM时，您可以通过名称引用该MCP。
 
 ```jsonc title="innocode.jsonc" {6}
 {
@@ -165,7 +165,7 @@ use the mcp_everything tool to add the number 3 and 4
 
 ## OAuth
 
-opencode自动处理远程MCP服务器的OAuth身份验证。当服务器需要身份验证时，opencode将：
+innocode自动处理远程MCP服务器的OAuth身份验证。当服务器需要身份验证时，innocode将：
 
 1. 检测 401 响应并启动 OAuth 流程
 2. 如果服务器支持，请使用**动态客户端注册 (RFC 7591)**

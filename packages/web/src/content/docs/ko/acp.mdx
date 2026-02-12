@@ -1,9 +1,9 @@
 ---
 title: ACP 지원
-description: ACP 호환 편집기에서 opencode를 사용하세요.
+description: ACP 호환 편집기에서 innocode를 사용하세요.
 ---
 
-opencode는 [Agent Client Protocol](https://agentclientprotocol.com) 또는 (ACP)을 지원하며, 호환 편집기 및 IDE에서 직접 사용할 수 있습니다.
+innocode는 [Agent Client Protocol](https://agentclientprotocol.com) 또는 (ACP)을 지원하며, 호환 편집기 및 IDE에서 직접 사용할 수 있습니다.
 
 :::tip
 ACP를 지원하는 편집기 및 도구 목록의 경우 [ACP 진행 보고서](https://zed.dev/blog/acp-progress-report#available-now)를 확인하십시오.
@@ -15,9 +15,9 @@ ACP는 코드 편집기와 AI 코딩 에이전트 간의 통신을 표준화하�
 
 ## 구성
 
-ACP를 통해 opencode를 사용하려면 `innocode acp` 명령을 실행하려면 편집기를 구성하십시오.
+ACP를 통해 innocode를 사용하려면 `innocode acp` 명령을 실행하려면 편집기를 구성하십시오.
 
-명령은 opencode를 실행하여 JSON-RPC를 통해 편집기와 통신하는 ACP 호환 하위 프로세스로 시작합니다.
+명령은 innocode를 실행하여 JSON-RPC를 통해 편집기와 통신하는 ACP 호환 하위 프로세스로 시작합니다.
 
 아래는 ACP를 지원하는 인기있는 편집기의 예입니다.
 
@@ -110,7 +110,7 @@ ACP를 통해 opencode를 사용하려면 `innocode acp` 명령을 실행하려�
       command = "innocode",
       args = { "acp" },
       env = {
-        OPENCODE_API_KEY = os.getenv("OPENCODE_API_KEY")
+        INNOCODE_API_KEY = os.getenv("INNOCODE_API_KEY")
       }
     }
   }
@@ -121,7 +121,7 @@ ACP를 통해 opencode를 사용하려면 `innocode acp` 명령을 실행하려�
 
 #### CodeCompanion.nvim
 
-opencode를 [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim)에서 ACP 에이전트로 사용하려면 Neovim config에 다음을 추가하십시오.
+innocode를 [CodeCompanion.nvim](https://github.com/olimorris/codecompanion.nvim)에서 ACP 에이전트로 사용하려면 Neovim config에 다음을 추가하십시오.
 
 ```lua
 require("codecompanion").setup({
@@ -136,13 +136,13 @@ require("codecompanion").setup({
 })
 ```
 
-이 구성은 CodeCompanion을 설정하여 채팅을 위한 ACP 에이전트로 opencode를 사용합니다.
+이 구성은 CodeCompanion을 설정하여 채팅을 위한 ACP 에이전트로 innocode를 사용합니다.
 
-환경 변수 (`OPENCODE_API_KEY`와 같은)를 전달해야하는 경우, CodeCompanion.nvim 문서에서 [Configuring Adapters: Environment variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key)를 참조하십시오.
+환경 변수 (`INNOCODE_API_KEY`와 같은)를 전달해야하는 경우, CodeCompanion.nvim 문서에서 [Configuring Adapters: Environment variables](https://codecompanion.olimorris.dev/getting-started#setting-an-api-key)를 참조하십시오.
 
 ## 지원 기능
 
-opencode는 터미널과 동일하게 ACP를 통해 작동합니다. 모든 기능은 지원됩니다:
+innocode는 터미널과 동일하게 ACP를 통해 작동합니다. 모든 기능은 지원됩니다:
 
 :::note
 `/undo` 및 `/redo`와 같은 일부 내장 슬래시 명령은 현재 지원되지 않습니다.

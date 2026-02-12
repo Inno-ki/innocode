@@ -173,7 +173,7 @@ description: 管理 LLM 可以使用的工具。
 與您配置的 LSP 伺服器互動，以獲得程式碼智慧功能，例如定義、引用、游標懸停資訊和呼叫階層。
 
 :::note
-該工具僅在 `OPENCODE_EXPERIMENTAL_LSP_TOOL=true`（或 `OPENCODE_EXPERIMENTAL=true`）時可用。
+該工具僅在 `INNOCODE_EXPERIMENTAL_LSP_TOOL=true`（或 `INNOCODE_EXPERIMENTAL=true`）時可用。
 :::
 
 ```json title="innocode.json" {4}
@@ -291,12 +291,12 @@ description: 管理 LLM 可以使用的工具。
 在網路上搜尋資訊。
 
 :::note
-僅當使用 innocode 供應商或 `OPENCODE_ENABLE_EXA` 環境變數設定為任何真值（例如 `true` 或 `1`）時，此工具才可用。
+僅當使用 innocode 供應商或 `INNOCODE_ENABLE_EXA` 環境變數設定為任何真值（例如 `true` 或 `1`）時，此工具才可用。
 
 要在啟動 innocode 時啟用：
 
 ```bash
-OPENCODE_ENABLE_EXA=1 innocode
+INNOCODE_ENABLE_EXA=1 innocode
 ```
 
 :::

@@ -35,7 +35,7 @@ Hier verwenden wir eine von der Community erstellte CI/CD-Komponente für InnoCo
      - component: $CI_SERVER_FQDN/nagyv/gitlab-innocode/innocode@2
        inputs:
          config_dir: ${CI_PROJECT_DIR}/innocode-config
-         auth_json: $OPENCODE_AUTH_JSON # Die variable name für ihre InnoCode authentifizierung JSON
+         auth_json: $INNOCODE_AUTH_JSON # Die variable name für ihre InnoCode authentifizierung JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```

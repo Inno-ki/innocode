@@ -18,7 +18,7 @@ innocode web
 Isso inicia um servidor local em `127.0.0.1` com uma porta aleatória disponível e abre automaticamente o innocode no seu navegador padrão.
 
 :::caution
-Se `OPENCODE_SERVER_PASSWORD` não estiver definido, o servidor ficará sem segurança. Isso é aceitável para uso local, mas deve ser configurado para acesso à rede.
+Se `INNOCODE_SERVER_PASSWORD` não estiver definido, o servidor ficará sem segurança. Isso é aceitável para uso local, mas deve ser configurado para acesso à rede.
 :::
 
 :::tip[Usuários do Windows]
@@ -80,13 +80,13 @@ innocode web --cors https://example.com
 
 ### Autenticação
 
-Para proteger o acesso, defina uma senha usando a variável de ambiente `OPENCODE_SERVER_PASSWORD`:
+Para proteger o acesso, defina uma senha usando a variável de ambiente `INNOCODE_SERVER_PASSWORD`:
 
 ```bash
-OPENCODE_SERVER_PASSWORD=secret innocode web
+INNOCODE_SERVER_PASSWORD=secret innocode web
 ```
 
-O nome de usuário padrão é `innocode`, mas pode ser alterado com `OPENCODE_SERVER_USERNAME`.
+O nome de usuário padrão é `innocode`, mas pode ser alterado com `INNOCODE_SERVER_USERNAME`.
 
 ---
 

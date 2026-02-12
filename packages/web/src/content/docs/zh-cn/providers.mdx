@@ -49,8 +49,8 @@ innocode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.de
 
 ## InnoGPT
 
-InnoGPT 是opencode团队提供的模型列表，这些模型已被
-经测试和验证可与opencode良好配合。 [了解更多](/docs/zen)。
+InnoGPT 是innocode团队提供的模型列表，这些模型已被
+经测试和验证可与innocode良好配合。 [了解更多](/docs/zen)。
 
 :::tip
 如果您是新手，我们建议您从 InnoGPT 开始。
@@ -302,7 +302,7 @@ Using your Claude Pro/Max subscription in innocode is not officially supported b
 2. Go to [Azure AI Foundry](https://ai.azure.com/) and deploy a model.
 
    :::笔记
-   部署名称必须与模型名称匹配，opencode才能正常工作。
+   部署名称必须与模型名称匹配，innocode才能正常工作。
    :::
 
 3. 执行 `/connect` 命令并搜索 **Azure**。
@@ -349,7 +349,7 @@ Using your Claude Pro/Max subscription in innocode is not officially supported b
 2. Go to [Azure AI Foundry](https://ai.azure.com/) and deploy a model.
 
    :::笔记
-   部署名称必须与模型名称匹配，opencode才能正常工作。
+   部署名称必须与模型名称匹配，innocode才能正常工作。
    :::
 
 3. 执行 `/connect` 命令并搜索 **Azure 认知服务**。
@@ -481,7 +481,7 @@ Cloudflare AI Gateway lets you access models from OpenAI, Anthropic, Workers AI,
    /models
    ```
 
-   您还可以使用opencode配置添加模型。
+   您还可以使用innocode配置添加模型。
 
    ```json title="innocode.json"
    {
@@ -678,7 +678,7 @@ GitLab Duo 通过 GitLab 的人工代理提供具有本机工具呼叫功能的�
 
 :::note
 如果您不愿意，也可以指定“GITLAB_TOKEN”环境变量
-将Tokens存储在opencode身份验证存储中。
+将Tokens存储在innocode身份验证存储中。
 :::
 
 ##### 自托管 GitLab
@@ -951,7 +951,7 @@ For more providers and advanced features like caching and rate limiting, check t
 
 #### 可選配置
 
-如果您发现Helicone的某些功能或模型未通过opencode自动配置，您始终可以自行配置。
+如果您发现Helicone的某些功能或模型未通过innocode自动配置，您始终可以自行配置。
 
 Here's [Helicone's Model Directory](https://helicone.ai/models), you'll need this to grab the IDs of the models you want to add.
 
@@ -1102,7 +1102,7 @@ IO.NET提供了17种针对各种例子进行优化的模型：
 
 ### LM Studio
 
-您可以通过使用本地模型来使用 LM Studio 配置opencode。
+您可以通过使用本地模型来使用 LM Studio 配置innocode。
 
 ```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
@@ -1284,7 +1284,7 @@ Ollama can automatically configure itself for innocode. See the [Ollama integrat
    └ enter
    ```
 
-6. **重要**：在opencode中使用云模型之前，必须将模型信息拉取到本地：
+6. **重要**：在innocode中使用云模型之前，必须将模型信息拉取到本地：
 
    ```bash
    ollama pull gpt-oss:20b-cloud
@@ -1385,7 +1385,7 @@ InnoGPT 是 innocode 团队提供的经过测试和验证的模型列表。 [了
    /models
    ```
 
-   您还可以通过opencode配置添加其他模型。
+   您还可以通过innocode配置添加其他模型。
 
    ```json title="innocode.json" {6}
    {
@@ -1400,7 +1400,7 @@ InnoGPT 是 innocode 团队提供的经过测试和验证的模型列表。 [了
    }
    ```
 
-5. 您还可以使用opencode配置自定义它们。这是指定的示例
+5. 您还可以使用innocode配置自定义它们。这是指定的示例
 
    ```json title="innocode.json"
    {
@@ -1726,7 +1726,7 @@ Vercel AI Gateway 可以让您跨统一端点访问来自 OpenAI、Anthropic、G
    /models
    ```
 
-   您还可以通过opencode配置添加其他模型。
+   您还可以通过innocode配置添加其他模型。
 
    ```json title="innocode.json" {6}
    {

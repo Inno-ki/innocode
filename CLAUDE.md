@@ -83,7 +83,7 @@ When making changes, be aware:
 | OpenCode | InnoCode |
 |----------|----------|
 | `opencode` | `innocode` |
-| `@opencode-ai/*` | `@innogpt/innocode-*` |
+| `@opencode-ai/*` | `@opencode-ai/*` (internal, unchanged) |
 | `opencode.json` | `innocode.json` |
 | `~/.opencode/` | `~/.innocode/` |
 | `OPENCODE_*` | `INNOCODE_*` (both work) |

@@ -242,7 +242,7 @@ export const NotificationPlugin = async ({ project, client, $, directory, worktr
 
 ### .env 保护
 
-阻止opencode读取`.env`文件：
+阻止innocode读取`.env`文件：
 
 ```javascript title=".innocode/plugins/env-protection.js"
 export const EnvProtection = async ({ project, client, $, directory, worktree }) => {
@@ -300,13 +300,13 @@ export const CustomToolsPlugin: Plugin = async (ctx) => {
 }
 ```
 
-`tool` 帮助器创建一个可以调用的自定义工具的opencode。它采用 Zod 模式函数并返回一个工具定义：
+`tool` 帮助器创建一个可以调用的自定义工具的innocode。它采用 Zod 模式函数并返回一个工具定义：
 
 - `description`：该工具的作用
 - `args`：Zod 模式的工具参数
 - `execute`：调用工具时运行的函数
 
-您的自定義工具将可与内置工具一起用于opencode。
+您的自定義工具将可与内置工具一起用于innocode。
 
 ---
 

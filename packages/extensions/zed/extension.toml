@@ -1,5 +1,5 @@
 id = "opencode"
-name = "OpenCode"
+name = "InnoCode"
 description = "The open source coding agent."
 version = "1.1.60"
 schema_version = 1
@@ -7,7 +7,7 @@ authors = ["Anomaly"]
 repository = "https://github.com/anomalyco/opencode"
 
 [agent_servers.opencode]
-name = "OpenCode"
+name = "InnoCode"
 icon = "./icons/opencode.svg"
 
 [agent_servers.opencode.targets.darwin-aarch64]

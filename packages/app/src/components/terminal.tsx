@@ -172,7 +172,7 @@ export const Terminal = (props: TerminalProps) => {
       url.searchParams.set("cursor", String(start !== undefined ? start : local.pty.buffer ? -1 : 0))
       url.protocol = url.protocol === "https:" ? "wss:" : "ws:"
       if (window.__OPENCODE__?.serverPassword) {
-        url.username = "opencode"
+        url.username = "innocode"
         url.password = window.__OPENCODE__?.serverPassword
       }
       const socket = new WebSocket(url)

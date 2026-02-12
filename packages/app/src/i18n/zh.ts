@@ -148,14 +148,14 @@ export const dict = {
   "provider.connect.status.waiting": "等待授权...",
   "provider.connect.status.failed": "授权失败：{{error}}",
   "provider.connect.apiKey.description":
-    "输入你的 {{provider}} API 密钥以连接帐户，并在 OpenCode 中使用 {{provider}} 模型。",
+    "输入你的 {{provider}} API 密钥以连接帐户，并在 InnoCode 中使用 {{provider}} 模型。",
   "provider.connect.apiKey.label": "{{provider}} API 密钥",
   "provider.connect.apiKey.placeholder": "API 密钥",
   "provider.connect.apiKey.required": "API 密钥为必填项",
   "provider.connect.opencodeZen.line1": "InnoGPT 为你提供一组精选的可靠优化模型，用于代码智能体。",
   "provider.connect.opencodeZen.line2": "只需一个 API 密钥，你就能使用 Claude、GPT、Gemini、GLM 等模型。",
   "provider.connect.opencodeZen.visit.prefix": "访问 ",
-  "provider.connect.opencodeZen.visit.link": "app.innogpt.de",
+  "provider.connect.opencodeZen.visit.link": "innocode.io",
   "provider.connect.opencodeZen.visit.suffix": " 获取你的 API 密钥。",
   "provider.connect.oauth.code.visit.prefix": "访问 ",
   "provider.connect.oauth.code.visit.link": "此链接",
@@ -305,7 +305,7 @@ export const dict = {
 
   "dialog.lsp.empty": "已从文件类型自动检测到 LSPs",
 
-  "dialog.plugins.empty": "在 opencode.json 中配置的插件",
+  "dialog.plugins.empty": "在 innocode.json 中配置的插件",
 
   "mcp.status.connected": "已连接",
   "mcp.status.failed": "失败",
@@ -456,8 +456,8 @@ export const dict = {
   "error.chain.responseBody": "响应内容：\n{{body}}",
   "error.chain.didYouMean": "你是不是想输入：{{suggestions}}",
   "error.chain.modelNotFound": "未找到模型：{{provider}}/{{model}}",
-  "error.chain.checkConfig": "请检查你的配置 (opencode.json) 中的 provider/model 名称",
-  "error.chain.mcpFailed": 'MCP 服务器 "{{name}}" 启动失败。注意: OpenCode 暂不支持 MCP 认证。',
+  "error.chain.checkConfig": "请检查你的配置 (innocode.json) 中的 provider/model 名称",
+  "error.chain.mcpFailed": 'MCP 服务器 "{{name}}" 启动失败。注意: InnoCode 暂不支持 MCP 认证。',
   "error.chain.providerAuthFailed": "提供商认证失败（{{provider}}）：{{message}}",
   "error.chain.providerInitFailed": '无法初始化提供商 "{{provider}}"。请检查凭据和配置。',
   "error.chain.configJsonInvalid": "配置文件 {{path}} 不是有效的 JSON(C)",

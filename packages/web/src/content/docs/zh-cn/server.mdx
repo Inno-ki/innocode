@@ -36,10 +36,10 @@ innocode serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### 验证
 
-Set `OPENCODE_SERVER_PASSWORD` to protect the server with HTTP basic auth. The username defaults to `innocode`, or set `OPENCODE_SERVER_USERNAME` to override it. This applies to both `innocode serve` and `innocode web`.
+Set `INNOCODE_SERVER_PASSWORD` to protect the server with HTTP basic auth. The username defaults to `innocode`, or set `INNOCODE_SERVER_USERNAME` to override it. This applies to both `innocode serve` and `innocode web`.
 
 ```bash
-OPENCODE_SERVER_PASSWORD=your-password innocode serve
+INNOCODE_SERVER_PASSWORD=your-password innocode serve
 ```
 
 ---
@@ -51,7 +51,7 @@ When you run `innocode` it starts a TUI and a server. Where the TUI is the
 该端点还用于生成 [SDK](/docs/sdk)。
 
 :::tip
-使用opencode服务器以程序设计方式与opencode交互。
+使用innocode服务器以程序设计方式与innocode交互。
 :::
 
 该架构让 innocode 支持客户端，并允许您以多种设计方式与 innocode 交互。
@@ -83,7 +83,7 @@ http://<hostname>:<port>/doc
 
 ## API
 
-opencode服务器公开以下API。
+innocode服务器公开以下API。
 
 ---
 

@@ -18,7 +18,7 @@ innocode web
 這將在 `127.0.0.1` 上啟動一個具有隨機可用連接埠的本地伺服器，並自動在預設瀏覽器中打開 innocode。
 
 :::caution
-如果未設定 `OPENCODE_SERVER_PASSWORD`，伺服器將不安全。這對於本地使用來說很好，但應該針對網路存取進行設定。
+如果未設定 `INNOCODE_SERVER_PASSWORD`，伺服器將不安全。這對於本地使用來說很好，但應該針對網路存取進行設定。
 :::
 
 :::tip[Windows 使用者]
@@ -80,13 +80,13 @@ innocode web --cors https://example.com
 
 ### 身分驗證
 
-要保護存取，請使用 `OPENCODE_SERVER_PASSWORD` 環境變數設定密碼：
+要保護存取，請使用 `INNOCODE_SERVER_PASSWORD` 環境變數設定密碼：
 
 ```bash
-OPENCODE_SERVER_PASSWORD=secret innocode web
+INNOCODE_SERVER_PASSWORD=secret innocode web
 ```
 
-使用者名稱預設為 `innocode`，但可以使用 `OPENCODE_SERVER_USERNAME` 進行更改。
+使用者名稱預設為 `innocode`，但可以使用 `INNOCODE_SERVER_USERNAME` 進行更改。
 
 ---
 

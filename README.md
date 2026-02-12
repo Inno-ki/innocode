@@ -8,13 +8,13 @@
 
 ---
 
-> **Attribution:** InnoCode is based on [OpenCode](https://github.com/anomalyco/opencode) by Anomaly Co., licensed under the MIT License. This project is not affiliated with the OpenCode team.
+> **Attribution:** InnoCode is based on [InnoCode](https://github.com/anomalyco/innocode) by Anomaly Co., licensed under the MIT License. This project is not affiliated with the InnoCode team.
 
 ---
 
 ## About
 
-InnoCode is InnoGPT's fork of OpenCode, pre-configured to work with the InnoGPT API. It provides a powerful AI coding agent in your terminal with support for multiple AI models.
+InnoCode is InnoGPT's fork of InnoCode, pre-configured to work with the InnoGPT API. It provides a powerful AI coding agent in your terminal with support for multiple AI models.
 
 ## Installation
 
@@ -44,7 +44,7 @@ bun i -g innocode@latest
 
 ### Using Other Providers
 
-InnoCode supports all providers from OpenCode (OpenAI, Anthropic, Google, etc.). Set the appropriate API key:
+InnoCode supports all providers from InnoCode (OpenAI, Anthropic, Google, etc.). Set the appropriate API key:
 
 ```bash
 export OPENAI_API_KEY=your-key
@@ -79,7 +79,7 @@ Create an `innocode.json` file in your project root or `~/.config/innocode/`:
 | `INNOCODE_DISABLE_AUTOUPDATE` | Disable automatic updates |
 | `INNOCODE_EXPERIMENTAL` | Enable experimental features |
 
-> **Note:** For backwards compatibility, `OPENCODE_*` environment variables are also supported.
+> **Note:** For backwards compatibility, `INNOCODE_*` environment variables are also supported.
 
 ## Features
 
@@ -100,29 +100,29 @@ InnoCode includes two built-in agents you can switch between with the `Tab` key:
 
 # Development & Maintenance
 
-## Changes from OpenCode
+## Changes from InnoCode
 
-This fork includes the following modifications from the original OpenCode:
+This fork includes the following modifications from the original InnoCode:
 
 ### Branding Changes
 
-| Component | OpenCode | InnoCode |
+| Component | InnoCode | InnoCode |
 |-----------|----------|----------|
-| Package name | `opencode` / `opencode-ai` | `innocode` |
-| NPM scope | `@opencode-ai/*` | `@innogpt/innocode-*` |
-| Binary name | `opencode` | `innocode` |
-| Config file | `opencode.json` | `innocode.json` |
-| Data directory | `~/.opencode/` | `~/.innocode/` |
-| Env prefix | `OPENCODE_*` | `INNOCODE_*` (both supported) |
+| Package name | `innocode` / `innocode-ai` | `innocode` |
+| NPM scope | `@innocode-ai/*` | `@innogpt/innocode-*` |
+| Binary name | `innocode` | `innocode` |
+| Config file | `innocode.json` | `innocode.json` |
+| Data directory | `~/.innocode/` | `~/.innocode/` |
+| Env prefix | `INNOCODE_*` | `INNOCODE_*` (both supported) |
 
 ### Files Modified for Branding
 
 ```
-packages/opencode/
-├── bin/innocode                    # Renamed from bin/opencode
+packages/innocode/
+├── bin/innocode                    # Renamed from bin/innocode
 ├── src/
 │   ├── global/index.ts            # App name: "innocode"
-│   ├── flag/flag.ts               # INNOCODE_* env vars (with OPENCODE_* compat)
+│   ├── flag/flag.ts               # INNOCODE_* env vars (with INNOCODE_* compat)
 │   ├── installation/index.ts      # Version, user agent, upgrade URLs
 │   ├── config/config.ts           # Config file names, schema URL
 │   ├── provider/provider.ts       # InnoGPT provider, HTTP headers
@@ -135,7 +135,7 @@ packages/opencode/
 
 ### InnoGPT Provider Configuration
 
-Added native InnoGPT provider in `packages/opencode/src/provider/provider.ts`:
+Added native InnoGPT provider in `packages/innocode/src/provider/provider.ts`:
 
 ```typescript
 async innogpt(input) {
@@ -157,15 +157,15 @@ async innogpt(input) {
 }
 ```
 
-## Syncing with Upstream OpenCode
+## Syncing with Upstream InnoCode
 
-This repository is configured to sync with the original OpenCode repository.
+This repository is configured to sync with the original InnoCode repository.
 
 ### Repository Setup
 
 ```
 origin   → https://github.com/Inno-ki/innocode.git     (this repo)
-upstream → https://github.com/anomalyco/opencode.git  (original)
+upstream → https://github.com/anomalyco/innocode.git  (original)
 ```
 
 ### Sync Workflow
@@ -173,7 +173,7 @@ upstream → https://github.com/anomalyco/opencode.git  (original)
 #### 1. Check for Updates
 
 ```bash
-# Fetch latest changes from OpenCode
+# Fetch latest changes from InnoCode
 git fetch upstream
 
 # See what's new
@@ -202,7 +202,7 @@ Conflicts will typically occur in branding-related files. When resolving:
 | `package.json` files | Keep `@innogpt/innocode-*` names, accept new dependencies |
 | `README.md` | Keep InnoCode branding |
 | `src/global/index.ts` | Keep `app = "innocode"` |
-| `src/flag/flag.ts` | Keep dual `INNOCODE_`/`OPENCODE_` support |
+| `src/flag/flag.ts` | Keep dual `INNOCODE_`/`INNOCODE_` support |
 | `src/provider/provider.ts` | Keep InnoGPT provider, accept other changes |
 | `src/installation/index.ts` | Keep InnoCode URLs and branding |
 | Other source files | Usually accept upstream changes |
@@ -228,11 +228,11 @@ git fetch upstream
 CHANGES=$(git log main..upstream/main --oneline | wc -l | tr -d ' ')
 
 if [ "$CHANGES" = "0" ]; then
-    echo "✅ Already up to date with OpenCode"
+    echo "✅ Already up to date with InnoCode"
     exit 0
 fi
 
-echo "📋 Found $CHANGES new commits from OpenCode:"
+echo "📋 Found $CHANGES new commits from InnoCode:"
 git log main..upstream/main --oneline
 
 echo ""
@@ -264,7 +264,7 @@ fi
 
 5. **Use feature flags** - When possible, use environment variables instead of code changes
 
-6. **Review upstream changelog** - Check OpenCode releases for breaking changes before merging
+6. **Review upstream changelog** - Check InnoCode releases for breaking changes before merging
 
 ### Conflict-Prone Files
 
@@ -274,17 +274,17 @@ These files are customized and will likely conflict on merge:
 High conflict risk (always keep ours):
 ├── README.md
 ├── package.json (root)
-├── packages/opencode/package.json
-├── packages/opencode/bin/innocode
-├── packages/opencode/src/global/index.ts
-├── packages/opencode/src/flag/flag.ts
-├── packages/opencode/src/installation/index.ts
-└── packages/opencode/src/provider/provider.ts
+├── packages/innocode/package.json
+├── packages/innocode/bin/innocode
+├── packages/innocode/src/global/index.ts
+├── packages/innocode/src/flag/flag.ts
+├── packages/innocode/src/installation/index.ts
+└── packages/innocode/src/provider/provider.ts
 
 Medium conflict risk (merge carefully):
-├── packages/opencode/src/config/config.ts
-├── packages/opencode/src/session/llm.ts
-├── packages/opencode/script/build.ts
+├── packages/innocode/src/config/config.ts
+├── packages/innocode/src/session/llm.ts
+├── packages/innocode/script/build.ts
 └── packages/*/package.json
 
 Low conflict risk (usually accept theirs):
@@ -301,17 +301,17 @@ bun install
 bun run dev
 
 # Build for production (current platform only)
-bun run --cwd packages/opencode script/build.ts --single
+bun run --cwd packages/innocode script/build.ts --single
 
 # Build for all platforms
-bun run --cwd packages/opencode script/build.ts
+bun run --cwd packages/innocode script/build.ts
 ```
 
 ## Publishing
 
 ```bash
 # Build all platforms
-bun run --cwd packages/opencode script/build.ts
+bun run --cwd packages/innocode script/build.ts
 
 # Publish to npm
 npm publish --access public

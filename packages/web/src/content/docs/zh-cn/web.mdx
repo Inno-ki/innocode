@@ -1,6 +1,6 @@
 ---
 title: 網路
-description: 在浏览器中使用opencode。
+description: 在浏览器中使用innocode。
 ---
 
 innocode 可以在浏览器中作为 Web 应用程序执行，消耗终端可以提供同样强大的 AI 编码体验。
@@ -18,7 +18,7 @@ innocode web
 这将在 `127.0.0.1` 上启动一个具有随机可用端口的本地服务器，并自动在默认浏览器中开启 innocode。
 
 :::caution
-如果未设置`OPENCODE_SERVER_PASSWORD`，服务器将不安全。这对于本地使用来说很好，但应该针对网路访问进行设置。
+如果未设置`INNOCODE_SERVER_PASSWORD`，服务器将不安全。这对于本地使用来说很好，但应该针对网路访问进行设置。
 :::
 
 :::tip[Windows 用户]
@@ -41,13 +41,13 @@ innocode web --port 4096
 
 ### 主機名
 
-情况默认下，服务器系结到`127.0.0.1`（仅限本地主机）。要使opencode在您的网路上可访问：
+情况默认下，服务器系结到`127.0.0.1`（仅限本地主机）。要使innocode在您的网路上可访问：
 
 ```bash
 innocode web --hostname 0.0.0.0
 ```
 
-使用`0.0.0.0`时，opencode将显示本地地址和网络地址：
+使用`0.0.0.0`时，innocode将显示本地地址和网络地址：
 
 ```
   Local access:       http://localhost:4096
@@ -80,13 +80,13 @@ innocode web --cors https://example.com
 
 ### 驗證
 
-要保护访问，请使用 `OPENCODE_SERVER_PASSWORD` 环境变数设置密码：
+要保护访问，请使用 `INNOCODE_SERVER_PASSWORD` 环境变数设置密码：
 
 ```bash
-OPENCODE_SERVER_PASSWORD=secret innocode web
+INNOCODE_SERVER_PASSWORD=secret innocode web
 ```
 
-The username defaults to `innocode` but can be changed with `OPENCODE_SERVER_USERNAME`.
+The username defaults to `innocode` but can be changed with `INNOCODE_SERVER_USERNAME`.
 
 ---
 

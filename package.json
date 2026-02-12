@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "opencode",
+  "name": "innocode",
   "description": "AI-powered development tool",
   "private": true,
   "type": "module",
@@ -82,7 +82,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/anomalyco/opencode"
+    "url": "https://github.com/Inno-ki/innocode"
   },
   "license": "MIT",
   "prettier": {

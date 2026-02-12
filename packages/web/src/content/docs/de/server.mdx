@@ -37,11 +37,11 @@ innocode serve --cors http://localhost:5173 --cors https://app.example.com
 
 ### Authentifizierung
 
-Setze `OPENCODE_SERVER_PASSWORD`, um den Server mit HTTP Basic Auth zu schuetzen.
-Der Benutzername ist standardmaessig `innocode`, kann aber mit `OPENCODE_SERVER_USERNAME` ueberschrieben werden. Das gilt fuer `innocode serve` und `innocode web`.
+Setze `INNOCODE_SERVER_PASSWORD`, um den Server mit HTTP Basic Auth zu schuetzen.
+Der Benutzername ist standardmaessig `innocode`, kann aber mit `INNOCODE_SERVER_USERNAME` ueberschrieben werden. Das gilt fuer `innocode serve` und `innocode web`.
 
 ```bash
-OPENCODE_SERVER_PASSWORD=your-password innocode serve
+INNOCODE_SERVER_PASSWORD=your-password innocode serve
 ```
 
 ---

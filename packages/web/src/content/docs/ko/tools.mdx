@@ -3,7 +3,7 @@ title: 도구
 description: LLM이 사용할 수 있는 도구를 관리합니다.
 ---
 
-도구는 LLM을 사용하여 코드베이스에서 작업을 수행 할 수 있습니다. opencode는 내장 도구 세트로 제공되지만, [custom tools](/docs/custom-tools) 또는 [MCP 서버](/docs/mcp-servers)로 확장할 수 있습니다.
+도구는 LLM을 사용하여 코드베이스에서 작업을 수행 할 수 있습니다. innocode는 내장 도구 세트로 제공되지만, [custom tools](/docs/custom-tools) 또는 [MCP 서버](/docs/mcp-servers)로 확장할 수 있습니다.
 
 기본적으로 모든 도구는**enabled**이며, 실행할 권한이 없습니다. [permissions](/docs/permissions)를 통해 공구 동작을 제어할 수 있습니다.
 
@@ -41,7 +41,7 @@ description: LLM이 사용할 수 있는 도구를 관리합니다.
 
 ## 내장
 
-다음은 opencode에서 사용할 수있는 모든 내장 도구입니다.
+다음은 innocode에서 사용할 수있는 모든 내장 도구입니다.
 
 ---
 
@@ -173,7 +173,7 @@ Codebase에서 빠른 콘텐츠 검색. 전체 regex 문법 및 파일 패턴 �
 정의, 참고, hover info 및 호출 hierarchy와 같은 코드 인텔리전스 기능을 얻기 위해 구성 된 LSP 서버와 인터랙트.
 
 :::note
-이 도구는 `OPENCODE_EXPERIMENTAL_LSP_TOOL=true` (또는 `OPENCODE_EXPERIMENTAL=true`) 때만 유효합니다.
+이 도구는 `INNOCODE_EXPERIMENTAL_LSP_TOOL=true` (또는 `INNOCODE_EXPERIMENTAL=true`) 때만 유효합니다.
 :::
 
 ```json title="innocode.json" {4}
@@ -291,12 +291,12 @@ LLM을 fetch 및 웹 페이지를 읽을 수 있습니다. 온라인 리소스�
 웹 검색
 
 :::note
-이 도구는 innocode 제공 업체 또는 `OPENCODE_ENABLE_EXA` 환경 변수가 모든 진실 값 (예 : `true` 또는 `1`)로 설정할 때만 사용할 수 있습니다.
+이 도구는 innocode 제공 업체 또는 `INNOCODE_ENABLE_EXA` 환경 변수가 모든 진실 값 (예 : `true` 또는 `1`)로 설정할 때만 사용할 수 있습니다.
 
-opencode를 실행할 때 활성화:
+innocode를 실행할 때 활성화:
 
 ```bash
-OPENCODE_ENABLE_EXA=1 innocode
+INNOCODE_ENABLE_EXA=1 innocode
 ```
 
 :::

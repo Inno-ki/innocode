@@ -42,7 +42,7 @@ void initI18n()
 
 let update: Update | null = null
 
-const deepLinkEvent = "opencode:deep-link"
+const deepLinkEvent = "innocode:deep-link"
 
 const emitDeepLinks = (urls: string[]) => {
   if (urls.length === 0) return
@@ -329,7 +329,7 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
         .then(() => {
           const notification = new Notification(title, {
             body: description ?? "",
-            icon: "https://opencode.ai/favicon-96x96-v3.png",
+            icon: "https://innocode.io/favicon-96x96-v3.png",
           })
           notification.onclick = () => {
             const win = getCurrentWindow()
@@ -350,7 +350,7 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
       const pw = password()
 
       const addHeader = (headers: Headers, password: string) => {
-        headers.append("Authorization", `Basic ${btoa(`opencode:${password}`)}`)
+        headers.append("Authorization", `Basic ${btoa(`innocode:${password}`)}`)
       }
 
       if (input instanceof Request) {

@@ -35,7 +35,7 @@ Burada innocode için topluluk tarafından oluşturulan bir CI/CD bileşeni kull
      - component: $CI_SERVER_FQDN/nagyv/gitlab-innocode/innocode@2
        inputs:
          config_dir: ${CI_PROJECT_DIR}/innocode-config
-         auth_json: $OPENCODE_AUTH_JSON # The variable name for your InnoCode authentication JSON
+         auth_json: $INNOCODE_AUTH_JSON # The variable name for your InnoCode authentication JSON
          command: optional-custom-command
          message: "Your prompt here"
    ```

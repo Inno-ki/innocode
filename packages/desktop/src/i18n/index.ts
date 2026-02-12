@@ -174,15 +174,26 @@ export function initI18n(): Promise<Locale> {
   if (cached) return cached
 
   const promise = (async () => {
-    const store = await Store.load("opencode.global.dat").catch(() => null)
-    if (!store) return state.locale
+    const store = await Store.load("innocode.global.dat").catch(() => null)
+    const legacy = store ? null : await Store.load("opencode.global.dat").catch(() => null)
+    const active = store ?? legacy
+    if (!active) return state.locale
 
-    const raw = await store.get("language").catch(() => null)
+    const raw = await active.get("language").catch(() => null)
     const value = parseStored(raw)
     const next = pickLocale(value) ?? state.locale
 
     state.locale = next
     state.dict = build(next)
+
+    if (!store && legacy && raw !== null) {
+      const target = await Store.load("innocode.global.dat").catch(() => null)
+      if (target) {
+        await target.set("language", raw).catch(() => undefined)
+        await target.save().catch(() => undefined)
+      }
+    }
+
     return next
   })().catch(() => state.locale)
 

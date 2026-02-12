@@ -1,6 +1,6 @@
-# OpenCode Desktop
+# InnoCode Desktop
 
-Native OpenCode desktop app, built with Tauri v2.
+Native InnoCode desktop app, built with Tauri v2.
 
 ## Development
 

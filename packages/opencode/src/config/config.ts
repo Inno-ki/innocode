@@ -42,6 +42,17 @@ export namespace Config {
   function getManagedConfigDir(): string {
     switch (process.platform) {
       case "darwin":
+        return "/Library/Application Support/innocode"
+      case "win32":
+        return path.join(process.env.ProgramData || "C:\\ProgramData", "innocode")
+      default:
+        return "/etc/innocode"
+    }
+  }
+
+  function getManagedLegacyConfigDir(): string {
+    switch (process.platform) {
+      case "darwin":
         return "/Library/Application Support/opencode"
       case "win32":
         return path.join(process.env.ProgramData || "C:\\ProgramData", "opencode")
@@ -51,6 +62,7 @@ export namespace Config {
   }
 
   const managedConfigDir = process.env.OPENCODE_TEST_MANAGED_CONFIG_DIR || getManagedConfigDir()
+  const managedLegacyConfigDir = process.env.OPENCODE_TEST_MANAGED_CONFIG_DIR ? undefined : getManagedLegacyConfigDir()
 
   // Custom merge function that concatenates array fields instead of replacing them
   function mergeConfigConcatArrays(target: Info, source: Info): Info {
@@ -67,30 +79,30 @@ export namespace Config {
   export const state = Instance.state(async () => {
     const auth = await Auth.all()
 
-    // Config loading order (low -> high precedence): https://opencode.ai/docs/config#precedence-order
-    // 1) Remote .well-known/opencode (org defaults)
-    // 2) Global config (~/.config/opencode/opencode.json{,c})
-    // 3) Custom config (OPENCODE_CONFIG)
-    // 4) Project config (opencode.json{,c})
-    // 5) .opencode directories (.opencode/agents/, .opencode/commands/, .opencode/plugins/, .opencode/opencode.json{,c})
-    // 6) Inline config (OPENCODE_CONFIG_CONTENT)
+    // Config loading order (low -> high precedence): https://innocode.io/docs/config#precedence-order
+    // 1) Remote .well-known/innocode (org defaults)
+    // 2) Global config (~/.config/innocode/innocode.json{,c})
+    // 3) Custom config (INNOCODE_CONFIG)
+    // 4) Project config (innocode.json{,c})
+    // 5) .innocode directories (.innocode/agents/, .innocode/commands/, .innocode/plugins/, .innocode/innocode.json{,c})
+    // 6) Inline config (INNOCODE_CONFIG_CONTENT)
     // Managed config directory is enterprise-only and always overrides everything above.
     let result: Info = {}
     for (const [key, value] of Object.entries(auth)) {
       if (value.type === "wellknown") {
         process.env[value.key] = value.token
-        log.debug("fetching remote config", { url: `${key}/.well-known/opencode` })
-        const response = await fetch(`${key}/.well-known/opencode`)
+        log.debug("fetching remote config", { url: `${key}/.well-known/innocode` })
+        const response = await fetch(`${key}/.well-known/innocode`)
         if (!response.ok) {
           throw new Error(`failed to fetch remote config from ${key}: ${response.status}`)
         }
         const wellknown = (await response.json()) as any
         const remoteConfig = wellknown.config ?? {}
         // Add $schema to prevent load() from trying to write back to a non-existent file
-        if (!remoteConfig.$schema) remoteConfig.$schema = "https://opencode.ai/config.json"
+        if (!remoteConfig.$schema) remoteConfig.$schema = "https://innocode.io/config.json"
         result = mergeConfigConcatArrays(
           result,
-          await load(JSON.stringify(remoteConfig), `${key}/.well-known/opencode`),
+          await load(JSON.stringify(remoteConfig), `${key}/.well-known/innocode`),
         )
         log.debug("loaded remote config from well-known", { url: key })
       }
@@ -100,14 +112,14 @@ export namespace Config {
     result = mergeConfigConcatArrays(result, await global())
 
     // Custom config path overrides global config.
-    if (Flag.OPENCODE_CONFIG) {
-      result = mergeConfigConcatArrays(result, await loadFile(Flag.OPENCODE_CONFIG))
-      log.debug("loaded custom config", { path: Flag.OPENCODE_CONFIG })
+    if (Flag.INNOCODE_CONFIG) {
+      result = mergeConfigConcatArrays(result, await loadFile(Flag.INNOCODE_CONFIG))
+      log.debug("loaded custom config", { path: Flag.INNOCODE_CONFIG })
     }
 
     // Project config overrides global and remote config.
-    if (!Flag.OPENCODE_DISABLE_PROJECT_CONFIG) {
-      for (const file of ["opencode.jsonc", "opencode.json"]) {
+    if (!Flag.INNOCODE_DISABLE_PROJECT_CONFIG) {
+      for (const file of ["innocode.jsonc", "innocode.json", "opencode.jsonc", "opencode.json"]) {
         const found = await Filesystem.findUp(file, Instance.directory, Instance.worktree)
         for (const resolved of found.toReversed()) {
           result = mergeConfigConcatArrays(result, await loadFile(resolved))
@@ -121,37 +133,37 @@ export namespace Config {
 
     const directories = [
       Global.Path.config,
-      // Only scan project .opencode/ directories when project discovery is enabled
-      ...(!Flag.OPENCODE_DISABLE_PROJECT_CONFIG
+      // Only scan project .innocode/.opencode directories when project discovery is enabled
+      ...(!Flag.INNOCODE_DISABLE_PROJECT_CONFIG
         ? await Array.fromAsync(
             Filesystem.up({
-              targets: [".opencode"],
+              targets: [".innocode", ".opencode"],
               start: Instance.directory,
               stop: Instance.worktree,
             }),
           )
         : []),
-      // Always scan ~/.opencode/ (user home directory)
+      // Always scan ~/.innocode/ (user home directory)
       ...(await Array.fromAsync(
         Filesystem.up({
-          targets: [".opencode"],
+          targets: [".innocode", ".opencode"],
           start: Global.Path.home,
           stop: Global.Path.home,
         }),
       )),
     ]
 
-    // .opencode directory config overrides (project and global) config sources.
-    if (Flag.OPENCODE_CONFIG_DIR) {
-      directories.push(Flag.OPENCODE_CONFIG_DIR)
-      log.debug("loading config from OPENCODE_CONFIG_DIR", { path: Flag.OPENCODE_CONFIG_DIR })
+    // .innocode/.opencode directory config overrides (project and global) config sources.
+    if (Flag.INNOCODE_CONFIG_DIR) {
+      directories.push(Flag.INNOCODE_CONFIG_DIR)
+      log.debug("loading config from INNOCODE_CONFIG_DIR", { path: Flag.INNOCODE_CONFIG_DIR })
     }
 
     const deps = []
 
     for (const dir of unique(directories)) {
-      if (dir.endsWith(".opencode") || dir === Flag.OPENCODE_CONFIG_DIR) {
-        for (const file of ["opencode.jsonc", "opencode.json"]) {
+      if (dir.endsWith(".innocode") || dir.endsWith(".opencode") || dir === Flag.INNOCODE_CONFIG_DIR) {
+        for (const file of ["innocode.jsonc", "innocode.json", "opencode.jsonc", "opencode.json"]) {
           log.debug(`loading config from ${path.join(dir, file)}`)
           result = mergeConfigConcatArrays(result, await loadFile(path.join(dir, file)))
           // to satisfy the type checker
@@ -175,18 +187,20 @@ export namespace Config {
     }
 
     // Inline config content overrides all non-managed config sources.
-    if (Flag.OPENCODE_CONFIG_CONTENT) {
-      result = mergeConfigConcatArrays(result, JSON.parse(Flag.OPENCODE_CONFIG_CONTENT))
-      log.debug("loaded custom config from OPENCODE_CONFIG_CONTENT")
+    if (Flag.INNOCODE_CONFIG_CONTENT) {
+      result = mergeConfigConcatArrays(result, JSON.parse(Flag.INNOCODE_CONFIG_CONTENT))
+      log.debug("loaded custom config from INNOCODE_CONFIG_CONTENT")
     }
 
     // Load managed config files last (highest priority) - enterprise admin-controlled
     // Kept separate from directories array to avoid write operations when installing plugins
     // which would fail on system directories requiring elevated permissions
     // This way it only loads config file and not skills/plugins/commands
-    if (existsSync(managedConfigDir)) {
-      for (const file of ["opencode.jsonc", "opencode.json"]) {
-        result = mergeConfigConcatArrays(result, await loadFile(path.join(managedConfigDir, file)))
+    const managedDirs = [managedConfigDir, managedLegacyConfigDir].filter((dir): dir is string => typeof dir === "string")
+    for (const dir of managedDirs) {
+      if (!existsSync(dir)) continue
+      for (const file of ["innocode.jsonc", "innocode.json", "opencode.jsonc", "opencode.json"]) {
+        result = mergeConfigConcatArrays(result, await loadFile(path.join(dir, file)))
       }
     }
 
@@ -357,7 +371,14 @@ export namespace Config {
       })
       if (!md) continue
 
-      const patterns = ["/.opencode/command/", "/.opencode/commands/", "/command/", "/commands/"]
+      const patterns = [
+        "/.innocode/command/",
+        "/.innocode/commands/",
+        "/.opencode/command/",
+        "/.opencode/commands/",
+        "/command/",
+        "/commands/",
+      ]
       const file = rel(item, patterns) ?? path.basename(item)
       const name = trim(file)
 
@@ -397,7 +418,14 @@ export namespace Config {
       })
       if (!md) continue
 
-      const patterns = ["/.opencode/agent/", "/.opencode/agents/", "/agent/", "/agents/"]
+      const patterns = [
+        "/.innocode/agent/",
+        "/.innocode/agents/",
+        "/.opencode/agent/",
+        "/.opencode/agents/",
+        "/agent/",
+        "/agents/",
+      ]
       const file = rel(item, patterns) ?? path.basename(item)
       const agentName = trim(file)
 
@@ -493,9 +521,9 @@ export namespace Config {
    * Deduplicates plugins by name, with later entries (higher priority) winning.
    * Priority order (highest to lowest):
    * 1. Local plugin/ directory
-   * 2. Local opencode.json
+   * 2. Local innocode.json
    * 3. Global plugin/ directory
-   * 4. Global opencode.json
+   * 4. Global innocode.json
    *
    * Since plugins are added in low-to-high priority order,
    * we reverse, deduplicate (keeping first occurrence), then restore order.
@@ -935,7 +963,7 @@ export namespace Config {
       port: z.number().int().positive().optional().describe("Port to listen on"),
       hostname: z.string().optional().describe("Hostname to listen on"),
       mdns: z.boolean().optional().describe("Enable mDNS service discovery"),
-      mdnsDomain: z.string().optional().describe("Custom domain name for mDNS service (default: opencode.local)"),
+      mdnsDomain: z.string().optional().describe("Custom domain name for mDNS service (default: innocode.local)"),
       cors: z.array(z.string()).optional().describe("Additional domains to allow for CORS"),
     })
     .strict()
@@ -1008,11 +1036,11 @@ export namespace Config {
       keybinds: Keybinds.optional().describe("Custom keybind configurations"),
       logLevel: Log.Level.optional().describe("Log level"),
       tui: TUI.optional().describe("TUI specific settings"),
-      server: Server.optional().describe("Server configuration for opencode serve and web commands"),
+      server: Server.optional().describe("Server configuration for innocode serve and web commands"),
       command: z
         .record(z.string(), Command)
         .optional()
-        .describe("Command configuration, see https://opencode.ai/docs/commands"),
+        .describe("Command configuration, see https://innocode.io/docs/commands"),
       skills: Skills.optional().describe("Additional skill folder paths"),
       watcher: z
         .object({
@@ -1079,7 +1107,7 @@ export namespace Config {
         })
         .catchall(Agent)
         .optional()
-        .describe("Agent configuration, see https://opencode.ai/docs/agents"),
+        .describe("Agent configuration, see https://innocode.io/docs/agents"),
       provider: z
         .record(z.string(), Provider)
         .optional()
@@ -1199,32 +1227,38 @@ export namespace Config {
   export type Info = z.output<typeof Info>
 
   export const global = lazy(async () => {
-    let result: Info = pipe(
-      {},
-      mergeDeep(await loadFile(path.join(Global.Path.config, "config.json"))),
-      mergeDeep(await loadFile(path.join(Global.Path.config, "opencode.json"))),
-      mergeDeep(await loadFile(path.join(Global.Path.config, "opencode.jsonc"))),
-    )
+    const files = ["config.json", "innocode.json", "innocode.jsonc", "opencode.json", "opencode.jsonc"]
+    const base = await files.reduce(async (accPromise, file) => {
+      const acc = await accPromise
+      return mergeDeep(acc, await loadFile(path.join(Global.Path.config, file)))
+    }, Promise.resolve({} as Info))
 
     const legacy = path.join(Global.Path.config, "config")
-    if (existsSync(legacy)) {
-      await import(pathToFileURL(legacy).href, {
-        with: {
-          type: "toml",
-        },
-      })
-        .then(async (mod) => {
-          const { provider, model, ...rest } = mod.default
-          if (provider && model) result.model = `${provider}/${model}`
-          result["$schema"] = "https://opencode.ai/config.json"
-          result = mergeDeep(result, rest)
-          await Bun.write(path.join(Global.Path.config, "config.json"), JSON.stringify(result, null, 2))
-          await fs.unlink(legacy)
-        })
-        .catch(() => {})
-    }
+    if (!existsSync(legacy)) return base
 
-    return result
+    const legacyConfig = await import(pathToFileURL(legacy).href, {
+      with: {
+        type: "toml",
+      },
+    })
+      .then((mod) => {
+        const raw = mod.default ?? {}
+        const provider = raw.provider
+        const model = raw.model
+        const rest = { ...raw }
+        delete rest.provider
+        delete rest.model
+        const merged = provider && model ? { ...rest, model: `${provider}/${model}` } : rest
+        return { ...merged, $schema: "https://innocode.io/config.json" }
+      })
+      .catch(() => undefined)
+
+    if (!legacyConfig) return base
+
+    const merged = mergeDeep(base, legacyConfig)
+    await Bun.write(path.join(Global.Path.config, "config.json"), JSON.stringify(merged, null, 2))
+    await fs.unlink(legacy)
+    return merged
   })
 
   async function loadFile(filepath: string): Promise<Info> {
@@ -1309,9 +1343,9 @@ export namespace Config {
     const parsed = Info.safeParse(data)
     if (parsed.success) {
       if (!parsed.data.$schema) {
-        parsed.data.$schema = "https://opencode.ai/config.json"
+        parsed.data.$schema = "https://innocode.io/config.json"
         // Write the $schema to the original text to preserve variables like {env:VAR}
-        const updated = original.replace(/^\s*\{/, '{\n  "$schema": "https://opencode.ai/config.json",')
+        const updated = original.replace(/^\s*\{/, '{\n  "$schema": "https://innocode.io/config.json",')
         await Bun.write(configFilepath, updated).catch(() => {})
       }
       const data = parsed.data
@@ -1373,7 +1407,7 @@ export namespace Config {
   }
 
   function globalConfigFile() {
-    const candidates = ["opencode.jsonc", "opencode.json", "config.json"].map((file) =>
+    const candidates = ["innocode.jsonc", "innocode.json", "opencode.jsonc", "opencode.json", "config.json"].map((file) =>
       path.join(Global.Path.config, file),
     )
     for (const file of candidates) {

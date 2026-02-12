@@ -1,7 +1,9 @@
-export const deepLinkEvent = "opencode:deep-link"
+export const deepLinkEvent = "innocode:deep-link"
 
 export const parseDeepLink = (input: string) => {
-  if (!input.startsWith("opencode://")) return
+  const isInnocode = input.startsWith("innocode://")
+  const isOpencode = input.startsWith("opencode://")
+  if (!isInnocode && !isOpencode) return
   if (typeof URL.canParse === "function" && !URL.canParse(input)) return
   const url = (() => {
     try {

@@ -59,7 +59,7 @@ Add to your Zed configuration (`~/.config/zed/settings.json`):
 ```json
 {
   "agent_servers": {
-    "OpenCode": {
+    "InnoCode": {
       "command": "opencode",
       "args": ["acp"]
     }
@@ -148,7 +148,7 @@ Each component has a single responsibility:
 
 This makes the codebase maintainable and testable.
 
-### Mapping to OpenCode
+### Mapping to InnoCode
 
 ACP sessions map cleanly to opencode's internal session model:
 

@@ -360,7 +360,7 @@ innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 innocode serve
 ```
 
-这将启动一个 HTTP 服务器，该服务器提供对 innocode 功能的 API 访问，无需 TUI 界面。设置 `OPENCODE_SERVER_PASSWORD` 以启用 HTTP 基本身份验证（用户名默认为 `innocode`）。
+这将启动一个 HTTP 服务器，该服务器提供对 innocode 功能的 API 访问，无需 TUI 界面。设置 `INNOCODE_SERVER_PASSWORD` 以启用 HTTP 基本身份验证（用户名默认为 `innocode`）。
 
 #### 标志
 
@@ -456,7 +456,7 @@ innocode import https://opncd.ai/s/abc123
 innocode web
 ```
 
-这将启动 HTTP 服务器并打开 Web 浏览器以通过 Web 界面访问 innocode。设置 `OPENCODE_SERVER_PASSWORD` 以启用 HTTP 基本身份验证（用户名默认为 `innocode`）。
+这将启动 HTTP 服务器并打开 Web 浏览器以通过 Web 界面访问 innocode。设置 `INNOCODE_SERVER_PASSWORD` 以启用 HTTP 基本身份验证（用户名默认为 `innocode`）。
 
 #### 标志
 
@@ -555,30 +555,30 @@ innocode CLI 接受以下全局标志。
 
 | 变量                                  | 类型    | 描述                                      |
 | ------------------------------------- | ------- | ----------------------------------------- |
-| `OPENCODE_AUTO_SHARE`                 | boolean | 自动共享会话                              |
-| `OPENCODE_GIT_BASH_PATH`              | string  | Windows 上 Git Bash 可执行文件的路径      |
+| `INNOCODE_AUTO_SHARE`                 | boolean | 自动共享会话                              |
+| `INNOCODE_GIT_BASH_PATH`              | string  | Windows 上 Git Bash 可执行文件的路径      |
 | `INNOCODE_CONFIG`                     | string  | 配置文件路径                              |
 | `INNOCODE_CONFIG_DIR`                 | string  | 配置目录的路径                            |
 | `INNOCODE_CONFIG_CONTENT`             | string  | 内联 json 配置内容                        |
-| `OPENCODE_DISABLE_AUTOUPDATE`         | boolean | 禁用自动更新检查                          |
-| `OPENCODE_DISABLE_PRUNE`              | boolean | 禁用数据的修剪                            |
-| `OPENCODE_DISABLE_TERMINAL_TITLE`     | boolean | 禁用自动终端标题更新                      |
-| `OPENCODE_PERMISSION`                 | string  | 内联 json 权限配置                        |
-| `OPENCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | 禁用默认插件                              |
-| `OPENCODE_DISABLE_LSP_DOWNLOAD`       | boolean | 禁用自动 LSP 服务器下载                   |
-| `OPENCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | 启用实验模型                              |
-| `OPENCODE_DISABLE_AUTOCOMPACT`        | boolean | 禁用自动上下文压缩                        |
-| `OPENCODE_DISABLE_CLAUDE_CODE`        | boolean | 禁用从 `.claude` 读取（提示+技能）        |
-| `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | 禁用读取 `~/.claude/CLAUDE.md`            |
-| `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | 禁用加载 `.claude/skills`                 |
-| `OPENCODE_DISABLE_MODELS_FETCH`       | boolean | 禁用从远程源获取模型                      |
-| `OPENCODE_FAKE_VCS`                   | string  | 用于测试目的的伪造 VCS                    |
-| `OPENCODE_DISABLE_FILETIME_CHECK`     | boolean | 禁用文件时间检查以进行优化                |
-| `OPENCODE_CLIENT`                     | string  | 客户端标识符（默认为 `cli`）              |
-| `OPENCODE_ENABLE_EXA`                 | boolean | 启用 Exa 网络搜索工具                     |
-| `OPENCODE_SERVER_PASSWORD`            | string  | 为 `serve`/`web` 启用基本身份验证         |
-| `OPENCODE_SERVER_USERNAME`            | string  | 覆盖基本身份验证用户名（默认 `innocode`） |
-| `OPENCODE_MODELS_URL`                 | string  | 用于获取模型配置的自定义 URL              |
+| `INNOCODE_DISABLE_AUTOUPDATE`         | boolean | 禁用自动更新检查                          |
+| `INNOCODE_DISABLE_PRUNE`              | boolean | 禁用数据的修剪                            |
+| `INNOCODE_DISABLE_TERMINAL_TITLE`     | boolean | 禁用自动终端标题更新                      |
+| `INNOCODE_PERMISSION`                 | string  | 内联 json 权限配置                        |
+| `INNOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | 禁用默认插件                              |
+| `INNOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | 禁用自动 LSP 服务器下载                   |
+| `INNOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | 启用实验模型                              |
+| `INNOCODE_DISABLE_AUTOCOMPACT`        | boolean | 禁用自动上下文压缩                        |
+| `INNOCODE_DISABLE_CLAUDE_CODE`        | boolean | 禁用从 `.claude` 读取（提示+技能）        |
+| `INNOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | 禁用读取 `~/.claude/CLAUDE.md`            |
+| `INNOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | 禁用加载 `.claude/skills`                 |
+| `INNOCODE_DISABLE_MODELS_FETCH`       | boolean | 禁用从远程源获取模型                      |
+| `INNOCODE_FAKE_VCS`                   | string  | 用于测试目的的伪造 VCS                    |
+| `INNOCODE_DISABLE_FILETIME_CHECK`     | boolean | 禁用文件时间检查以进行优化                |
+| `INNOCODE_CLIENT`                     | string  | 客户端标识符（默认为 `cli`）              |
+| `INNOCODE_ENABLE_EXA`                 | boolean | 启用 Exa 网络搜索工具                     |
+| `INNOCODE_SERVER_PASSWORD`            | string  | 为 `serve`/`web` 启用基本身份验证         |
+| `INNOCODE_SERVER_USERNAME`            | string  | 覆盖基本身份验证用户名（默认 `innocode`） |
+| `INNOCODE_MODELS_URL`                 | string  | 用于获取模型配置的自定义 URL              |
 
 ---
 
@@ -588,16 +588,16 @@ innocode CLI 接受以下全局标志。
 
 | 变量                                            | 类型    | 描述                                |
 | ----------------------------------------------- | ------- | ----------------------------------- |
-| `OPENCODE_EXPERIMENTAL`                         | boolean | 启用所有实验性功能                  |
-| `OPENCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | 启用图标发现                        |
-| `OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | 在 TUI 中禁用选择时复制             |
-| `OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | bash 命令的默认超时（以毫秒为单位） |
-| `OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | LLM 响应的最大输出 Token            |
-| `OPENCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | 为整个目录启用文件观察器            |
-| `OPENCODE_EXPERIMENTAL_OXFMT`                   | boolean | 启用 oxfmt 格式化程序               |
-| `OPENCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | 启用实验性 LSP 工具                 |
-| `OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | 禁用文件观察器                      |
-| `OPENCODE_EXPERIMENTAL_EXA`                     | boolean | 启用实验性 Exa 功能                 |
-| `OPENCODE_EXPERIMENTAL_LSP_TY`                  | boolean | 启用实验性 LSP 类型检查             |
-| `OPENCODE_EXPERIMENTAL_MARKDOWN`                | boolean | 启用实验性 Markdown 功能            |
-| `OPENCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | 启用计划模式                        |
+| `INNOCODE_EXPERIMENTAL`                         | boolean | 启用所有实验性功能                  |
+| `INNOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | 启用图标发现                        |
+| `INNOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | 在 TUI 中禁用选择时复制             |
+| `INNOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | bash 命令的默认超时（以毫秒为单位） |
+| `INNOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | LLM 响应的最大输出 Token            |
+| `INNOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | 为整个目录启用文件观察器            |
+| `INNOCODE_EXPERIMENTAL_OXFMT`                   | boolean | 启用 oxfmt 格式化程序               |
+| `INNOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | 启用实验性 LSP 工具                 |
+| `INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | 禁用文件观察器                      |
+| `INNOCODE_EXPERIMENTAL_EXA`                     | boolean | 启用实验性 Exa 功能                 |
+| `INNOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | 启用实验性 LSP 类型检查             |
+| `INNOCODE_EXPERIMENTAL_MARKDOWN`                | boolean | 启用实验性 Markdown 功能            |
+| `INNOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | 启用计划模式                        |

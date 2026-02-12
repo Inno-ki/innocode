@@ -3,12 +3,17 @@ import { xdgData, xdgCache, xdgConfig, xdgState } from "xdg-basedir"
 import path from "path"
 import os from "os"
 
-const app = "opencode"
+const app = "innocode"
+const legacyApp = "opencode"
 
 const data = path.join(xdgData!, app)
 const cache = path.join(xdgCache!, app)
 const config = path.join(xdgConfig!, app)
 const state = path.join(xdgState!, app)
+
+const legacyData = path.join(xdgData!, legacyApp)
+const legacyConfig = path.join(xdgConfig!, legacyApp)
+const legacyState = path.join(xdgState!, legacyApp)
 
 export namespace Global {
   export const Path = {
@@ -24,6 +29,26 @@ export namespace Global {
     state,
   }
 }
+
+async function pathExists(target: string) {
+  return fs
+    .access(target)
+    .then(() => true)
+    .catch(() => false)
+}
+
+async function migrateLegacyDir(source: string, dest: string) {
+  const sourceExists = await pathExists(source)
+  const destExists = await pathExists(dest)
+  if (!sourceExists || destExists) return
+  await fs.cp(source, dest, { recursive: true, errorOnExist: false })
+}
+
+await Promise.all([
+  migrateLegacyDir(legacyData, data),
+  migrateLegacyDir(legacyConfig, config),
+  migrateLegacyDir(legacyState, state),
+])
 
 await Promise.all([
   fs.mkdir(Global.Path.data, { recursive: true }),
