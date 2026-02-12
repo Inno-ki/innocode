@@ -8,7 +8,7 @@ import path from "path"
 import os from "os"
 import { Config } from "../../config/config"
 import { Global } from "../../global"
-import { Plugin } from "../../plugin"
+import { Plugin } from "../../plugin/index"
 import { Instance } from "../../project/instance"
 import type { Hooks } from "@opencode-ai/plugin"
 

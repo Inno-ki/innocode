@@ -11,7 +11,7 @@ import { Log } from "../util/log"
 import { SessionProcessor } from "./processor"
 import { fn } from "@/util/fn"
 import { Agent } from "@/agent/agent"
-import { Plugin } from "@/plugin"
+import { Plugin } from "@/plugin/index"
 import { Config } from "@/config/config"
 import { ProviderTransform } from "@/provider/transform"
 

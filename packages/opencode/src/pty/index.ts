@@ -8,7 +8,7 @@ import type { WSContext } from "hono/ws"
 import { Instance } from "../project/instance"
 import { lazy } from "@opencode-ai/util/lazy"
 import { Shell } from "@/shell/shell"
-import { Plugin } from "@/plugin"
+import { Plugin } from "@/plugin/index"
 
 export namespace Pty {
   const log = Log.create({ service: "pty" })

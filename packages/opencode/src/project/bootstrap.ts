@@ -1,4 +1,4 @@
-import { Plugin } from "../plugin"
+import { Plugin } from "../plugin/index"
 import { Share } from "../share/share"
 import { Format } from "../format"
 import { LSP } from "../lsp"
