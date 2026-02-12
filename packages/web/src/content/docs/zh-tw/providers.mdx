@@ -34,7 +34,7 @@ InnoCode 使用 [AI SDK](https://ai-sdk.dev/) 和 [Models.dev](https://models.de
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -162,7 +162,7 @@ InnoGPT 是 InnoCode 團隊提供的模型列表，這些模型已被
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -189,7 +189,7 @@ InnoGPT 是 InnoCode 團隊提供的模型列表，這些模型已被
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -233,7 +233,7 @@ InnoGPT 是 InnoCode 團隊提供的模型列表，這些模型已被
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -485,7 +485,7 @@ Cloudflare AI Gateway 讓您可以透過統一端點存取來自 OpenAI、Anthro
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -691,7 +691,7 @@ InnoCode 使用小型模型來執行某些 AI 任務，例如生成工作階段�
 
 ```json
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -753,7 +753,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -774,7 +774,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["@gitlab/innocode-gitlab-plugin"]
 }
 ```
@@ -955,7 +955,7 @@ subscription](https://github.com/features/copilot/plans) 來使用。
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -983,7 +983,7 @@ Helicone 支援快取、使用者追蹤和工作階段管理等功能的自定�
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1037,7 +1037,7 @@ npm install -g innocode-helicone-session
 
 ```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1104,7 +1104,7 @@ IO.NET 提供了 17 種針對各種使用案例進行最佳化的模型：
 
 ```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1225,7 +1225,7 @@ Ollama 可以自動為 InnoCode 配置自身。詳情請參閱 [Ollama integrati
 
 ```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1387,7 +1387,7 @@ InnoGPT 是 InnoCode 團隊提供的經過測試和驗證的模型列表。 [了
 
    ```json title="innocode.json" {6}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1402,7 +1402,7 @@ InnoGPT 是 InnoCode 團隊提供的經過測試和驗證的模型列表。 [了
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1618,7 +1618,7 @@ Vercel AI Gateway 可讓您透過統一端點存取來自 OpenAI、Anthropic、G
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1728,7 +1728,7 @@ Vercel AI Gateway 可讓您透過統一端點存取來自 OpenAI、Anthropic、G
 
    ```json title="innocode.json" {6}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -1796,7 +1796,7 @@ Vercel AI Gateway 可讓您透過統一端點存取來自 OpenAI、Anthropic、G
 
    ```json title="innocode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1834,7 +1834,7 @@ Vercel AI Gateway 可讓您透過統一端點存取來自 OpenAI、Anthropic、G
 
 ```json title="innocode.json" {9,11,17-20}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",

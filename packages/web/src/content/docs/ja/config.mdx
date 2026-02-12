@@ -13,7 +13,7 @@ InnoCode は、**JSON** と **JSONC** (コメント付きの JSON) 形式の両�
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // Theme configuration
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -42,10 +42,10 @@ InnoCode は、**JSON** と **JSONC** (コメント付きの JSON) 形式の両�
 
 1. **リモート設定** (`.well-known/innocode` から) - 組織のデフォルト
 2. **グローバル設定** (`~/.config/innocode/innocode.json`) - ユーザー設定
-3. **カスタム設定** (`OPENCODE_CONFIG` 環境変数) - カスタムオーバーライド
+3. **カスタム設定** (`INNOCODE_CONFIG` 環境変数) - カスタムオーバーライド
 4. **プロジェクト設定** (プロジェクト内の `innocode.json`) - プロジェクト固有の設定
 5. **`.innocode` ディレクトリ** - エージェント、コマンド、プラグイン
-6. **インライン設定** (`OPENCODE_CONFIG_CONTENT` 環境変数) - ランタイムオーバーライド
+6. **インライン設定** (`INNOCODE_CONFIG_CONTENT` 環境変数) - ランタイムオーバーライド
 
 つまり、プロジェクト設定はグローバルのデフォルトをオーバーライドでき、グローバル設定はリモート組織のデフォルトをオーバーライドできます。
 
@@ -115,10 +115,10 @@ InnoCode が起動すると、現在のディレクトリで設定ファイル�
 
 ### カスタムパス
 
-`OPENCODE_CONFIG` 環境変数を使用してカスタム設定ファイルのパスを指定します。
+`INNOCODE_CONFIG` 環境変数を使用してカスタム設定ファイルのパスを指定します。
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -128,13 +128,13 @@ innocode run "Hello world"
 
 ### カスタムディレクトリ
 
-`OPENCODE_CONFIG_DIR` を使用してカスタム設定ディレクトリを指定します。
+`INNOCODE_CONFIG_DIR` を使用してカスタム設定ディレクトリを指定します。
 環境変数。このディレクトリでは、エージェント、コマンド、
 モードとプラグインは標準の `.innocode` ディレクトリと同様であり、次のようにする必要があります。
 同じ構造に従います。
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -144,7 +144,7 @@ innocode run "Hello world"
 
 ## スキーマ
 
-設定ファイルには、[**`innocode.ai/config.json`**](https://innocode.ai/config.json) を使用します。
+設定ファイルには、[**`innocode.io/config.json`**](https://innocode.io/config.json) を使用します。
 
 エディターはスキーマに基づいて検証し、オートコンプリートできる必要があります。
 
@@ -156,7 +156,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -183,7 +183,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -212,7 +212,7 @@ LLM が使用できるツールは、`tools` オプションを通じて管理�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -230,7 +230,7 @@ LLM が使用できるツールは、`tools` オプションを通じて管理�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -243,7 +243,7 @@ LLM が使用できるツールは、`tools` オプションを通じて管理�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -272,7 +272,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -303,7 +303,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -318,7 +318,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -344,7 +344,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -361,7 +361,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -382,7 +382,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -408,7 +408,7 @@ Amazon Bedrock は、AWS 固有の設定をサポートしています。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -423,7 +423,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -439,7 +439,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -467,7 +467,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -485,7 +485,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -504,7 +504,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -521,7 +521,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -538,7 +538,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -553,7 +553,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -568,7 +568,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -590,7 +590,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -610,7 +610,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -633,7 +633,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -656,7 +656,7 @@ InnoCode は起動時に新しいアップデートを自動的にダウンロ�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

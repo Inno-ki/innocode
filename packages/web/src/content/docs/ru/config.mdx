@@ -13,7 +13,7 @@ innocode поддерживает форматы **JSON** и **JSONC** (JSON с 
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // Theme configuration
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -44,10 +44,10 @@ innocode поддерживает форматы **JSON** и **JSONC** (JSON с 
 
 1. **Удаленная конфигурация** (от `.well-known/innocode`) – организационные настройки по умолчанию.
 2. **Глобальная конфигурация** (`~/.config/innocode/innocode.json`) — настройки пользователя.
-3. **Пользовательская конфигурация** (`OPENCODE_CONFIG` env var) – пользовательские переопределения
+3. **Пользовательская конфигурация** (`INNOCODE_CONFIG` env var) – пользовательские переопределения
 4. **Конфигурация проекта** (`innocode.json` в проекте) — настройки, специфичные для проекта.
 5. **Каталоги `.innocode`** — агенты, команды, плагины
-6. **Встроенная конфигурация** (`OPENCODE_CONFIG_CONTENT` env var) – переопределяет время выполнения
+6. **Встроенная конфигурация** (`INNOCODE_CONFIG_CONTENT` env var) – переопределяет время выполнения
 
 Это означает, что конфигурации проекта могут переопределять глобальные настройки по умолчанию, а глобальные конфигурации могут переопределять настройки по умолчанию для удаленной организации.
 
@@ -117,10 +117,10 @@ innocode поддерживает форматы **JSON** и **JSONC** (JSON с 
 
 ### Пользовательский путь
 
-Укажите собственный путь к файлу конфигурации, используя переменную среды `OPENCODE_CONFIG`.
+Укажите собственный путь к файлу конфигурации, используя переменную среды `INNOCODE_CONFIG`.
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -130,10 +130,10 @@ innocode run "Hello world"
 
 ### Пользовательский каталог
 
-Укажите пользовательский каталог конфигурации, используя переменную среды `OPENCODE_CONFIG_DIR`. В этом каталоге будет выполняться поиск агентов, команд, режимов и плагинов (аналогично стандартному каталогу `.innocode`), и он должен иметь ту же структуру.
+Укажите пользовательский каталог конфигурации, используя переменную среды `INNOCODE_CONFIG_DIR`. В этом каталоге будет выполняться поиск агентов, команд, режимов и плагинов (аналогично стандартному каталогу `.innocode`), и он должен иметь ту же структуру.
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -143,7 +143,7 @@ innocode run "Hello world"
 
 ## Схема
 
-Файл конфигурации имеет схему, определенную в [**`innocode.ai/config.json`**](https://innocode.ai/config.json).
+Файл конфигурации имеет схему, определенную в [**`innocode.io/config.json`**](https://innocode.io/config.json).
 
 Ваш редактор должен иметь возможность проверять и автозаполнять данные на основе схемы.
 
@@ -155,7 +155,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -182,7 +182,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -211,7 +211,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -229,7 +229,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -242,7 +242,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -271,7 +271,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -302,7 +302,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -317,7 +317,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -343,7 +343,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -360,7 +360,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -381,7 +381,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -407,7 +407,7 @@ Amazon Bedrock поддерживает конфигурацию, специфи
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -422,7 +422,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -438,7 +438,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -466,7 +466,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -484,7 +484,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -503,7 +503,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -520,7 +520,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -537,7 +537,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -552,7 +552,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -567,7 +567,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -590,7 +590,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -611,7 +611,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -634,7 +634,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -657,7 +657,7 @@ innocode автоматически загрузит все новые обно�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

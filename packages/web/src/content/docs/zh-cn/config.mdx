@@ -13,7 +13,7 @@ innocode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // Theme configuration
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -43,10 +43,10 @@ innocode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 1. **Remote config** (来自 `.well-known/innocode`) - 组织默认值
 2. **Global config** (`~/.config/innocode/innocode.json`) - 用户首选项
-3. **Custom config** (`OPENCODE_CONFIG` env var) - 自定义覆盖
+3. **Custom config** (`INNOCODE_CONFIG` env var) - 自定义覆盖
 4. **Project config** (项目中的 `innocode.json`) - 项目特定的设置
 5. **`.innocode` 目录** - 代理、命令、插件
-6. **Inline config** (`OPENCODE_CONFIG_CONTENT` env var) - 运行时覆盖
+6. **Inline config** (`INNOCODE_CONFIG_CONTENT` env var) - 运行时覆盖
 
 这意味着项目配置可以覆盖全局默认值，全局配置可以覆盖远程组织默认值。
 
@@ -116,10 +116,10 @@ innocode 支持 **JSON** 和 **JSONC**（带注释的 JSON）格式。
 
 ### 自定义路径
 
-使用 `OPENCODE_CONFIG` 环境变量指定自定义配置文件路径。
+使用 `INNOCODE_CONFIG` 环境变量指定自定义配置文件路径。
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -129,10 +129,10 @@ innocode run "Hello world"
 
 ### 自定义目录
 
-使用 `OPENCODE_CONFIG_DIR` 环境变量指定自定义配置目录。将在该目录中搜索代理、命令、模式和插件，就像标准 `.innocode` 目录一样，并且应该遵循相同的结构。
+使用 `INNOCODE_CONFIG_DIR` 环境变量指定自定义配置目录。将在该目录中搜索代理、命令、模式和插件，就像标准 `.innocode` 目录一样，并且应该遵循相同的结构。
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -142,7 +142,7 @@ innocode run "Hello world"
 
 ## 模式
 
-配置文件具有在 [**`innocode.ai/config.json`**](https://innocode.ai/config.json) 中定义的架构。
+配置文件具有在 [**`innocode.io/config.json`**](https://innocode.io/config.json) 中定义的架构。
 
 您的编辑器应该能够根据架构进行验证和自动完成。
 
@@ -154,7 +154,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -181,7 +181,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -210,7 +210,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -228,7 +228,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -241,7 +241,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -270,7 +270,7 @@ Amazon Bedrock 支持 AWS 特定配置：
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -301,7 +301,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -316,7 +316,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -342,7 +342,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -359,7 +359,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -380,7 +380,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -406,7 +406,7 @@ Bearer Tokens (`AWS_BEARER_TOKEN_BEDROCK` 或 `/connect`) 优先于基于配置�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -421,7 +421,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -437,7 +437,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -465,7 +465,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -483,7 +483,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -502,7 +502,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -519,7 +519,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -536,7 +536,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -551,7 +551,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -566,7 +566,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -589,7 +589,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -610,7 +610,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -633,7 +633,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -656,7 +656,7 @@ innocode 将在启动时自动下载任何新的更新。您可以使用 `autoup
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

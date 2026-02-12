@@ -55,7 +55,7 @@ Možete prilagoditi formatere kroz `formatter` odjeljak u vašoj InnoCode konfig
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {}
 }
 ```
@@ -77,7 +77,7 @@ Da onemogućite **sve** formatere globalno, postavite `formatter` na `false`:
 
 ```json title="innocode.json" {3}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": false
 }
 ```
@@ -86,7 +86,7 @@ Da onemogućite **specifični** formater, postavite `disabled` na `true`:
 
 ```json title="innocode.json" {5}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -103,7 +103,7 @@ Možete nadjačati ugrađene formatere ili dodati nove navođenjem naredbe, vari
 
 ```json title="innocode.json" {4-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

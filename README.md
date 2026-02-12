@@ -58,7 +58,7 @@ Create an `innocode.json` file in your project root or `~/.config/innocode/`:
 
 ```json
 {
-  "$schema": "https://app.innogpt.de/innocode/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "innogpt": {
       "options": {

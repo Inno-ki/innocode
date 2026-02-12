@@ -89,7 +89,6 @@ export default defineConfig({
         "network",
         "enterprise",
         "troubleshooting",
-        "1-0",
         {
           label: "Usage",
           items: ["tui", "cli", "web", "ide", "zen", "github", "gitlab"],

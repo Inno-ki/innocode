@@ -35,7 +35,7 @@ Možete prilagoditi osnovni URL za bilo kojeg provajdera postavljanjem opcije `b
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -163,7 +163,7 @@ Za konfiguraciju specifičnu za projekat ili trajnu konfiguraciju, koristite `in
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -191,7 +191,7 @@ Ako koristite VPC krajnje tačke za Bedrock:
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -237,7 +237,7 @@ Za prilagođene profile zaključivanja, koristite ime modela i dobavljača u klj
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -489,7 +489,7 @@ Također možete dodati modele kroz svoju innocode konfiguraciju.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "cloudflare-ai-gateway": {
       "models": {
@@ -697,7 +697,7 @@ da biste koristili samo svoju vlastitu instancu koju hostuje GitLab, dodajte slj
 
 ```json
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -759,7 +759,7 @@ Prilagodite putem `innocode.json`:
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -780,7 +780,7 @@ Za pristup GitLab alatima (zahtjevi za spajanje, problemi, cjevovodi, CI/CD, itd
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["@gitlab/innocode-gitlab-plugin"]
 }
 ```
@@ -963,7 +963,7 @@ Evo [Heliconeov katalog modela](https://helicone.ai/models), ovo će vam trebati
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -991,7 +991,7 @@ Helicone podržava prilagođena zaglavlja za funkcije kao što su keširanje, pr
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1045,7 +1045,7 @@ Možete konfigurirati innocode za korištenje lokalnih modela putem [llama.cpp's
 
 ```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1112,7 +1112,7 @@ Možete konfigurirati innocode za korištenje lokalnih modela preko LM Studio.
 
 ```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1233,7 +1233,7 @@ Ollama se može automatski konfigurirati za InnoCode. Pogledajte [Ollama integra
 
 ```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1395,7 +1395,7 @@ Također možete dodati dodatne modele putem vaše innocode konfiguracije.
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "openrouter": {
       "models": {
@@ -1410,7 +1410,7 @@ Također možete dodati dodatne modele putem vaše innocode konfiguracije.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "openrouter": {
       "models": {
@@ -1626,7 +1626,7 @@ Također možete prilagoditi modele kroz svoju innocode konfiguraciju. Evo primj
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1736,7 +1736,7 @@ Također možete dodati dodatne modele putem vaše innocode konfiguracije.
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "zenmux": {
       "models": {
@@ -1804,7 +1804,7 @@ Odaberite ID koji se pamti, to ćete koristiti u svom konfiguracijskom fajlu.
 
 ```json title="innocode.json" ""myprovider"" {5-15}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1843,7 +1843,7 @@ Evo primjera postavljanja opcija `apiKey`, `headers` i modela `limit`.
 
 ```json title="innocode.json" {9,11,17-20}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",

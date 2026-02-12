@@ -13,7 +13,7 @@ description: استخدام ملف إعدادات InnoCode بصيغة JSON.
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // إعدادات السمة
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -44,10 +44,10 @@ description: استخدام ملف إعدادات InnoCode بصيغة JSON.
 
 1. **الإعدادات البعيدة** (من `.well-known/innocode`) - الإعدادات الافتراضية على مستوى المؤسسة
 2. **الإعدادات العامة** (`~/.config/innocode/innocode.json`) - تفضيلات المستخدم
-3. **إعدادات مخصصة** (`OPENCODE_CONFIG` env var) - تجاوزات مخصصة
+3. **إعدادات مخصصة** (`INNOCODE_CONFIG` env var) - تجاوزات مخصصة
 4. **إعدادات المشروع** (`innocode.json` داخل المشروع) - إعدادات خاصة بالمشروع
 5. **أدلة `.innocode`** - الوكلاء، الأوامر، الإضافات
-6. **إعدادات ضمنية** (`OPENCODE_CONFIG_CONTENT` env var) - تجاوزات وقت التشغيل
+6. **إعدادات ضمنية** (`INNOCODE_CONFIG_CONTENT` env var) - تجاوزات وقت التشغيل
 
 هذا يعني أن إعدادات المشروع يمكنها تجاوز الإعدادات العامة، وأن الإعدادات العامة يمكنها تجاوز الإعدادات الافتراضية البعيدة على مستوى المؤسسة.
 
@@ -117,10 +117,10 @@ description: استخدام ملف إعدادات InnoCode بصيغة JSON.
 
 ### مسار مخصص
 
-حدّد مسار ملف إعدادات مخصصًا باستخدام متغير البيئة `OPENCODE_CONFIG`.
+حدّد مسار ملف إعدادات مخصصًا باستخدام متغير البيئة `INNOCODE_CONFIG`.
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -130,12 +130,12 @@ innocode run "Hello world"
 
 ### دليل مخصص
 
-حدّد دليل إعدادات مخصصًا باستخدام متغير البيئة `OPENCODE_CONFIG_DIR`.
+حدّد دليل إعدادات مخصصًا باستخدام متغير البيئة `INNOCODE_CONFIG_DIR`.
 سيتم البحث داخل هذا الدليل عن الوكلاء والأوامر والأوضاع والإضافات تمامًا مثل
 الدليل القياسي `.innocode`، ويجب أن يتبع نفس البنية.
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -145,7 +145,7 @@ innocode run "Hello world"
 
 ## المخطط
 
-يحتوي ملف الإعدادات على مخطط مُعرَّف في [**`innocode.ai/config.json`**](https://innocode.ai/config.json).
+يحتوي ملف الإعدادات على مخطط مُعرَّف في [**`innocode.io/config.json`**](https://innocode.io/config.json).
 
 يفترض أن يتمكن محررك من التحقق والإكمال التلقائي اعتمادًا على هذا المخطط.
 
@@ -157,7 +157,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -184,7 +184,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -213,7 +213,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -231,7 +231,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -244,7 +244,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -273,7 +273,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -304,7 +304,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -319,7 +319,7 @@ innocode run "Hello world"
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -345,7 +345,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -362,7 +362,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -383,7 +383,7 @@ innocode run "Hello world"
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -409,7 +409,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -424,7 +424,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -440,7 +440,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -468,7 +468,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -486,7 +486,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -505,7 +505,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -522,7 +522,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -539,7 +539,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -554,7 +554,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -570,7 +570,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -593,7 +593,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -614,7 +614,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -637,7 +637,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -660,7 +660,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

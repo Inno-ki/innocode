@@ -35,7 +35,7 @@ config.
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -163,7 +163,7 @@ innocode の実行中に次の環境変数のいずれかを設定します。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -191,7 +191,7 @@ Bedrock の VPC エンドポイントを使用している場合:
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -237,7 +237,7 @@ Amazon Bedrock は次の認証優先度を使用します。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -489,7 +489,7 @@ InnoCode 設定を通じてモデルを追加することもできます。
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "cloudflare-ai-gateway": {
       "models": {
@@ -758,7 +758,7 @@ export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -779,7 +779,7 @@ GitLab ツール (マージリクエスト、問題、パイプライン、CI/CD
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["@gitlab/innocode-gitlab-plugin"]
 }
 ```
@@ -963,7 +963,7 @@ InnoCode を通じて自動的に構成されていない Helicone の機能ま�
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -991,7 +991,7 @@ Helicone は、キャッシュ、ユーザー追跡、セッション管理な�
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1045,7 +1045,7 @@ npm install -g innocode-helicone-session
 
 ```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1112,7 +1112,7 @@ LM Studio を通じてローカルモデルを使用するように innocode を
 
 ```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1233,7 +1233,7 @@ Ollama は InnoCode 用に自動的に構成できます。詳細については
 
 ```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1395,7 +1395,7 @@ InnoCode 設定を通じて追加のモデルを追加することもできま�
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "openrouter": {
       "models": {
@@ -1410,7 +1410,7 @@ InnoCode 設定を通じて追加のモデルを追加することもできま�
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1626,7 +1626,7 @@ InnoCode 設定を通じてモデルをカスタマイズすることもでき�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1736,7 +1736,7 @@ InnoCode 設定を通じて追加のモデルを追加することもできま�
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "zenmux": {
       "models": {
@@ -1804,7 +1804,7 @@ OpenAI と互換性のある任意のプロバイダーを InnoCode で使用で
 
    ```json title="innocode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1843,7 +1843,7 @@ OpenAI と互換性のある任意のプロバイダーを InnoCode で使用で
 
 ```json title="innocode.json" {9,11,17-20}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",

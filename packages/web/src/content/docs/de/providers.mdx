@@ -35,7 +35,7 @@ Sie können die Base URL für jeden Anbieter anpassen, indem Sie die Option `bas
 
 ```json title="innocode.json" {6}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -163,7 +163,7 @@ So verwenden Sie Amazon Bedrock mit InnoCode:
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -190,7 +190,7 @@ So verwenden Sie Amazon Bedrock mit InnoCode:
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -234,7 +234,7 @@ Verwenden Sie für benutzerdefinierte Inferenzprofile den Modell- und Anbieterna
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -486,7 +486,7 @@ Mit dem Cloudflare AI Gateway können Sie über einen einheitlichen Endpunkt auf
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -692,7 +692,7 @@ Um nur Ihre eigene von GitLab gehostete Instanz zu verwenden, fügen Sie Folgend
 
 ```json
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -754,7 +754,7 @@ Anpassen über `innocode.json`:
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -775,7 +775,7 @@ So greifen Sie auf GitLab-Tools zu (Zusammenführungsanfragen, Probleme, Pipelin
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["@gitlab/innocode-gitlab-plugin"]
 }
 ```
@@ -958,7 +958,7 @@ Hier ist [Helicone's Model Directory](https://helicone.ai/models). Sie benötige
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -986,7 +986,7 @@ Helicone unterstützt benutzerdefinierte Header für Funktionen wie Caching, Ben
 
 ```jsonc title="~/.config/innocode/innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1040,7 +1040,7 @@ Sie können InnoCode für die Verwendung lokaler Modelle über das Dienstprogram
 
 ```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1107,7 +1107,7 @@ Sie können InnoCode über LM Studio für die Verwendung lokaler Modelle konfigu
 
 ```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1228,7 +1228,7 @@ Ollama kann sich automatisch für InnoCode konfigurieren. Weitere Informationen 
 
 ```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1390,7 +1390,7 @@ InnoGPT ist eine Liste getesteter und verifizierter Modelle, die vom InnoCode-Te
 
    ```json title="innocode.json" {6}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1405,7 +1405,7 @@ InnoGPT ist eine Liste getesteter und verifizierter Modelle, die vom InnoCode-Te
 
    ```json title="innocode.json"
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1621,7 +1621,7 @@ Sie können Modelle auch über Ihre InnoCode-Konfiguration anpassen. Hier ist ei
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1731,7 +1731,7 @@ Einige nützliche Routing-Optionen:
 
    ```json title="innocode.json" {6}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -1799,7 +1799,7 @@ Sie können jeden OpenAI-kompatiblen Anbieter mit InnoCode verwenden. Die meiste
 
    ```json title="innocode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://innocode.ai/config.json",
+     "$schema": "https://innocode.io/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1837,7 +1837,7 @@ Hier ist ein Beispiel für die Einstellung der Optionen `apiKey`, `headers` und 
 
 ```json title="innocode.json" {9,11,17-20}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",

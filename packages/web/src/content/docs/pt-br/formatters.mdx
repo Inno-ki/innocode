@@ -60,7 +60,7 @@ Você pode personalizar os formatadores através da seção `formatter` em sua c
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {}
 }
 ```
@@ -84,7 +84,7 @@ Para desabilitar **todos** os formatadores globalmente, defina `formatter` como 
 
 ```json title="innocode.json" {3}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": false
 }
 ```
@@ -93,7 +93,7 @@ Para desabilitar um **formatador específico**, defina `disabled` como `true`:
 
 ```json title="innocode.json" {5}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -110,7 +110,7 @@ Você pode substituir os formatadores integrados ou adicionar novos especificand
 
 ```json title="innocode.json" {4-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

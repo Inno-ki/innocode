@@ -60,7 +60,7 @@ Puede personalizar los formateadores a través de la sección `formatter` en su 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {}
 }
 ```
@@ -84,7 +84,7 @@ Para deshabilitar **todos** los formateadores globalmente, configure `formatter`
 
 ```json title="innocode.json" {3}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": false
 }
 ```
@@ -93,7 +93,7 @@ Para deshabilitar un formateador **específico**, establezca `disabled` en `true
 
 ```json title="innocode.json" {5}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -110,7 +110,7 @@ Puede anular los formateadores integrados o agregar otros nuevos especificando e
 
 ```json title="innocode.json" {4-14}
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "command": ["npx", "prettier", "--write", "$FILE"],

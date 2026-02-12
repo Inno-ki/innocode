@@ -13,7 +13,7 @@ InnoCode prend en charge les formats **JSON** et **JSONC** (JSON avec commentair
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // Theme configuration
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -44,10 +44,10 @@ Les sources de configuration sont chargées dans cet ordre (les sources ultérie
 
 1. **Configuration distante** (à partir de `.well-known/innocode`) - paramètres par défaut de l'organisation
 2. **Configuration globale** (`~/.config/innocode/innocode.json`) - préférences utilisateur
-3. **Configuration personnalisée** (`OPENCODE_CONFIG` env var) - remplacements personnalisés
+3. **Configuration personnalisée** (`INNOCODE_CONFIG` env var) - remplacements personnalisés
 4. **Configuration du projet** (`innocode.json` dans le projet) - paramètres spécifiques au projet
 5. **Répertoires `.innocode`** - agents, commandes, plugins
-6. **Configuration en ligne** (`OPENCODE_CONFIG_CONTENT` env var) - remplacements d'exécution
+6. **Configuration en ligne** (`INNOCODE_CONFIG_CONTENT` env var) - remplacements d'exécution
 
 Cela signifie que les configurations de projet peuvent remplacer les valeurs par défaut globales, et que les configurations globales peuvent remplacer les valeurs par défaut de l'organisation distante.
 
@@ -117,10 +117,10 @@ Il peut également être archivé en toute sécurité dans Git et utilise le mê
 
 ### Chemin personnalisé
 
-Spécifiez un chemin de fichier de configuration personnalisé à l'aide de la variable d'environnement `OPENCODE_CONFIG`.
+Spécifiez un chemin de fichier de configuration personnalisé à l'aide de la variable d'environnement `INNOCODE_CONFIG`.
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -130,10 +130,10 @@ La configuration personnalisée est chargée entre les configurations globales e
 
 ### Répertoire personnalisé
 
-Spécifiez un répertoire de configuration personnalisé à l'aide de `OPENCODE_CONFIG_DIR` variable d'environnement. Ce répertoire sera recherché pour les agents, les commandes, modes et plugins tout comme le répertoire standard `.innocode`, et devrait suivre la même structure.
+Spécifiez un répertoire de configuration personnalisé à l'aide de `INNOCODE_CONFIG_DIR` variable d'environnement. Ce répertoire sera recherché pour les agents, les commandes, modes et plugins tout comme le répertoire standard `.innocode`, et devrait suivre la même structure.
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -143,7 +143,7 @@ Le répertoire personnalisé est chargé après les répertoires de configuratio
 
 ## Schéma
 
-Le fichier de configuration a un schéma défini dans [**`innocode.ai/config.json`**](https://innocode.ai/config.json).
+Le fichier de configuration a un schéma défini dans [**`innocode.io/config.json`**](https://innocode.io/config.json).
 
 Votre éditeur doit être capable de valider et de compléter automatiquement en fonction du schéma.
 
@@ -155,7 +155,7 @@ Vous pouvez configurer les paramètres spécifiques à TUI via l'option `tui`.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -182,7 +182,7 @@ Vous pouvez configurer les paramètres du serveur pour les commandes `innocode s
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -211,7 +211,7 @@ Vous pouvez gérer les outils qu'un LLM peut utiliser via l'option `tools`.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -229,7 +229,7 @@ Vous pouvez configurer les fournisseurs et les modèles que vous souhaitez utili
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -242,7 +242,7 @@ Les options du fournisseur peuvent inclure `timeout` et `setCacheKey` :
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -271,7 +271,7 @@ Amazon Bedrock prend en charge la configuration spécifique à AWS :
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -302,7 +302,7 @@ Vous pouvez configurer le thème que vous souhaitez utiliser dans votre configur
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -317,7 +317,7 @@ Vous pouvez configurer des agents spécialisés pour des tâches spécifiques vi
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -343,7 +343,7 @@ Vous pouvez définir l'agent par défaut à l'aide de l'option `default_agent`. 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -360,7 +360,7 @@ Vous pouvez configurer la fonctionnalité [share](/docs/share) via l'option `sha
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -381,7 +381,7 @@ Vous pouvez configurer des commandes personnalisées pour les tâches répétiti
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -407,7 +407,7 @@ Vous pouvez personnaliser vos raccourcis clavier via l'option `keybinds`.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -422,7 +422,7 @@ InnoCode téléchargera automatiquement toutes les nouvelles mises à jour au d�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -438,7 +438,7 @@ Vous pouvez configurer les formateurs de code via l'option `formatter`.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -466,7 +466,7 @@ Par exemple, pour garantir que les outils `edit` et `bash` nécessitent l'approb
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -484,7 +484,7 @@ Vous pouvez contrôler le comportement de compactage du contexte via l'option `c
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -503,7 +503,7 @@ Vous pouvez configurer les modèles d'ignorance de l'observateur de fichiers via
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -520,7 +520,7 @@ Vous pouvez configurer les serveurs MCP que vous souhaitez utiliser via l'option
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -537,7 +537,7 @@ Placez les fichiers du plugin dans `.innocode/plugins/` ou `~/.config/innocode/p
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -552,7 +552,7 @@ Vous pouvez configurer les instructions pour le modèle que vous utilisez via l'
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -567,7 +567,7 @@ Vous pouvez désactiver les fournisseurs chargés automatiquement via l'option `
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -590,7 +590,7 @@ Vous pouvez spécifier une liste autorisée de fournisseurs via l'option `enable
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -611,7 +611,7 @@ La clé `experimental` contient des options en cours de développement actif.
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -634,7 +634,7 @@ Utilisez `{env:VARIABLE_NAME}` pour remplacer les variables d'environnement :
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -657,7 +657,7 @@ Utilisez `{file:path/to/file}` pour remplacer le contenu d'un fichier :
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {

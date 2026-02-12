@@ -13,7 +13,7 @@ InnoCode는 **JSON** 및 **JSONC** (주석이 있는 JSON) 형식을 지원합�
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   // Theme configuration
   "theme": "innocode",
   "model": "anthropic/claude-sonnet-4-5",
@@ -43,10 +43,10 @@ InnoCode는 **JSON** 및 **JSONC** (주석이 있는 JSON) 형식을 지원합�
 
 1. **원격 구성** (`.well-known/innocode`에서) - 조직 기본값
 2. **전역 구성** (`~/.config/innocode/innocode.json`) - 사용자 환경설정
-3. **사용자 정의 구성** (`OPENCODE_CONFIG` 환경 변수) - 사용자 정의 재정의
+3. **사용자 정의 구성** (`INNOCODE_CONFIG` 환경 변수) - 사용자 정의 재정의
 4. **프로젝트별 구성** (`innocode.json`) - 프로젝트별 설정
 5. **`.innocode` 디렉토리** - 에이전트, 명령, 플러그인
-6. **인라인 구성** (`OPENCODE_CONFIG_CONTENT` 환경 변수) - 런타임 재정의
+6. **인라인 구성** (`INNOCODE_CONFIG_CONTENT` 환경 변수) - 런타임 재정의
 
 이것은 프로젝트 구성이 전역 기본값을 덮어쓸 수 있고, 전역 구성이 원격 조직 기본값을 덮어쓸 수 있음을 의미합니다.
 
@@ -116,10 +116,10 @@ InnoCode가 시작될 때, 현재 디렉토리의 설정 파일이나 가장 가
 
 ### 사용자 정의 경로
 
-`OPENCODE_CONFIG` 환경 변수를 사용하여 사용자 정의 구성 파일 경로를 지정합니다.
+`INNOCODE_CONFIG` 환경 변수를 사용하여 사용자 정의 구성 파일 경로를 지정합니다.
 
 ```bash
-export OPENCODE_CONFIG=/path/to/my/custom-config.json
+export INNOCODE_CONFIG=/path/to/my/custom-config.json
 innocode run "Hello world"
 ```
 
@@ -129,10 +129,10 @@ innocode run "Hello world"
 
 ## 사용자 정의 디렉토리
 
-`OPENCODE_CONFIG_DIR` 환경 변수를 사용하여 사용자 정의 구성 디렉토리를 지정할 수 있습니다. 이 디렉토리는 표준 `.innocode` 디렉토리와 마찬가지로 에이전트, 명령, 모드 및 플러그인을 검색하며 동일한 구조를 따라야 합니다.
+`INNOCODE_CONFIG_DIR` 환경 변수를 사용하여 사용자 정의 구성 디렉토리를 지정할 수 있습니다. 이 디렉토리는 표준 `.innocode` 디렉토리와 마찬가지로 에이전트, 명령, 모드 및 플러그인을 검색하며 동일한 구조를 따라야 합니다.
 
 ```bash
-export OPENCODE_CONFIG_DIR=/path/to/my/config-directory
+export INNOCODE_CONFIG_DIR=/path/to/my/config-directory
 innocode run "Hello world"
 ```
 
@@ -142,7 +142,7 @@ innocode run "Hello world"
 
 ## 스키마
 
-구성 파일에는 [**`innocode.ai/config.json`**](https://innocode.ai/config.json)에 정의된 스키마가 있습니다.
+구성 파일에는 [**`innocode.io/config.json`**](https://innocode.io/config.json)에 정의된 스키마가 있습니다.
 
 편집기는 스키마에 따라 유효성 검사 및 자동 완성을 제공해야 합니다.
 
@@ -154,7 +154,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tui": {
     "scroll_speed": 3,
     "scroll_acceleration": {
@@ -181,7 +181,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
@@ -210,7 +210,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "tools": {
     "write": false,
     "bash": false
@@ -228,7 +228,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {},
   "model": "anthropic/claude-sonnet-4-5",
   "small_model": "anthropic/claude-haiku-4-5"
@@ -241,7 +241,7 @@ innocode run "Hello world"
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -270,7 +270,7 @@ Amazon Bedrock는 AWS 관련 구성을 지원합니다:
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "provider": {
     "amazon-bedrock": {
       "options": {
@@ -301,7 +301,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "theme": ""
 }
 ```
@@ -316,7 +316,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "agent": {
     "code-reviewer": {
       "description": "Reviews code for best practices and potential issues",
@@ -342,7 +342,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "default_agent": "plan"
 }
 ```
@@ -359,7 +359,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "share": "manual"
 }
 ```
@@ -380,7 +380,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```jsonc title="innocode.jsonc"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "command": {
     "test": {
       "template": "Run the full test suite with coverage report and show any failures.\nFocus on the failing tests and suggest fixes.",
@@ -408,7 +408,7 @@ Bearer 토큰(`AWS_BEARER_TOKEN_BEDROCK` 또는 `/connect`)은 프로필 기반 
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "keybinds": {}
 }
 ```
@@ -423,7 +423,7 @@ InnoCode는 시작될 때 자동으로 새로운 업데이트를 다운로드합
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "autoupdate": false
 }
 ```
@@ -439,7 +439,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "formatter": {
     "prettier": {
       "disabled": true
@@ -467,7 +467,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "permission": {
     "edit": "ask",
     "bash": "ask"
@@ -485,7 +485,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "compaction": {
     "auto": true,
     "prune": true
@@ -504,7 +504,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "watcher": {
     "ignore": ["node_modules/**", "dist/**", ".git/**"]
   }
@@ -521,7 +521,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "mcp": {}
 }
 ```
@@ -538,7 +538,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "plugin": ["innocode-helicone-session", "@my-org/custom-plugin"]
 }
 ```
@@ -553,7 +553,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["CONTRIBUTING.md", "docs/guidelines.md", ".cursor/rules/*.md"]
 }
 ```
@@ -568,7 +568,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "disabled_providers": ["openai", "gemini"]
 }
 ```
@@ -591,7 +591,7 @@ Homebrew와 같은 패키지 관리자를 사용하여 설치되지 않은 경�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "enabled_providers": ["anthropic", "openai"]
 }
 ```
@@ -612,7 +612,7 @@ InnoCode를 제한하여 특정 공급자만 사용하도록 할 때 유용합�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "experimental": {}
 }
 ```
@@ -635,7 +635,7 @@ InnoCode를 제한하여 특정 공급자만 사용하도록 할 때 유용합�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "model": "{env:OPENCODE_MODEL}",
   "provider": {
     "anthropic": {
@@ -658,7 +658,7 @@ InnoCode를 제한하여 특정 공급자만 사용하도록 할 때 유용합�
 
 ```json title="innocode.json"
 {
-  "$schema": "https://innocode.ai/config.json",
+  "$schema": "https://innocode.io/config.json",
   "instructions": ["./custom-instructions.md"],
   "provider": {
     "openai": {
