@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 對於 TypeScript 外掛，您可以從外掛套件中匯入類型：
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 外掛還可以向 innocode 添加自定義工具：
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-等級：`debug`、`info`、`warn`、`error`。詳情請參閱 [SDK 文件](https://innocode.ai/docs/sdk)。
+等級：`debug`、`info`、`warn`、`error`。詳情請參閱 [SDK 文件](https://innocode.io/docs/sdk)。
 
 ---
 
@@ -336,7 +336,7 @@ export const MyPlugin = async ({ client }) => {
 自定義壓縮工作階段時包含的上下文：
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 您還可以透過設定 `output.prompt` 來完全替換壓縮提示：
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

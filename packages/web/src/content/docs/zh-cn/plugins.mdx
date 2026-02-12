@@ -118,7 +118,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 - `project`：当前项目信息。
 - `directory`：当前工作目录。
 - `worktree`：git 工作树路径。
-- `client`：用于与AI交互的opencodeSDK客户端。
+- `client`：用于与AI交互的InnoCode SDK客户端。
 - `$`：Bun的[外壳API](https://bun.com/docs/runtime/shell)用于执行命令。
 
 ---
@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 对于 TypeScript 插件，您可以从插件包中导入类型：
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 插件还可以向 innocode 添加自定义工具：
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-级别：`debug`、`info`、`warn`、`error`。详情请参见【SDK文档](https://innocode.ai/docs/sdk)。
+级别：`debug`、`info`、`warn`、`error`。详情请参见【SDK文档](https://innocode.io/docs/sdk)。
 
 ---
 
@@ -336,7 +336,7 @@ export const MyPlugin = async ({ client }) => {
 自定義壓縮会话時包含的上下文：
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 您还可以通过设置`output.prompt`来完全替换压缩提示：
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

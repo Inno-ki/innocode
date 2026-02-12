@@ -27,7 +27,7 @@ Possono essere definiti:
 Il modo piu semplice per creare strumenti e usare l'helper `tool()` che fornisce type-safety e validazione.
 
 ```ts title=".innocode/tools/database.ts" {1}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -50,7 +50,7 @@ Il **nome del file** diventa il **nome dello strumento**. L'esempio sopra crea l
 Puoi anche esportare piu strumenti da un singolo file. Ogni export diventa **uno strumento separato** con nome **`<filename>_<exportname>`**:
 
 ```ts title=".innocode/tools/math.ts"
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -113,7 +113,7 @@ export default {
 Gli strumenti ricevono un contesto sulla sessione corrente:
 
 ```ts title=".innocode/tools/project.ts" {8}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Get project information",
@@ -150,7 +150,7 @@ print(a + b)
 Poi crea la definizione dello strumento che lo invoca:
 
 ```ts title=".innocode/tools/python-add.ts" {10}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 import path from "path"
 
 export default tool({

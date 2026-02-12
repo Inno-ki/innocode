@@ -18,7 +18,7 @@ El SDK innocode JS/TS proporciona un cliente con seguridad de tipos para interac
 Instale el SDK desde npm:
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 Cree una instancia de innocode:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -52,7 +52,7 @@ Esto inicia tanto un servidor como un cliente.
 Puede pasar un objeto de configuración para personalizar el comportamiento. La instancia aún recoge su `innocode.json`, pero puede anular o agregar configuración en línea:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -72,7 +72,7 @@ innocode.server.close()
 Si ya tiene una instancia en ejecución de innocode, puede crear una instancia de cliente para conectarse a ella:
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 El SDK incluye definiciones TypeScript para todos los tipos API. Importarlos directamente:
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 Todos los tipos se generan a partir de la especificación OpenAPI del servidor y están disponibles en el <a href={typesUrl}>archivo de tipos</a>.

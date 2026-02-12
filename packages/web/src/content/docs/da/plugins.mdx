@@ -128,7 +128,7 @@ Plugin-funktionen modtager:
 For TypeScript-plugins kan du importere typer fra plugin-pakken:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 Plugins kan også tilføje brugerdefinerede værktøjer til innocode:
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-Niveauer: `debug`, `info`, `warn`, `error`. Se [SDK documentation](https://innocode.ai/docs/sdk) for detaljer.
+Niveauer: `debug`, `info`, `warn`, `error`. Se [SDK documentation](https://innocode.io/docs/sdk) for detaljer.
 
 ---
 
@@ -336,7 +336,7 @@ Niveauer: `debug`, `info`, `warn`, `error`. Se [SDK documentation](https://innoc
 Tilpas konteksten inkluderet, når en session komprimeres:
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 Du kan også erstatte komprimeringsprompten helt ved at indstille `output.prompt`:
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

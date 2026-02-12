@@ -128,7 +128,7 @@ Eklenti işlevi şunları alır:
 TypeScript eklentileri için türleri eklenti paketinden içe aktarabilirsiniz:
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 Eklentiler ayrıca innocode'a özel araçlar da ekleyebilir:
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-Seviyeler: `debug`, `info`, `warn`, `error`. Ayrıntılar için [SDK documentation](https://innocode.ai/docs/sdk)'e bakın.
+Seviyeler: `debug`, `info`, `warn`, `error`. Ayrıntılar için [SDK documentation](https://innocode.io/docs/sdk)'e bakın.
 
 ---
 
@@ -336,7 +336,7 @@ Seviyeler: `debug`, `info`, `warn`, `error`. Ayrıntılar için [SDK documentati
 Bir oturum sıkıştırıldığında içerilen bağlamı özelleştirin:
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 Ayrıca `output.prompt` ayarını yaparak sıkıştırma istemini tamamen değiştirebilirsiniz:
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

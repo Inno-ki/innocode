@@ -18,7 +18,7 @@ export const typesUrl = `${config.github}/blob/dev/packages/sdk/js/src/gen/types
 ثبّت SDK من npm:
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 أنشئ مثيلا من innocode:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -52,7 +52,7 @@ const { client } = await createOpencode()
 يمكنك تمرير كائن إعدادات لتخصيص السلوك. سيستمر المثيل في التقاط `innocode.json` لديك، لكن يمكنك تجاوز الإعدادات أو إضافة إعدادات مباشرة:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -72,7 +72,7 @@ innocode.server.close()
 إذا كان لديك مثيل innocode يعمل بالفعل، يمكنك إنشاء مثيل عميل للاتصال به:
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 تتضمن SDK تعريفات TypeScript لجميع أنواع API. استوردها مباشرة:
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 جميع الأنواع مولّدة من مواصفات OpenAPI الخاصة بالخادم ومتاحة في <a href={typesUrl}>ملف الأنواع</a>.

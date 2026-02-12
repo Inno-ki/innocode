@@ -18,7 +18,7 @@ innocode JS/TS SDK จัดเตรียมไคลเอ็นต์ปร�
 ติดตั้ง SDK จาก npm:
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 สร้างอินสแตนซ์ของ innocode:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -52,7 +52,7 @@ const { client } = await createOpencode()
 คุณสามารถส่งผ่านออบเจ็กต์การกำหนดค่าเพื่อปรับแต่งลักษณะการทำงานได้ อินสแตนซ์ยังคงรับ `innocode.json` ของคุณ แต่คุณสามารถแทนที่หรือเพิ่มการกำหนดค่าแบบอินไลน์ได้:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -72,7 +72,7 @@ innocode.server.close()
 หากคุณมีอินสแตนซ์ innocode ที่ทำงานอยู่แล้ว คุณสามารถสร้างอินสแตนซ์ไคลเอ็นต์เพื่อเชื่อมต่อได้:
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK มีคำจำกัดความ TypeScript สำหรับ API ประเภททั้งหมด นำเข้าโดยตรง:
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 ทุกประเภทสร้างขึ้นจากข้อกำหนด OpenAPI ของเซิร์ฟเวอร์และมีอยู่ใน <a href={typesUrl}>ไฟล์ประเภท</a>

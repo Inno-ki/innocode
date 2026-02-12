@@ -18,7 +18,7 @@ innocode JS/TS SDK 提供类型其他安全的客户端用于与服务器交互�
 从npm安装SDK：
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 创建innocode的示例项：
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -52,7 +52,7 @@ const { client } = await createOpencode()
 You can pass a configuration object to customize behavior. The instance still picks up your `innocode.json`, but you can override or add configuration inline:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -72,7 +72,7 @@ innocode.server.close()
 如果您已经有 innocode 的正在执行示例项，则可以创建一个客户端示例项来连线到它：
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK 包括所有 API 型以外的 TypeScript 定义。直接汇入其中：
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 所有型別均根據服务器的 OpenAPI 規範生成，并可在 <a href={typesUrl}> 型別文件 </a> 中找到。

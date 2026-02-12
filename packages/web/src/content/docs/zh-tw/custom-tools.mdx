@@ -27,7 +27,7 @@ description: 建立 LLM 可以在 innocode 中呼叫的工具。
 建立工具的最簡單方法是使用 `tool()` 輔助程式，它提供類型安全和驗證。
 
 ```ts title=".innocode/tools/database.ts" {1}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -50,7 +50,7 @@ export default tool({
 您也可以從單個檔案匯出多個工具。每個匯出都會成為**一個單獨的工具**，名稱為 **`<filename>_<exportname>`**：
 
 ```ts title=".innocode/tools/math.ts"
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -113,7 +113,7 @@ export default {
 工具接收有關當前工作階段的上下文：
 
 ```ts title=".innocode/tools/project.ts" {8}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Get project information",
@@ -150,7 +150,7 @@ print(a + b)
 然後建立呼叫它的工具定義：
 
 ```ts title=".innocode/tools/python-add.ts" {10}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 import path from "path"
 
 export default tool({

@@ -18,7 +18,7 @@ Damit kannst du Integrationen bauen und innocode programmatisch steuern.
 Installiere das SDK ueber npm:
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 Erstelle eine innocode-Instanz:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -53,7 +53,7 @@ Du kannst ein Konfigurationsobjekt uebergeben, um das Verhalten anzupassen.
 `innocode.json` wird weiterhin geladen, kann aber inline ueberschrieben oder erweitert werden:
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -73,7 +73,7 @@ innocode.server.close()
 Wenn innocode bereits laeuft, kannst du nur einen Client erstellen und verbinden:
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -98,7 +98,7 @@ Das SDK bringt TypeScript-Definitionen fuer alle API-Typen mit.
 Du kannst sie direkt importieren:
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 Alle Typen werden aus der OpenAPI-Spezifikation des Servers generiert und sind in der <a href={typesUrl}>Typdatei</a> verfuegbar.

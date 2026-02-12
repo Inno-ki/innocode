@@ -27,7 +27,7 @@ description: LLM が InnoCode で呼び出すことができるツールを作�
 ツールを作成する最も簡単な方法は、型安全性と検証を提供する `tool()` ヘルパーを使用することです。
 
 ```ts title=".innocode/tools/database.ts" {1}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -50,7 +50,7 @@ export default tool({
 単一のファイルから複数のツールをエクスポートすることもできます。各エクスポートは **`<filename>_<exportname>`** という名前の **別のツール** になります。
 
 ```ts title=".innocode/tools/math.ts"
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -113,7 +113,7 @@ export default {
 ツールは現在のセッションに関するコンテキストを受け取ります。
 
 ```ts title=".innocode/tools/project.ts" {8}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Get project information",
@@ -150,7 +150,7 @@ print(a + b)
 次に、それを呼び出すツール定義を作成します。
 
 ```ts title=".innocode/tools/python-add.ts" {10}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 import path from "path"
 
 export default tool({

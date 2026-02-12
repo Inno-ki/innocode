@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 TypeScript プラグインの場合、プラグインパッケージから型をインポートできます。
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 プラグインは InnoCode にカスタムツールを追加することもできます。
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-レベル: `debug`、`info`、`warn`、`error`。詳細については、[SDK ドキュメント](https://innocode.ai/docs/sdk) を参照してください。
+レベル: `debug`、`info`、`warn`、`error`。詳細については、[SDK ドキュメント](https://innocode.io/docs/sdk) を参照してください。
 
 ---
 
@@ -336,7 +336,7 @@ export const MyPlugin = async ({ client }) => {
 セッションが圧縮されたときに含まれるコンテキストをカスタマイズします。
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ Include any state that should persist across compaction:
 `output.prompt` を設定することで、圧縮プロンプトを完全に置き換えることもできます。
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

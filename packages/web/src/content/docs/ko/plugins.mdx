@@ -128,7 +128,7 @@ export const MyPlugin = async ({ project, client, $, directory, worktree }) => {
 TypeScript 플러그인의 경우 플러그인 패키지에서 유형을 가져올 수 있습니다.
 
 ```ts title="my-plugin.ts" {1}
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const MyPlugin: Plugin = async ({ project, client, $, directory, worktree }) => {
   return {
@@ -280,7 +280,7 @@ export const InjectEnvPlugin = async () => {
 플러그인은 innocode에 사용자 정의 도구를 추가 할 수 있습니다 :
 
 ```ts title=".innocode/plugins/custom-tools.ts"
-import { type Plugin, tool } from "@innocode-ai/plugin"
+import { type Plugin, tool } from "@innocode/plugin"
 
 export const CustomToolsPlugin: Plugin = async (ctx) => {
   return {
@@ -327,7 +327,7 @@ export const MyPlugin = async ({ client }) => {
 }
 ```
 
-레벨: `debug`, `info`, `warn`, `error`. [SDK 문서](https://innocode.ai/docs/sdk)를 참고하세요.
+레벨: `debug`, `info`, `warn`, `error`. [SDK 문서](https://innocode.io/docs/sdk)를 참고하세요.
 
 ---
 
@@ -336,7 +336,7 @@ export const MyPlugin = async ({ client }) => {
 세션이 압축 될 때 포함 된 컨텍스트를 사용자 지정:
 
 ```ts title=".innocode/plugins/compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CompactionPlugin: Plugin = async (ctx) => {
   return {
@@ -360,7 +360,7 @@ LLM이 압축 요약을 생성하기 전에 `experimental.session.compacting` �
 당신은 또한 `output.prompt`를 조정해서 조밀함을 전적으로 대체할 수 있습니다:
 
 ```ts title=".innocode/plugins/custom-compaction.ts"
-import type { Plugin } from "@innocode-ai/plugin"
+import type { Plugin } from "@innocode/plugin"
 
 export const CustomCompactionPlugin: Plugin = async (ctx) => {
   return {

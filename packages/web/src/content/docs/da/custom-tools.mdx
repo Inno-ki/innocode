@@ -3,7 +3,7 @@ title: Brugerdefinerede værktøjer
 description: Opret værktøjer, som LLM kan kalde innocode ind.
 ---
 
-Brugerdefinerede værktøjer er funktioner, du opretter, som LLM kan kalde under samtaler. De arbejder sammen med opencodes [built-in tools](/docs/tools) som `read`, `write` og `bash`.
+Brugerdefinerede værktøjer er funktioner, du opretter, som LLM kan kalde under samtaler. De arbejder sammen med innocodes [built-in tools](/docs/tools) som `read`, `write` og `bash`.
 
 ---
 
@@ -27,7 +27,7 @@ De kan definere:
 Den nemmeste måde at oprette værktøjer på er at bruge `tool()`-hjælperen, som giver typesikkerhed og validering.
 
 ```ts title=".innocode/tools/database.ts" {1}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -50,7 +50,7 @@ export default tool({
 Du kan også eksportere flere værktøjer fra en enkelt fil. Hver eksport bliver **et separat værktøj** med navnet **`<filename>_<exportname>`**:
 
 ```ts title=".innocode/tools/math.ts"
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -113,7 +113,7 @@ export default {
 Værktøjer modtager kontekst om den aktuelle session:
 
 ```ts title=".innocode/tools/project.ts" {8}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Get project information",
@@ -150,7 +150,7 @@ print(a + b)
 Opret derefter værktøjsdefinitionen, der kalder den:
 
 ```ts title=".innocode/tools/python-add.ts" {10}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 import path from "path"
 
 export default tool({

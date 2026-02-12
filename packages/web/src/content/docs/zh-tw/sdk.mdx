@@ -18,7 +18,7 @@ innocode JS/TS SDK 提供類型安全的客戶端用於與伺服器互動。
 從 npm 安裝 SDK：
 
 ```bash
-npm install @innocode-ai/sdk
+npm install innocode/sdk
 ```
 
 ---
@@ -28,7 +28,7 @@ npm install @innocode-ai/sdk
 建立 innocode 的實例：
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const { client } = await createOpencode()
 ```
@@ -52,7 +52,7 @@ const { client } = await createOpencode()
 您可以傳遞設定物件來自定義行為。該實例仍然會選擇您的 `innocode.json`，但您可以覆寫或添加內聯設定：
 
 ```javascript
-import { createOpencode } from "@innocode-ai/sdk"
+import { createOpencode } from "innocode/sdk"
 
 const innocode = await createOpencode({
   hostname: "127.0.0.1",
@@ -72,7 +72,7 @@ innocode.server.close()
 如果您已經有一個正在執行的 innocode 實例，您可以建立一個客戶端實例來連接到它：
 
 ```javascript
-import { createOpencodeClient } from "@innocode-ai/sdk"
+import { createOpencodeClient } from "innocode/sdk"
 
 const client = createOpencodeClient({
   baseUrl: "http://localhost:4096",
@@ -96,7 +96,7 @@ const client = createOpencodeClient({
 SDK 包含所有 API 類型的 TypeScript 定義。直接匯入它們：
 
 ```typescript
-import type { Session, Message, Part } from "@innocode-ai/sdk"
+import type { Session, Message, Part } from "innocode/sdk"
 ```
 
 所有類型均根據伺服器的 OpenAPI 規範生成，並可在 <a href={typesUrl}>types 檔案</a>中找到。

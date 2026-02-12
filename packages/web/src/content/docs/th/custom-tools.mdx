@@ -27,7 +27,7 @@ description: สร้างเครื่องมือที่ LLM สา�
 วิธีที่ง่ายที่สุดในการสร้างเครื่องมือคือการใช้ตัวช่วย `tool()` ซึ่งให้ความปลอดภัยและการตรวจสอบประเภท
 
 ```ts title=".innocode/tools/database.ts" {1}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Query the project database",
@@ -50,7 +50,7 @@ export default tool({
 คุณยังสามารถส่งออกเครื่องมือหลายรายการจากไฟล์เดียวได้ การส่งออกแต่ละครั้งจะกลายเป็น **เครื่องมือแยกต่างหาก** โดยมีชื่อ **`<filename>_<exportname>`**:
 
 ```ts title=".innocode/tools/math.ts"
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export const add = tool({
   description: "Add two numbers",
@@ -113,7 +113,7 @@ export default {
 เครื่องมือได้รับบริบทเกี่ยวกับเซสชันปัจจุบัน:
 
 ```ts title=".innocode/tools/project.ts" {8}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 
 export default tool({
   description: "Get project information",
@@ -150,7 +150,7 @@ print(a + b)
 จากนั้นสร้างคำจำกัดความของเครื่องมือที่เรียกใช้:
 
 ```ts title=".innocode/tools/python-add.ts" {10}
-import { tool } from "@innocode-ai/plugin"
+import { tool } from "@innocode/plugin"
 import path from "path"
 
 export default tool({

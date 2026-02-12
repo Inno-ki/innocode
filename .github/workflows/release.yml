@@ -1,0 +1,76 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Override version (e.g., 1.0.1). If empty, use tag version."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - uses: ./.github/actions/setup-bun
+
+      - name: Resolve version
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "VERSION=${{ inputs.version }}" >> $GITHUB_ENV
+          else
+            echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
+          fi
+          echo "CHANNEL=latest" >> $GITHUB_ENV
+
+      - name: Configure npm auth
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build binaries
+        run: |
+          bun run --cwd packages/opencode script/build.ts
+        env:
+          OPENCODE_VERSION: ${{ env.VERSION }}
+          OPENCODE_CHANNEL: ${{ env.CHANNEL }}
+          OPENCODE_RELEASE: "1"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish artifacts
+        run: |
+          bun run --cwd packages/opencode script/publish.ts
+        env:
+          OPENCODE_VERSION: ${{ env.VERSION }}
+          OPENCODE_CHANNEL: ${{ env.CHANNEL }}
+          OPENCODE_RELEASE: "1"
+          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
+
+      - name: Verify release artifacts
+        run: |
+          npm view innocode version
+          curl -fsSL https://innocode.io/install | head -n 3
+          gh release view "v${VERSION}" --json assets
+          docker pull "ghcr.io/inno-ki/innocode:${VERSION}"
+          docker pull "ghcr.io/inno-ki/innocode:latest"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
