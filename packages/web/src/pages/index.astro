@@ -12,12 +12,12 @@ const features = [
 ];
 
 const faqs = [
-  { q: 'What is InnoCode?', a: 'InnoCode is an AI coding agent for the terminal, desktop, and IDE. It ships with InnoGPT — our EU-hosted model gateway.' },
-  { q: 'How do I get started?', a: 'Install InnoCode, sign in to InnoGPT to create an API key, and start coding.' },
-  { q: 'Do I need other AI subscriptions?', a: 'No. InnoCode is optimized for InnoGPT, so a single InnoGPT key powers everything.' },
-  { q: 'Can I use other providers?', a: 'Not by default. InnoCode is configured for InnoGPT to guarantee GDPR-grade hosting and consistent behavior.' },
-  { q: 'Where is my data processed?', a: 'Requests route through InnoGPT’s EU-hosted infrastructure. InnoCode does not store your code or context.' },
-  { q: 'Is there a desktop app?', a: 'Yes — InnoCode Desktop is available for macOS, Windows, and Linux.' },
+  { q: 'What Is InnoCode?', a: 'InnoCode is an AI coding agent for the terminal, desktop, and IDE. It ships with InnoGPT — our EU-hosted model gateway.' },
+  { q: 'How Do I Get Started?', a: 'Install InnoCode, sign in to InnoGPT to create an API key, and start coding.' },
+  { q: 'Do I Need Other AI Subscriptions?', a: 'No. InnoCode is optimized for InnoGPT, so a single InnoGPT key powers everything.' },
+  { q: 'Can I Use Other Providers?', a: 'Not by default. InnoCode is configured for InnoGPT to guarantee GDPR-grade hosting and consistent behavior.' },
+  { q: 'Where Is My Data Processed?', a: 'Requests route through InnoGPT’s EU-hosted infrastructure. InnoCode does not store your code or context.' },
+  { q: 'Is There a Desktop App?', a: 'Yes — InnoCode Desktop is available for macOS, Windows, and Linux.' },
 ];
 ---
 
@@ -66,9 +66,11 @@ const faqs = [
         radial-gradient(900px 500px at -10% 20%, rgba(242, 169, 59, 0.12), transparent 55%),
         var(--bg);
       -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    button, .btn-free, .read-btn, .nav a, .footer-link { touch-action: manipulation; }
 
     .page { max-width: 960px; margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); min-height: 100vh; }
 
@@ -113,6 +115,7 @@ const faqs = [
     .btn-free:hover { background: linear-gradient(120deg, rgba(98, 230, 184, 0.3), rgba(242, 169, 59, 0.2)); }
 
     .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 1rem; padding: 0.25rem; }
+    .theme-toggle:hover { color: var(--text); }
 
     /* Sections */
     .section { padding: 3.2rem 2rem; border-bottom: 1px solid var(--border); animation: fadeUp 0.6s ease both; animation-delay: var(--delay, 0s); }
@@ -157,7 +160,7 @@ const faqs = [
     .screenshot img { width: 100%; height: auto; display: block; object-fit: contain; }
 
     /* Features */
-    .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+    .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.01em; text-wrap: balance; }
     .section-intro { color: var(--text-secondary); margin-bottom: 2rem; }
 
     .features-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
@@ -198,6 +201,7 @@ const faqs = [
       padding: 1.25rem 0;
       cursor: pointer;
     }
+    .faq-q:hover { color: var(--text-secondary); }
     .faq-icon { color: var(--text-muted); font-size: 1.1rem; }
     .faq-a { display: none; padding: 0 0 1.25rem 2rem; color: var(--text-secondary); }
     .faq-item.open .faq-a { display: block; }
@@ -298,7 +302,7 @@ const faqs = [
             <span class="cmd-panel" data-cmd="scoop">scoop bucket add <span class="hl">innocode</span> https://github.com/Inno-ki/scoop-bucket && scoop install <span class="hl">innocode</span></span>
           </code>
           <button class="copy-btn" id="copy-btn" aria-label="Copy">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="9" y="9" width="13" height="13" rx="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
             </svg>
@@ -307,7 +311,7 @@ const faqs = [
       </div>
 
       <div class="screenshot">
-        <Image src={Screenshot} alt="InnoCode in action" width={1200} height={798} />
+        <Image src={Screenshot} alt="InnoCode in action" width={1200} height={798} loading="eager" fetchpriority="high" />
       </div>
     </section>
 
@@ -382,14 +386,27 @@ const faqs = [
       brew: 'brew install Inno-ki/tap/innocode',
       scoop: 'scoop bucket add innocode https://github.com/Inno-ki/scoop-bucket && scoop install innocode',
     };
-    let current = 'curl';
+    const params = new URLSearchParams(window.location.search);
+    let current = params.get('install') || 'curl';
+    if (!cmds[current]) current = 'curl';
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         current = (tab as HTMLElement).dataset.cmd || 'curl';
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         panels.forEach(p => p.classList.toggle('active', (p as HTMLElement).dataset.cmd === current));
+        const next = new URL(window.location.href);
+        next.searchParams.set('install', current);
+        window.history.replaceState({}, '', next.toString());
       });
+    });
+    tabs.forEach(tab => {
+      const cmd = (tab as HTMLElement).dataset.cmd;
+      tab.classList.toggle('active', cmd === current);
+    });
+    panels.forEach(panel => {
+      const cmd = (panel as HTMLElement).dataset.cmd;
+      panel.classList.toggle('active', cmd === current);
     });
 
     const copyBtn = document.getElementById('copy-btn');
@@ -397,7 +414,7 @@ const faqs = [
       navigator.clipboard.writeText(cmds[current]);
       if (copyBtn) copyBtn.textContent = '✓';
       setTimeout(() => {
-        if (copyBtn) copyBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+        if (copyBtn) copyBtn.innerHTML = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
       }, 2000);
     });
 
