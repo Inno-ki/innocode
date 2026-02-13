@@ -66,13 +66,7 @@ export default defineConfig({
       ],
       lastUpdated: true,
       expressiveCode: { themes: ["github-light", "github-dark"] },
-      social: [
-        { icon: "github", label: "GitHub", href: config.github },
-        { icon: "slack", label: "Slack", href: config.slack },
-      ],
-      editLink: {
-        baseUrl: `${config.github}/edit/main/packages/web/`,
-      },
+      social: [],
       markdown: {
         headingLinks: false,
       },

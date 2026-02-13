@@ -1,28 +1,3 @@
-<svg width="264" height="42" viewBox="0 0 264 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- I -->
-<path d="M18 36H0V6H18V36Z" fill="#B7B1B1"/>
-<path d="M12 30H6V12H12V30Z" fill="#4B4646"/>
-<!-- N -->
-<path d="M48 36H30V6H48V36ZM42 30V12H36V30H42Z" fill="#B7B1B1"/>
-<path d="M42 24H36V12H42V24Z" fill="#4B4646"/>
-<path d="M48 12H42V24H54V36H48V12Z" fill="#B7B1B1"/>
-<!-- N -->
-<path d="M84 36H66V6H84V36ZM78 30V12H72V30H78Z" fill="#B7B1B1"/>
-<path d="M78 24H72V12H78V24Z" fill="#4B4646"/>
-<path d="M84 12H78V24H90V36H84V12Z" fill="#B7B1B1"/>
-<!-- O -->
-<path d="M120 30H108V18H120V30Z" fill="#4B4646"/>
-<path d="M120 12H108V30H120V12ZM126 36H102V6H126V36Z" fill="#F1ECEC"/>
-<!-- C -->
-<path d="M156 30H144V18H156V30Z" fill="#4B4646"/>
-<path d="M156 12H144V30H150V36H138V6H156V12Z" fill="#F1ECEC"/>
-<!-- O -->
-<path d="M186 30H174V18H186V30Z" fill="#4B4646"/>
-<path d="M186 12H174V30H186V12ZM192 36H168V6H192V36Z" fill="#F1ECEC"/>
-<!-- D -->
-<path d="M222 30H210V18H222V30Z" fill="#4B4646"/>
-<path d="M222 12H210V30H222V12ZM228 36H204V6H222V0H228V36Z" fill="#F1ECEC"/>
-<!-- E -->
-<path d="M258 24V30H240V24H258Z" fill="#4B4646"/>
-<path d="M240 12V18H252V12H240ZM258 24H240V30H258V36H234V6H258V24Z" fill="#F1ECEC"/>
+<svg width="220" height="28" viewBox="0 0 220 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="20" fill="#F5F1E8" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="20" font-weight="700" letter-spacing="2">INNOCODE</text>
 </svg>
