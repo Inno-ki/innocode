@@ -100,6 +100,11 @@ InnoCode includes two built-in agents you can switch between with the `Tab` key:
 
 # Development & Maintenance
 
+## Release + Upstream Sync
+
+- Release checklist: `scripts/release-checklist.md`
+- Weekly upstream merge: `scripts/upstream-sync.md`
+
 ## Changes from InnoCode
 
 This fork includes the following modifications from the original InnoCode:

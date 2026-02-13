@@ -295,7 +295,7 @@ const faqs = [
           <button class="install-tab" data-cmd="npm">npm</button>
           <button class="install-tab" data-cmd="bun">bun</button>
           <button class="install-tab" data-cmd="brew">brew</button>
-          <button class="install-tab" data-cmd="paru">paru</button>
+          <button class="install-tab" data-cmd="scoop">scoop</button>
         </div>
         <div class="install-cmd">
           <code>
@@ -303,7 +303,7 @@ const faqs = [
             <span class="cmd-panel" data-cmd="npm">npm install -g <span class="hl">innocode</span></span>
             <span class="cmd-panel" data-cmd="bun">bun install -g <span class="hl">innocode</span></span>
             <span class="cmd-panel" data-cmd="brew">brew install <span class="hl">Inno-ki/tap/innocode</span></span>
-            <span class="cmd-panel" data-cmd="paru">paru -S <span class="hl">innocode-bin</span></span>
+            <span class="cmd-panel" data-cmd="scoop">scoop bucket add <span class="hl">innocode</span> https://github.com/Inno-ki/scoop-bucket && scoop install <span class="hl">innocode</span></span>
           </code>
           <button class="copy-btn" id="copy-btn" aria-label="Copy">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -399,7 +399,7 @@ const faqs = [
       npm: 'npm install -g innocode',
       bun: 'bun install -g innocode',
       brew: 'brew install Inno-ki/tap/innocode',
-      paru: 'paru -S innocode-bin',
+      scoop: 'scoop bucket add innocode https://github.com/Inno-ki/scoop-bucket && scoop install innocode',
     };
     let current = 'curl';
     tabs.forEach(tab => {
