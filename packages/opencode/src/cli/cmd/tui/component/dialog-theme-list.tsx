@@ -5,10 +5,14 @@ import { onCleanup, onMount } from "solid-js"
 
 export function DialogThemeList() {
   const theme = useTheme()
+  const formatLabel = (value: string) => {
+    if (value === "opencode") return "InnoCode Classic"
+    return value
+  }
   const options = Object.keys(theme.all())
     .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
     .map((value) => ({
-      title: value,
+      title: formatLabel(value),
       value: value,
     }))
   const dialog = useDialog()

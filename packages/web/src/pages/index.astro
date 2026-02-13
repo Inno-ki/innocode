@@ -76,11 +76,18 @@ const faqs = [
     .header { padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
     .logo { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
     .logo-mark {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 6px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--bg);
+      text-transform: uppercase;
     }
     :root.light .logo-mark { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12); }
     .logo-text { font-size: 0.95rem; color: var(--text); }
@@ -265,7 +272,7 @@ const faqs = [
     <a href="#main" class="skip-link">Skip to content</a>
     <header class="header">
       <a href="/" class="logo" aria-label="InnoCode">
-        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-mark" aria-hidden="true">IC</span>
         <span class="logo-text">InnoCode</span>
       </a>
       <nav class="nav">

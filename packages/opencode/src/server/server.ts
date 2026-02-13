@@ -83,7 +83,7 @@ export namespace Server {
           if (c.req.method === "OPTIONS") return next()
           const password = Flag.OPENCODE_SERVER_PASSWORD
           if (!password) return next()
-          const username = Flag.OPENCODE_SERVER_USERNAME ?? "opencode"
+          const username = Flag.OPENCODE_SERVER_USERNAME ?? "innocode"
           return basicAuth({ username, password })(c, next)
         })
         .use(async (c, next) => {
@@ -118,7 +118,7 @@ export namespace Server {
                 return input
 
               // *.innocode.io (https only, adjust if needed)
-              if (/^https:\/\/([a-z0-9-]+\.)*opencode\.ai$/.test(input)) {
+              if (/^https:\/\/([a-z0-9-]+\.)*innocode\.io$/.test(input)) {
                 return input
               }
               if (_corsWhitelist.includes(input)) {
@@ -215,9 +215,9 @@ export namespace Server {
           openAPIRouteHandler(app, {
             documentation: {
               info: {
-                title: "opencode",
+                title: "innocode",
                 version: "0.0.3",
-                description: "opencode api",
+                description: "innocode api",
               },
               openapi: "3.1.1",
             },
@@ -561,9 +561,9 @@ export namespace Server {
     const result = await generateSpecs(App() as Hono, {
       documentation: {
         info: {
-          title: "opencode",
+          title: "innocode",
           version: "1.0.0",
-          description: "opencode api",
+          description: "innocode api",
         },
         openapi: "3.1.1",
       },
