@@ -1,11 +1,17 @@
 ---
 title: Windows
-description: Windows install is not supported yet.
+description: Install InnoCode on Windows via Scoop.
 ---
 
-InnoCode does not support native Windows installs yet. For now, use one of the supported options:
+InnoCode supports Windows via **Scoop**.
 
-- Install on macOS or Linux.
-- Use Docker: `docker run -it --rm ghcr.io/inno-ki/innocode`.
+```powershell
+scoop bucket add innocode https://github.com/Inno-ki/scoop-bucket
+scoop install innocode
+```
 
-When Windows support is available, this page will be updated.
+If you prefer WSL, you can also install using the Linux installer inside WSL:
+
+```bash
+curl -fsSL https://innocode.io/install | bash
+```

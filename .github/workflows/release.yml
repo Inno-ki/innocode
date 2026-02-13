@@ -73,6 +73,34 @@ jobs:
           OPENCODE_RELEASE: "1"
           GITHUB_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
 
+      - name: Update Scoop manifest
+        run: |
+          set -euo pipefail
+          tempdir="$(mktemp -d)"
+          asset="innocode-windows-x64.zip"
+          url="https://github.com/Inno-ki/innocode/releases/download/v${VERSION}/${asset}"
+          curl -fsSL "$url" -o "${tempdir}/${asset}"
+          hash="$(sha256sum "${tempdir}/${asset}" | awk '{print $1}')"
+          repo="https://x-access-token:${SCOOP_TOKEN}@github.com/Inno-ki/scoop-bucket.git"
+          git clone "$repo" "${tempdir}/scoop-bucket"
+          cat > "${tempdir}/scoop-bucket/innocode.json" <<EOF
+          {
+            "version": "${VERSION}",
+            "description": "The AI coding agent built for the terminal.",
+            "homepage": "https://innocode.io",
+            "license": "MIT",
+            "url": "${url}",
+            "hash": "${hash}",
+            "bin": "innocode.exe"
+          }
+          EOF
+          cd "${tempdir}/scoop-bucket"
+          git add innocode.json
+          git commit -m "Update innocode to v${VERSION}"
+          git push
+        env:
+          SCOOP_TOKEN: ${{ secrets.SCOOP_TOKEN }}
+
       - name: Verify release artifacts
         run: |
           npm view innocode version
