@@ -92,6 +92,8 @@ jobs:
         run: |
           set -euo pipefail
           tempdir="$(mktemp -d)"
+          git config --global user.email "ci@innocode.io"
+          git config --global user.name "InnoCode CI"
           asset="innocode-windows-x64.zip"
           url="https://github.com/Inno-ki/innocode/releases/download/v${VERSION}/${asset}"
           if ! curl -fsSL "$url" -o "${tempdir}/${asset}"; then
