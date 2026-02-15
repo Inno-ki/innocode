@@ -75,7 +75,12 @@ jobs:
         run: |
           OPENCODE_VERSION="${VERSION}" OPENCODE_CHANNEL="${CHANNEL}" OPENCODE_RELEASE="1" bun run --cwd packages/opencode script/publish.ts
         env:
+          OPENCODE_SKIP_AUR: "1"
           GITHUB_TOKEN: ${{ secrets.HOMEBREW_TOKEN }}
+          GIT_AUTHOR_NAME: "InnoCode CI"
+          GIT_AUTHOR_EMAIL: "ci@innocode.io"
+          GIT_COMMITTER_NAME: "InnoCode CI"
+          GIT_COMMITTER_EMAIL: "ci@innocode.io"
 
       - name: Update Scoop manifest
         run: |

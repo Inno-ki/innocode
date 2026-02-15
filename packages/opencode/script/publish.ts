@@ -57,6 +57,7 @@ const tagFlags = tags.flatMap((t) => ["-t", t])
 await $`docker buildx build --platform ${platforms} ${tagFlags} --push .`
 
 // registries
+const skipAUR = process.env.OPENCODE_SKIP_AUR === "1"
 if (!Script.preview) {
   // Calculate SHA values
   const arm64Sha = await $`sha256sum ./dist/innocode-linux-arm64.tar.gz | cut -d' ' -f1`.text().then((x) => x.trim())
@@ -96,22 +97,26 @@ if (!Script.preview) {
     "",
   ].join("\n")
 
-  for (const [pkg, pkgbuild] of [["innocode-bin", binaryPkgbuild]]) {
-    for (let i = 0; i < 30; i++) {
-      try {
-        await $`rm -rf ./dist/aur-${pkg}`
-        await $`git clone ssh://aur@aur.archlinux.org/${pkg}.git ./dist/aur-${pkg}`
-        await $`cd ./dist/aur-${pkg} && git checkout master`
-        await Bun.file(`./dist/aur-${pkg}/PKGBUILD`).write(pkgbuild)
-        await $`cd ./dist/aur-${pkg} && makepkg --printsrcinfo > .SRCINFO`
-        await $`cd ./dist/aur-${pkg} && git add PKGBUILD .SRCINFO`
-        await $`cd ./dist/aur-${pkg} && git commit -m "Update to v${Script.version}"`
-        await $`cd ./dist/aur-${pkg} && git push`
-        break
-      } catch (e) {
-        continue
+  if (!skipAUR) {
+    for (const [pkg, pkgbuild] of [["innocode-bin", binaryPkgbuild]]) {
+      for (let i = 0; i < 30; i++) {
+        try {
+          await $`rm -rf ./dist/aur-${pkg}`
+          await $`git clone ssh://aur@aur.archlinux.org/${pkg}.git ./dist/aur-${pkg}`
+          await $`cd ./dist/aur-${pkg} && git checkout master`
+          await Bun.file(`./dist/aur-${pkg}/PKGBUILD`).write(pkgbuild)
+          await $`cd ./dist/aur-${pkg} && makepkg --printsrcinfo > .SRCINFO`
+          await $`cd ./dist/aur-${pkg} && git add PKGBUILD .SRCINFO`
+          await $`cd ./dist/aur-${pkg} && git commit -m "Update to v${Script.version}"`
+          await $`cd ./dist/aur-${pkg} && git push`
+          break
+        } catch (e) {
+          continue
+        }
       }
     }
+  } else {
+    console.log("Skipping AUR publish (OPENCODE_SKIP_AUR=1)")
   }
 
   // Homebrew formula
