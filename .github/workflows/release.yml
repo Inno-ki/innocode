@@ -88,7 +88,11 @@ jobs:
           tempdir="$(mktemp -d)"
           asset="innocode-windows-x64.zip"
           url="https://github.com/Inno-ki/innocode/releases/download/v${VERSION}/${asset}"
-          curl -fsSL "$url" -o "${tempdir}/${asset}"
+          if ! curl -fsSL "$url" -o "${tempdir}/${asset}"; then
+            asset="innocode-windows-x64-baseline.zip"
+            url="https://github.com/Inno-ki/innocode/releases/download/v${VERSION}/${asset}"
+            curl -fsSL "$url" -o "${tempdir}/${asset}"
+          fi
           hash="$(sha256sum "${tempdir}/${asset}" | awk '{print $1}')"
           repo="https://x-access-token:${SCOOP_TOKEN}@github.com/Inno-ki/scoop-bucket.git"
           git clone "$repo" "${tempdir}/scoop-bucket"
