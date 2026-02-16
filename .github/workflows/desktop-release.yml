@@ -90,15 +90,36 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${{ inputs.tag }}"
+          if [[ -z "${tag}" ]]; then
+            if [[ "${GITHUB_REF_NAME}" == v* ]]; then
+              tag="${GITHUB_REF_NAME}"
+            fi
+          fi
+          if [[ -z "${tag}" ]]; then
+            tag=$(python - <<'PY'
+import json, urllib.request
+data = json.load(urllib.request.urlopen("https://api.github.com/repos/Inno-ki/innocode/releases/latest"))
+print(data["tag_name"])
+PY
+)
+          fi
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
       - name: Prepare CLI sidecar
         shell: bash
         run: |
           set -euo pipefail
-          tag="${{ inputs.tag || github.ref_name }}"
+          tag="${{ steps.release.outputs.tag }}"
           mkdir -p packages/desktop/src-tauri/sidecars
           mkdir -p /tmp/cli/unpack
           url="https://github.com/Inno-ki/innocode/releases/download/${tag}/${{ matrix.cli_asset }}"
-          curl -L -o /tmp/cli/asset "${url}"
+          curl -L -f -o /tmp/cli/asset "${url}"
           if [[ "${{ matrix.cli_ext }}" == "zip" ]]; then
             unzip -q /tmp/cli/asset -d /tmp/cli/unpack
           else
