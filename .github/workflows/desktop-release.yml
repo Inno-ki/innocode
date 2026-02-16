@@ -32,7 +32,7 @@ jobs:
             rust: aarch64-apple-darwin
             cli_asset: innocode-darwin-arm64.zip
             cli_ext: zip
-          - os: macos-13
+          - os: macos-14-large
             platform: macos-x64
             asset: innocode-desktop-darwin-x64.dmg
             filter: "*.dmg"
