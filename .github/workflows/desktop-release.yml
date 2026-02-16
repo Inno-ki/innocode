@@ -102,12 +102,7 @@ jobs:
             fi
           fi
           if [[ -z "${tag}" ]]; then
-            tag=$(python - <<'PY'
-import json, urllib.request
-data = json.load(urllib.request.urlopen("https://api.github.com/repos/Inno-ki/innocode/releases/latest"))
-print(data["tag_name"])
-PY
-)
+            tag=$(curl -fsSL "https://api.github.com/repos/Inno-ki/innocode/releases/latest" | python -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
           fi
           echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
 
