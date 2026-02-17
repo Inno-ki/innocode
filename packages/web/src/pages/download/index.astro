@@ -1,0 +1,150 @@
+---
+const items = [
+  {
+    key: "darwin-aarch64-dmg",
+    title: "macOS (Apple Silicon)",
+    meta: "DMG installer",
+  },
+  {
+    key: "darwin-x64-dmg",
+    title: "macOS (Intel)",
+    meta: "DMG installer",
+  },
+  {
+    key: "windows-x64-nsis",
+    title: "Windows",
+    meta: "Installer (EXE)",
+  },
+  {
+    key: "linux-x64-appimage",
+    title: "Linux (AppImage)",
+    meta: "Portable",
+  },
+  {
+    key: "linux-x64-deb",
+    title: "Linux (Debian/Ubuntu)",
+    meta: ".deb package",
+  },
+  {
+    key: "linux-x64-rpm",
+    title: "Linux (Fedora/RHEL)",
+    meta: ".rpm package",
+  },
+]
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download InnoCode Desktop</title>
+    <meta name="description" content="Download InnoCode Desktop for macOS, Windows, and Linux." />
+    <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap");
+
+      :root {
+        --bg: #0e1110;
+        --bg-card: #141818;
+        --text: #f3f4f5;
+        --text-secondary: #b1b7b4;
+        --border: #242a28;
+        --accent: #62e6b8;
+        --font: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { font-family: var(--font); background: var(--bg); color: var(--text); }
+      body { min-height: 100vh; }
+      a { color: inherit; text-decoration: none; }
+
+      .page { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+      .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; }
+      .logo { font-weight: 600; letter-spacing: 0.08em; font-size: 0.85rem; }
+      .title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; margin-bottom: 0.6rem; }
+      .subtitle { color: var(--text-secondary); margin-bottom: 2rem; }
+
+      .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.4rem; }
+      .primary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+      .primary-title { font-weight: 600; }
+      .primary-meta { color: var(--text-secondary); font-size: 0.95rem; }
+      .primary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(98, 230, 184, 0.12);
+      }
+
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+      .grid .item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.05rem 1.2rem; }
+      .grid .item-title { font-weight: 600; }
+      .grid .item-meta { color: var(--text-secondary); font-size: 0.9rem; margin: 0.35rem 0 0.7rem; }
+      .grid .item a { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <a href="/" class="logo">INNOCODE</a>
+        <a href="/intro">Docs</a>
+      </div>
+
+      <div class="title">Download InnoCode Desktop</div>
+      <div class="subtitle">Automatic detection is enabled. If the download doesn’t start, pick your platform below.</div>
+
+      <div class="card primary">
+        <div>
+          <div class="primary-title" id="primary-title">Detected platform</div>
+          <div class="primary-meta" id="primary-meta">Preparing download…</div>
+        </div>
+        <a class="primary-btn" id="primary-btn" href="#">Download</a>
+      </div>
+
+      <div class="grid">
+        {items.map((item) => (
+          <div class="item">
+            <div class="item-title">{item.title}</div>
+            <div class="item-meta">{item.meta}</div>
+            <a href={`/download/${item.key}`}>Download</a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <script>
+      const rows = {
+        "darwin-aarch64-dmg": { title: "macOS (Apple Silicon)", meta: "DMG installer" },
+        "darwin-x64-dmg": { title: "macOS (Intel)", meta: "DMG installer" },
+        "windows-x64-nsis": { title: "Windows", meta: "Installer (EXE)" },
+        "linux-x64-appimage": { title: "Linux (AppImage)", meta: "Portable" },
+      }
+
+      const title = document.getElementById("primary-title")
+      const meta = document.getElementById("primary-meta")
+      const btn = document.getElementById("primary-btn")
+
+      const plat = navigator.platform.toLowerCase()
+      const agent = navigator.userAgent.toLowerCase()
+      const isMac = plat.includes("mac") || agent.includes("mac os")
+      const isWin = plat.includes("win") || agent.includes("windows")
+      const isLinux = plat.includes("linux")
+
+      const isArm = agent.includes("arm") || agent.includes("aarch64") || agent.includes("apple silicon")
+      let key = "linux-x64-appimage"
+
+      if (isMac && isArm) key = "darwin-aarch64-dmg"
+      if (isMac && !isArm) key = "darwin-x64-dmg"
+      if (isWin) key = "windows-x64-nsis"
+      if (isLinux) key = "linux-x64-appimage"
+
+      if (rows[key]) {
+        title.textContent = rows[key].title
+        meta.textContent = rows[key].meta
+      }
+      btn.href = `/download/${key}`
+    </script>
+  </body>
+</html>

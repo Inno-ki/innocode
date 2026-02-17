@@ -159,38 +159,6 @@ const faqs = [
     .screenshot { border-radius: 10px; overflow: hidden; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3); }
     .screenshot img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-    /* Desktop downloads */
-    .download-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .download-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.1rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .download-title { font-weight: 600; letter-spacing: -0.01em; }
-    .download-meta { color: var(--text-secondary); font-size: 0.9rem; }
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.88rem;
-      color: var(--text);
-      background: rgba(98, 230, 184, 0.08);
-    }
-    .download-btn:hover { background: rgba(98, 230, 184, 0.16); }
-
     /* Features */
     .section-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.01em; text-wrap: balance; }
     .section-intro { color: var(--text-secondary); margin-bottom: 2rem; }
@@ -310,7 +278,7 @@ const faqs = [
 
     <section class="section announcement" style="--delay: 0.05s;">
       <span class="announcement-badge">New</span>
-      InnoCode Desktop is in beta for macOS, Windows, and Linux. <a href="#downloads">Download Now</a>
+      InnoCode Desktop is in beta for macOS, Windows, and Linux. <a href="/download">Download Now</a>
     </section>
 
     <main id="main">
@@ -345,43 +313,6 @@ const faqs = [
 
       <div class="screenshot">
         <Image src={Screenshot} alt="InnoCode in action" width={1200} height={798} loading="eager" fetchpriority="high" />
-      </div>
-    </section>
-
-    <section class="section" id="downloads" style="--delay: 0.12s;">
-      <h2 class="section-title">Download InnoCode Desktop</h2>
-      <p class="section-intro">Pick your platform. Downloads come from the official InnoCode release assets.</p>
-      <div class="download-grid">
-        <div class="download-card">
-          <div class="download-title">macOS (Apple Silicon)</div>
-          <div class="download-meta">DMG installer</div>
-          <a class="download-btn" href="/download/darwin-aarch64-dmg">Download</a>
-        </div>
-        <div class="download-card">
-          <div class="download-title">macOS (Intel)</div>
-          <div class="download-meta">DMG installer</div>
-          <a class="download-btn" href="/download/darwin-x64-dmg">Download</a>
-        </div>
-        <div class="download-card">
-          <div class="download-title">Windows</div>
-          <div class="download-meta">Installer (EXE)</div>
-          <a class="download-btn" href="/download/windows-x64-nsis">Download</a>
-        </div>
-        <div class="download-card">
-          <div class="download-title">Linux (AppImage)</div>
-          <div class="download-meta">Portable</div>
-          <a class="download-btn" href="/download/linux-x64-appimage">Download</a>
-        </div>
-        <div class="download-card">
-          <div class="download-title">Linux (Debian/Ubuntu)</div>
-          <div class="download-meta">.deb package</div>
-          <a class="download-btn" href="/download/linux-x64-deb">Download</a>
-        </div>
-        <div class="download-card">
-          <div class="download-title">Linux (Fedora/RHEL)</div>
-          <div class="download-meta">.rpm package</div>
-          <a class="download-btn" href="/download/linux-x64-rpm">Download</a>
-        </div>
       </div>
     </section>
 
