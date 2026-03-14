@@ -1,36 +1,35 @@
 // @refresh reload
-import { webviewZoom } from "./webview-zoom"
-import { render } from "solid-js/web"
+
 import {
   AppBaseProviders,
   AppInterface,
+  handleNotificationClick,
+  type Platform,
   PlatformProvider,
-  Platform,
-  DisplayBackend,
+  ServerConnection,
   useCommand,
 } from "@opencode-ai/app"
-import { open, save } from "@tauri-apps/plugin-dialog"
-import { getCurrent, onOpenUrl } from "@tauri-apps/plugin-deep-link"
-import { openPath as openerOpenPath } from "@tauri-apps/plugin-opener"
-import { open as shellOpen } from "@tauri-apps/plugin-shell"
-import { type as ostype } from "@tauri-apps/plugin-os"
-import { check, Update } from "@tauri-apps/plugin-updater"
+import type { AsyncStorage } from "@solid-primitives/storage"
 import { getCurrentWindow } from "@tauri-apps/api/window"
-import { isPermissionGranted, requestPermission } from "@tauri-apps/plugin-notification"
-import { relaunch } from "@tauri-apps/plugin-process"
-import { AsyncStorage } from "@solid-primitives/storage"
-import { fetch as tauriFetch } from "@tauri-apps/plugin-http"
-import { Store } from "@tauri-apps/plugin-store"
-import { Splash } from "@opencode-ai/ui/logo"
-import { createSignal, Show, Accessor, JSX, createResource, onMount, onCleanup } from "solid-js"
 import { readImage } from "@tauri-apps/plugin-clipboard-manager"
-
-import { UPDATER_ENABLED } from "./updater"
-import { initI18n, t } from "./i18n"
+import { getCurrent, onOpenUrl } from "@tauri-apps/plugin-deep-link"
+import { open, save } from "@tauri-apps/plugin-dialog"
+import { fetch as tauriFetch } from "@tauri-apps/plugin-http"
+import { isPermissionGranted, requestPermission } from "@tauri-apps/plugin-notification"
+import { type as ostype } from "@tauri-apps/plugin-os"
+import { relaunch } from "@tauri-apps/plugin-process"
+import { open as shellOpen } from "@tauri-apps/plugin-shell"
+import { Store } from "@tauri-apps/plugin-store"
+import { check, type Update } from "@tauri-apps/plugin-updater"
+import { createResource, onCleanup, onMount, Show } from "solid-js"
+import { render } from "solid-js/web"
 import pkg from "../package.json"
+import { initI18n, t } from "./i18n"
+import { UPDATER_ENABLED } from "./updater"
+import { webviewZoom } from "./webview-zoom"
 import "./styles.css"
-import { commands, InitStep, type WslConfig } from "./bindings"
 import { Channel } from "@tauri-apps/api/core"
+import { commands, type InitStep } from "./bindings"
 import { createMenu } from "./menu"
 
 const root = document.getElementById("root")
@@ -42,7 +41,7 @@ void initI18n()
 
 let update: Update | null = null
 
-const deepLinkEvent = "innocode:deep-link"
+const deepLinkEvent = "opencode:deep-link"
 
 const emitDeepLinks = (urls: string[]) => {
   if (urls.length === 0) return
@@ -58,7 +57,7 @@ const listenForDeepLinks = async () => {
   await onOpenUrl((urls) => emitDeepLinks(urls)).catch(() => undefined)
 }
 
-const createPlatform = (password: Accessor<string | null>): Platform => {
+const createPlatform = (): Platform => {
   const os = (() => {
     const type = ostype()
     if (type === "macos" || type === "windows" || type === "linux") return type
@@ -115,20 +114,7 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
       void shellOpen(url).catch(() => undefined)
     },
     async openPath(path: string, app?: string) {
-      const os = ostype()
-      if (os === "windows") {
-        const resolvedApp = (app && (await commands.resolveAppPath(app))) || app
-        const resolvedPath = await (async () => {
-          if (window.__OPENCODE__?.wsl) {
-            const converted = await commands.wslPath(path, "windows").catch(() => null)
-            if (converted) return converted
-          }
-
-          return path
-        })()
-        return openerOpenPath(resolvedPath, resolvedApp)
-      }
-      return openerOpenPath(path, app)
+      await commands.openPath(path, app ?? null)
     },
 
     back() {
@@ -329,17 +315,14 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
         .then(() => {
           const notification = new Notification(title, {
             body: description ?? "",
-            icon: "https://innocode.io/favicon-96x96-v3.png",
+            icon: "https://opencode.ai/favicon-96x96-v3.png",
           })
           notification.onclick = () => {
             const win = getCurrentWindow()
             void win.show().catch(() => undefined)
             void win.unminimize().catch(() => undefined)
             void win.setFocus().catch(() => undefined)
-            if (href) {
-              window.history.pushState(null, "", href)
-              window.dispatchEvent(new PopStateEvent("popstate"))
-            }
+            handleNotificationClick(href)
             notification.close()
           }
         })
@@ -347,22 +330,10 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
     },
 
     fetch: (input, init) => {
-      const pw = password()
-
-      const addHeader = (headers: Headers, password: string) => {
-        headers.append("Authorization", `Basic ${btoa(`innocode:${password}`)}`)
-      }
-
       if (input instanceof Request) {
-        if (pw) addHeader(input.headers, pw)
         return tauriFetch(input)
       } else {
-        const headers = new Headers(init?.headers)
-        if (pw) addHeader(headers, pw)
-        return tauriFetch(input, {
-          ...(init as any),
-          headers: headers,
-        })
+        return tauriFetch(input, init)
       }
     },
 
@@ -376,12 +347,13 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
       await commands.setWslConfig({ enabled })
     },
 
-    getDefaultServerUrl: async () => {
-      const result = await commands.getDefaultServerUrl().catch(() => null)
-      return result
+    getDefaultServer: async () => {
+      const url = await commands.getDefaultServerUrl().catch(() => null)
+      if (!url) return null
+      return ServerConnection.Key.make(url)
     },
 
-    setDefaultServerUrl: async (url: string | null) => {
+    setDefaultServer: async (url: string | null) => {
       await commands.setDefaultServerUrl(url)
     },
 
@@ -420,7 +392,11 @@ const createPlatform = (password: Accessor<string | null>): Platform => {
       return new Promise<File | null>((resolve) => {
         canvas.toBlob((blob) => {
           if (!blob) return resolve(null)
-          resolve(new File([blob], `pasted-image-${Date.now()}.png`, { type: "image/png" }))
+          resolve(
+            new File([blob], `pasted-image-${Date.now()}.png`, {
+              type: "image/png",
+            }),
+          )
         }, "image/png")
       })
     },
@@ -434,9 +410,34 @@ createMenu((id) => {
 void listenForDeepLinks()
 
 render(() => {
-  const [serverPassword, setServerPassword] = createSignal<string | null>(null)
+  const platform = createPlatform()
 
-  const platform = createPlatform(() => serverPassword())
+  // Fetch sidecar credentials from Rust (available immediately, before health check)
+  const [sidecar] = createResource(() => commands.awaitInitialization(new Channel<InitStep>() as any))
+
+  const [defaultServer] = createResource(() =>
+    platform.getDefaultServer?.().then((url) => {
+      if (url) return ServerConnection.key({ type: "http", http: { url } })
+    }),
+  )
+
+  // Build the sidecar server connection once credentials arrive
+  const servers = () => {
+    const data = sidecar()
+    if (!data) return []
+    const http = {
+      url: data.url,
+      username: data.username ?? undefined,
+      password: data.password ?? undefined,
+    }
+    const server: ServerConnection.Sidecar = {
+      displayName: t("desktop.server.local"),
+      type: "sidecar",
+      variant: "base",
+      http,
+    }
+    return [server] as ServerConnection.Any[]
+  }
 
   function handleClick(e: MouseEvent) {
     const link = (e.target as HTMLElement).closest("a.external-link") as HTMLAnchorElement | null
@@ -444,6 +445,12 @@ render(() => {
       e.preventDefault()
       platform.openLink(link.href)
     }
+  }
+
+  function Inner() {
+    const cmd = useCommand()
+    menuTrigger = (id) => cmd.trigger(id)
+    return null
   }
 
   onMount(() => {
@@ -456,52 +463,19 @@ render(() => {
   return (
     <PlatformProvider value={platform}>
       <AppBaseProviders>
-        <ServerGate>
-          {(data) => {
-            setServerPassword(data().password)
-            window.__OPENCODE__ ??= {}
-            window.__OPENCODE__.serverPassword = data().password ?? undefined
-
-            function Inner() {
-              const cmd = useCommand()
-
-              menuTrigger = (id) => cmd.trigger(id)
-
-              return null
-            }
-
+        <Show when={!defaultServer.loading && !sidecar.loading}>
+          {(_) => {
             return (
-              <AppInterface defaultUrl={data().url} isSidecar>
+              <AppInterface
+                defaultServer={defaultServer.latest ?? ServerConnection.Key.make("sidecar")}
+                servers={servers()}
+              >
                 <Inner />
               </AppInterface>
             )
           }}
-        </ServerGate>
+        </Show>
       </AppBaseProviders>
     </PlatformProvider>
   )
 }, root!)
-
-type ServerReadyData = { url: string; password: string | null }
-
-// Gate component that waits for the server to be ready
-function ServerGate(props: { children: (data: Accessor<ServerReadyData>) => JSX.Element }) {
-  const [serverData] = createResource(() => commands.awaitInitialization(new Channel<InitStep>() as any))
-
-  if (serverData.state === "errored") throw serverData.error
-
-  return (
-    // Not using suspense as not all components are compatible with it (undefined refs)
-    <Show
-      when={serverData.state !== "pending" && serverData()}
-      fallback={
-        <div class="h-screen w-screen flex flex-col items-center justify-center bg-background-base">
-          <Splash class="w-16 h-20 opacity-50 animate-pulse" />
-          <div data-tauri-decorum-tb class="flex flex-row absolute top-0 right-0 z-10 h-10" />
-        </div>
-      }
-    >
-      {(data) => props.children(data)}
-    </Show>
-  )
-}

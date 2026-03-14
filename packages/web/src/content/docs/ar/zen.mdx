@@ -1,20 +1,20 @@
 ---
 title: Zen
-description: قائمة منتقاة من النماذج يوفّرها InnoCode.
+description: قائمة منتقاة من النماذج يوفّرها OpenCode.
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 export const email = `mailto:${config.email}`
 
-InnoGPT هي قائمة بالنماذج التي اختبرها فريق InnoCode وتحقّق منها.
+OpenCode Zen هي قائمة بالنماذج التي اختبرها فريق OpenCode وتحقّق منها.
 
 :::note
-InnoGPT متاح حاليا بنسخة تجريبية.
+OpenCode Zen متاح حاليا بنسخة تجريبية.
 :::
 
-يعمل Zen مثل أي مزوّد آخر في InnoCode. تسجّل الدخول إلى InnoGPT وتحصل على
-مفتاح API. استخدامه **اختياري بالكامل** ولا تحتاج إليه لاستخدام InnoCode.
+يعمل Zen مثل أي مزوّد آخر في OpenCode. تسجّل الدخول إلى OpenCode Zen وتحصل على
+مفتاح API. استخدامه **اختياري بالكامل** ولا تحتاج إليه لاستخدام OpenCode.
 
 ---
 
@@ -25,7 +25,7 @@ InnoGPT متاح حاليا بنسخة تجريبية.
 تحصل على أداء وجودة مختلفين بشكل كبير.
 
 :::tip
-اختبرنا مجموعة منتقاة من النماذج والمزوّدين الذين يعملون جيدا مع InnoCode.
+اختبرنا مجموعة منتقاة من النماذج والمزوّدين الذين يعملون جيدا مع OpenCode.
 :::
 
 لذلك إذا كنت تستخدم نموذجا عبر خدمة مثل OpenRouter، فلن تكون واثقا أبدا من أنك
@@ -37,16 +37,16 @@ InnoGPT متاح حاليا بنسخة تجريبية.
 2. ثم عملنا مع عدد من المزوّدين للتأكد من تقديمها بشكل صحيح.
 3. أخيرا، قمنا بقياس أداء توليفة النموذج/المزوّد وخرجنا بقائمة نوصي بها بثقة.
 
-InnoGPT هو بوابة للذكاء الاصطناعي تتيح لك الوصول إلى هذه النماذج.
+OpenCode Zen هو بوابة للذكاء الاصطناعي تتيح لك الوصول إلى هذه النماذج.
 
 ---
 
 ## كيف يعمل
 
-يعمل InnoGPT مثل أي مزوّد آخر في InnoCode.
+يعمل OpenCode Zen مثل أي مزوّد آخر في OpenCode.
 
-1. تسجّل الدخول إلى **<a href={console}>InnoGPT</a>**، وتضيف تفاصيل الفوترة، ثم تنسخ مفتاح API.
-2. تشغّل الأمر `/connect` في واجهة TUI، وتختار InnoGPT، ثم تلصق مفتاح API.
+1. تسجّل الدخول إلى **<a href={console}>OpenCode Zen</a>**، وتضيف تفاصيل الفوترة، ثم تنسخ مفتاح API.
+2. تشغّل الأمر `/connect` في واجهة TUI، وتختار OpenCode Zen، ثم تلصق مفتاح API.
 3. شغّل `/models` في واجهة TUI لعرض قائمة النماذج التي نوصي بها.
 
 يتم احتساب الرسوم لكل طلب، ويمكنك إضافة رصيد إلى حسابك.
@@ -59,38 +59,42 @@ InnoGPT هو بوابة للذكاء الاصطناعي تتيح لك الوصو
 
 | النموذج            | معرّف النموذج      | نقطة النهاية                                       | حزمة AI SDK                 |
 | ------------------ | ------------------ | -------------------------------------------------- | --------------------------- |
-| GPT 5.2            | gpt-5.2            | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.2 Codex      | gpt-5.2-codex      | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1            | gpt-5.1            | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex      | gpt-5.1-codex      | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex Max  | gpt-5.1-codex-max  | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5.1 Codex Mini | gpt-5.1-codex-mini | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5              | gpt-5              | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5 Codex        | gpt-5-codex        | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| GPT 5 Nano         | gpt-5-nano         | `https://app.innogpt.de/v1/responses`             | `@ai-sdk/openai`            |
-| Claude Sonnet 4.5  | claude-sonnet-4-5  | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Sonnet 4    | claude-sonnet-4    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Haiku 4.5   | claude-haiku-4-5   | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Haiku 3.5   | claude-3-5-haiku   | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.6    | claude-opus-4-6    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.5    | claude-opus-4-5    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Claude Opus 4.1    | claude-opus-4-1    | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| Gemini 3 Pro       | gemini-3-pro       | `https://app.innogpt.de/v1/models/gemini-3-pro`   | `@ai-sdk/google`            |
-| Gemini 3 Flash     | gemini-3-flash     | `https://app.innogpt.de/v1/models/gemini-3-flash` | `@ai-sdk/google`            |
-| MiniMax M2.1       | minimax-m2.1       | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| MiniMax M2.1 Free  | minimax-m2.1-free  | `https://app.innogpt.de/v1/messages`              | `@ai-sdk/anthropic`         |
-| GLM 4.7            | glm-4.7            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| GLM 4.7 Free       | glm-4.7-free       | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| GLM 4.6            | glm-4.6            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2.5          | kimi-k2.5          | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2.5 Free     | kimi-k2.5-free     | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2 Thinking   | kimi-k2-thinking   | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Kimi K2            | kimi-k2            | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Qwen3 Coder 480B   | qwen3-coder        | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
-| Big Pickle         | big-pickle         | `https://app.innogpt.de/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GPT 5.4            | gpt-5.4            | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.3 Codex      | gpt-5.3-codex      | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.2            | gpt-5.2            | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.2 Codex      | gpt-5.2-codex      | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1            | gpt-5.1            | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex      | gpt-5.1-codex      | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex Max  | gpt-5.1-codex-max  | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5.1 Codex Mini | gpt-5.1-codex-mini | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5              | gpt-5              | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5 Codex        | gpt-5-codex        | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| GPT 5 Nano         | gpt-5-nano         | `https://opencode.ai/zen/v1/responses`             | `@ai-sdk/openai`            |
+| Claude Opus 4.6    | claude-opus-4-6    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Opus 4.5    | claude-opus-4-5    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Opus 4.1    | claude-opus-4-1    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Sonnet 4.6  | claude-sonnet-4-6  | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Sonnet 4.5  | claude-sonnet-4-5  | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Sonnet 4    | claude-sonnet-4    | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Haiku 4.5   | claude-haiku-4-5   | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Claude Haiku 3.5   | claude-3-5-haiku   | `https://opencode.ai/zen/v1/messages`              | `@ai-sdk/anthropic`         |
+| Gemini 3.1 Pro     | gemini-3.1-pro     | `https://opencode.ai/zen/v1/models/gemini-3.1-pro` | `@ai-sdk/google`            |
+| Gemini 3 Pro       | gemini-3-pro       | `https://opencode.ai/zen/v1/models/gemini-3-pro`   | `@ai-sdk/google`            |
+| Gemini 3 Flash     | gemini-3-flash     | `https://opencode.ai/zen/v1/models/gemini-3-flash` | `@ai-sdk/google`            |
+| MiniMax M2.5       | minimax-m2.5       | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| MiniMax M2.5 Free  | minimax-m2.5-free  | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| MiniMax M2.1       | minimax-m2.1       | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GLM 5              | glm-5              | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GLM 4.7            | glm-4.7            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| GLM 4.6            | glm-4.6            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2.5          | kimi-k2.5          | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2 Thinking   | kimi-k2-thinking   | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Kimi K2            | kimi-k2            | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Qwen3 Coder 480B   | qwen3-coder        | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
+| Big Pickle         | big-pickle         | `https://opencode.ai/zen/v1/chat/completions`      | `@ai-sdk/openai-compatible` |
 
-يستخدم [معرّف النموذج](/docs/config/#models) في إعدادات InnoCode الصيغة `innocode/<model-id>`.
-على سبيل المثال، بالنسبة إلى GPT 5.2 Codex ستستخدم `innocode/gpt-5.2-codex` في إعداداتك.
+يستخدم [معرّف النموذج](/docs/config/#models) في إعدادات OpenCode الصيغة `opencode/<model-id>`.
+على سبيل المثال، بالنسبة إلى GPT 5.2 Codex ستستخدم `opencode/gpt-5.2-codex` في إعداداتك.
 
 ---
 
@@ -99,7 +103,7 @@ InnoGPT هو بوابة للذكاء الاصطناعي تتيح لك الوصو
 يمكنك جلب القائمة الكاملة بالنماذج المتاحة وبياناتها الوصفية من:
 
 ```
-https://app.innogpt.de/v1/models
+https://opencode.ai/zen/v1/models
 ```
 
 ---
@@ -111,29 +115,35 @@ https://app.innogpt.de/v1/models
 | النموذج                           | الإدخال | الإخراج | قراءة مخزنة | كتابة مخزنة |
 | --------------------------------- | ------- | ------- | ----------- | ----------- |
 | Big Pickle                        | Free    | Free    | Free        | -           |
-| MiniMax M2.1 Free                 | Free    | Free    | Free        | -           |
+| MiniMax M2.5 Free                 | Free    | Free    | Free        | -           |
+| MiniMax M2.5                      | $0.30   | $1.20   | $0.06       | -           |
 | MiniMax M2.1                      | $0.30   | $1.20   | $0.10       | -           |
-| GLM 4.7 Free                      | Free    | Free    | Free        | -           |
+| GLM 5                             | $1.00   | $3.20   | $0.20       | -           |
 | GLM 4.7                           | $0.60   | $2.20   | $0.10       | -           |
 | GLM 4.6                           | $0.60   | $2.20   | $0.10       | -           |
-| Kimi K2.5 Free                    | Free    | Free    | Free        | -           |
 | Kimi K2.5                         | $0.60   | $3.00   | $0.08       | -           |
 | Kimi K2 Thinking                  | $0.40   | $2.50   | -           | -           |
 | Kimi K2                           | $0.40   | $2.50   | -           | -           |
 | Qwen3 Coder 480B                  | $0.45   | $1.50   | -           | -           |
+| Claude Opus 4.6 (≤ 200K tokens)   | $5.00   | $25.00  | $0.50       | $6.25       |
+| Claude Opus 4.6 (> 200K tokens)   | $10.00  | $37.50  | $1.00       | $12.50      |
+| Claude Opus 4.5                   | $5.00   | $25.00  | $0.50       | $6.25       |
+| Claude Opus 4.1                   | $15.00  | $75.00  | $1.50       | $18.75      |
+| Claude Sonnet 4.6 (≤ 200K tokens) | $3.00   | $15.00  | $0.30       | $3.75       |
+| Claude Sonnet 4.6 (> 200K tokens) | $6.00   | $22.50  | $0.60       | $7.50       |
 | Claude Sonnet 4.5 (≤ 200K tokens) | $3.00   | $15.00  | $0.30       | $3.75       |
 | Claude Sonnet 4.5 (> 200K tokens) | $6.00   | $22.50  | $0.60       | $7.50       |
 | Claude Sonnet 4 (≤ 200K tokens)   | $3.00   | $15.00  | $0.30       | $3.75       |
 | Claude Sonnet 4 (> 200K tokens)   | $6.00   | $22.50  | $0.60       | $7.50       |
 | Claude Haiku 4.5                  | $1.00   | $5.00   | $0.10       | $1.25       |
 | Claude Haiku 3.5                  | $0.80   | $4.00   | $0.08       | $1.00       |
-| Claude Opus 4.6 (≤ 200K tokens)   | $5.00   | $25.00  | $0.50       | $6.25       |
-| Claude Opus 4.6 (> 200K tokens)   | $10.00  | $37.50  | $1.00       | $12.50      |
-| Claude Opus 4.5                   | $5.00   | $25.00  | $0.50       | $6.25       |
-| Claude Opus 4.1                   | $15.00  | $75.00  | $1.50       | $18.75      |
+| Gemini 3.1 Pro (≤ 200K tokens)    | $2.00   | $12.00  | $0.20       | -           |
+| Gemini 3.1 Pro (> 200K tokens)    | $4.00   | $18.00  | $0.40       | -           |
 | Gemini 3 Pro (≤ 200K tokens)      | $2.00   | $12.00  | $0.20       | -           |
 | Gemini 3 Pro (> 200K tokens)      | $4.00   | $18.00  | $0.40       | -           |
 | Gemini 3 Flash                    | $0.50   | $3.00   | $0.05       | -           |
+| GPT 5.4                           | $2.50   | $15.00  | $0.25       | -           |
+| GPT 5.3 Codex                     | $1.75   | $14.00  | $0.175      | -           |
 | GPT 5.2                           | $1.75   | $14.00  | $0.175      | -           |
 | GPT 5.2 Codex                     | $1.75   | $14.00  | $0.175      | -           |
 | GPT 5.1                           | $1.07   | $8.50   | $0.107      | -           |
@@ -152,10 +162,8 @@ https://app.innogpt.de/v1/models
 
 النماذج المجانية:
 
-- GLM 4.7 Free متاح على InnoCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
-- Kimi K2.5 Free متاح على InnoCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
-- MiniMax M2.1 Free متاح على InnoCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
-- Big Pickle نموذج خفي ومتاح مجانا على InnoCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
+- MiniMax M2.5 Free متاح على OpenCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
+- Big Pickle نموذج خفي ومتاح مجانا على OpenCode لفترة محدودة. يستخدم الفريق هذه الفترة لجمع الملاحظات وتحسين النموذج.
 
 <a href={email}>تواصل معنا</a> إذا كانت لديك أي أسئلة.
 
@@ -178,14 +186,25 @@ https://app.innogpt.de/v1/models
 
 ---
 
+### نماذج مهملة
+
+| النموذج          | تاريخ الإيقاف |
+| ---------------- | ------------- |
+| Qwen3 Coder 480B | 6 فبراير 2026 |
+| Kimi K2 Thinking | 6 مارس 2026   |
+| Kimi K2          | 6 مارس 2026   |
+| MiniMax M2.1     | 15 مارس 2026  |
+| GLM 4.7          | 15 مارس 2026  |
+| GLM 4.6          | 15 مارس 2026  |
+
+---
+
 ## الخصوصية
 
 تتم استضافة جميع نماذجنا في الولايات المتحدة. يلتزم مزوّدونا بسياسة عدم الاحتفاظ بالبيانات (zero-retention) ولا يستخدمون بياناتك لتدريب النماذج، مع الاستثناءات التالية:
 
 - Big Pickle: خلال فترة إتاحته المجانية، قد تُستخدم البيانات المجمعة لتحسين النموذج.
-- GLM 4.7 Free: خلال فترة إتاحته المجانية، قد تُستخدم البيانات المجمعة لتحسين النموذج.
-- Kimi K2.5 Free: خلال فترة إتاحته المجانية، قد تُستخدم البيانات المجمعة لتحسين النموذج.
-- MiniMax M2.1 Free: خلال فترة إتاحته المجانية، قد تُستخدم البيانات المجمعة لتحسين النموذج.
+- MiniMax M2.5 Free: خلال فترة إتاحته المجانية، قد تُستخدم البيانات المجمعة لتحسين النموذج.
 - OpenAI APIs: يتم الاحتفاظ بالطلبات لمدة 30 يوما وفقا لـ [سياسات بيانات OpenAI](https://platform.openai.com/docs/guides/your-data).
 - Anthropic APIs: يتم الاحتفاظ بالطلبات لمدة 30 يوما وفقا لـ [سياسات بيانات Anthropic](https://docs.anthropic.com/en/docs/claude-code/data-usage).
 
@@ -235,9 +254,9 @@ https://app.innogpt.de/v1/models
 
 ## الأهداف
 
-أنشأنا InnoGPT من أجل:
+أنشأنا OpenCode Zen من أجل:
 
 1. **قياس الأداء** لأفضل النماذج/المزوّدين لعوامل البرمجة.
 2. إتاحة خيارات **عالية الجودة** دون خفض الأداء أو توجيه الطلبات إلى مزوّدين أرخص.
 3. تمرير أي **انخفاض في الأسعار** عبر البيع بالتكلفة؛ بحيث تكون الزيادة الوحيدة لتغطية رسوم المعالجة.
-4. عدم فرض **أي ارتباط حصري (lock-in)** عبر تمكينك من استخدامه مع أي عامل برمجة آخر، مع إتاحة استخدام أي مزوّد آخر مع InnoCode أيضا.
+4. عدم فرض **أي ارتباط حصري (lock-in)** عبر تمكينك من استخدامه مع أي عامل برمجة آخر، مع إتاحة استخدام أي مزوّد آخر مع OpenCode أيضا.

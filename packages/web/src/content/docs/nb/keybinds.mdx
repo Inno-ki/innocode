@@ -3,11 +3,11 @@ title: Tastebindinger
 description: Tilpass tastebindingene dine.
 ---
 
-InnoCode har en liste over tastebindinger som du kan tilpasse gjennom InnoCode-konfigurasjonen.
+OpenCode har en liste over tastebindinger som du kan tilpasse gjennom `tui.json`.
 
-```json title="innocode.json"
+```json title="tui.json"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/tui.json",
   "keybinds": {
     "leader": "ctrl+x",
     "app_exit": "ctrl+c,ctrl+d,<leader>q",
@@ -28,6 +28,7 @@ InnoCode har en liste over tastebindinger som du kan tilpasse gjennom InnoCode-k
     "session_unshare": "none",
     "session_interrupt": "escape",
     "session_compact": "<leader>c",
+    "session_child_first": "<leader>down",
     "session_child_cycle": "<leader>right",
     "session_child_cycle_reverse": "<leader>left",
     "session_parent": "<leader>up",
@@ -107,7 +108,7 @@ InnoCode har en liste over tastebindinger som du kan tilpasse gjennom InnoCode-k
 
 ## Leader-tast
 
-InnoCode bruker en `leader`-tast for de fleste tastebindinger. Dette unngår konflikter i terminalen din.
+OpenCode bruker en `leader`-tast for de fleste tastebindinger. Dette unngår konflikter i terminalen din.
 
 Som standard er `ctrl+x` ledertasten, og de fleste handlinger krever at du først trykker på ledertasten og deretter snarveien. For å starte en ny økt, trykker du for eksempel først `ctrl+x` og deretter `n`.
 
@@ -117,11 +118,11 @@ Du trenger ikke å bruke en ledertast for tastebindingene dine, men vi anbefaler
 
 ## Deaktivering av tastebindinger
 
-Du kan deaktivere en tastebinding ved å legge til tasten til konfigurasjonen med verdien "none".
+Du kan deaktivere en tastebinding ved å legge til tasten til `tui.json` med en verdi på "none".
 
-```json title="innocode.json"
+```json title="tui.json"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/tui.json",
   "keybinds": {
     "session_compact": "none"
   }
@@ -132,7 +133,7 @@ Du kan deaktivere en tastebinding ved å legge til tasten til konfigurasjonen me
 
 ## Snarveier i skrivebordsappen
 
-Prompt-feltet for InnoCode-skrivebordsappen støtter vanlige snarveier i Readline/Emacs-stil for redigering av tekst. Disse er innebygd og foreløpig ikke konfigurerbare via `innocode.json`.
+Prompt-feltet for OpenCode-skrivebordsappen støtter vanlige snarveier i Readline/Emacs-stil for redigering av tekst. Disse er innebygd og foreløpig ikke konfigurerbare via `opencode.json`.
 
 | Snarvei  | Handling                                 |
 | -------- | ---------------------------------------- |

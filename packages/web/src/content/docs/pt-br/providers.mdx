@@ -1,29 +1,29 @@
 ---
 title: Provedores
-description: Usando qualquer provedor LLM no innocode.
+description: Usando qualquer provedor LLM no opencode.
 ---
 
 import config from "../../../../config.mjs"
 export const console = config.console
 
-innocode usa o [AI SDK](https://ai-sdk.dev/) e [Models.dev](https://models.dev) para suportar **75+ provedores LLM** e suporta a execução de modelos locais.
+opencode usa o [AI SDK](https://ai-sdk.dev/) e [Models.dev](https://models.dev) para suportar **75+ provedores LLM** e suporta a execução de modelos locais.
 
 Para adicionar um provedor, você precisa:
 
 1. Adicionar as chaves da API para o provedor usando o comando `/connect`.
-2. Configurar o provedor na sua configuração do innocode.
+2. Configurar o provedor na sua configuração do opencode.
 
 ---
 
 ### Credenciais
 
-Quando você adiciona as chaves da API de um provedor com o comando `/connect`, elas são armazenadas em `~/.local/share/innocode/auth.json`.
+Quando você adiciona as chaves da API de um provedor com o comando `/connect`, elas são armazenadas em `~/.local/share/opencode/auth.json`.
 
 ---
 
 ### Configuração
 
-Você pode personalizar os provedores através da seção `provider` na sua configuração do innocode.
+Você pode personalizar os provedores através da seção `provider` na sua configuração do opencode.
 
 ---
 
@@ -31,9 +31,9 @@ Você pode personalizar os provedores através da seção `provider` na sua conf
 
 Você pode personalizar a URL base para qualquer provedor definindo a opção `baseURL`. Isso é útil ao usar serviços de proxy ou endpoints personalizados.
 
-```json title="innocode.json" {6}
+```json title="opencode.json" {6}
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "anthropic": {
       "options": {
@@ -46,15 +46,15 @@ Você pode personalizar a URL base para qualquer provedor definindo a opção `b
 
 ---
 
-## InnoGPT
+## OpenCode Zen
 
-InnoGPT é uma lista de modelos fornecidos pela equipe do innocode que foram testados e verificados para funcionar bem com o innocode. [Saiba mais](/docs/zen).
+OpenCode Zen é uma lista de modelos fornecidos pela equipe do opencode que foram testados e verificados para funcionar bem com o opencode. [Saiba mais](/docs/zen).
 
 :::tip
-Se você é novo, recomendamos começar com o InnoGPT.
+Se você é novo, recomendamos começar com o OpenCode Zen.
 :::
 
-1. Execute o comando `/connect` no TUI, selecione innocode e acesse [app.innogpt.de](https://app.innogpt.de).
+1. Execute o comando `/connect` no TUI, selecione `OpenCode Zen` e acesse [opencode.ai/zen](https://opencode.ai/zen).
 
    ```txt
    /connect
@@ -77,7 +77,39 @@ Se você é novo, recomendamos começar com o InnoGPT.
    /models
    ```
 
-Funciona como qualquer outro provedor no innocode e é completamente opcional.
+Funciona como qualquer outro provedor no opencode e é completamente opcional.
+
+---
+
+## OpenCode Go
+
+OpenCode Go é um plano de assinatura de baixo custo que fornece acesso confiável a modelos de codificação abertos populares fornecidos pela equipe do opencode que foram
+testados e verificados para funcionar bem com o opencode.
+
+1. Execute o comando `/connect` no TUI, selecione `OpenCode Go` e acesse [opencode.ai/zen](https://opencode.ai/zen).
+
+   ```txt
+   /connect
+   ```
+
+2. Faça login, adicione seus dados de cobrança e copie sua chave da API.
+
+3. Cole sua chave da API.
+
+   ```txt
+   ┌ API key
+   │
+   │
+   └ enter
+   ```
+
+4. Execute `/models` no TUI para ver a lista de modelos que recomendamos.
+
+   ```txt
+   /models
+   ```
+
+Funciona como qualquer outro provedor no opencode e é completamente opcional.
 
 ---
 
@@ -120,7 +152,7 @@ Não vê um provedor aqui? Envie um PR.
 
 ### Amazon Bedrock
 
-Para usar o Amazon Bedrock com o innocode:
+Para usar o Amazon Bedrock com o opencode:
 
 1. Acesse o **Catálogo de Modelos** no console do Amazon Bedrock e solicite acesso aos modelos que você deseja.
 
@@ -130,19 +162,21 @@ Para usar o Amazon Bedrock com o innocode:
 
 2. **Configure a autenticação** usando um dos seguintes métodos:
 
+   ***
+
    #### Variáveis de Ambiente (Início Rápido)
 
-   Defina uma dessas variáveis de ambiente ao executar o innocode:
+   Defina uma dessas variáveis de ambiente ao executar o opencode:
 
    ```bash
    # Option 1: Using AWS access keys
-   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY innocode
+   AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY opencode
 
    # Option 2: Using named AWS profile
-   AWS_PROFILE=my-profile innocode
+   AWS_PROFILE=my-profile opencode
 
    # Option 3: Using Bedrock bearer token
-   AWS_BEARER_TOKEN_BEDROCK=XXX innocode
+   AWS_BEARER_TOKEN_BEDROCK=XXX opencode
    ```
 
    Ou adicione-as ao seu perfil bash:
@@ -152,13 +186,15 @@ Para usar o Amazon Bedrock com o innocode:
    export AWS_REGION=us-east-1
    ```
 
+   ***
+
    #### Arquivo de Configuração (Recomendado)
 
-   Para configuração específica do projeto ou persistente, use `innocode.json`:
+   Para configuração específica do projeto ou persistente, use `opencode.json`:
 
-   ```json title="innocode.json"
+   ```json title="opencode.json"
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -179,13 +215,15 @@ Para usar o Amazon Bedrock com o innocode:
    As opções do arquivo de configuração têm precedência sobre as variáveis de ambiente.
    :::
 
+   ***
+
    #### Avançado: Endpoints VPC
 
    Se você estiver usando endpoints VPC para Bedrock:
 
-   ```json title="innocode.json"
+   ```json title="opencode.json"
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "amazon-bedrock": {
          "options": {
@@ -202,11 +240,15 @@ Para usar o Amazon Bedrock com o innocode:
    A opção `endpoint` é um alias para a opção genérica `baseURL`, usando terminologia específica da AWS. Se tanto `endpoint` quanto `baseURL` forem especificados, `endpoint` tem precedência.
    :::
 
+   ***
+
    #### Métodos de Autenticação
    - **`AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`**: Crie um usuário IAM e gere chaves de acesso no Console da AWS
    - **`AWS_PROFILE`**: Use perfis nomeados de `~/.aws/credentials`. Primeiro configure com `aws configure --profile my-profile` ou `aws sso login`
    - **`AWS_BEARER_TOKEN_BEDROCK`**: Gere chaves de API de longo prazo no console do Amazon Bedrock
    - **`AWS_WEB_IDENTITY_TOKEN_FILE` / `AWS_ROLE_ARN`**: Para EKS IRSA (IAM Roles for Service Accounts) ou outros ambientes Kubernetes com federação OIDC. Essas variáveis de ambiente são injetadas automaticamente pelo Kubernetes ao usar anotações de conta de serviço.
+
+   ***
 
    #### Precedência de Autenticação
 
@@ -225,11 +267,12 @@ Para usar o Amazon Bedrock com o innocode:
    ```
 
 :::note
-Para perfis de inferência personalizados, use o nome do modelo e do provedor na chave e defina a propriedade `id` para o arn. Isso garante o cache correto:
+Para perfis de inferência personalizados, use o nome do modelo e do provedor na chave e defina a propriedade `id` para o arn. Isso garante o cache correto.
+:::
 
-```json title="innocode.json"
+```json title="opencode.json"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "amazon-bedrock": {
       // ...
@@ -242,8 +285,6 @@ Para perfis de inferência personalizados, use o nome do modelo e do provedor na
   }
 }
 ```
-
-:::
 
 ---
 
@@ -273,7 +314,7 @@ Para perfis de inferência personalizados, use o nome do modelo e do provedor na
    ```
 
 :::info
-Usar sua assinatura Claude Pro/Max no innocode não é oficialmente suportado pela [Anthropic](https://anthropic.com).
+Usar sua assinatura Claude Pro/Max no opencode não é oficialmente suportado pela [Anthropic](https://anthropic.com).
 :::
 
 ##### Usando chaves da API
@@ -297,7 +338,7 @@ Se você encontrar erros "Desculpe, mas não posso ajudar com esse pedido", tent
 2. Vá para [Azure AI Foundry](https://ai.azure.com/) e implante um modelo.
 
    :::note
-   O nome da implantação deve corresponder ao nome do modelo para que o innocode funcione corretamente.
+   O nome da implantação deve corresponder ao nome do modelo para que o opencode funcione corretamente.
    :::
 
 3. Execute o comando `/connect` e procure por **Azure**.
@@ -318,7 +359,7 @@ Se você encontrar erros "Desculpe, mas não posso ajudar com esse pedido", tent
 5. Defina o nome do seu recurso como uma variável de ambiente:
 
    ```bash
-   AZURE_RESOURCE_NAME=XXX innocode
+   AZURE_RESOURCE_NAME=XXX opencode
    ```
 
    Ou adicione ao seu perfil bash:
@@ -344,7 +385,7 @@ Se você encontrar erros "Desculpe, mas não posso ajudar com esse pedido", tent
 2. Vá para [Azure AI Foundry](https://ai.azure.com/) e implante um modelo.
 
    :::note
-   O nome da implantação deve corresponder ao nome do modelo para que o innocode funcione corretamente.
+   O nome da implantação deve corresponder ao nome do modelo para que o opencode funcione corretamente.
    :::
 
 3. Execute o comando `/connect` e procure por **Azure Cognitive Services**.
@@ -365,7 +406,7 @@ Se você encontrar erros "Desculpe, mas não posso ajudar com esse pedido", tent
 5. Defina o nome do seu recurso como uma variável de ambiente:
 
    ```bash
-   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX innocode
+   AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX opencode
    ```
 
    Ou adicione ao seu perfil bash:
@@ -476,11 +517,11 @@ O Cloudflare AI Gateway permite que você acesse modelos do OpenAI, Anthropic, W
    /models
    ```
 
-   Você também pode adicionar modelos através da sua configuração do innocode.
+   Você também pode adicionar modelos através da sua configuração do opencode.
 
-   ```json title="innocode.json"
+   ```json title="opencode.json"
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "cloudflare-ai-gateway": {
          "models": {
@@ -656,7 +697,7 @@ GitLab Duo fornece um chat agente com suporte a ferramentas nativas através do 
    #### Usando Token de Acesso Pessoal
    1. Vá para [Configurações do Usuário do GitLab > Tokens de Acesso](https://gitlab.com/-/user_settings/personal_access_tokens)
    2. Clique em **Adicionar novo token**
-   3. Nome: `InnoCode`, Escopos: `api`
+   3. Nome: `OpenCode`, Escopos: `api`
    4. Copie o token (começa com `glpat-`)
    5. Insira-o no terminal
 
@@ -673,20 +714,20 @@ GitLab Duo fornece um chat agente com suporte a ferramentas nativas através do 
 
 :::note
 Você também pode especificar a variável de ambiente 'GITLAB_TOKEN' se não quiser
-armazenar o token no armazenamento de autenticação do innocode.
+armazenar o token no armazenamento de autenticação do opencode.
 :::
 
 ##### GitLab Auto-Hospedado
 
 :::note[nota de conformidade]
-innocode usa um pequeno modelo para algumas tarefas de AI, como gerar o título da sessão.
-Ele está configurado para usar gpt-5-nano por padrão, hospedado pela Zen. Para bloquear o innocode
+opencode usa um pequeno modelo para algumas tarefas de AI, como gerar o título da sessão.
+Ele está configurado para usar gpt-5-nano por padrão, hospedado pela Zen. Para bloquear o opencode
 para usar apenas sua própria instância hospedada do GitLab, adicione o seguinte ao seu
-arquivo `innocode.json`. Também é recomendado desativar o compartilhamento de sessões.
+arquivo `opencode.json`. Também é recomendado desativar o compartilhamento de sessões.
 
 ```json
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "small_model": "gitlab/duo-chat-haiku-4-5",
   "share": "disabled"
 }
@@ -740,15 +781,15 @@ Em seguida, exponha o ID do aplicativo como variável de ambiente:
 export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
 ```
 
-Mais documentação na página [innocode-gitlab-auth](https://www.npmjs.com/package/@gitlab/innocode-gitlab-auth).
+Mais documentação na página [opencode-gitlab-auth](https://www.npmjs.com/package/@gitlab/opencode-gitlab-auth).
 
 ##### Configuração
 
-Personalize através do `innocode.json`:
+Personalize através do `opencode.json`:
 
-```json title="innocode.json"
+```json title="opencode.json"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "gitlab": {
       "options": {
@@ -767,10 +808,10 @@ Personalize através do `innocode.json`:
 
 Para acessar ferramentas do GitLab (merge requests, issues, pipelines, CI/CD, etc.):
 
-```json title="innocode.json"
+```json title="opencode.json"
 {
-  "$schema": "https://innocode.io/config.json",
-  "plugin": ["@gitlab/innocode-gitlab-plugin"]
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["@gitlab/opencode-gitlab-plugin"]
 }
 ```
 
@@ -780,12 +821,10 @@ Este plugin fornece capacidades abrangentes de gerenciamento de repositório do 
 
 ### GitHub Copilot
 
-Para usar sua assinatura do GitHub Copilot com o innocode:
+Para usar sua assinatura do GitHub Copilot com o opencode:
 
 :::note
 Alguns modelos podem precisar de uma [assinatura Pro+](https://github.com/features/copilot/plans) para usar.
-
-Alguns modelos precisam ser habilitados manualmente nas suas [configurações do GitHub Copilot](https://docs.github.com/en/copilot/how-tos/use-ai-models/configure-access-to-ai-models#setup-for-individual-use).
 :::
 
 1. Execute o comando `/connect` e procure por GitHub Copilot.
@@ -803,7 +842,8 @@ Alguns modelos precisam ser habilitados manualmente nas suas [configurações do
    │
    │ Digite o código: 8F43-6FCF
    │
-   └ Aguardando autorização...
+   │ Aguardando autorização...
+   └
    ```
 
 3. Agora execute o comando `/models` para selecionar o modelo que você deseja.
@@ -816,7 +856,7 @@ Alguns modelos precisam ser habilitados manualmente nas suas [configurações do
 
 ### Google Vertex AI
 
-Para usar o Google Vertex AI com o innocode:
+Para usar o Google Vertex AI com o opencode:
 
 1. Acesse o **Model Garden** no Console do Google Cloud e verifique os
    modelos disponíveis na sua região.
@@ -832,10 +872,10 @@ Para usar o Google Vertex AI com o innocode:
      - `GOOGLE_APPLICATION_CREDENTIALS`: Caminho para seu arquivo de chave JSON da conta de serviço
      - Autentique usando o CLI gcloud: `gcloud auth application-default login`
 
-   Defina-as ao executar o innocode.
+   Defina-as ao executar o opencode.
 
    ```bash
-   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id innocode
+   GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id opencode
    ```
 
    Ou adicione-as ao seu perfil bash.
@@ -945,13 +985,13 @@ Para mais provedores e recursos avançados como cache e limitação de taxa, con
 
 #### Configurações Opcionais
 
-Caso você veja um recurso ou modelo do Helicone que não está configurado automaticamente através do innocode, você sempre pode configurá-lo você mesmo.
+Caso você veja um recurso ou modelo do Helicone que não está configurado automaticamente através do opencode, você sempre pode configurá-lo você mesmo.
 
 Aqui está o [Diretório de Modelos do Helicone](https://helicone.ai/models), você precisará disso para pegar os IDs dos modelos que deseja adicionar.
 
-```jsonc title="~/.config/innocode/innocode.jsonc"
+```jsonc title="~/.config/opencode/opencode.jsonc"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -977,9 +1017,9 @@ Aqui está o [Diretório de Modelos do Helicone](https://helicone.ai/models), vo
 
 Helicone suporta cabeçalhos personalizados para recursos como cache, rastreamento de usuários e gerenciamento de sessões. Adicione-os à sua configuração do provedor usando `options.headers`:
 
-```jsonc title="~/.config/innocode/innocode.jsonc"
+```jsonc title="~/.config/opencode/opencode.jsonc"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "helicone": {
       "npm": "@ai-sdk/openai-compatible",
@@ -988,7 +1028,7 @@ Helicone suporta cabeçalhos personalizados para recursos como cache, rastreamen
         "baseURL": "https://ai-gateway.helicone.ai",
         "headers": {
           "Helicone-Cache-Enabled": "true",
-          "Helicone-User-Id": "innocode",
+          "Helicone-User-Id": "opencode",
         },
       },
     },
@@ -998,21 +1038,21 @@ Helicone suporta cabeçalhos personalizados para recursos como cache, rastreamen
 
 ##### Rastreamento de Sessões
 
-O recurso [Sessões](https://docs.helicone.ai/features/sessions) do Helicone permite que você agrupe solicitações LLM relacionadas. Use o plugin [innocode-helicone-session](https://github.com/H2Shami/innocode-helicone-session) para registrar automaticamente cada conversa do innocode como uma sessão no Helicone.
+O recurso [Sessões](https://docs.helicone.ai/features/sessions) do Helicone permite que você agrupe solicitações LLM relacionadas. Use o plugin [opencode-helicone-session](https://github.com/H2Shami/opencode-helicone-session) para registrar automaticamente cada conversa do opencode como uma sessão no Helicone.
 
 ```bash
-npm install -g innocode-helicone-session
+npm install -g opencode-helicone-session
 ```
 
 Adicione-o à sua configuração.
 
-```json title="innocode.json"
+```json title="opencode.json"
 {
-  "plugin": ["innocode-helicone-session"]
+  "plugin": ["opencode-helicone-session"]
 }
 ```
 
-O plugin injeta os cabeçalhos `Helicone-Session-Id` e `Helicone-Session-Name` em suas solicitações. Na página de Sessões do Helicone, você verá cada conversa do innocode listada como uma sessão separada.
+O plugin injeta os cabeçalhos `Helicone-Session-Id` e `Helicone-Session-Name` em suas solicitações. Na página de Sessões do Helicone, você verá cada conversa do opencode listada como uma sessão separada.
 
 ##### Cabeçalhos Comuns do Helicone
 
@@ -1029,11 +1069,11 @@ Consulte o [Diretório de Cabeçalhos do Helicone](https://docs.helicone.ai/heli
 
 ### llama.cpp
 
-Você pode configurar o innocode para usar modelos locais através da utilidade llama-server do [llama.cpp](https://github.com/ggml-org/llama.cpp)
+Você pode configurar o opencode para usar modelos locais através da utilidade llama-server do [llama.cpp](https://github.com/ggml-org/llama.cpp)
 
-```json title="innocode.json" "llama.cpp" {5, 6, 8, 10-15}
+```json title="opencode.json" "llama.cpp" {5, 6, 8, 10-15}
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "llama.cpp": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1096,11 +1136,11 @@ IO.NET oferece 17 modelos otimizados para vários casos de uso:
 
 ### LM Studio
 
-Você pode configurar o innocode para usar modelos locais através do LM Studio.
+Você pode configurar o opencode para usar modelos locais através do LM Studio.
 
-```json title="innocode.json" "lmstudio" {5, 6, 8, 10-14}
+```json title="opencode.json" "lmstudio" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "lmstudio": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1213,15 +1253,15 @@ Para usar Kimi K2 do Moonshot AI:
 
 ### Ollama
 
-Você pode configurar o innocode para usar modelos locais através do Ollama.
+Você pode configurar o opencode para usar modelos locais através do Ollama.
 
 :::tip
-Ollama pode se configurar automaticamente para o innocode. Consulte a [documentação de integração do Ollama](https://docs.ollama.com/integrations/innocode) para detalhes.
+Ollama pode se configurar automaticamente para o opencode. Consulte a [documentação de integração do Ollama](https://docs.ollama.com/integrations/opencode) para detalhes.
 :::
 
-```json title="innocode.json" "ollama" {5, 6, 8, 10-14}
+```json title="opencode.json" "ollama" {5, 6, 8, 10-14}
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1255,13 +1295,13 @@ Se chamadas de ferramentas não estiverem funcionando, tente aumentar `num_ctx` 
 
 ### Ollama Cloud
 
-Para usar o Ollama Cloud com o innocode:
+Para usar o Ollama Cloud com o opencode:
 
 1. Acesse [https://ollama.com/](https://ollama.com/) e faça login ou crie uma conta.
 
 2. Navegue até **Configurações** > **Chaves** e clique em **Adicionar Chave da API** para gerar uma nova chave da API.
 
-3. Copie a chave da API para uso no innocode.
+3. Copie a chave da API para uso no opencode.
 
 4. Execute o comando `/connect` e procure por **Ollama Cloud**.
 
@@ -1278,7 +1318,7 @@ Para usar o Ollama Cloud com o innocode:
    └ enter
    ```
 
-6. **Importante**: Antes de usar modelos em nuvem no innocode, você deve puxar as informações do modelo localmente:
+6. **Importante**: Antes de usar modelos em nuvem no opencode, você deve puxar as informações do modelo localmente:
 
    ```bash
    ollama pull gpt-oss:20b-cloud
@@ -1309,6 +1349,7 @@ Recomendamos se inscrever para [ChatGPT Plus ou Pro](https://chatgpt.com/pricing
    │
    │ ChatGPT Plus/Pro
    │ Inserir manualmente a chave de API
+   │
    └
    ```
 
@@ -1324,19 +1365,19 @@ Se você já tiver uma chave da API, pode selecionar **Inserir chave da API manu
 
 ---
 
-### InnoGPT
+### OpenCode Zen
 
-InnoGPT é uma lista de modelos testados e verificados fornecidos pela equipe do innocode. [Saiba mais](/docs/zen).
+OpenCode Zen é uma lista de modelos testados e verificados fornecidos pela equipe do opencode. [Saiba mais](/docs/zen).
 
-1. Faça login em **<a href={console}>InnoGPT</a>** e clique em **Criar Chave da API**.
+1. Faça login em **<a href={console}>OpenCode Zen</a>** e clique em **Criar Chave da API**.
 
-2. Execute o comando `/connect` e procure por **InnoGPT**.
+2. Execute o comando `/connect` e procure por **OpenCode Zen**.
 
    ```txt
    /connect
    ```
 
-3. Insira sua chave da API do innocode.
+3. Insira sua chave da API do opencode.
 
    ```txt
    ┌ API key
@@ -1378,11 +1419,11 @@ InnoGPT é uma lista de modelos testados e verificados fornecidos pela equipe do
    /models
    ```
 
-   Você também pode adicionar modelos adicionais através da sua configuração do innocode.
+   Você também pode adicionar modelos adicionais através da sua configuração do opencode.
 
-   ```json title="innocode.json" {6}
+   ```json title="opencode.json" {6}
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1393,11 +1434,11 @@ InnoGPT é uma lista de modelos testados e verificados fornecidos pela equipe do
    }
    ```
 
-5. Você também pode personalizá-los através da sua configuração do innocode. Aqui está um exemplo de especificar um provedor
+5. Você também pode personalizá-los através da sua configuração do opencode. Aqui está um exemplo de especificar um provedor
 
-   ```json title="innocode.json"
+   ```json title="opencode.json"
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "openrouter": {
          "models": {
@@ -1445,7 +1486,7 @@ SAP AI Core fornece acesso a mais de 40 modelos do OpenAI, Anthropic, Google, Am
    Ou defina a variável de ambiente `AICORE_SERVICE_KEY`:
 
    ```bash
-   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' innocode
+   AICORE_SERVICE_KEY='{"clientid":"...","clientsecret":"...","url":"...","serviceurls":{"AI_API_URL":"..."}}' opencode
    ```
 
    Ou adicione ao seu perfil bash:
@@ -1457,7 +1498,7 @@ SAP AI Core fornece acesso a mais de 40 modelos do OpenAI, Anthropic, Google, Am
 4. Opcionalmente, defina o ID de implantação e o grupo de recursos:
 
    ```bash
-   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group innocode
+   AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group opencode
    ```
 
    :::note
@@ -1465,6 +1506,39 @@ SAP AI Core fornece acesso a mais de 40 modelos do OpenAI, Anthropic, Google, Am
    :::
 
 5. Execute o comando `/models` para selecionar entre mais de 40 modelos disponíveis.
+
+   ```txt
+   /models
+   ```
+
+---
+
+### STACKIT
+
+O STACKIT AI Model Serving fornece um ambiente de hospedagem soberano totalmente gerenciado para modelos de IA, com foco em LLMs como Llama, Mistral e Qwen, com máxima soberania de dados na infraestrutura europeia.
+
+1. Vá para o [Portal STACKIT](https://portal.stackit.cloud), navegue até **AI Model Serving** e crie um token de autenticação para o seu projeto.
+
+   :::tip
+   Você precisa de uma conta de cliente STACKIT, conta de usuário e projeto antes de criar tokens de autenticação.
+   :::
+
+2. Execute o comando `/connect` e procure por **STACKIT**.
+
+   ```txt
+   /connect
+   ```
+
+3. Insira seu token de autenticação do STACKIT AI Model Serving.
+
+   ```txt
+   ┌ API key
+   │
+   │
+   └ enter
+   ```
+
+4. Execute o comando `/models` para selecionar entre os modelos disponíveis, como _Qwen3-VL 235B_ ou _Llama 3.3 70B_.
 
    ```txt
    /models
@@ -1501,7 +1575,7 @@ SAP AI Core fornece acesso a mais de 40 modelos do OpenAI, Anthropic, Google, Am
 
 ### Scaleway
 
-Para usar [APIs Generativas Scaleway](https://www.scaleway.com/en/docs/generative-apis/) com o innocode:
+Para usar [APIs Generativas Scaleway](https://www.scaleway.com/en/docs/generative-apis/) com o opencode:
 
 1. Acesse as [configurações de IAM do Scaleway Console](https://console.scaleway.com/iam/api-keys) para gerar uma nova chave da API.
 
@@ -1609,11 +1683,11 @@ O Vercel AI Gateway permite que você acesse modelos do OpenAI, Anthropic, Googl
    /models
    ```
 
-Você também pode personalizar modelos através da sua configuração do innocode. Aqui está um exemplo de especificar a ordem de roteamento do provedor.
+Você também pode personalizar modelos através da sua configuração do opencode. Aqui está um exemplo de especificar a ordem de roteamento do provedor.
 
-```json title="innocode.json"
+```json title="opencode.json"
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "vercel": {
       "models": {
@@ -1719,11 +1793,11 @@ Algumas opções de roteamento úteis:
    /models
    ```
 
-   Você também pode adicionar modelos adicionais através da sua configuração do innocode.
+   Você também pode adicionar modelos adicionais através da sua configuração do opencode.
 
-   ```json title="innocode.json" {6}
+   ```json title="opencode.json" {6}
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "zenmux": {
          "models": {
@@ -1741,7 +1815,7 @@ Algumas opções de roteamento úteis:
 Para adicionar qualquer provedor **compatível com OpenAI** que não esteja listado no comando `/connect`:
 
 :::tip
-Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maioria dos provedores de AI modernos oferece APIs compatíveis com OpenAI.
+Você pode usar qualquer provedor compatível com OpenAI com o opencode. A maioria dos provedores de AI modernos oferece APIs compatíveis com OpenAI.
 :::
 
 1. Execute o comando `/connect` e role para baixo até **Outro**.
@@ -1751,10 +1825,9 @@ Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maior
 
    ┌  Adicionar credencial
    │
-   ▲  Isso armazena apenas uma credencial para myprovider - você precisará configurá-lo no innocode.json, verifique a documentação para exemplos.
-   │
-   ◇  Digite sua chave de API
-   │  sk-...
+   ◆  Select provider
+   │  ...
+   │  ● Other
    └
    ```
 
@@ -1765,10 +1838,8 @@ Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maior
 
    ┌  Adicionar credencial
    │
-   ▲  Isso armazena apenas uma credencial para myprovider - você precisará configurá-lo no innocode.json, verifique a documentação para exemplos.
-   │
-   ◇  Digite sua chave de API
-   │  sk-...
+   ◇  Enter provider id
+   │  myprovider
    └
    ```
 
@@ -1783,18 +1854,18 @@ Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maior
 
    ┌  Adicionar credencial
    │
-   ▲  Isso armazena apenas uma credencial para myprovider - você precisará configurá-lo no innocode.json, verifique a documentação para exemplos.
+   ▲  Isso armazena apenas uma credencial para myprovider - você precisará configurá-lo no opencode.json, verifique a documentação para exemplos.
    │
    ◇  Digite sua chave de API
    │  sk-...
    └
    ```
 
-4. Crie ou atualize seu arquivo `innocode.json` no diretório do seu projeto:
+4. Crie ou atualize seu arquivo `opencode.json` no diretório do seu projeto:
 
-   ```json title="innocode.json" ""myprovider"" {5-15}
+   ```json title="opencode.json" ""myprovider"" {5-15}
    {
-     "$schema": "https://innocode.io/config.json",
+     "$schema": "https://opencode.ai/config.json",
      "provider": {
        "myprovider": {
          "npm": "@ai-sdk/openai-compatible",
@@ -1806,8 +1877,6 @@ Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maior
            "my-model-name": {
              "name": "Nome de Exibição do Meu Modelo"
            }
-         }
-       }
          }
        }
      }
@@ -1832,9 +1901,9 @@ Você pode usar qualquer provedor compatível com OpenAI com o innocode. A maior
 
 Aqui está um exemplo definindo as opções `apiKey`, `headers` e `limit` do modelo.
 
-```json title="innocode.json" {9,11,17-20}
+```json title="opencode.json" {9,11,17-20}
 {
-  "$schema": "https://innocode.io/config.json",
+  "$schema": "https://opencode.ai/config.json",
   "provider": {
     "myprovider": {
       "npm": "@ai-sdk/openai-compatible",
@@ -1857,18 +1926,6 @@ Aqui está um exemplo definindo as opções `apiKey`, `headers` e `limit` do mod
       }
     }
   }
-      },
-      "models": {
-        "my-model-name": {
-          "name": "Nome de Exibição do Meu Modelo",
-          "limit": {
-            "context": 200000,
-            "output": 65536
-          }
-        }
-      }
-    }
-  }
 }
 ```
 
@@ -1879,7 +1936,7 @@ Detalhes da configuração:
 - **limit.context**: Máximo de tokens de entrada que o modelo aceita.
 - **limit.output**: Máximo de tokens que o modelo pode gerar.
 
-Os campos `limit` permitem que o innocode entenda quanto contexto você tem disponível. Provedores padrão puxam isso automaticamente do models.dev.
+Os campos `limit` permitem que o opencode entenda quanto contexto você tem disponível. Provedores padrão puxam isso automaticamente do models.dev.
 
 ---
 
@@ -1887,12 +1944,12 @@ Os campos `limit` permitem que o innocode entenda quanto contexto você tem disp
 
 Se você estiver tendo problemas para configurar um provedor, verifique o seguinte:
 
-1. **Verifique a configuração de autenticação**: Execute `innocode auth list` para ver se as credenciais
+1. **Verifique a configuração de autenticação**: Execute `opencode auth list` para ver se as credenciais
    para o provedor estão adicionadas à sua configuração.
 
    Isso não se aplica a provedores como Amazon Bedrock, que dependem de variáveis de ambiente para sua autenticação.
 
-2. Para provedores personalizados, verifique a configuração do innocode e:
-   - Certifique-se de que o ID do provedor usado no comando `/connect` corresponda ao ID na sua configuração do innocode.
+2. Para provedores personalizados, verifique a configuração do opencode e:
+   - Certifique-se de que o ID do provedor usado no comando `/connect` corresponda ao ID na sua configuração do opencode.
    - O pacote npm correto está sendo usado para o provedor. Por exemplo, use `@ai-sdk/cerebras` para Cerebras. E para todos os outros provedores compatíveis com OpenAI, use `@ai-sdk/openai-compatible`.
    - Verifique se o endpoint da API correto está sendo usado no campo `options.baseURL`.

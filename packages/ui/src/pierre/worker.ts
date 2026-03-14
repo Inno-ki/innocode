@@ -21,6 +21,7 @@ function createPool(lineDiffType: "none" | "word-alt") {
     {
       theme: "InnoCode",
       lineDiffType,
+      preferredHighlighter: "shiki-wasm",
     },
   )
 

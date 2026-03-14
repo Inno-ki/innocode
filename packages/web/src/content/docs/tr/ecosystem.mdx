@@ -1,76 +1,78 @@
 ---
 title: Ekosistem
-description: innocode ile ilgili tasarımlar ve entegrasyonlar.
+description: OpenCode ile geliştirilen projeler ve entegrasyonlar.
 ---
 
-innocode üzerine inşa edilmiş bir topluluk projeleri koleksiyonu.
+OpenCode üzerine inşa edilmiş topluluk projeleri koleksiyonu.
 
 :::note
-innocode ile ilgili projenizi bu listeye eklemek ister misiniz? Bir PR gönderin.
+OpenCode ile ilgili projenizi bu listeye eklemek ister misiniz? Bir PR gönderin.
 :::
 
-Ayrıca ekosistemi ve topluluğu bir araya getiren bir topluluk olan [awesome-innocode](https://github.com/awesome-innocode/awesome-innocode) ve [innocode.cafe](https://innocode.cafe)'e de göz atabilirsiniz.
+Ayrıca ekosistemi ve topluluğu bir araya getiren [awesome-opencode](https://github.com/awesome-opencode/awesome-opencode) ve [opencode.cafe](https://opencode.cafe) adreslerine de göz atabilirsiniz.
 
 ---
 
 ## Eklentiler
 
-| İsim                                                                                                      | Açıklama                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [innocode-daytona](https://github.com/jamesmurdza/daytona/blob/main/guides/typescript/innocode/README.md) | innocode oturumlarını git senkronizasyonu ve canlı önizlemelerle izole Daytona sanal alanlarında otomatik olarak çalıştırın    |
-| [innocode-helicone-session](https://github.com/H2Shami/innocode-helicone-session)                         | İstek gruplaması için Helicone oturum başlıklarını otomatik olarak ekleme                                                      |
-| [innocode-type-inject](https://github.com/nick-vi/innocode-type-inject)                                   | Arama araçlarıyla TypeScript/Svelte türlerini dosya okumalarına otomatik olarak enjekte edin                                   |
-| [innocode-openai-codex-auth](https://github.com/numman-ali/innocode-openai-codex-auth)                    | API kredisi yerine ChatGPT Plus/Pro aboneliğinizi kullanın                                                                     |
-| [innocode-gemini-auth](https://github.com/jenslys/innocode-gemini-auth)                                   | API faturalandırma yerine mevcut Gemini planınızı kullanın                                                                     |
-| [innocode-antigravity-auth](https://github.com/NoeFabris/innocode-antigravity-auth)                       | API faturalandırma yerine Antigravity'nin ücretsiz modellerini kullanın                                                        |
-| [innocode-devcontainers](https://github.com/athal7/innocode-devcontainers)                                | Sığ klonlar ve otomatik atanan bağlantı noktalarıyla çok dallı devcontainer izolasyonu                                         |
-| [innocode-google-antigravity-auth](https://github.com/shekohex/innocode-google-antigravity-auth)          | Google Arama desteği ve daha sağlam API işleme özelliğiyle Google Antigravity OAuth Eklentisi                                  |
-| [innocode-dynamic-context-pruning](https://github.com/Tarquinen/innocode-dynamic-context-pruning)         | Optimize token usage by pruning obsolete tool outputs                                                                          |
-| [innocode-websearch-cited](https://github.com/ghoulr/innocode-websearch-cited.git)                        | Desteklenen sağlayıcılar için Google tabanlı stil ile yerel web araması desteği ekleyin                                        |
-| [innocode-pty](https://github.com/shekohex/innocode-pty.git)                                              | Yapay zeka aracılarının bir PTY'de arka plan işlemlerini çalıştırmasına ve onlara etkileşimli girdi göndermesine olanak tanır. |
-| [innocode-shell-strategy](https://github.com/JRedeker/innocode-shell-strategy)                            | Etkileşimli olmayan kabuk komutlarına yönelik talimatlar - TTY bağımlı işlemlerden kaynaklanan askıda kalmaları önler          |
-| [innocode-wakatime](https://github.com/angristan/innocode-wakatime)                                       | Wakatime ile innocode kullanımını izleyin                                                                                      |
-| [innocode-md-table-formatter](https://github.com/franlol/innocode-md-table-formatter/tree/main)           | Clean up markdown tables produced by LLMs                                                                                      |
-| [innocode-morph-fast-apply](https://github.com/JRedeker/innocode-morph-fast-apply)                        | Morph Fast Apply API ve yavaş düzenleme işaretçileriyle 10 kat daha hızlı kod düzenleme                                        |
-| [oh-my-innocode](https://github.com/code-yeongyu/oh-my-innocode)                                          | Background agents, pre-built LSP/AST/MCP tools, curated agents, Claude Code compatible                                         |
-| [innocode-notificator](https://github.com/panta82/innocode-notificator)                                   | innocode oturumları için masaüstü bildirimleri ve sesli uyarılar                                                               |
-| [innocode-notifier](https://github.com/mohak34/innocode-notifier)                                         | İzin, tamamlama ve hata olayları için masaüstü bildirimleri ve sesli uyarılar                                                  |
-| [innocode-zellij-namer](https://github.com/24601/innocode-zellij-namer)                                   | innocode bağlamına dayalı yapay zeka destekli otomatik Zellij oturumu adlandırma                                               |
-| [innocode-skillful](https://github.com/zenobi-us/innocode-skillful)                                       | innocode temsilcilerinin, beceri keşfi ve ekleme ile istek üzerine istemleri yavaş yüklemesine izin verin                      |
-| [innocode-supermemory](https://github.com/supermemoryai/innocode-supermemory)                             | Supermemory kullanarak oturumlar arasında kalıcı hafıza                                                                        |
-| [@plannotator/innocode](https://github.com/backnotprop/plannotator/tree/main/apps/innocode-plugin)        | Görsel açıklama ve private/offline paylaşımıyla etkileşimli plan incelemesi                                                    |
-| [@openspoon/subtask2](https://github.com/spoons-and-mirrors/subtask2)                                     | innocode'u/komutları ayrıntılı akış kontrolüyle güçlü bir orkestrasyon sistemine genişletin                                    |
-| [innocode-scheduler](https://github.com/different-ai/innocode-scheduler)                                  | Cron sözdizimi ile launchd (Mac) veya systemd (Linux) kullanarak yinelenen işleri planlayın                                    |
-| [micode](https://github.com/vtemian/micode)                                                               | Yapılandırılmış Beyin Fırtınası → Planla → Oturum sürekliliği ile iş akışını uygulama                                          |
-| [octto](https://github.com/vtemian/octto)                                                                 | Çoklu soru formlarıyla yapay zeka beyin fırtınası için etkileşimli tarayıcı arayüzü                                            |
-| [innocode-background-agents](https://github.com/kdcokenny/innocode-background-agents)                     | Eşzamansız delegasyon ve bağlam kalıcılığına sahip Claude Code tarzı arka plan aracıları                                       |
-| [innocode-notify](https://github.com/kdcokenny/innocode-notify)                                           | innocode için yerel işletim sistemi bildirimleri – görevlerin ne zaman tamamlandığını bilin                                    |
-| [innocode-workspace](https://github.com/kdcokenny/innocode-workspace)                                     | Birlikte verilen çok aracılı orkestrasyon donanımı – 16 bileşen, tek kurulum                                                   |
-| [innocode-worktree](https://github.com/kdcokenny/innocode-worktree)                                       | innocode için sıfır sürtünmeli git çalışma ağaçları                                                                            |
+| İsim                                                                                               | Açıklama                                                                                                                      |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [opencode-daytona](https://github.com/daytonaio/daytona/tree/main/libs/opencode-plugin)            | OpenCode oturumlarını, git senkronizasyonu ve canlı önizlemelerle izole Daytona sanal alanlarında otomatik olarak çalıştırın  |
+| [opencode-helicone-session](https://github.com/H2Shami/opencode-helicone-session)                  | İstek gruplaması için Helicone oturum başlıklarını otomatik olarak ekleyin                                                    |
+| [opencode-type-inject](https://github.com/nick-vi/opencode-type-inject)                            | Arama araçlarıyla TypeScript/Svelte türlerini dosya okumalarına otomatik olarak enjekte edin                                  |
+| [opencode-openai-codex-auth](https://github.com/numman-ali/opencode-openai-codex-auth)             | API kredisi yerine ChatGPT Plus/Pro aboneliğinizi kullanın                                                                    |
+| [opencode-gemini-auth](https://github.com/jenslys/opencode-gemini-auth)                            | API faturalandırması yerine mevcut Gemini planınızı kullanın                                                                  |
+| [opencode-antigravity-auth](https://github.com/NoeFabris/opencode-antigravity-auth)                | API faturalandırması yerine Antigravity'nin ücretsiz modellerini kullanın                                                     |
+| [opencode-devcontainers](https://github.com/athal7/opencode-devcontainers)                         | Sığ klonlar ve otomatik atanan portlarla çok dallı devcontainer izolasyonu                                                    |
+| [opencode-google-antigravity-auth](https://github.com/shekohex/opencode-google-antigravity-auth)   | Google Arama desteği ve daha sağlam API işleme özelliğiyle Google Antigravity OAuth Eklentisi                                 |
+| [opencode-dynamic-context-pruning](https://github.com/Tarquinen/opencode-dynamic-context-pruning)  | Eski araç çıktılarını budayarak token kullanımını optimize edin                                                               |
+| [opencode-vibeguard](https://github.com/inkdust2021/opencode-vibeguard)                            | LLM çağrılarından önce sırları/kişisel verileri VibeGuard tarzı yer tutucularla gizleyin; yerel olarak geri yükleyin          |
+| [opencode-websearch-cited](https://github.com/ghoulr/opencode-websearch-cited.git)                 | Desteklenen sağlayıcılar için Google kaynaklı stil ile yerel web araması desteği ekleyin                                      |
+| [opencode-pty](https://github.com/shekohex/opencode-pty.git)                                       | Yapay zeka aracılarının bir PTY'de arka plan işlemlerini çalıştırmasına ve onlara etkileşimli girdi göndermesine olanak tanır |
+| [opencode-shell-strategy](https://github.com/JRedeker/opencode-shell-strategy)                     | Etkileşimli olmayan kabuk komutları için talimatlar - TTY bağımlı işlemlerden kaynaklanan takılmaları önler                   |
+| [opencode-wakatime](https://github.com/angristan/opencode-wakatime)                                | Wakatime ile OpenCode kullanımını takip edin                                                                                  |
+| [opencode-md-table-formatter](https://github.com/franlol/opencode-md-table-formatter/tree/main)    | LLM'ler tarafından üretilen markdown tablolarını temizleyin                                                                   |
+| [opencode-morph-plugin](https://github.com/morphllm/opencode-morph-plugin)                         | Fast Apply düzenleme, WarpGrep kod tabanı araması ve Morph ile bağlam sıkıştırma                                              |
+| [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)                                   | Arka plan aracıları, hazır LSP/AST/MCP araçları, seçilmiş aracılar, Claude Code uyumlu                                        |
+| [opencode-notificator](https://github.com/panta82/opencode-notificator)                            | OpenCode oturumları için masaüstü bildirimleri ve sesli uyarılar                                                              |
+| [opencode-notifier](https://github.com/mohak34/opencode-notifier)                                  | İzin, tamamlanma ve hata olayları için masaüstü bildirimleri ve sesli uyarılar                                                |
+| [opencode-zellij-namer](https://github.com/24601/opencode-zellij-namer)                            | OpenCode bağlamına dayalı yapay zeka destekli otomatik Zellij oturum isimlendirmesi                                           |
+| [opencode-skillful](https://github.com/zenobi-us/opencode-skillful)                                | OpenCode aracılarının, beceri keşfi ve enjeksiyonu ile istemleri talep üzerine tembel yüklemesine (lazy load) izin verin      |
+| [opencode-supermemory](https://github.com/supermemoryai/opencode-supermemory)                      | Supermemory kullanarak oturumlar arası kalıcı hafıza                                                                          |
+| [@plannotator/opencode](https://github.com/backnotprop/plannotator/tree/main/apps/opencode-plugin) | Görsel not alma ve özel/çevrimdışı paylaşım ile etkileşimli plan incelemesi                                                   |
+| [@openspoon/subtask2](https://github.com/spoons-and-mirrors/subtask2)                              | opencode /commands komutlarını, ayrıntılı akış kontrolü ile güçlü bir orkestrasyon sistemine genişletin                       |
+| [opencode-scheduler](https://github.com/different-ai/opencode-scheduler)                           | Launchd (Mac) veya systemd (Linux) kullanarak cron sözdizimi ile tekrarlayan işler planlayın                                  |
+| [micode](https://github.com/vtemian/micode)                                                        | Oturum sürekliliği ile Yapılandırılmış Beyin Fırtınası → Planlama → Uygulama iş akışı                                         |
+| [octto](https://github.com/vtemian/octto)                                                          | Çok sorulu formlarla yapay zeka beyin fırtınası için etkileşimli tarayıcı arayüzü                                             |
+| [opencode-background-agents](https://github.com/kdcokenny/opencode-background-agents)              | Asenkron delegasyon ve bağlam kalıcılığına sahip Claude Code tarzı arka plan aracıları                                        |
+| [opencode-notify](https://github.com/kdcokenny/opencode-notify)                                    | OpenCode için yerel işletim sistemi bildirimleri – görevlerin ne zaman tamamlandığını bilin                                   |
+| [opencode-workspace](https://github.com/kdcokenny/opencode-workspace)                              | Paketlenmiş çoklu aracı orkestrasyon donanımı – 16 bileşen, tek kurulum                                                       |
+| [opencode-worktree](https://github.com/kdcokenny/opencode-worktree)                                | OpenCode için sıfır sürtünmeli git çalışma ağaçları (worktrees)                                                               |
+| [opencode-sentry-monitor](https://github.com/stolinski/opencode-sentry-monitor)                    | Sentry AI Monitoring ile yapay zeka aracılarınızı izleyin ve hatalarını ayıklayın                                             |
 
 ---
 
 ## Projeler
 
-| İsim                                                                                       | Tanım                                                                             |
-| ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| [kimaki](https://github.com/remorses/kimaki)                                               | SDK üzerine kurulu innocode oturumlarını kontrol eden Discord botu                |
-| [innocode.nvim](https://github.com/NickvanDyke/innocode.nvim)                              | API temel alınarak oluşturulmuş, editöre duyarlı istemler için Neovim eklentisi   |
-| [portal](https://github.com/hosenur/portal)                                                | Tailscale/VPN üzerinden innocode için mobil öncelikli web kullanıcı arayüzü       |
-| [innocode plugin template](https://github.com/zenobi-us/innocode-plugin-template/)         | innocode eklentileri oluşturmak için şablon                                       |
-| [innocode.nvim](https://github.com/sudo-tee/innocode.nvim)                                 | innocode için Neovim ön ucu - terminal tabanlı bir AI kodlama aracısı             |
-| [ai-sdk-provider-innocode-sdk](https://github.com/ben-vargas/ai-sdk-provider-innocode-sdk) | innocode/sdk aracılığıyla innocode'u kullanmak için Vercel AI SDK sağlayıcısı |
-| [OpenChamber](https://github.com/btriapitsyn/openchamber)                                  | innocode için Web / Masaüstü Uygulaması ve VS Code Uzantısı                       |
-| [InnoCode-Obsidian](https://github.com/mtymek/innocode-obsidian)                           | innocode'u Obsidian'ın kullanıcı arayüzüne yerleştiren Obsidian eklentisi         |
-| [OpenWork](https://github.com/different-ai/openwork)                                       | innocode tarafından desteklenen, Claude Cowork'e açık kaynaklı bir alternatif     |
-| [ocx](https://github.com/kdcokenny/ocx)                                                    | Taşınabilir, yalıtılmış profillere sahip innocode uzantı yöneticisi.              |
-| [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad)                                   | innocode için Masaüstü, Web, Mobil ve Uzak İstemci Uygulaması                     |
+| İsim                                                                                       | Açıklama                                                                        |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| [kimaki](https://github.com/remorses/kimaki)                                               | SDK üzerine inşa edilmiş, OpenCode oturumlarını kontrol eden Discord botu       |
+| [opencode.nvim](https://github.com/NickvanDyke/opencode.nvim)                              | API üzerine inşa edilmiş, editör farkındalıklı istemler için Neovim eklentisi   |
+| [portal](https://github.com/hosenur/portal)                                                | Tailscale/VPN üzerinden OpenCode için mobil öncelikli web arayüzü               |
+| [opencode plugin template](https://github.com/zenobi-us/opencode-plugin-template/)         | OpenCode eklentileri oluşturmak için şablon                                     |
+| [opencode.nvim](https://github.com/sudo-tee/opencode.nvim)                                 | opencode için Neovim ön yüzü - terminal tabanlı bir yapay zeka kodlama aracısı  |
+| [ai-sdk-provider-opencode-sdk](https://github.com/ben-vargas/ai-sdk-provider-opencode-sdk) | @opencode-ai/sdk aracılığıyla OpenCode kullanmak için Vercel AI SDK sağlayıcısı |
+| [OpenChamber](https://github.com/btriapitsyn/openchamber)                                  | OpenCode için Web / Masaüstü Uygulaması ve VS Code Uzantısı                     |
+| [OpenCode-Obsidian](https://github.com/mtymek/opencode-obsidian)                           | OpenCode'u Obsidian arayüzüne gömen Obsidian eklentisi                          |
+| [OpenWork](https://github.com/different-ai/openwork)                                       | OpenCode tarafından desteklenen, Claude Cowork'e açık kaynaklı bir alternatif   |
+| [ocx](https://github.com/kdcokenny/ocx)                                                    | Taşınabilir, izole profillere sahip OpenCode eklenti yöneticisi                 |
+| [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad)                                   | OpenCode için Masaüstü, Web, Mobil ve Uzak İstemci Uygulaması                   |
 
 ---
 
-## Agent'lar
+## Aracılar
 
 | İsim                                                              | Açıklama                                                                    |
 | ----------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | [Agentic](https://github.com/Cluster444/agentic)                  | Yapılandırılmış geliştirme için modüler yapay zeka aracıları ve komutları   |
-| [innocode-agents](https://github.com/darrenhinde/innocode-agents) | Gelişmiş iş akışları için yapılandırmalar, istemler, aracılar ve eklentiler |
+| [opencode-agents](https://github.com/darrenhinde/opencode-agents) | Gelişmiş iş akışları için yapılandırmalar, istemler, aracılar ve eklentiler |

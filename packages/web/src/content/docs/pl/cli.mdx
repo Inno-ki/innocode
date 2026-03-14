@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: Opcje i polecenia wiersza poleceń InnoCode.
+description: Opcje i polecenia wiersza poleceń OpenCode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-CLI InnoCode domyślnie uruchamia [TUI](/docs/tui), gdy wywołasz je bez argumentów.
+CLI OpenCode domyślnie uruchamia [TUI](/docs/tui), gdy wywołasz je bez argumentów.
 
 ```bash
-innocode
+opencode
 ```
 
-CLI obsługuje też polecenia opisane na tej stronie, więc możesz używać InnoCode programowo.
+CLI obsługuje też polecenia opisane na tej stronie, więc możesz używać OpenCode programowo.
 
 ```bash
-innocode run "Explain how closures work in JavaScript"
+opencode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-Uruchamia interfejs terminalowy (TUI) InnoCode.
+Uruchamia interfejs terminalowy (TUI) OpenCode.
 
 ```bash
-innocode [project]
+opencode [project]
 ```
 
 #### Flagi
@@ -44,36 +44,36 @@ innocode [project]
 
 ## Polecenia
 
-Interfejs CLI InnoCode zawiera także dodatkowe polecenia.
+Interfejs CLI OpenCode zawiera także dodatkowe polecenia.
 
 ---
 
 ### agent
 
-Zarządzaj agentami InnoCode.
+Zarządzaj agentami OpenCode.
 
 ```bash
-innocode agent [command]
+opencode agent [command]
 ```
 
 ---
 
 ### attach
 
-Dołącz terminal do już działającego serwera backendu InnoCode uruchomionego za pomocą `serve` lub `web`.
+Dołącz terminal do już działającego serwera backendu OpenCode uruchomionego za pomocą `serve` lub `web`.
 
 ```bash
-innocode attach [url]
+opencode attach [url]
 ```
 
-Pozwala to połączyć TUI ze zdalnym backendem InnoCode. Na przykład:
+Pozwala to połączyć TUI ze zdalnym backendem OpenCode. Na przykład:
 
 ```bash
 # Start the backend server for web/mobile access
-innocode web --port 4096 --hostname 0.0.0.0
+opencode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-innocode attach http://10.20.30.40:4096
+opencode attach http://10.20.30.40:4096
 ```
 
 #### Flagi
@@ -90,7 +90,7 @@ innocode attach http://10.20.30.40:4096
 Utwórz nowego agenta z niestandardową konfiguracją.
 
 ```bash
-innocode agent create
+opencode agent create
 ```
 
 To polecenie poprowadzi Cię przez proces tworzenia nowego agenta z niestandardowym promptem systemowym i konfiguracją narzędzi.
@@ -102,7 +102,7 @@ To polecenie poprowadzi Cię przez proces tworzenia nowego agenta z niestandardo
 Wyświetl listę wszystkich agentów.
 
 ```bash
-innocode agent list
+opencode agent list
 ```
 
 ---
@@ -112,20 +112,20 @@ innocode agent list
 Zarządzaj danymi uwierzytelniającymi i logowaniem dla dostawców.
 
 ```bash
-innocode auth [command]
+opencode auth [command]
 ```
 
 ---
 
 #### login
 
-InnoCode integruje się z wieloma dostawcami. Możesz użyć `innocode auth login`, aby skonfigurować klucz API dla dowolnego obsługiwanego dostawcy. Klucze są bezpiecznie przechowywane w `~/.local/share/innocode/auth.json`.
+OpenCode integruje się z wieloma dostawcami. Możesz użyć `opencode auth login`, aby skonfigurować klucz API dla dowolnego obsługiwanego dostawcy. Klucze są bezpiecznie przechowywane w `~/.local/share/opencode/auth.json`.
 
 ```bash
-innocode auth login
+opencode auth login
 ```
 
-Podczas uruchamiania InnoCode ładuje dostawców z pliku poświadczeń, a także ze zmiennych środowiskowych lub pliku `.env` w Twoim projekcie.
+Podczas uruchamiania OpenCode ładuje dostawców z pliku poświadczeń, a także ze zmiennych środowiskowych lub pliku `.env` w Twoim projekcie.
 
 ---
 
@@ -134,13 +134,13 @@ Podczas uruchamiania InnoCode ładuje dostawców z pliku poświadczeń, a także
 Wyświetl listę wszystkich uwierzytelnionych dostawców przechowywanych w pliku poświadczeń.
 
 ```bash
-innocode auth list
+opencode auth list
 ```
 
 Lub skrócona wersja:
 
 ```bash
-innocode auth ls
+opencode auth ls
 ```
 
 ---
@@ -150,7 +150,7 @@ innocode auth ls
 Wyloguj się z dostawcy, usuwając go z pliku poświadczeń.
 
 ```bash
-innocode auth logout
+opencode auth logout
 ```
 
 ---
@@ -160,7 +160,7 @@ innocode auth logout
 Zarządzaj agentem GitHub w celu automatyzacji repozytorium.
 
 ```bash
-innocode github [command]
+opencode github [command]
 ```
 
 ---
@@ -170,7 +170,7 @@ innocode github [command]
 Zainstaluj agenta GitHub w swoim repozytorium.
 
 ```bash
-innocode github install
+opencode github install
 ```
 
 Spowoduje to utworzenie pliku workflow GitHub Actions i poprowadzi Cię przez proces konfiguracji. [Dowiedz się więcej](/docs/github).
@@ -182,7 +182,7 @@ Spowoduje to utworzenie pliku workflow GitHub Actions i poprowadzi Cię przez pr
 Uruchom agenta na GitHubie. Zwykle używane w GitHub Actions.
 
 ```bash
-innocode github run
+opencode github run
 ```
 
 ##### Flagi
@@ -199,7 +199,7 @@ innocode github run
 Zarządzaj serwerami Model Context Protocol (MCP).
 
 ```bash
-innocode mcp [command]
+opencode mcp [command]
 ```
 
 ---
@@ -209,7 +209,7 @@ innocode mcp [command]
 Dodaj serwer MCP do swojej konfiguracji.
 
 ```bash
-innocode mcp add
+opencode mcp add
 ```
 
 To polecenie poprowadzi Cię przez proces dodawania lokalnego lub zdalnego serwera MCP.
@@ -221,13 +221,13 @@ To polecenie poprowadzi Cię przez proces dodawania lokalnego lub zdalnego serwe
 Wyświetl listę wszystkich skonfigurowanych serwerów MCP i ich status.
 
 ```bash
-innocode mcp list
+opencode mcp list
 ```
 
 Lub skrócona wersja:
 
 ```bash
-innocode mcp ls
+opencode mcp ls
 ```
 
 ---
@@ -237,7 +237,7 @@ innocode mcp ls
 Uwierzytelnij się w serwerze MCP z włączoną funkcją OAuth.
 
 ```bash
-innocode mcp auth [name]
+opencode mcp auth [name]
 ```
 
 Jeśli nie podasz nazwy serwera, zostaniesz poproszony o wybranie jednego z serwerów wymagających uwierzytelnienia.
@@ -245,13 +245,13 @@ Jeśli nie podasz nazwy serwera, zostaniesz poproszony o wybranie jednego z serw
 Możesz także wyświetlić listę serwerów obsługujących OAuth i ich status uwierzytelnienia.
 
 ```bash
-innocode mcp auth list
+opencode mcp auth list
 ```
 
 Lub skrócona wersja:
 
 ```bash
-innocode mcp auth ls
+opencode mcp auth ls
 ```
 
 ---
@@ -261,7 +261,7 @@ innocode mcp auth ls
 Usuń tokeny OAuth dla serwera MCP.
 
 ```bash
-innocode mcp logout [name]
+opencode mcp logout [name]
 ```
 
 ---
@@ -271,7 +271,7 @@ innocode mcp logout [name]
 Debuguj problemy z połączeniem OAuth dla serwera MCP.
 
 ```bash
-innocode mcp debug <name>
+opencode mcp debug <name>
 ```
 
 ---
@@ -281,7 +281,7 @@ innocode mcp debug <name>
 Wyświetl listę modeli ze wszystkich skonfigurowanych dostawców.
 
 ```bash
-innocode models [provider]
+opencode models [provider]
 ```
 
 Pokazuje modele dostępne do użycia w `provider/model`.
@@ -291,7 +291,7 @@ Jest to identyfikator modelu, którego używasz w [konfiguracji](/docs/config).
 Opcjonalnie możesz podać identyfikator dostawcy, aby filtrować modele według tego dostawcy.
 
 ```bash
-innocode models anthropic
+opencode models anthropic
 ```
 
 #### Flagi
@@ -301,36 +301,36 @@ innocode models anthropic
 | `--refresh` | Odśwież pamięć podręczną modeli                                                 |
 | `--verbose` | Bardziej szczegółowe dane wyjściowe modelu (zawiera metadane, takie jak koszty) |
 
-Użyj flagi `--refresh`, aby zaktualizować listę modeli w pamięci podręcznej. Jest to przydatne, gdy dostawca dodał nowe modele, które chcesz zobaczyć w InnoCode.
+Użyj flagi `--refresh`, aby zaktualizować listę modeli w pamięci podręcznej. Jest to przydatne, gdy dostawca dodał nowe modele, które chcesz zobaczyć w OpenCode.
 
 ```bash
-innocode models --refresh
+opencode models --refresh
 ```
 
 ---
 
 ### run
 
-Uruchom InnoCode w trybie nieinteraktywnym, przekazując bezpośrednio prompt.
+Uruchom OpenCode w trybie nieinteraktywnym, przekazując bezpośrednio prompt.
 
 ```bash
-innocode run [message..]
+opencode run [message..]
 ```
 
 Jest to przydatne do tworzenia skryptów, automatyzacji lub gdy chcesz wysłać szybkie zapytanie bez uruchamiania TUI. Na przykład:
 
-```bash "innocode run"
-innocode run Explain the use of context in Go
+```bash "opencode run"
+opencode run Explain the use of context in Go
 ```
 
-Można również użyć tego z działającym `innocode serve`, aby uniknąć zimnego startu serwera MCP przy każdym uruchomieniu:
+Można również użyć tego z działającym `opencode serve`, aby uniknąć zimnego startu serwera MCP przy każdym uruchomieniu:
 
 ```bash
 # Start a headless server in one terminal
-innocode serve
+opencode serve
 
 # In another terminal, run commands that attach to it
-innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### Flagi
@@ -347,20 +347,20 @@ innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | `--file`     | `-f`  | Pliki do załączenia do wiadomości                                       |
 | `--format`   |       | Format wyjściowy: `default` (sformatowany) lub `json` (surowy JSON)     |
 | `--title`    |       | Tytuł sesji (jeśli nie podano, zostanie wygenerowany z promptu)         |
-| `--attach`   |       | Dołącz do działającego serwera InnoCode (np. http://localhost:4096)     |
+| `--attach`   |       | Dołącz do działającego serwera OpenCode (np. http://localhost:4096)     |
 | `--port`     |       | Port dla serwera lokalnego (domyślnie losowy)                           |
 
 ---
 
 ### serve
 
-Uruchom serwer InnoCode (bez interfejsu) w celu uzyskania dostępu do API. Pełny opis API HTTP znajduje się w [dokumentacji serwera](/docs/server).
+Uruchom serwer OpenCode (bez interfejsu) w celu uzyskania dostępu do API. Pełny opis API HTTP znajduje się w [dokumentacji serwera](/docs/server).
 
 ```bash
-innocode serve
+opencode serve
 ```
 
-Uruchamia to serwer HTTP, który zapewnia dostęp do API InnoCode bez interfejsu TUI. Ustaw `INNOCODE_SERVER_PASSWORD`, aby włączyć podstawowe uwierzytelnianie HTTP (domyślna nazwa użytkownika to `innocode`).
+Uruchamia to serwer HTTP, który zapewnia dostęp do API OpenCode bez interfejsu TUI. Ustaw `OPENCODE_SERVER_PASSWORD`, aby włączyć podstawowe uwierzytelnianie HTTP (domyślna nazwa użytkownika to `opencode`).
 
 #### Flagi
 
@@ -375,20 +375,20 @@ Uruchamia to serwer HTTP, który zapewnia dostęp do API InnoCode bez interfejsu
 
 ### session
 
-Zarządzaj sesjami InnoCode.
+Zarządzaj sesjami OpenCode.
 
 ```bash
-innocode session [command]
+opencode session [command]
 ```
 
 ---
 
 #### list
 
-Lista wszystkich sesji InnoCode.
+Lista wszystkich sesji OpenCode.
 
 ```bash
-innocode session list
+opencode session list
 ```
 
 ##### Flagi
@@ -402,10 +402,10 @@ innocode session list
 
 ### stats
 
-Pokaż statystyki wykorzystania tokenów i sesji InnoCode.
+Pokaż statystyki wykorzystania tokenów i sesji OpenCode.
 
 ```bash
-innocode stats
+opencode stats
 ```
 
 #### Flagi
@@ -424,7 +424,7 @@ innocode stats
 Eksportuj dane sesji jako JSON.
 
 ```bash
-innocode export [sessionID]
+opencode export [sessionID]
 ```
 
 Jeśli nie podasz identyfikatora sesji, zostaniesz poproszony o wybranie jednej z ostatnich sesji.
@@ -433,30 +433,30 @@ Jeśli nie podasz identyfikatora sesji, zostaniesz poproszony o wybranie jednej 
 
 ### import
 
-Importuj dane sesji z pliku JSON lub adresu URL udostępniania InnoCode.
+Importuj dane sesji z pliku JSON lub adresu URL udostępniania OpenCode.
 
 ```bash
-innocode import <file>
+opencode import <file>
 ```
 
 Możesz importować z pliku lokalnego lub adresu URL.
 
 ```bash
-innocode import session.json
-innocode import https://innocode.io/s/abc123
+opencode import session.json
+opencode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Uruchom serwer InnoCode z interfejsem internetowym.
+Uruchom serwer OpenCode z interfejsem internetowym.
 
 ```bash
-innocode web
+opencode web
 ```
 
-Uruchamia to serwer HTTP i udostępnia InnoCode przez interfejs przeglądarkowy. Ustaw `INNOCODE_SERVER_PASSWORD`, aby włączyć podstawowe uwierzytelnianie HTTP (domyślna nazwa użytkownika to `innocode`).
+Uruchamia to serwer HTTP i udostępnia OpenCode przez interfejs przeglądarkowy. Ustaw `OPENCODE_SERVER_PASSWORD`, aby włączyć podstawowe uwierzytelnianie HTTP (domyślna nazwa użytkownika to `opencode`).
 
 #### Flagi
 
@@ -474,7 +474,7 @@ Uruchamia to serwer HTTP i udostępnia InnoCode przez interfejs przeglądarkowy.
 Uruchom serwer ACP (Agent Client Protocol).
 
 ```bash
-innocode acp
+opencode acp
 ```
 
 Uruchamia serwer ACP, który komunikuje się przez stdin/stdout przy użyciu JSON-RPC.
@@ -491,10 +491,10 @@ Uruchamia serwer ACP, który komunikuje się przez stdin/stdout przy użyciu JSO
 
 ### uninstall
 
-Odinstaluj InnoCode i usuń wszystkie powiązane pliki.
+Odinstaluj OpenCode i usuń wszystkie powiązane pliki.
 
 ```bash
-innocode uninstall
+opencode uninstall
 ```
 
 #### Flagi
@@ -510,22 +510,22 @@ innocode uninstall
 
 ### upgrade
 
-Aktualizuj InnoCode do najnowszej lub określonej wersji.
+Aktualizuj OpenCode do najnowszej lub określonej wersji.
 
 ```bash
-innocode upgrade [target]
+opencode upgrade [target]
 ```
 
 Aby zaktualizować do najnowszej wersji:
 
 ```bash
-innocode upgrade
+opencode upgrade
 ```
 
 Aby zaktualizować do konkretnej wersji:
 
 ```bash
-innocode upgrade v0.1.48
+opencode upgrade v0.1.48
 ```
 
 #### Flagi
@@ -538,7 +538,7 @@ innocode upgrade v0.1.48
 
 ## Flagi globalne
 
-Interfejs CLI InnoCode przyjmuje następujące flagi globalne dla każdego polecenia.
+Interfejs CLI OpenCode przyjmuje następujące flagi globalne dla każdego polecenia.
 
 | Flaga          | Skrót | Opis                                        |
 | -------------- | ----- | ------------------------------------------- |
@@ -551,34 +551,35 @@ Interfejs CLI InnoCode przyjmuje następujące flagi globalne dla każdego polec
 
 ## Zmienne środowiskowe
 
-InnoCode można skonfigurować za pomocą zmiennych środowiskowych.
+OpenCode można skonfigurować za pomocą zmiennych środowiskowych.
 
 | Zmienna                               | Typ     | Opis                                                        |
 | ------------------------------------- | ------- | ----------------------------------------------------------- |
-| `INNOCODE_AUTO_SHARE`                 | boolean | Automatycznie udostępniaj sesje                             |
-| `INNOCODE_GIT_BASH_PATH`              | string  | Ścieżka do pliku wykonywalnego Git Bash w systemie Windows  |
-| `INNOCODE_CONFIG`                     | string  | Ścieżka do pliku konfiguracyjnego                           |
-| `INNOCODE_CONFIG_DIR`                 | string  | Ścieżka do katalogu konfiguracyjnego                        |
-| `INNOCODE_CONFIG_CONTENT`             | string  | Treść konfiguracji JSON (inline)                            |
-| `INNOCODE_DISABLE_AUTOUPDATE`         | boolean | Wyłącz automatyczne sprawdzanie aktualizacji                |
-| `INNOCODE_DISABLE_PRUNE`              | boolean | Wyłącz czyszczenie starych wyników (pruning)                |
-| `INNOCODE_DISABLE_TERMINAL_TITLE`     | boolean | Wyłącz automatyczne ustawianie tytułu terminala             |
-| `INNOCODE_PERMISSION`                 | string  | Konfiguracja uprawnień w JSON (inline)                      |
-| `INNOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Wyłącz domyślne wtyczki                                     |
-| `INNOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Wyłącz automatyczne pobieranie serwerów LSP                 |
-| `INNOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Włącz modele eksperymentalne                                |
-| `INNOCODE_DISABLE_AUTOCOMPACT`        | boolean | Wyłącz automatyczne kompaktowanie kontekstu                 |
-| `INNOCODE_DISABLE_CLAUDE_CODE`        | boolean | Wyłącz integrację z `.claude` (prompt + skills)             |
-| `INNOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Wyłącz czytanie `~/.claude/CLAUDE.md`                       |
-| `INNOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Wyłącz ładowanie `.claude/skills`                           |
-| `INNOCODE_DISABLE_MODELS_FETCH`       | boolean | Wyłącz pobieranie modeli ze źródeł zewnętrznych             |
-| `INNOCODE_FAKE_VCS`                   | string  | Fałszywy dostawca VCS do celów testowych                    |
-| `INNOCODE_DISABLE_FILETIME_CHECK`     | boolean | Wyłącz sprawdzanie czasu modyfikacji plików (optymalizacja) |
-| `INNOCODE_CLIENT`                     | string  | Identyfikator klienta (domyślnie `cli`)                     |
-| `INNOCODE_ENABLE_EXA`                 | boolean | Włącz narzędzie wyszukiwania internetowego Exa              |
-| `INNOCODE_SERVER_PASSWORD`            | string  | Włącz uwierzytelnianie podstawowe dla `serve`/`web`         |
-| `INNOCODE_SERVER_USERNAME`            | string  | Nazwa użytkownika do autoryzacji (domyślnie `innocode`)     |
-| `INNOCODE_MODELS_URL`                 | string  | Niestandardowy adres URL do pobierania konfiguracji modeli  |
+| `OPENCODE_AUTO_SHARE`                 | boolean | Automatycznie udostępniaj sesje                             |
+| `OPENCODE_GIT_BASH_PATH`              | string  | Ścieżka do pliku wykonywalnego Git Bash w systemie Windows  |
+| `OPENCODE_CONFIG`                     | string  | Ścieżka do pliku konfiguracyjnego                           |
+| `OPENCODE_TUI_CONFIG`                 | string  | Ścieżka do pliku konfiguracyjnego TUI                       |
+| `OPENCODE_CONFIG_DIR`                 | string  | Ścieżka do katalogu konfiguracyjnego                        |
+| `OPENCODE_CONFIG_CONTENT`             | string  | Treść konfiguracji JSON (inline)                            |
+| `OPENCODE_DISABLE_AUTOUPDATE`         | boolean | Wyłącz automatyczne sprawdzanie aktualizacji                |
+| `OPENCODE_DISABLE_PRUNE`              | boolean | Wyłącz czyszczenie starych wyników (pruning)                |
+| `OPENCODE_DISABLE_TERMINAL_TITLE`     | boolean | Wyłącz automatyczne ustawianie tytułu terminala             |
+| `OPENCODE_PERMISSION`                 | string  | Konfiguracja uprawnień w JSON (inline)                      |
+| `OPENCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | Wyłącz domyślne wtyczki                                     |
+| `OPENCODE_DISABLE_LSP_DOWNLOAD`       | boolean | Wyłącz automatyczne pobieranie serwerów LSP                 |
+| `OPENCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | Włącz modele eksperymentalne                                |
+| `OPENCODE_DISABLE_AUTOCOMPACT`        | boolean | Wyłącz automatyczne kompaktowanie kontekstu                 |
+| `OPENCODE_DISABLE_CLAUDE_CODE`        | boolean | Wyłącz integrację z `.claude` (prompt + skills)             |
+| `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | Wyłącz czytanie `~/.claude/CLAUDE.md`                       |
+| `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | Wyłącz ładowanie `.claude/skills`                           |
+| `OPENCODE_DISABLE_MODELS_FETCH`       | boolean | Wyłącz pobieranie modeli ze źródeł zewnętrznych             |
+| `OPENCODE_FAKE_VCS`                   | string  | Fałszywy dostawca VCS do celów testowych                    |
+| `OPENCODE_DISABLE_FILETIME_CHECK`     | boolean | Wyłącz sprawdzanie czasu modyfikacji plików (optymalizacja) |
+| `OPENCODE_CLIENT`                     | string  | Identyfikator klienta (domyślnie `cli`)                     |
+| `OPENCODE_ENABLE_EXA`                 | boolean | Włącz narzędzie wyszukiwania internetowego Exa              |
+| `OPENCODE_SERVER_PASSWORD`            | string  | Włącz uwierzytelnianie podstawowe dla `serve`/`web`         |
+| `OPENCODE_SERVER_USERNAME`            | string  | Nazwa użytkownika do autoryzacji (domyślnie `opencode`)     |
+| `OPENCODE_MODELS_URL`                 | string  | Niestandardowy adres URL do pobierania konfiguracji modeli  |
 
 ---
 
@@ -588,16 +589,16 @@ Te zmienne włączają funkcje eksperymentalne, które mogą ulec zmianie lub zo
 
 | Zmienna                                         | Typ     | Opis                                         |
 | ----------------------------------------------- | ------- | -------------------------------------------- |
-| `INNOCODE_EXPERIMENTAL`                         | boolean | Włącz wszystkie funkcje eksperymentalne      |
-| `INNOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Włącz wykrywanie ikon                        |
-| `INNOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Wyłącz kopiowanie przy zaznaczaniu w TUI     |
-| `INNOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Domyślny limit czasu dla narzędzia bash w ms |
-| `INNOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Maksymalne tokeny wyjściowe dla LLM          |
-| `INNOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Włącz obserwatora plików dla całego katalogu |
-| `INNOCODE_EXPERIMENTAL_OXFMT`                   | boolean | Włącz formater oxfmt                         |
-| `INNOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Włącz eksperymentalne narzędzie LSP          |
-| `INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Wyłącz obserwatora plików                    |
-| `INNOCODE_EXPERIMENTAL_EXA`                     | boolean | Włącz funkcje eksperymentalne Exa            |
-| `INNOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Włącz eksperymentalne sprawdzanie typów LSP  |
-| `INNOCODE_EXPERIMENTAL_MARKDOWN`                | boolean | Włącz funkcje eksperymentalne Markdown       |
-| `INNOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Włącz tryb planowania                        |
+| `OPENCODE_EXPERIMENTAL`                         | boolean | Włącz wszystkie funkcje eksperymentalne      |
+| `OPENCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | Włącz wykrywanie ikon                        |
+| `OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | Wyłącz kopiowanie przy zaznaczaniu w TUI     |
+| `OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | Domyślny limit czasu dla narzędzia bash w ms |
+| `OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | Maksymalne tokeny wyjściowe dla LLM          |
+| `OPENCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | Włącz obserwatora plików dla całego katalogu |
+| `OPENCODE_EXPERIMENTAL_OXFMT`                   | boolean | Włącz formater oxfmt                         |
+| `OPENCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | Włącz eksperymentalne narzędzie LSP          |
+| `OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | Wyłącz obserwatora plików                    |
+| `OPENCODE_EXPERIMENTAL_EXA`                     | boolean | Włącz funkcje eksperymentalne Exa            |
+| `OPENCODE_EXPERIMENTAL_LSP_TY`                  | boolean | Włącz eksperymentalne sprawdzanie typów LSP  |
+| `OPENCODE_EXPERIMENTAL_MARKDOWN`                | boolean | Włącz funkcje eksperymentalne Markdown       |
+| `OPENCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | Włącz tryb planowania                        |
