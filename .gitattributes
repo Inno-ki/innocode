@@ -1,0 +1,9 @@
+# InnoCode branding files — always keep ours during upstream merges.
+# The "ours" merge driver discards upstream changes for these paths,
+# so our customizations are never overwritten by OpenCode.
+README.md merge=ours
+packages/opencode/package.json merge=ours
+packages/opencode/src/global/index.ts merge=ours
+packages/opencode/src/flag/flag.ts merge=ours
+packages/opencode/src/installation/index.ts merge=ours
+packages/opencode/src/provider/provider.ts merge=ours
