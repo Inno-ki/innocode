@@ -15,6 +15,7 @@ export const dict = {
   "nav.home": "Início",
   "nav.openMenu": "Abrir menu",
   "nav.getStartedFree": "Começar grátis",
+  "nav.logoAlt": "OpenCode",
 
   "nav.context.copyLogo": "Copiar logo como SVG",
   "nav.context.copyWordmark": "Copiar marca como SVG",
@@ -42,8 +43,12 @@ export const dict = {
   "notFound.docs": "Documentação",
   "notFound.github": "GitHub",
   "notFound.discord": "Discord",
+  "notFound.logoLightAlt": "logo opencode claro",
+  "notFound.logoDarkAlt": "logo opencode escuro",
 
   "user.logout": "Sair",
+
+  "auth.callback.error.codeMissing": "Nenhum código de autorização encontrado.",
 
   "workspace.select": "Selecionar workspace",
   "workspace.createNew": "+ Criar novo workspace",
@@ -76,7 +81,9 @@ export const dict = {
   "error.reloadAmountMin": "O valor de recarga deve ser de pelo menos ${{amount}}",
   "error.reloadTriggerMin": "O gatilho de saldo deve ser de pelo menos ${{amount}}",
 
-  "home.title": "InnoCode | O agente de codificação de código aberto com IA",
+  "app.meta.description": "OpenCode - O agente de codificação de código aberto.",
+
+  "home.title": "OpenCode | O agente de codificação de código aberto com IA",
 
   "temp.title": "opencode | Agente de codificação com IA feito para o terminal",
   "temp.hero.title": "O agente de codificação com IA feito para o terminal",
@@ -89,8 +96,10 @@ export const dict = {
   "temp.feature.zen.afterLink": "fornecida pela opencode",
   "temp.feature.models.beforeLink": "Suporta mais de 75 provedores de LLM através do",
   "temp.feature.models.afterLink": ", incluindo modelos locais",
-  "temp.screenshot.caption": "InnoCode TUI com o tema tokyonight",
-  "temp.screenshot.alt": "InnoCode TUI com tema tokyonight",
+  "temp.screenshot.caption": "OpenCode TUI com o tema tokyonight",
+  "temp.screenshot.alt": "OpenCode TUI com tema tokyonight",
+  "temp.logoLightAlt": "logo opencode claro",
+  "temp.logoDarkAlt": "logo opencode escuro",
 
   "home.banner.badge": "Novo",
   "home.banner.text": "App desktop disponível em beta",
@@ -104,9 +113,9 @@ export const dict = {
 
   "home.install.ariaLabel": "Opções de instalação",
 
-  "home.what.title": "O que é InnoCode?",
+  "home.what.title": "O que é OpenCode?",
   "home.what.body":
-    "InnoCode é um agente de código aberto que ajuda você a escrever código no seu terminal, IDE ou desktop.",
+    "OpenCode é um agente de código aberto que ajuda você a escrever código no seu terminal, IDE ou desktop.",
   "home.what.lsp.title": "LSP habilitado",
   "home.what.lsp.body": "Carrega automaticamente os LSPs certos para o LLM",
   "home.what.multiSession.title": "Multissessão",
@@ -125,44 +134,44 @@ export const dict = {
 
   "home.growth.title": "O agente de codificação de código aberto com IA",
   "home.growth.body":
-    "Com mais de <strong>{{stars}}</strong> estrelas no GitHub, <strong>{{contributors}}</strong> colaboradores e mais de <strong>{{commits}}</strong> commits, InnoCode é usado e confiado por mais de <strong>{{monthlyUsers}}</strong> desenvolvedores todos os meses.",
+    "Com mais de <strong>{{stars}}</strong> estrelas no GitHub, <strong>{{contributors}}</strong> colaboradores e mais de <strong>{{commits}}</strong> commits, OpenCode é usado e confiado por mais de <strong>{{monthlyUsers}}</strong> desenvolvedores todos os meses.",
   "home.growth.githubStars": "Estrelas no GitHub",
   "home.growth.contributors": "Colaboradores",
   "home.growth.monthlyDevs": "Devs mensais",
 
   "home.privacy.title": "Feito com privacidade em primeiro lugar",
   "home.privacy.body":
-    "InnoCode não armazena nenhum código seu nem dados de contexto, para que possa operar em ambientes sensíveis à privacidade.",
+    "OpenCode não armazena nenhum código seu nem dados de contexto, para que possa operar em ambientes sensíveis à privacidade.",
   "home.privacy.learnMore": "Saiba mais sobre",
   "home.privacy.link": "privacidade",
 
-  "home.faq.q1": "O que é InnoCode?",
+  "home.faq.q1": "O que é OpenCode?",
   "home.faq.a1":
-    "InnoCode é um agente de código aberto que ajuda você a escrever e executar código com qualquer modelo de IA. Está disponível como interface de terminal, app desktop ou extensão de IDE.",
-  "home.faq.q2": "Como eu uso o InnoCode?",
+    "OpenCode é um agente de código aberto que ajuda você a escrever e executar código com qualquer modelo de IA. Está disponível como interface de terminal, app desktop ou extensão de IDE.",
+  "home.faq.q2": "Como eu uso o OpenCode?",
   "home.faq.a2.before": "A maneira mais fácil de começar é ler a",
   "home.faq.a2.link": "introdução",
-  "home.faq.q3": "Preciso de assinaturas extras de IA para usar o InnoCode?",
+  "home.faq.q3": "Preciso de assinaturas extras de IA para usar o OpenCode?",
   "home.faq.a3.p1":
-    "Não necessariamente, InnoCode vem com um conjunto de modelos grátis que você pode usar sem criar conta.",
+    "Não necessariamente, OpenCode vem com um conjunto de modelos grátis que você pode usar sem criar conta.",
   "home.faq.a3.p2.beforeZen":
     "Além disso, você pode usar qualquer um dos modelos de codificação populares criando uma conta",
   "home.faq.a3.p2.afterZen": ".",
   "home.faq.a3.p3":
-    "Embora incentivemos os usuários a usar o Zen, InnoCode também funciona com todos os provedores populares, como OpenAI, Anthropic, xAI etc.",
+    "Embora incentivemos os usuários a usar o Zen, OpenCode também funciona com todos os provedores populares, como OpenAI, Anthropic, xAI etc.",
   "home.faq.a3.p4.beforeLocal": "Você pode até conectar seus",
   "home.faq.a3.p4.localLink": "modelos locais",
-  "home.faq.q4": "Posso usar minhas assinaturas de IA existentes com o InnoCode?",
+  "home.faq.q4": "Posso usar minhas assinaturas de IA existentes com o OpenCode?",
   "home.faq.a4.p1":
-    "Sim, InnoCode suporta planos de assinatura de todos os principais provedores. Você pode usar suas assinaturas Claude Pro/Max, ChatGPT Plus/Pro ou GitHub Copilot.",
-  "home.faq.q5": "Posso usar o InnoCode apenas no terminal?",
-  "home.faq.a5.beforeDesktop": "Não mais! InnoCode agora está disponível como um app para o seu",
+    "Sim, OpenCode suporta planos de assinatura de todos os principais provedores. Você pode usar suas assinaturas Claude Pro/Max, ChatGPT Plus/Pro ou GitHub Copilot.",
+  "home.faq.q5": "Posso usar o OpenCode apenas no terminal?",
+  "home.faq.a5.beforeDesktop": "Não mais! OpenCode agora está disponível como um app para o seu",
   "home.faq.a5.desktop": "desktop",
   "home.faq.a5.and": "e",
   "home.faq.a5.web": "web",
-  "home.faq.q6": "Quanto custa o InnoCode?",
+  "home.faq.q6": "Quanto custa o OpenCode?",
   "home.faq.a6":
-    "InnoCode é 100% gratuito para usar. Ele também vem com um conjunto de modelos gratuitos. Pode haver custos adicionais se você conectar qualquer outro provedor.",
+    "OpenCode é 100% gratuito para usar. Ele também vem com um conjunto de modelos gratuitos. Pode haver custos adicionais se você conectar qualquer outro provedor.",
   "home.faq.q7": "E sobre dados e privacidade?",
   "home.faq.a7.p1":
     "Seus dados e informações só são armazenados quando você usa nossos modelos gratuitos ou cria links compartilháveis.",
@@ -170,8 +179,8 @@ export const dict = {
   "home.faq.a7.p2.modelsLink": "nossos modelos",
   "home.faq.a7.p2.and": "e",
   "home.faq.a7.p2.shareLink": "páginas de compartilhamento",
-  "home.faq.q8": "InnoCode é código aberto?",
-  "home.faq.a8.p1": "Sim, InnoCode é totalmente open source. O código-fonte é público no",
+  "home.faq.q8": "OpenCode é código aberto?",
+  "home.faq.a8.p1": "Sim, OpenCode é totalmente open source. O código-fonte é público no",
   "home.faq.a8.p2": "sob a",
   "home.faq.a8.mitLicense": "Licença MIT",
   "home.faq.a8.p3":
@@ -179,23 +188,23 @@ export const dict = {
 
   "home.zenCta.title": "Acesse modelos confiáveis e otimizados para agentes de codificação",
   "home.zenCta.body":
-    "O Zen dá acesso a um conjunto selecionado de modelos de IA que a InnoCode testou e avaliou especificamente para agentes de codificação. Não precisa se preocupar com desempenho e qualidade inconsistentes entre provedores, use modelos validados que funcionam.",
+    "O Zen dá acesso a um conjunto selecionado de modelos de IA que a OpenCode testou e avaliou especificamente para agentes de codificação. Não precisa se preocupar com desempenho e qualidade inconsistentes entre provedores, use modelos validados que funcionam.",
   "home.zenCta.link": "Saiba mais sobre o Zen",
 
-  "zen.title": "InnoCode Zen | Um conjunto selecionado de modelos confiáveis e otimizados para agentes de codificação",
+  "zen.title": "OpenCode Zen | Um conjunto selecionado de modelos confiáveis e otimizados para agentes de codificação",
   "zen.hero.title": "Modelos confiáveis e otimizados para agentes de codificação",
   "zen.hero.body":
-    "O Zen dá acesso a um conjunto selecionado de modelos de IA que a InnoCode testou e avaliou especificamente para agentes de codificação. Não precisa se preocupar com desempenho e qualidade inconsistentes, use modelos validados que funcionam.",
+    "O Zen dá acesso a um conjunto selecionado de modelos de IA que a OpenCode testou e avaliou especificamente para agentes de codificação. Não precisa se preocupar com desempenho e qualidade inconsistentes, use modelos validados que funcionam.",
 
-  "zen.faq.q1": "O que é InnoCode Zen?",
+  "zen.faq.q1": "O que é OpenCode Zen?",
   "zen.faq.a1":
-    "Zen é um conjunto selecionado de modelos de IA testados e avaliados para agentes de codificação, criado pela equipe por trás do InnoCode.",
+    "Zen é um conjunto selecionado de modelos de IA testados e avaliados para agentes de codificação, criado pela equipe por trás do OpenCode.",
   "zen.faq.q2": "O que torna o Zen mais preciso?",
   "zen.faq.a2":
     "O Zen fornece apenas modelos que foram especificamente testados e avaliados para agentes de codificação. Você não usaria uma faca de manteiga para cortar um bife, não use modelos ruins para programar.",
   "zen.faq.q3": "O Zen é mais barato?",
   "zen.faq.a3":
-    "O Zen não tem fins lucrativos. O Zen repassa os custos dos provedores de modelos para você. Quanto maior o uso do Zen, mais a InnoCode pode negociar melhores taxas e repassá-las para você.",
+    "O Zen não tem fins lucrativos. O Zen repassa os custos dos provedores de modelos para você. Quanto maior o uso do Zen, mais a OpenCode pode negociar melhores taxas e repassá-las para você.",
   "zen.faq.q4": "Quanto custa o Zen?",
   "zen.faq.a4.p1.beforePricing": "Zen",
   "zen.faq.a4.p1.pricingLink": "cobra por requisição",
@@ -203,7 +212,7 @@ export const dict = {
   "zen.faq.a4.p2.beforeAccount": "Seu custo total depende do uso, e você pode definir limites de gastos mensais em sua",
   "zen.faq.a4.p2.accountLink": "conta",
   "zen.faq.a4.p3":
-    "Para cobrir custos, a InnoCode adiciona apenas uma pequena taxa de processamento de pagamento de $1,23 por recarga de $20.",
+    "Para cobrir custos, a OpenCode adiciona apenas uma pequena taxa de processamento de pagamento de $1,23 por recarga de $20.",
   "zen.faq.q5": "E sobre dados e privacidade?",
   "zen.faq.a5.beforeExceptions":
     "Todos os modelos Zen são hospedados nos EUA. Os provedores seguem uma política de retenção zero e não usam seus dados para treinamento de modelos, com as",
@@ -214,7 +223,7 @@ export const dict = {
   "zen.faq.a7": "Sim, você pode desativar o faturamento a qualquer momento e usar seu saldo restante.",
   "zen.faq.q8": "Posso usar o Zen com outros agentes de codificação?",
   "zen.faq.a8":
-    "Embora o Zen funcione muito bem com o InnoCode, você pode usar o Zen com qualquer agente. Siga as instruções de configuração no seu agente de codificação preferido.",
+    "Embora o Zen funcione muito bem com o OpenCode, você pode usar o Zen com qualquer agente. Siga as instruções de configuração no seu agente de codificação preferido.",
 
   "zen.cta.start": "Comece com o Zen",
   "zen.pricing.title": "Adicionar $20 de saldo pré-pago",
@@ -223,12 +232,12 @@ export const dict = {
   "zen.problem.title": "Que problema o Zen resolve?",
   "zen.problem.body":
     "Existem muitos modelos disponíveis, mas apenas alguns funcionam bem com agentes de codificação. A maioria dos provedores os configura de maneira diferente, com resultados variados.",
-  "zen.problem.subtitle": "Estamos corrigindo isso para todos, não apenas para os usuários do InnoCode.",
+  "zen.problem.subtitle": "Estamos corrigindo isso para todos, não apenas para os usuários do OpenCode.",
   "zen.problem.item1": "Testando modelos selecionados e consultando suas equipes",
   "zen.problem.item2": "Trabalhando com provedores para garantir que sejam entregues corretamente",
   "zen.problem.item3": "Avaliando todas as combinações de modelo-provedor que recomendamos",
   "zen.how.title": "Como o Zen funciona",
-  "zen.how.body": "Embora sugerimos que você use o Zen com o InnoCode, você pode usá-lo com qualquer agente.",
+  "zen.how.body": "Embora sugerimos que você use o Zen com o OpenCode, você pode usá-lo com qualquer agente.",
   "zen.how.step1.title": "Cadastre-se e adicione $20 de saldo",
   "zen.how.step1.beforeLink": "siga as",
   "zen.how.step1.link": "instruções de configuração",
@@ -242,11 +251,134 @@ export const dict = {
     "Todos os modelos Zen são hospedados nos EUA. Os provedores seguem uma política de retenção zero e não usam seus dados para treinamento de modelo, com as",
   "zen.privacy.exceptionsLink": "seguintes exceções",
 
-  "black.meta.title": "InnoCode Black | Acesse os melhores modelos de codificação do mundo",
-  "black.meta.description": "Tenha acesso ao Claude, GPT, Gemini e mais com os planos de assinatura InnoCode Black.",
+  "go.title": "OpenCode Go | Modelos de codificação de baixo custo para todos",
+  "go.meta.description":
+    "O Go começa em $5 no primeiro mês, depois $10/mês, com limites generosos de solicitação de 5 horas para GLM-5, Kimi K2.5 e MiniMax M2.5.",
+  "go.hero.title": "Modelos de codificação de baixo custo para todos",
+  "go.hero.body":
+    "O Go traz a codificação com agentes para programadores em todo o mundo. Oferecendo limites generosos e acesso confiável aos modelos de código aberto mais capazes, para que você possa construir com agentes poderosos sem se preocupar com custos ou disponibilidade.",
+
+  "go.cta.start": "Assinar o Go",
+  "go.cta.template": "{{text}} {{price}}",
+  "go.cta.text": "Assinar o Go",
+  "go.cta.price": "$10/mês",
+  "go.cta.promo": "$5 no primeiro mês",
+  "go.pricing.body":
+    "Use com qualquer agente. $5 no primeiro mês, depois $10/mês. Recarregue o crédito se necessário. Cancele a qualquer momento.",
+  "go.graph.free": "Grátis",
+  "go.graph.freePill": "Big Pickle e modelos gratuitos",
+  "go.graph.go": "Go",
+  "go.graph.label": "Requisições por 5 horas",
+  "go.graph.usageLimits": "Limites de uso",
+  "go.graph.tick": "{{n}}x",
+  "go.graph.aria": "Requisições por 5h: {{free}} vs {{go}}",
+
+  "go.testimonials.brand.zen": "Zen",
+  "go.testimonials.brand.go": "Go",
+  "go.testimonials.handle": "@OpenCode",
+  "go.testimonials.dax.name": "Dax Raad",
+  "go.testimonials.dax.title": "ex-CEO, Terminal Products",
+  "go.testimonials.dax.quoteAfter": "mudou minha vida, é realmente uma escolha óbvia.",
+  "go.testimonials.jay.name": "Jay V",
+  "go.testimonials.jay.title": "ex-Fundador, SEED, PM, Melt, Pop, Dapt, Cadmus e ViewPoint",
+  "go.testimonials.jay.quoteBefore": "4 de 5 pessoas em nossa equipe adoram usar",
+  "go.testimonials.jay.quoteAfter": ".",
+  "go.testimonials.adam.name": "Adam Elmore",
+  "go.testimonials.adam.title": "ex-Hero, AWS",
+  "go.testimonials.adam.quoteBefore": "Eu não consigo recomendar o",
+  "go.testimonials.adam.quoteAfter": "o suficiente. Sério, é muito bom.",
+  "go.testimonials.david.name": "David Hill",
+  "go.testimonials.david.title": "ex-Head de Design, Laravel",
+  "go.testimonials.david.quoteBefore": "Com o",
+  "go.testimonials.david.quoteAfter":
+    "eu sei que todos os modelos são testados e perfeitos para agentes de codificação.",
+  "go.testimonials.frank.name": "Frank Wang",
+  "go.testimonials.frank.title": "ex-Estagiário, Nvidia (4 vezes)",
+  "go.testimonials.frank.quote": "Eu queria ainda estar na Nvidia.",
+  "go.problem.title": "Que problema o Go resolve?",
+  "go.problem.body":
+    "Estamos focados em levar a experiência do OpenCode para o maior número de pessoas possível. OpenCode Go é uma assinatura de baixo custo: $5 no primeiro mês, depois $10/mês. Oferece limites generosos e acesso confiável aos modelos open source mais capazes.",
+  "go.problem.subtitle": " ",
+  "go.problem.item1": "Preço de assinatura de baixo custo",
+  "go.problem.item2": "Limites generosos e acesso confiável",
+  "go.problem.item3": "Feito para o maior número possível de programadores",
+  "go.problem.item4": "Inclui GLM-5, Kimi K2.5 e MiniMax M2.5",
+  "go.how.title": "Como o Go funciona",
+  "go.how.body":
+    "O Go começa em $5 no primeiro mês, depois $10/mês. Você pode usá-lo com o OpenCode ou qualquer agente.",
+  "go.how.step1.title": "Crie uma conta",
+  "go.how.step1.beforeLink": "siga as",
+  "go.how.step1.link": "instruções de configuração",
+  "go.how.step2.title": "Assinar o Go",
+  "go.how.step2.link": "$5 no primeiro mês",
+  "go.how.step2.afterLink": "depois $10/mês com limites generosos",
+  "go.how.step3.title": "Comece a codificar",
+  "go.how.step3.body": "com acesso confiável a modelos de código aberto",
+  "go.privacy.title": "Sua privacidade é importante para nós",
+  "go.privacy.body":
+    "O plano é projetado principalmente para usuários internacionais, com modelos hospedados nos EUA, UE e Singapura para acesso global estável.",
+  "go.privacy.contactAfter": "se você tiver alguma dúvida.",
+  "go.privacy.beforeExceptions":
+    "Os modelos Go são hospedados nos EUA. Os provedores seguem uma política de retenção zero e não usam seus dados para treinamento de modelos, com as",
+  "go.privacy.exceptionsLink": "seguintes exceções",
+  "go.faq.q1": "O que é OpenCode Go?",
+  "go.faq.a1":
+    "Go é uma assinatura de baixo custo que oferece acesso confiável a modelos de código aberto capazes para codificação com agentes.",
+  "go.faq.q2": "Quais modelos o Go inclui?",
+  "go.faq.a2": "Go inclui GLM-5, Kimi K2.5 e MiniMax M2.5, com limites generosos e acesso confiável.",
+  "go.faq.q3": "O Go é o mesmo que o Zen?",
+  "go.faq.a3":
+    "Não. Zen é pay-as-you-go, enquanto o Go começa em $5 no primeiro mês, depois $10/mês, com limites generosos e acesso confiável aos modelos open source GLM-5, Kimi K2.5 e MiniMax M2.5.",
+  "go.faq.q4": "Quanto custa o Go?",
+  "go.faq.a4.p1.beforePricing": "O Go custa",
+  "go.faq.a4.p1.pricingLink": "$5 no primeiro mês",
+  "go.faq.a4.p1.afterPricing": "depois $10/mês com limites generosos.",
+  "go.faq.a4.p2.beforeAccount": "Você pode gerenciar sua assinatura em sua",
+  "go.faq.a4.p2.accountLink": "conta",
+  "go.faq.a4.p3": "Cancele a qualquer momento.",
+  "go.faq.q5": "E sobre dados e privacidade?",
+  "go.faq.a5.body":
+    "O plano é projetado principalmente para usuários internacionais, com modelos hospedados nos EUA, UE e Singapura para acesso global estável.",
+  "go.faq.a5.contactAfter": "se você tiver alguma dúvida.",
+  "go.faq.a5.beforeExceptions":
+    "Os modelos Go são hospedados nos EUA. Os provedores seguem uma política de retenção zero e não usam seus dados para treinamento de modelos, com as",
+  "go.faq.a5.exceptionsLink": "seguintes exceções",
+  "go.faq.q6": "Posso recarregar crédito?",
+  "go.faq.a6": "Se você precisar de mais uso, pode recarregar crédito em sua conta.",
+  "go.faq.q7": "Posso cancelar?",
+  "go.faq.a7": "Sim, você pode cancelar a qualquer momento.",
+  "go.faq.q8": "Posso usar o Go com outros agentes de codificação?",
+  "go.faq.a8":
+    "Sim, você pode usar o Go com qualquer agente. Siga as instruções de configuração no seu agente de codificação preferido.",
+
+  "go.faq.q9": "Qual a diferença entre os modelos gratuitos e o Go?",
+  "go.faq.a9":
+    "Os modelos gratuitos incluem Big Pickle e modelos promocionais disponíveis no momento, com uma cota de 200 requisições/dia. O Go inclui GLM-5, Kimi K2.5 e MiniMax M2.5 com cotas de requisição mais altas aplicadas em janelas móveis (5 horas, semanal e mensal), aproximadamente equivalentes a $12 por 5 horas, $30 por semana e $60 por mês (as contagens reais de requisições variam de acordo com o modelo e o uso).",
+
+  "zen.api.error.rateLimitExceeded": "Limite de taxa excedido. Por favor, tente novamente mais tarde.",
+  "zen.api.error.modelNotSupported": "Modelo {{model}} não suportado",
+  "zen.api.error.modelFormatNotSupported": "Modelo {{model}} não suportado para o formato {{format}}",
+  "zen.api.error.noProviderAvailable": "Nenhum provedor disponível",
+  "zen.api.error.providerNotSupported": "Provedor {{provider}} não suportado",
+  "zen.api.error.missingApiKey": "Chave de API ausente.",
+  "zen.api.error.invalidApiKey": "Chave de API inválida.",
+  "zen.api.error.subscriptionQuotaExceeded": "Cota de assinatura excedida. Tente novamente em {{retryIn}}.",
+  "zen.api.error.subscriptionQuotaExceededUseFreeModels":
+    "Cota de assinatura excedida. Você pode continuar usando modelos gratuitos.",
+  "zen.api.error.noPaymentMethod": "Nenhuma forma de pagamento. Adicione uma forma de pagamento aqui: {{billingUrl}}",
+  "zen.api.error.insufficientBalance": "Saldo insuficiente. Gerencie seu faturamento aqui: {{billingUrl}}",
+  "zen.api.error.workspaceMonthlyLimitReached":
+    "Seu workspace atingiu o limite de gastos mensais de ${{amount}}. Gerencie seus limites aqui: {{billingUrl}}",
+  "zen.api.error.userMonthlyLimitReached":
+    "Você atingiu seu limite de gastos mensais de ${{amount}}. Gerencie seus limites aqui: {{membersUrl}}",
+  "zen.api.error.modelDisabled": "O modelo está desabilitado",
+
+  "black.meta.title": "OpenCode Black | Acesse os melhores modelos de codificação do mundo",
+  "black.meta.description": "Tenha acesso ao Claude, GPT, Gemini e mais com os planos de assinatura OpenCode Black.",
   "black.hero.title": "Acesse os melhores modelos de codificação do mundo",
   "black.hero.subtitle": "Incluindo Claude, GPT, Gemini e mais",
-  "black.title": "InnoCode Black | Preços",
+  "black.title": "OpenCode Black | Preços",
+  "black.paused": "A inscrição no plano Black está temporariamente pausada.",
   "black.plan.icon20": "Plano Black 20",
   "black.plan.icon100": "Plano Black 100",
   "black.plan.icon200": "Plano Black 200",
@@ -264,10 +396,10 @@ export const dict = {
   "black.action.continue": "Continuar",
   "black.finePrint.beforeTerms": "Os preços mostrados não incluem impostos aplicáveis",
   "black.finePrint.terms": "Termos de Serviço",
-  "black.workspace.title": "InnoCode Black | Selecionar Workspace",
+  "black.workspace.title": "OpenCode Black | Selecionar Workspace",
   "black.workspace.selectPlan": "Selecione um workspace para este plano",
   "black.workspace.name": "Workspace {{n}}",
-  "black.subscribe.title": "Assinar InnoCode Black",
+  "black.subscribe.title": "Assinar OpenCode Black",
   "black.subscribe.paymentMethod": "Forma de pagamento",
   "black.subscribe.loadingPaymentForm": "Carregando formulário de pagamento...",
   "black.subscribe.selectWorkspaceToContinue": "Selecione um workspace para continuar",
@@ -279,9 +411,9 @@ export const dict = {
   "black.subscribe.processing": "Processando...",
   "black.subscribe.submit": "Assinar ${{plan}}",
   "black.subscribe.form.chargeNotice": "Você só será cobrado quando sua assinatura for ativada",
-  "black.subscribe.success.title": "Você está na lista de espera do InnoCode Black",
+  "black.subscribe.success.title": "Você está na lista de espera do OpenCode Black",
   "black.subscribe.success.subscriptionPlan": "Plano de assinatura",
-  "black.subscribe.success.planName": "InnoCode Black {{plan}}",
+  "black.subscribe.success.planName": "OpenCode Black {{plan}}",
   "black.subscribe.success.amount": "Valor",
   "black.subscribe.success.amountValue": "${{plan}} por mês",
   "black.subscribe.success.paymentMethod": "Forma de pagamento",
@@ -289,12 +421,15 @@ export const dict = {
   "black.subscribe.success.chargeNotice": "Seu cartão será cobrado quando sua assinatura for ativada",
 
   "workspace.nav.zen": "Zen",
+  "workspace.nav.go": "Go",
+  "workspace.nav.usage": "Uso",
   "workspace.nav.apiKeys": "Chaves de API",
   "workspace.nav.members": "Membros",
   "workspace.nav.billing": "Faturamento",
   "workspace.nav.settings": "Configurações",
 
   "workspace.home.banner.beforeLink": "Modelos otimizados e confiáveis para agentes de codificação.",
+  "workspace.lite.banner.beforeLink": "Modelos de codificação de baixo custo para todos.",
   "workspace.home.billing.loading": "Carregando...",
   "workspace.home.billing.enable": "Ativar faturamento",
   "workspace.home.billing.currentBalance": "Saldo atual",
@@ -342,12 +477,15 @@ export const dict = {
   "workspace.usage.table.input": "Entrada",
   "workspace.usage.table.output": "Saída",
   "workspace.usage.table.cost": "Custo",
+  "workspace.usage.table.session": "Sessão",
   "workspace.usage.breakdown.input": "Entrada",
   "workspace.usage.breakdown.cacheRead": "Leitura de Cache",
   "workspace.usage.breakdown.cacheWrite": "Escrita em Cache",
   "workspace.usage.breakdown.output": "Saída",
   "workspace.usage.breakdown.reasoning": "Raciocínio",
-  "workspace.usage.subscription": "assinatura (${{amount}})",
+  "workspace.usage.subscription": "Black (${{amount}})",
+  "workspace.usage.lite": "Go (${{amount}})",
+  "workspace.usage.byok": "BYOK (${{amount}})",
 
   "workspace.cost.title": "Custo",
   "workspace.cost.subtitle": "Custos de uso discriminados por modelo.",
@@ -411,6 +549,8 @@ export const dict = {
   "workspace.billing.loading": "Carregando...",
   "workspace.billing.addAction": "Adicionar",
   "workspace.billing.addBalance": "Adicionar Saldo",
+  "workspace.billing.alipay": "Alipay",
+  "workspace.billing.wechat": "WeChat Pay",
   "workspace.billing.linkedToStripe": "Vinculado ao Stripe",
   "workspace.billing.manage": "Gerenciar",
   "workspace.billing.enable": "Ativar Faturamento",
@@ -446,6 +586,7 @@ export const dict = {
   "workspace.reload.updatePaymentMethod": "Por favor, atualize sua forma de pagamento e tente novamente.",
   "workspace.reload.retrying": "Tentando novamente...",
   "workspace.reload.retry": "Tentar novamente",
+  "workspace.reload.error.paymentFailed": "Pagamento falhou.",
 
   "workspace.payments.title": "Histórico de Pagamentos",
   "workspace.payments.subtitle": "Transações de pagamento recentes.",
@@ -466,15 +607,15 @@ export const dict = {
   "workspace.black.time.minutes": "minutos",
   "workspace.black.time.fewSeconds": "alguns segundos",
   "workspace.black.subscription.title": "Assinatura",
-  "workspace.black.subscription.message": "Você assina o InnoCode Black por ${{plan}} por mês.",
+  "workspace.black.subscription.message": "Você assina o OpenCode Black por ${{plan}} por mês.",
   "workspace.black.subscription.manage": "Gerenciar Assinatura",
   "workspace.black.subscription.rollingUsage": "Uso de 5 horas",
   "workspace.black.subscription.weeklyUsage": "Uso Semanal",
   "workspace.black.subscription.resetsIn": "Reinicia em",
   "workspace.black.subscription.useBalance": "Use seu saldo disponível após atingir os limites de uso",
   "workspace.black.waitlist.title": "Lista de Espera",
-  "workspace.black.waitlist.joined": "Você está na lista de espera para o plano InnoCode Black de ${{plan}} por mês.",
-  "workspace.black.waitlist.ready": "Estamos prontos para inscrever você no plano InnoCode Black de ${{plan}} por mês.",
+  "workspace.black.waitlist.joined": "Você está na lista de espera para o plano OpenCode Black de ${{plan}} por mês.",
+  "workspace.black.waitlist.ready": "Estamos prontos para inscrever você no plano OpenCode Black de ${{plan}} por mês.",
   "workspace.black.waitlist.leave": "Sair da Lista de Espera",
   "workspace.black.waitlist.leaving": "Saindo...",
   "workspace.black.waitlist.left": "Saiu",
@@ -484,15 +625,45 @@ export const dict = {
   "workspace.black.waitlist.enrollNote":
     "Ao clicar em Inscrever-se, sua assinatura começará imediatamente e seu cartão será cobrado.",
 
-  "download.title": "InnoCode | Baixar",
-  "download.meta.description": "Baixe o InnoCode para macOS, Windows e Linux",
-  "download.hero.title": "Baixar InnoCode",
+  "workspace.lite.loading": "Carregando...",
+  "workspace.lite.time.day": "dia",
+  "workspace.lite.time.days": "dias",
+  "workspace.lite.time.hour": "hora",
+  "workspace.lite.time.hours": "horas",
+  "workspace.lite.time.minute": "minuto",
+  "workspace.lite.time.minutes": "minutos",
+  "workspace.lite.time.fewSeconds": "alguns segundos",
+  "workspace.lite.subscription.message": "Você assina o OpenCode Go.",
+  "workspace.lite.subscription.manage": "Gerenciar Assinatura",
+  "workspace.lite.subscription.rollingUsage": "Uso Contínuo",
+  "workspace.lite.subscription.weeklyUsage": "Uso Semanal",
+  "workspace.lite.subscription.monthlyUsage": "Uso Mensal",
+  "workspace.lite.subscription.resetsIn": "Reinicia em",
+  "workspace.lite.subscription.useBalance": "Use seu saldo disponível após atingir os limites de uso",
+  "workspace.lite.subscription.selectProvider":
+    'Selecione "OpenCode Go" como provedor na sua configuração do opencode para usar os modelos Go.',
+  "workspace.lite.black.message":
+    "Você está atualmente inscrito no OpenCode Black ou na lista de espera. Por favor, cancele a assinatura primeiro se desejar mudar para o Go.",
+  "workspace.lite.other.message":
+    "Outro membro neste workspace já assina o OpenCode Go. Apenas um membro por workspace pode assinar.",
+  "workspace.lite.promo.description":
+    "O OpenCode Go começa em {{price}}, depois $10/mês, e oferece acesso confiável a modelos de codificação abertos populares com limites de uso generosos.",
+  "workspace.lite.promo.price": "$5 no primeiro mês",
+  "workspace.lite.promo.modelsTitle": "O que está incluído",
+  "workspace.lite.promo.footer":
+    "O plano é projetado principalmente para usuários internacionais, com modelos hospedados nos EUA, UE e Singapura para acesso global estável. Preços e limites de uso podem mudar conforme aprendemos com o uso inicial e feedback.",
+  "workspace.lite.promo.subscribe": "Assinar Go",
+  "workspace.lite.promo.subscribing": "Redirecionando...",
+
+  "download.title": "OpenCode | Baixar",
+  "download.meta.description": "Baixe o OpenCode para macOS, Windows e Linux",
+  "download.hero.title": "Baixar OpenCode",
   "download.hero.subtitle": "Disponível em Beta para macOS, Windows e Linux",
   "download.hero.button": "Baixar para {{os}}",
-  "download.section.terminal": "InnoCode Terminal",
-  "download.section.desktop": "InnoCode Desktop (Beta)",
-  "download.section.extensions": "Extensões InnoCode",
-  "download.section.integrations": "Integrações InnoCode",
+  "download.section.terminal": "OpenCode Terminal",
+  "download.section.desktop": "OpenCode Desktop (Beta)",
+  "download.section.extensions": "Extensões OpenCode",
+  "download.section.integrations": "Integrações OpenCode",
   "download.action.download": "Baixar",
   "download.action.install": "Instalar",
 
@@ -503,27 +674,27 @@ export const dict = {
   "download.platform.linuxRpm": "Linux (.rpm)",
 
   "download.faq.a3.beforeLocal":
-    "Não necessariamente, mas provavelmente. Você precisará de uma assinatura de IA se quiser conectar o InnoCode a um provedor pago, embora você possa trabalhar com",
+    "Não necessariamente, mas provavelmente. Você precisará de uma assinatura de IA se quiser conectar o OpenCode a um provedor pago, embora você possa trabalhar com",
   "download.faq.a3.localLink": "modelos locais",
   "download.faq.a3.afterLocal.beforeZen": "de graça. Embora incentivemos os usuários a usar o",
   "download.faq.a3.afterZen":
-    ", o InnoCode funciona com todos os provedores populares, como OpenAI, Anthropic, xAI etc.",
+    ", o OpenCode funciona com todos os provedores populares, como OpenAI, Anthropic, xAI etc.",
 
-  "download.faq.a5.p1": "O InnoCode é 100% gratuito para usar.",
+  "download.faq.a5.p1": "O OpenCode é 100% gratuito para usar.",
   "download.faq.a5.p2.beforeZen":
-    "Quaisquer custos adicionais virão da sua assinatura de um provedor de modelo. Embora o InnoCode funcione com qualquer provedor de modelo, recomendamos o uso do",
+    "Quaisquer custos adicionais virão da sua assinatura de um provedor de modelo. Embora o OpenCode funcione com qualquer provedor de modelo, recomendamos o uso do",
   "download.faq.a5.p2.afterZen": ".",
 
   "download.faq.a6.p1":
-    "Seus dados e informações só são armazenados quando você cria links compartilháveis no InnoCode.",
+    "Seus dados e informações só são armazenados quando você cria links compartilháveis no OpenCode.",
   "download.faq.a6.p2.beforeShare": "Saiba mais sobre",
   "download.faq.a6.shareLink": "páginas de compartilhamento",
 
-  "enterprise.title": "InnoCode | Soluções empresariais para sua organização",
-  "enterprise.meta.description": "Contate a InnoCode para soluções empresariais",
+  "enterprise.title": "OpenCode | Soluções empresariais para sua organização",
+  "enterprise.meta.description": "Contate a OpenCode para soluções empresariais",
   "enterprise.hero.title": "Seu código é seu",
   "enterprise.hero.body1":
-    "O InnoCode opera com segurança dentro da sua organização, sem dados ou contexto armazenados e sem restrições de licenciamento ou reivindicações de propriedade. Inicie um teste com sua equipe e, em seguida, implante em toda a organização integrando-o ao seu SSO e gateway de IA interno.",
+    "O OpenCode opera com segurança dentro da sua organização, sem dados ou contexto armazenados e sem restrições de licenciamento ou reivindicações de propriedade. Inicie um teste com sua equipe e, em seguida, implante em toda a organização integrando-o ao seu SSO e gateway de IA interno.",
   "enterprise.hero.body2": "Deixe-nos saber como podemos ajudar.",
   "enterprise.form.name.label": "Nome completo",
   "enterprise.form.name.placeholder": "Jeff Bezos",
@@ -536,30 +707,34 @@ export const dict = {
   "enterprise.form.send": "Enviar",
   "enterprise.form.sending": "Enviando...",
   "enterprise.form.success": "Mensagem enviada, entraremos em contato em breve.",
+  "enterprise.form.success.submitted": "Formulário enviado com sucesso.",
+  "enterprise.form.error.allFieldsRequired": "Todos os campos são obrigatórios.",
+  "enterprise.form.error.invalidEmailFormat": "Formato de e-mail inválido.",
+  "enterprise.form.error.internalServer": "Erro interno do servidor.",
   "enterprise.faq.title": "FAQ",
-  "enterprise.faq.q1": "O que é InnoCode Enterprise?",
+  "enterprise.faq.q1": "O que é OpenCode Enterprise?",
   "enterprise.faq.a1":
-    "InnoCode Enterprise é para organizações que desejam garantir que seu código e dados nunca saiam de sua infraestrutura. Isso pode ser feito usando uma configuração centralizada que se integra ao seu SSO e gateway de IA interno.",
-  "enterprise.faq.q2": "Como faço para começar com o InnoCode Enterprise?",
+    "OpenCode Enterprise é para organizações que desejam garantir que seu código e dados nunca saiam de sua infraestrutura. Isso pode ser feito usando uma configuração centralizada que se integra ao seu SSO e gateway de IA interno.",
+  "enterprise.faq.q2": "Como faço para começar com o OpenCode Enterprise?",
   "enterprise.faq.a2":
-    "Basta começar com um teste interno com sua equipe. O InnoCode por padrão não armazena seu código ou dados de contexto, facilitando o início. Em seguida, entre em contato conosco para discutir opções de preços e implementação.",
+    "Basta começar com um teste interno com sua equipe. O OpenCode por padrão não armazena seu código ou dados de contexto, facilitando o início. Em seguida, entre em contato conosco para discutir opções de preços e implementação.",
   "enterprise.faq.q3": "Como funciona o preço empresarial?",
   "enterprise.faq.a3":
     "Oferecemos preços empresariais por assento. Se você tiver seu próprio gateway de LLM, não cobramos pelos tokens usados. Para mais detalhes, entre em contato conosco para um orçamento personalizado com base nas necessidades da sua organização.",
-  "enterprise.faq.q4": "Meus dados estão seguros com o InnoCode Enterprise?",
+  "enterprise.faq.q4": "Meus dados estão seguros com o OpenCode Enterprise?",
   "enterprise.faq.a4":
-    "Sim. O InnoCode não armazena seu código ou dados de contexto. Todo o processamento acontece localmente ou por meio de chamadas de API diretas para seu provedor de IA. Com configuração centralizada e integração de SSO, seus dados permanecem seguros dentro da infraestrutura de sua organização.",
+    "Sim. O OpenCode não armazena seu código ou dados de contexto. Todo o processamento acontece localmente ou por meio de chamadas de API diretas para seu provedor de IA. Com configuração centralizada e integração de SSO, seus dados permanecem seguros dentro da infraestrutura de sua organização.",
 
-  "brand.title": "InnoCode | Marca",
-  "brand.meta.description": "Diretrizes da marca InnoCode",
+  "brand.title": "OpenCode | Marca",
+  "brand.meta.description": "Diretrizes da marca OpenCode",
   "brand.heading": "Diretrizes da marca",
-  "brand.subtitle": "Recursos e ativos para ajudá-lo a trabalhar com a marca InnoCode.",
+  "brand.subtitle": "Recursos e ativos para ajudá-lo a trabalhar com a marca OpenCode.",
   "brand.downloadAll": "Baixar todos os recursos",
 
-  "changelog.title": "InnoCode | Changelog",
-  "changelog.meta.description": "Notas de versão e changelog do InnoCode",
+  "changelog.title": "OpenCode | Changelog",
+  "changelog.meta.description": "Notas de versão e changelog do OpenCode",
   "changelog.hero.title": "Changelog",
-  "changelog.hero.subtitle": "Novas atualizações e melhorias no InnoCode",
+  "changelog.hero.subtitle": "Novas atualizações e melhorias no OpenCode",
   "changelog.empty": "Nenhuma entrada de changelog encontrada.",
   "changelog.viewJson": "Ver JSON",
 
@@ -568,6 +743,7 @@ export const dict = {
   "bench.list.table.agent": "Agente",
   "bench.list.table.model": "Modelo",
   "bench.list.table.score": "Pontuação",
+  "bench.submission.error.allFieldsRequired": "Todos os campos são obrigatórios.",
 
   "bench.detail.title": "Benchmark - {{task}}",
   "bench.detail.notFound": "Tarefa não encontrada",

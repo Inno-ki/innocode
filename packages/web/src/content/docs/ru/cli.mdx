@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: Параметры и команда innocode CLI.
+description: Параметры и команда opencode CLI.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-CLI innocode по умолчанию запускает [TUI](/docs/tui) при запуске без каких-либо аргументов.
+CLI opencode по умолчанию запускает [TUI](/docs/tui) при запуске без каких-либо аргументов.
 
 ```bash
-innocode
+opencode
 ```
 
-Но он также принимает команды, описанные на этой странице. Это позволяет вам программно взаимодействовать с innocode.
+Но он также принимает команды, описанные на этой странице. Это позволяет вам программно взаимодействовать с opencode.
 
 ```bash
-innocode run "Explain how closures work in JavaScript"
+opencode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-Запустите TUI innocode.
+Запустите TUI opencode.
 
 ```bash
-innocode [project]
+opencode [project]
 ```
 
 #### Флаги
@@ -44,36 +44,36 @@ innocode [project]
 
 ## Команды
 
-CLI innocode также имеет следующие команды.
+CLI opencode также имеет следующие команды.
 
 ---
 
 ### agent
 
-Управляйте агентами для innocode.
+Управляйте агентами для opencode.
 
 ```bash
-innocode agent [command]
+opencode agent [command]
 ```
 
 ---
 
 ### attach
 
-Подключите терминал к уже работающему внутреннему серверу innocode, запущенному с помощью команд `serve` или `web`.
+Подключите терминал к уже работающему внутреннему серверу opencode, запущенному с помощью команд `serve` или `web`.
 
 ```bash
-innocode attach [url]
+opencode attach [url]
 ```
 
-Это позволяет использовать TUI с удаленным сервером innocode. Например:
+Это позволяет использовать TUI с удаленным сервером opencode. Например:
 
 ```bash
 # Start the backend server for web/mobile access
-innocode web --port 4096 --hostname 0.0.0.0
+opencode web --port 4096 --hostname 0.0.0.0
 
 # In another terminal, attach the TUI to the running backend
-innocode attach http://10.20.30.40:4096
+opencode attach http://10.20.30.40:4096
 ```
 
 #### Флаги
@@ -90,7 +90,7 @@ innocode attach http://10.20.30.40:4096
 Создайте нового агента с пользовательской конфигурацией.
 
 ```bash
-innocode agent create
+opencode agent create
 ```
 
 Эта команда поможет вам создать новый агент с настраиваемой системной подсказкой и настройкой инструмента.
@@ -102,7 +102,7 @@ innocode agent create
 Перечислите всех доступных агентов.
 
 ```bash
-innocode agent list
+opencode agent list
 ```
 
 ---
@@ -112,20 +112,20 @@ innocode agent list
 Команда для управления учетными данными и входом в систему для провайдеров.
 
 ```bash
-innocode auth [command]
+opencode auth [command]
 ```
 
 ---
 
 #### login
 
-innocode использует список провайдеров с [Models.dev](https://models.dev), поэтому вы можете использовать `innocode auth login` для настройки ключей API для любого поставщика, которого вы хотите использовать. Это хранится в `~/.local/share/innocode/auth.json`.
+opencode использует список провайдеров с [Models.dev](https://models.dev), поэтому вы можете использовать `opencode auth login` для настройки ключей API для любого поставщика, которого вы хотите использовать. Это хранится в `~/.local/share/opencode/auth.json`.
 
 ```bash
-innocode auth login
+opencode auth login
 ```
 
-Когда innocode запускается, он загружает поставщиков из файла учетных данных. И если в ваших средах определены какие-либо ключи или файл `.env` в вашем проекте.
+Когда opencode запускается, он загружает поставщиков из файла учетных данных. И если в ваших средах определены какие-либо ключи или файл `.env` в вашем проекте.
 
 ---
 
@@ -134,13 +134,13 @@ innocode auth login
 Перечисляет всех проверенных поставщиков, которые хранятся в файле учетных данных.
 
 ```bash
-innocode auth list
+opencode auth list
 ```
 
 Или короткая версия.
 
 ```bash
-innocode auth ls
+opencode auth ls
 ```
 
 ---
@@ -150,7 +150,7 @@ innocode auth ls
 Выключает вас из провайдера, удаляя его из файла учетных данных.
 
 ```bash
-innocode auth logout
+opencode auth logout
 ```
 
 ---
@@ -160,7 +160,7 @@ innocode auth logout
 Управляйте агентом GitHub для автоматизации репозитория.
 
 ```bash
-innocode github [command]
+opencode github [command]
 ```
 
 ---
@@ -170,7 +170,7 @@ innocode github [command]
 Установите агент GitHub в свой репозиторий.
 
 ```bash
-innocode github install
+opencode github install
 ```
 
 Это настроит необходимый рабочий процесс GitHub Actions и проведет вас через процесс настройки. [Подробнее](/docs/github).
@@ -182,7 +182,7 @@ innocode github install
 Запустите агент GitHub. Обычно это используется в действиях GitHub.
 
 ```bash
-innocode github run
+opencode github run
 ```
 
 ##### Флаги
@@ -199,7 +199,7 @@ innocode github run
 Управляйте серверами протокола контекста модели.
 
 ```bash
-innocode mcp [command]
+opencode mcp [command]
 ```
 
 ---
@@ -209,7 +209,7 @@ innocode mcp [command]
 Добавьте сервер MCP в свою конфигурацию.
 
 ```bash
-innocode mcp add
+opencode mcp add
 ```
 
 Эта команда поможет вам добавить локальный или удаленный сервер MCP.
@@ -221,13 +221,13 @@ innocode mcp add
 Перечислите все настроенные серверы MCP и состояние их подключения.
 
 ```bash
-innocode mcp list
+opencode mcp list
 ```
 
 Или используйте короткую версию.
 
 ```bash
-innocode mcp ls
+opencode mcp ls
 ```
 
 ---
@@ -237,7 +237,7 @@ innocode mcp ls
 Аутентификация с помощью сервера MCP с поддержкой OAuth.
 
 ```bash
-innocode mcp auth [name]
+opencode mcp auth [name]
 ```
 
 Если вы не укажете имя сервера, вам будет предложено выбрать один из доступных серверов с поддержкой OAuth.
@@ -245,13 +245,13 @@ innocode mcp auth [name]
 Вы также можете перечислить серверы с поддержкой OAuth и их статус аутентификации.
 
 ```bash
-innocode mcp auth list
+opencode mcp auth list
 ```
 
 Или используйте короткую версию.
 
 ```bash
-innocode mcp auth ls
+opencode mcp auth ls
 ```
 
 ---
@@ -261,7 +261,7 @@ innocode mcp auth ls
 Удалите учетные данные OAuth для сервера MCP.
 
 ```bash
-innocode mcp logout [name]
+opencode mcp logout [name]
 ```
 
 ---
@@ -271,7 +271,7 @@ innocode mcp logout [name]
 Отладка проблем с подключением OAuth для сервера MCP.
 
 ```bash
-innocode mcp debug <name>
+opencode mcp debug <name>
 ```
 
 ---
@@ -281,7 +281,7 @@ innocode mcp debug <name>
 Перечислите все доступные модели от настроенных поставщиков.
 
 ```bash
-innocode models [provider]
+opencode models [provider]
 ```
 
 Эта команда отображает все модели, доступные у настроенных вами поставщиков, в формате `provider/model`.
@@ -291,7 +291,7 @@ innocode models [provider]
 При желании вы можете передать идентификатор поставщика, чтобы фильтровать модели по этому поставщику.
 
 ```bash
-innocode models anthropic
+opencode models anthropic
 ```
 
 #### Флаги
@@ -301,36 +301,36 @@ innocode models anthropic
 | `--refresh` | Обновите кеш моделей на сайте models.dev.                                         |
 | `--verbose` | Используйте более подробный вывод модели (включая метаданные, такие как затраты). |
 
-Используйте флаг `--refresh` для обновления списка кэшированных моделей. Это полезно, когда к поставщику добавлены новые модели и вы хотите увидеть их в innocode.
+Используйте флаг `--refresh` для обновления списка кэшированных моделей. Это полезно, когда к поставщику добавлены новые модели и вы хотите увидеть их в opencode.
 
 ```bash
-innocode models --refresh
+opencode models --refresh
 ```
 
 ---
 
 ### run
 
-Запустите innocode в неинтерактивном режиме, передав приглашение напрямую.
+Запустите opencode в неинтерактивном режиме, передав приглашение напрямую.
 
 ```bash
-innocode run [message..]
+opencode run [message..]
 ```
 
 Это полезно для создания сценариев, автоматизации или когда вам нужен быстрый ответ без запуска полного TUI. Например.
 
-```bash "innocode run"
-innocode run Explain the use of context in Go
+```bash "opencode run"
+opencode run Explain the use of context in Go
 ```
 
-Вы также можете подключиться к работающему экземпляру `innocode serve`, чтобы избежать холодной загрузки сервера MCP при каждом запуске:
+Вы также можете подключиться к работающему экземпляру `opencode serve`, чтобы избежать холодной загрузки сервера MCP при каждом запуске:
 
 ```bash
 # Start a headless server in one terminal
-innocode serve
+opencode serve
 
 # In another terminal, run commands that attach to it
-innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### Флаги
@@ -347,20 +347,20 @@ innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | `--file`     | `-f`     | Файл(ы) для прикрепления к сообщению                                             |
 | `--format`   |          | Формат: по умолчанию (отформатированный) или json (необработанные события JSON). |
 | `--title`    |          | Название сеанса (использует усеченное приглашение, если значение не указано)     |
-| `--attach`   |          | Подключитесь к работающему серверу innocode (например, http://localhost:4096)    |
+| `--attach`   |          | Подключитесь к работающему серверу opencode (например, http://localhost:4096)    |
 | `--port`     |          | Порт локального сервера (по умолчанию случайный порт)                            |
 
 ---
 
 ### serve
 
-Запустите автономный сервер innocode для доступа к API. Полный HTTP-интерфейс можно найти в [server docs](/docs/server).
+Запустите автономный сервер opencode для доступа к API. Полный HTTP-интерфейс можно найти в [server docs](/docs/server).
 
 ```bash
-innocode serve
+opencode serve
 ```
 
-При этом запускается HTTP-сервер, который обеспечивает доступ API к функциям innocode без интерфейса TUI. Установите `INNOCODE_SERVER_PASSWORD`, чтобы включить базовую аутентификацию HTTP (имя пользователя по умолчанию — `innocode`).
+При этом запускается HTTP-сервер, который обеспечивает доступ API к функциям opencode без интерфейса TUI. Установите `OPENCODE_SERVER_PASSWORD`, чтобы включить базовую аутентификацию HTTP (имя пользователя по умолчанию — `opencode`).
 
 #### Флаги
 
@@ -375,20 +375,20 @@ innocode serve
 
 ### session
 
-Управляйте сессиями innocode.
+Управляйте сессиями opencode.
 
 ```bash
-innocode session [command]
+opencode session [command]
 ```
 
 ---
 
 #### list
 
-Перечислите все сеансы innocode.
+Перечислите все сеансы opencode.
 
 ```bash
-innocode session list
+opencode session list
 ```
 
 ##### Флаги
@@ -402,10 +402,10 @@ innocode session list
 
 ### stats
 
-Покажите статистику использования токенов и затрат для ваших сеансов innocode.
+Покажите статистику использования токенов и затрат для ваших сеансов opencode.
 
 ```bash
-innocode stats
+opencode stats
 ```
 
 #### Флаги
@@ -424,7 +424,7 @@ innocode stats
 Экспортируйте данные сеанса в формате JSON.
 
 ```bash
-innocode export [sessionID]
+opencode export [sessionID]
 ```
 
 Если вы не укажете идентификатор сеанса, вам будет предложено выбрать один из доступных сеансов.
@@ -433,30 +433,30 @@ innocode export [sessionID]
 
 ### import
 
-Импортируйте данные сеанса из файла JSON или URL-адреса общего ресурса innocode.
+Импортируйте данные сеанса из файла JSON или URL-адреса общего ресурса opencode.
 
 ```bash
-innocode import <file>
+opencode import <file>
 ```
 
-Вы можете импортировать из локального файла или URL-адреса общего ресурса innocode.
+Вы можете импортировать из локального файла или URL-адреса общего ресурса opencode.
 
 ```bash
-innocode import session.json
-innocode import https://innocode.io/s/abc123
+opencode import session.json
+opencode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-Запустите автономный сервер innocode с веб-интерфейсом.
+Запустите автономный сервер opencode с веб-интерфейсом.
 
 ```bash
-innocode web
+opencode web
 ```
 
-При этом запускается HTTP-сервер и открывается веб-браузер для доступа к innocode через веб-интерфейс. Установите `INNOCODE_SERVER_PASSWORD`, чтобы включить базовую аутентификацию HTTP (имя пользователя по умолчанию — `innocode`).
+При этом запускается HTTP-сервер и открывается веб-браузер для доступа к opencode через веб-интерфейс. Установите `OPENCODE_SERVER_PASSWORD`, чтобы включить базовую аутентификацию HTTP (имя пользователя по умолчанию — `opencode`).
 
 #### Флаги
 
@@ -474,7 +474,7 @@ innocode web
 Запустите сервер ACP (агент-клиентский протокол).
 
 ```bash
-innocode acp
+opencode acp
 ```
 
 Эта команда запускает сервер ACP, который обменивается данными через stdin/stdout с использованием nd-JSON.
@@ -491,10 +491,10 @@ innocode acp
 
 ### uninstall
 
-Удалите innocode и удалите все связанные файлы.
+Удалите opencode и удалите все связанные файлы.
 
 ```bash
-innocode uninstall
+opencode uninstall
 ```
 
 #### Флаги
@@ -510,22 +510,22 @@ innocode uninstall
 
 ### upgrade
 
-Обновляет innocode до последней версии или определенной версии.
+Обновляет opencode до последней версии или определенной версии.
 
 ```bash
-innocode upgrade [target]
+opencode upgrade [target]
 ```
 
 Чтобы обновиться до последней версии.
 
 ```bash
-innocode upgrade
+opencode upgrade
 ```
 
 Для обновления до определенной версии.
 
 ```bash
-innocode upgrade v0.1.48
+opencode upgrade v0.1.48
 ```
 
 #### Флаги
@@ -538,7 +538,7 @@ innocode upgrade v0.1.48
 
 ## Глобальные флаги
 
-CLI innocode принимает следующие глобальные флаги.
+CLI opencode принимает следующие глобальные флаги.
 
 | Флаг           | Короткий | Описание                                   |
 | -------------- | -------- | ------------------------------------------ |
@@ -551,34 +551,35 @@ CLI innocode принимает следующие глобальные флаг
 
 ## Переменные среды
 
-innocode можно настроить с помощью переменных среды.
+opencode можно настроить с помощью переменных среды.
 
 | Переменная                            | Тип                 | Описание                                                                         |
 | ------------------------------------- | ------------------- | -------------------------------------------------------------------------------- |
-| `INNOCODE_AUTO_SHARE`                 | логическое значение | Автоматически делиться сеансами                                                  |
-| `INNOCODE_GIT_BASH_PATH`              | строка              | Путь к исполняемому файлу Git Bash в Windows                                     |
-| `INNOCODE_CONFIG`                     | строка              | Путь к файлу конфигурации                                                        |
-| `INNOCODE_CONFIG_DIR`                 | строка              | Путь к каталогу конфигурации                                                     |
-| `INNOCODE_CONFIG_CONTENT`             | строка              | Встроенное содержимое конфигурации json                                          |
-| `INNOCODE_DISABLE_AUTOUPDATE`         | логическое значение | Отключить автоматическую проверку обновлений                                     |
-| `INNOCODE_DISABLE_PRUNE`              | логическое значение | Отключить удаление старых данных                                                 |
-| `INNOCODE_DISABLE_TERMINAL_TITLE`     | логическое значение | Отключить автоматическое обновление заголовка терминала                          |
-| `INNOCODE_PERMISSION`                 | строка              | Встроенная конфигурация разрешений json                                          |
-| `INNOCODE_DISABLE_DEFAULT_PLUGINS`    | логическое значение | Отключить плагины по умолчанию                                                   |
-| `INNOCODE_DISABLE_LSP_DOWNLOAD`       | логическое значение | Отключить автоматическую загрузку LSP-сервера                                    |
-| `INNOCODE_ENABLE_EXPERIMENTAL_MODELS` | логическое значение | Включить экспериментальные модели                                                |
-| `INNOCODE_DISABLE_AUTOCOMPACT`        | логическое значение | Отключить автоматическое сжатие контекста                                        |
-| `INNOCODE_DISABLE_CLAUDE_CODE`        | логическое значение | Отключить чтение из `.claude` (подсказка + навыки)                               |
-| `INNOCODE_DISABLE_CLAUDE_CODE_PROMPT` | логическое значение | Отключить чтение `~/.claude/CLAUDE.md`                                           |
-| `INNOCODE_DISABLE_CLAUDE_CODE_SKILLS` | логическое значение | Отключить загрузку `.claude/skills`                                              |
-| `INNOCODE_DISABLE_MODELS_FETCH`       | логическое значение | Отключить получение моделей из удаленных источников                              |
-| `INNOCODE_FAKE_VCS`                   | строка              | Поддельный поставщик VCS для целей тестирования                                  |
-| `INNOCODE_DISABLE_FILETIME_CHECK`     | логическое значение | Отключить проверку времени файла для оптимизации                                 |
-| `INNOCODE_CLIENT`                     | строка              | Идентификатор клиента (по умолчанию `cli`)                                       |
-| `INNOCODE_ENABLE_EXA`                 | логическое значение | Включить инструменты веб-поиска Exa                                              |
-| `INNOCODE_SERVER_PASSWORD`            | строка              | Включить базовую аутентификацию для `serve`/`web`                                |
-| `INNOCODE_SERVER_USERNAME`            | строка              | Переопределить имя пользователя базовой аутентификации (по умолчанию `innocode`) |
-| `INNOCODE_MODELS_URL`                 | строка              | Пользовательский URL-адрес для получения конфигурации модели                     |
+| `OPENCODE_AUTO_SHARE`                 | логическое значение | Автоматически делиться сеансами                                                  |
+| `OPENCODE_GIT_BASH_PATH`              | строка              | Путь к исполняемому файлу Git Bash в Windows                                     |
+| `OPENCODE_CONFIG`                     | строка              | Путь к файлу конфигурации                                                        |
+| `OPENCODE_TUI_CONFIG`                 | строка              | Путь к файлу конфигурации TUI                                                    |
+| `OPENCODE_CONFIG_DIR`                 | строка              | Путь к каталогу конфигурации                                                     |
+| `OPENCODE_CONFIG_CONTENT`             | строка              | Встроенное содержимое конфигурации json                                          |
+| `OPENCODE_DISABLE_AUTOUPDATE`         | логическое значение | Отключить автоматическую проверку обновлений                                     |
+| `OPENCODE_DISABLE_PRUNE`              | логическое значение | Отключить удаление старых данных                                                 |
+| `OPENCODE_DISABLE_TERMINAL_TITLE`     | логическое значение | Отключить автоматическое обновление заголовка терминала                          |
+| `OPENCODE_PERMISSION`                 | строка              | Встроенная конфигурация разрешений json                                          |
+| `OPENCODE_DISABLE_DEFAULT_PLUGINS`    | логическое значение | Отключить плагины по умолчанию                                                   |
+| `OPENCODE_DISABLE_LSP_DOWNLOAD`       | логическое значение | Отключить автоматическую загрузку LSP-сервера                                    |
+| `OPENCODE_ENABLE_EXPERIMENTAL_MODELS` | логическое значение | Включить экспериментальные модели                                                |
+| `OPENCODE_DISABLE_AUTOCOMPACT`        | логическое значение | Отключить автоматическое сжатие контекста                                        |
+| `OPENCODE_DISABLE_CLAUDE_CODE`        | логическое значение | Отключить чтение из `.claude` (подсказка + навыки)                               |
+| `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` | логическое значение | Отключить чтение `~/.claude/CLAUDE.md`                                           |
+| `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` | логическое значение | Отключить загрузку `.claude/skills`                                              |
+| `OPENCODE_DISABLE_MODELS_FETCH`       | логическое значение | Отключить получение моделей из удаленных источников                              |
+| `OPENCODE_FAKE_VCS`                   | строка              | Поддельный поставщик VCS для целей тестирования                                  |
+| `OPENCODE_DISABLE_FILETIME_CHECK`     | логическое значение | Отключить проверку времени файла для оптимизации                                 |
+| `OPENCODE_CLIENT`                     | строка              | Идентификатор клиента (по умолчанию `cli`)                                       |
+| `OPENCODE_ENABLE_EXA`                 | логическое значение | Включить инструменты веб-поиска Exa                                              |
+| `OPENCODE_SERVER_PASSWORD`            | строка              | Включить базовую аутентификацию для `serve`/`web`                                |
+| `OPENCODE_SERVER_USERNAME`            | строка              | Переопределить имя пользователя базовой аутентификации (по умолчанию `opencode`) |
+| `OPENCODE_MODELS_URL`                 | строка              | Пользовательский URL-адрес для получения конфигурации модели                     |
 
 ---
 
@@ -588,16 +589,16 @@ innocode можно настроить с помощью переменных с
 
 | Переменная                                      | Тип                 | Описание                                               |
 | ----------------------------------------------- | ------------------- | ------------------------------------------------------ |
-| `INNOCODE_EXPERIMENTAL`                         | логическое значение | Включить все экспериментальные функции                 |
-| `INNOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | логическое значение | Включить обнаружение значков                           |
-| `INNOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | логическое значение | Отключить копирование при выборе в TUI                 |
-| `INNOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | число               | Таймаут по умолчанию для команд bash в мс              |
-| `INNOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | число               | Максимальное количество токенов вывода для ответов LLM |
-| `INNOCODE_EXPERIMENTAL_FILEWATCHER`             | логическое значение | Включить просмотр файлов для всего каталога            |
-| `INNOCODE_EXPERIMENTAL_OXFMT`                   | логическое значение | Включить форматтер oxfmt                               |
-| `INNOCODE_EXPERIMENTAL_LSP_TOOL`                | логическое значение | Включить экспериментальный инструмент LSP              |
-| `INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | логическое значение | Отключить просмотрщик файлов                           |
-| `INNOCODE_EXPERIMENTAL_EXA`                     | логическое значение | Включить экспериментальные функции Exa                 |
-| `INNOCODE_EXPERIMENTAL_LSP_TY`                  | логическое значение | Включить экспериментальную проверку типа LSP           |
-| `INNOCODE_EXPERIMENTAL_MARKDOWN`                | логическое значение | Включить экспериментальные функции Markdown            |
-| `INNOCODE_EXPERIMENTAL_PLAN_MODE`               | логическое значение | Включить режим плана                                   |
+| `OPENCODE_EXPERIMENTAL`                         | логическое значение | Включить все экспериментальные функции                 |
+| `OPENCODE_EXPERIMENTAL_ICON_DISCOVERY`          | логическое значение | Включить обнаружение значков                           |
+| `OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | логическое значение | Отключить копирование при выборе в TUI                 |
+| `OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | число               | Таймаут по умолчанию для команд bash в мс              |
+| `OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | число               | Максимальное количество токенов вывода для ответов LLM |
+| `OPENCODE_EXPERIMENTAL_FILEWATCHER`             | логическое значение | Включить просмотр файлов для всего каталога            |
+| `OPENCODE_EXPERIMENTAL_OXFMT`                   | логическое значение | Включить форматтер oxfmt                               |
+| `OPENCODE_EXPERIMENTAL_LSP_TOOL`                | логическое значение | Включить экспериментальный инструмент LSP              |
+| `OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | логическое значение | Отключить просмотрщик файлов                           |
+| `OPENCODE_EXPERIMENTAL_EXA`                     | логическое значение | Включить экспериментальные функции Exa                 |
+| `OPENCODE_EXPERIMENTAL_LSP_TY`                  | логическое значение | Включить экспериментальную проверку типа LSP           |
+| `OPENCODE_EXPERIMENTAL_MARKDOWN`                | логическое значение | Включить экспериментальные функции Markdown            |
+| `OPENCODE_EXPERIMENTAL_PLAN_MODE`               | логическое значение | Включить режим плана                                   |

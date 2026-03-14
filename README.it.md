@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://innocode.io">
+  <a href="https://opencode.ai">
     <picture>
       <source srcset="packages/console/app/src/asset/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
       <source srcset="packages/console/app/src/asset/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
-      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="Logo InnoCode">
+      <img src="packages/console/app/src/asset/logo-ornate-light.svg" alt="Logo OpenCode">
     </picture>
   </a>
 </p>
 <p align="center">L’agente di coding AI open source.</p>
 <p align="center">
-  <a href="https://innocode.io/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
-  <a href="https://www.npmjs.com/package/innocode-ai"><img alt="npm" src="https://img.shields.io/npm/v/innocode-ai?style=flat-square" /></a>
-  <a href="https://github.com/anomalyco/innocode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/innocode/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
+  <a href="https://github.com/anomalyco/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/anomalyco/opencode/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -27,14 +27,19 @@
   <a href="README.ja.md">日本語</a> |
   <a href="README.pl.md">Polski</a> |
   <a href="README.ru.md">Русский</a> |
+  <a href="README.bs.md">Bosanski</a> |
   <a href="README.ar.md">العربية</a> |
   <a href="README.no.md">Norsk</a> |
   <a href="README.br.md">Português (Brasil)</a> |
   <a href="README.th.md">ไทย</a> |
-  <a href="README.tr.md">Türkçe</a>
+  <a href="README.tr.md">Türkçe</a> |
+  <a href="README.uk.md">Українська</a> |
+  <a href="README.bn.md">বাংলা</a> |
+  <a href="README.gr.md">Ελληνικά</a> |
+  <a href="README.vi.md">Tiếng Việt</a>
 </p>
 
-[![InnoCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://innocode.io)
+[![OpenCode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
 
 ---
 
@@ -42,17 +47,18 @@
 
 ```bash
 # YOLO
-curl -fsSL https://innocode.io/install | bash
+curl -fsSL https://opencode.ai/install | bash
 
 # Package manager
-npm i -g innocode-ai@latest        # oppure bun/pnpm/yarn
-scoop install innocode             # Windows
-choco install innocode             # Windows
-brew install anomalyco/tap/innocode # macOS e Linux (consigliato, sempre aggiornato)
-brew install innocode              # macOS e Linux (formula brew ufficiale, aggiornata meno spesso)
-paru -S innocode-bin               # Arch Linux
-mise use -g innocode               # Qualsiasi OS
-nix run nixpkgs#innocode           # oppure github:anomalyco/innocode per l’ultima branch di sviluppo
+npm i -g opencode-ai@latest        # oppure bun/pnpm/yarn
+scoop install opencode             # Windows
+choco install opencode             # Windows
+brew install anomalyco/tap/opencode # macOS e Linux (consigliato, sempre aggiornato)
+brew install opencode              # macOS e Linux (formula brew ufficiale, aggiornata meno spesso)
+sudo pacman -S opencode            # Arch Linux (Stable)
+paru -S opencode-bin               # Arch Linux (Latest from AUR)
+mise use -g opencode               # Qualsiasi OS
+nix run nixpkgs#opencode           # oppure github:anomalyco/opencode per l’ultima branch di sviluppo
 ```
 
 > [!TIP]
@@ -60,40 +66,40 @@ nix run nixpkgs#innocode           # oppure github:anomalyco/innocode per l’ul
 
 ### App Desktop (BETA)
 
-InnoCode è disponibile anche come applicazione desktop. Puoi scaricarla direttamente dalla [pagina delle release](https://github.com/anomalyco/innocode/releases) oppure da [innocode.io/download](https://innocode.io/download).
+OpenCode è disponibile anche come applicazione desktop. Puoi scaricarla direttamente dalla [pagina delle release](https://github.com/anomalyco/opencode/releases) oppure da [opencode.ai/download](https://opencode.ai/download).
 
 | Piattaforma           | Download                              |
 | --------------------- | ------------------------------------- |
-| macOS (Apple Silicon) | `innocode-desktop-darwin-aarch64.dmg` |
-| macOS (Intel)         | `innocode-desktop-darwin-x64.dmg`     |
-| Windows               | `innocode-desktop-windows-x64.exe`    |
+| macOS (Apple Silicon) | `opencode-desktop-darwin-aarch64.dmg` |
+| macOS (Intel)         | `opencode-desktop-darwin-x64.dmg`     |
+| Windows               | `opencode-desktop-windows-x64.exe`    |
 | Linux                 | `.deb`, `.rpm`, oppure AppImage       |
 
 ```bash
 # macOS (Homebrew)
-brew install --cask innocode-desktop
+brew install --cask opencode-desktop
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/innocode-desktop
+scoop bucket add extras; scoop install extras/opencode-desktop
 ```
 
 #### Directory di installazione
 
 Lo script di installazione rispetta il seguente ordine di priorità per il percorso di installazione:
 
-1. `$INNOCODE_INSTALL_DIR` – Directory di installazione personalizzata
+1. `$OPENCODE_INSTALL_DIR` – Directory di installazione personalizzata
 2. `$XDG_BIN_DIR` – Percorso conforme alla XDG Base Directory Specification
 3. `$HOME/bin` – Directory binaria standard dell’utente (se esiste o può essere creata)
-4. `$HOME/.innocode/bin` – Fallback predefinito
+4. `$HOME/.opencode/bin` – Fallback predefinito
 
 ```bash
 # Esempi
-INNOCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://innocode.io/install | bash
-XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://innocode.io/install | bash
+OPENCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
 ```
 
 ### Agenti
 
-InnoCode include due agenti integrati tra cui puoi passare usando il tasto `Tab`.
+OpenCode include due agenti integrati tra cui puoi passare usando il tasto `Tab`.
 
 - **build** – Predefinito, agente con accesso completo per il lavoro di sviluppo
 - **plan** – Agente in sola lettura per analisi ed esplorazione del codice
@@ -104,19 +110,19 @@ InnoCode include due agenti integrati tra cui puoi passare usando il tasto `Tab`
 È inoltre incluso un sotto-agente **general** per ricerche complesse e attività multi-step.
 Viene utilizzato internamente e può essere invocato usando `@general` nei messaggi.
 
-Scopri di più sugli [agenti](https://innocode.io/docs/agents).
+Scopri di più sugli [agenti](https://opencode.ai/docs/agents).
 
 ### Documentazione
 
-Per maggiori informazioni su come configurare InnoCode, [**consulta la nostra documentazione**](https://innocode.io/docs).
+Per maggiori informazioni su come configurare OpenCode, [**consulta la nostra documentazione**](https://opencode.ai/docs).
 
 ### Contribuire
 
-Se sei interessato a contribuire a InnoCode, leggi la nostra [guida alla contribuzione](./CONTRIBUTING.md) prima di inviare una pull request.
+Se sei interessato a contribuire a OpenCode, leggi la nostra [guida alla contribuzione](./CONTRIBUTING.md) prima di inviare una pull request.
 
-### Costruire su InnoCode
+### Costruire su OpenCode
 
-Se stai lavorando a un progetto correlato a InnoCode e che utilizza “innocode” come parte del nome (ad esempio “innocode-dashboard” o “innocode-mobile”), aggiungi una nota nel tuo README per chiarire che non è sviluppato dal team InnoCode e che non è affiliato in alcun modo con noi.
+Se stai lavorando a un progetto correlato a OpenCode e che utilizza “opencode” come parte del nome (ad esempio “opencode-dashboard” o “opencode-mobile”), aggiungi una nota nel tuo README per chiarire che non è sviluppato dal team OpenCode e che non è affiliato in alcun modo con noi.
 
 ### FAQ
 
@@ -125,11 +131,11 @@ Se stai lavorando a un progetto correlato a InnoCode e che utilizza “innocode�
 È molto simile a Claude Code in termini di funzionalità. Ecco le principali differenze:
 
 - 100% open source
-- Non è legato a nessun provider. Anche se consigliamo i modelli forniti tramite [InnoCode Zen](https://innocode.io/zen), InnoCode può essere utilizzato con Claude, OpenAI, Google o persino modelli locali. Con l’evoluzione dei modelli, le differenze tra di essi si ridurranno e i prezzi scenderanno, quindi essere indipendenti dal provider è importante.
+- Non è legato a nessun provider. Anche se consigliamo i modelli forniti tramite [OpenCode Zen](https://opencode.ai/zen), OpenCode può essere utilizzato con Claude, OpenAI, Google o persino modelli locali. Con l’evoluzione dei modelli, le differenze tra di essi si ridurranno e i prezzi scenderanno, quindi essere indipendenti dal provider è importante.
 - Supporto LSP pronto all’uso
-- Forte attenzione alla TUI. InnoCode è sviluppato da utenti neovim e dai creatori di [terminal.shop](https://terminal.shop); spingeremo al limite ciò che è possibile fare nel terminale.
-- Architettura client/server. Questo, ad esempio, permette a InnoCode di girare sul tuo computer mentre lo controlli da remoto tramite un’app mobile. La frontend TUI è quindi solo uno dei possibili client.
+- Forte attenzione alla TUI. OpenCode è sviluppato da utenti neovim e dai creatori di [terminal.shop](https://terminal.shop); spingeremo al limite ciò che è possibile fare nel terminale.
+- Architettura client/server. Questo, ad esempio, permette a OpenCode di girare sul tuo computer mentre lo controlli da remoto tramite un’app mobile. La frontend TUI è quindi solo uno dei possibili client.
 
 ---
 
-**Unisciti alla nostra community** [Discord](https://discord.gg/innocode) | [X.com](https://x.com/innocode)
+**Unisciti alla nostra community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)
