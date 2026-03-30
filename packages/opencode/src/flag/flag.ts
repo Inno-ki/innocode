@@ -1,3 +1,5 @@
+import { Config } from "effect"
+
 function truthy(key: string) {
   const value = process.env[key]?.toLowerCase()
   return value === "true" || value === "1"
@@ -25,12 +27,16 @@ export namespace Flag {
   export const OPENCODE_AUTO_SHARE = getTruthy("INNOCODE_AUTO_SHARE", "OPENCODE_AUTO_SHARE")
   export const OPENCODE_GIT_BASH_PATH = getEnv("INNOCODE_GIT_BASH_PATH", "OPENCODE_GIT_BASH_PATH")
   export const OPENCODE_CONFIG = getEnv("INNOCODE_CONFIG", "OPENCODE_CONFIG")
+  export declare const OPENCODE_PURE: boolean
   export declare const OPENCODE_TUI_CONFIG: string | undefined
   export declare const OPENCODE_CONFIG_DIR: string | undefined
+  export declare const OPENCODE_PLUGIN_META_FILE: string | undefined
   export const OPENCODE_CONFIG_CONTENT = getEnv("INNOCODE_CONFIG_CONTENT", "OPENCODE_CONFIG_CONTENT")
   export const OPENCODE_DISABLE_AUTOUPDATE = getTruthy("INNOCODE_DISABLE_AUTOUPDATE", "OPENCODE_DISABLE_AUTOUPDATE")
+  export const OPENCODE_ALWAYS_NOTIFY_UPDATE = getTruthy("INNOCODE_ALWAYS_NOTIFY_UPDATE", "OPENCODE_ALWAYS_NOTIFY_UPDATE")
   export const OPENCODE_DISABLE_PRUNE = getTruthy("INNOCODE_DISABLE_PRUNE", "OPENCODE_DISABLE_PRUNE")
   export const OPENCODE_DISABLE_TERMINAL_TITLE = getTruthy("INNOCODE_DISABLE_TERMINAL_TITLE", "OPENCODE_DISABLE_TERMINAL_TITLE")
+  export const OPENCODE_SHOW_TTFD = getTruthy("INNOCODE_SHOW_TTFD", "OPENCODE_SHOW_TTFD")
   export const OPENCODE_PERMISSION = getEnv("INNOCODE_PERMISSION", "OPENCODE_PERMISSION")
   export const OPENCODE_DISABLE_DEFAULT_PLUGINS = getTruthy("INNOCODE_DISABLE_DEFAULT_PLUGINS", "OPENCODE_DISABLE_DEFAULT_PLUGINS")
   export const OPENCODE_DISABLE_LSP_DOWNLOAD = getTruthy("INNOCODE_DISABLE_LSP_DOWNLOAD", "OPENCODE_DISABLE_LSP_DOWNLOAD")
@@ -53,8 +59,12 @@ export namespace Flag {
 
   // Experimental
   export const OPENCODE_EXPERIMENTAL = getTruthy("INNOCODE_EXPERIMENTAL", "OPENCODE_EXPERIMENTAL")
-  export const OPENCODE_EXPERIMENTAL_FILEWATCHER = getTruthy("INNOCODE_EXPERIMENTAL_FILEWATCHER", "OPENCODE_EXPERIMENTAL_FILEWATCHER")
-  export const OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER = getTruthy("INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER", "OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER")
+  export const OPENCODE_EXPERIMENTAL_FILEWATCHER = Config.boolean("OPENCODE_EXPERIMENTAL_FILEWATCHER").pipe(
+    Config.withDefault(false),
+  )
+  export const OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER = Config.boolean(
+    "OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER",
+  ).pipe(Config.withDefault(false))
   export const OPENCODE_EXPERIMENTAL_ICON_DISCOVERY =
     OPENCODE_EXPERIMENTAL || getTruthy("INNOCODE_EXPERIMENTAL_ICON_DISCOVERY", "OPENCODE_EXPERIMENTAL_ICON_DISCOVERY")
 
@@ -68,12 +78,16 @@ export namespace Flag {
   export const OPENCODE_EXPERIMENTAL_OXFMT = OPENCODE_EXPERIMENTAL || getTruthy("INNOCODE_EXPERIMENTAL_OXFMT", "OPENCODE_EXPERIMENTAL_OXFMT")
   export const OPENCODE_EXPERIMENTAL_LSP_TY = getTruthy("INNOCODE_EXPERIMENTAL_LSP_TY", "OPENCODE_EXPERIMENTAL_LSP_TY")
   export const OPENCODE_EXPERIMENTAL_LSP_TOOL = OPENCODE_EXPERIMENTAL || getTruthy("INNOCODE_EXPERIMENTAL_LSP_TOOL", "OPENCODE_EXPERIMENTAL_LSP_TOOL")
-  export const OPENCODE_DISABLE_FILETIME_CHECK = getTruthy("INNOCODE_DISABLE_FILETIME_CHECK", "OPENCODE_DISABLE_FILETIME_CHECK")
+  export const OPENCODE_DISABLE_FILETIME_CHECK = Config.boolean("OPENCODE_DISABLE_FILETIME_CHECK").pipe(
+    Config.withDefault(false),
+  )
   export const OPENCODE_EXPERIMENTAL_PLAN_MODE = OPENCODE_EXPERIMENTAL || getTruthy("INNOCODE_EXPERIMENTAL_PLAN_MODE", "OPENCODE_EXPERIMENTAL_PLAN_MODE")
   export const OPENCODE_EXPERIMENTAL_WORKSPACES = OPENCODE_EXPERIMENTAL || getTruthy("INNOCODE_EXPERIMENTAL_WORKSPACES", "OPENCODE_EXPERIMENTAL_WORKSPACES")
   export const OPENCODE_EXPERIMENTAL_MARKDOWN = !getFalsy("INNOCODE_EXPERIMENTAL_MARKDOWN", "OPENCODE_EXPERIMENTAL_MARKDOWN")
   export const OPENCODE_MODELS_URL = getEnv("INNOCODE_MODELS_URL", "OPENCODE_MODELS_URL")
   export const OPENCODE_MODELS_PATH = getEnv("INNOCODE_MODELS_PATH", "OPENCODE_MODELS_PATH")
+  export const OPENCODE_DISABLE_EMBEDDED_WEB_UI = getTruthy("INNOCODE_DISABLE_EMBEDDED_WEB_UI", "OPENCODE_DISABLE_EMBEDDED_WEB_UI")
+  export const OPENCODE_DB = getEnv("INNOCODE_DB", "OPENCODE_DB")
   export const OPENCODE_DISABLE_CHANNEL_DB = getTruthy("INNOCODE_DISABLE_CHANNEL_DB", "OPENCODE_DISABLE_CHANNEL_DB")
   export const OPENCODE_SKIP_MIGRATIONS = getTruthy("INNOCODE_SKIP_MIGRATIONS", "OPENCODE_SKIP_MIGRATIONS")
   export const OPENCODE_STRICT_CONFIG_DEPS = getTruthy("INNOCODE_STRICT_CONFIG_DEPS", "OPENCODE_STRICT_CONFIG_DEPS")
@@ -87,6 +101,8 @@ export namespace Flag {
 }
 
 // Dynamic getter for OPENCODE_DISABLE_PROJECT_CONFIG
+// This must be evaluated at access time, not module load time,
+// because external tooling may set this env var at runtime
 Object.defineProperty(Flag, "OPENCODE_DISABLE_PROJECT_CONFIG", {
   get() {
     return truthy("INNOCODE_DISABLE_PROJECT_CONFIG") || truthy("OPENCODE_DISABLE_PROJECT_CONFIG")
@@ -96,6 +112,8 @@ Object.defineProperty(Flag, "OPENCODE_DISABLE_PROJECT_CONFIG", {
 })
 
 // Dynamic getter for OPENCODE_TUI_CONFIG
+// This must be evaluated at access time, not module load time,
+// because tests and external tooling may set this env var at runtime
 Object.defineProperty(Flag, "OPENCODE_TUI_CONFIG", {
   get() {
     return process.env["INNOCODE_TUI_CONFIG"] ?? process.env["OPENCODE_TUI_CONFIG"]
@@ -105,6 +123,8 @@ Object.defineProperty(Flag, "OPENCODE_TUI_CONFIG", {
 })
 
 // Dynamic getter for OPENCODE_CONFIG_DIR
+// This must be evaluated at access time, not module load time,
+// because external tooling may set this env var at runtime
 Object.defineProperty(Flag, "OPENCODE_CONFIG_DIR", {
   get() {
     return process.env["INNOCODE_CONFIG_DIR"] ?? process.env["OPENCODE_CONFIG_DIR"]
@@ -113,7 +133,31 @@ Object.defineProperty(Flag, "OPENCODE_CONFIG_DIR", {
   configurable: false,
 })
 
+// Dynamic getter for OPENCODE_PURE
+// This must be evaluated at access time, not module load time,
+// because the CLI can set this flag at runtime
+Object.defineProperty(Flag, "OPENCODE_PURE", {
+  get() {
+    return truthy("INNOCODE_PURE") || truthy("OPENCODE_PURE")
+  },
+  enumerable: true,
+  configurable: false,
+})
+
+// Dynamic getter for OPENCODE_PLUGIN_META_FILE
+// This must be evaluated at access time, not module load time,
+// because tests and external tooling may set this env var at runtime
+Object.defineProperty(Flag, "OPENCODE_PLUGIN_META_FILE", {
+  get() {
+    return process.env["INNOCODE_PLUGIN_META_FILE"] ?? process.env["OPENCODE_PLUGIN_META_FILE"]
+  },
+  enumerable: true,
+  configurable: false,
+})
+
 // Dynamic getter for OPENCODE_CLIENT
+// This must be evaluated at access time, not module load time,
+// because some commands override the client at runtime
 Object.defineProperty(Flag, "OPENCODE_CLIENT", {
   get() {
     return process.env["INNOCODE_CLIENT"] ?? process.env["OPENCODE_CLIENT"] ?? "cli"

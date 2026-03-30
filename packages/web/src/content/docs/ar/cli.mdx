@@ -1,30 +1,30 @@
 ---
 title: CLI
-description: أوامر وخيارات CLI في InnoCode.
+description: أوامر وخيارات CLI في OpenCode.
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 
-يبدأ CLI الخاص بـ InnoCode افتراضيا واجهة [TUI](/docs/tui) عند تشغيله بدون أي معاملات.
+يبدأ CLI الخاص بـ OpenCode افتراضيا واجهة [TUI](/docs/tui) عند تشغيله بدون أي معاملات.
 
 ```bash
-innocode
+opencode
 ```
 
-كما يدعم أيضا أوامر موثقة في هذه الصفحة، ما يتيح لك التفاعل مع InnoCode برمجيا.
+كما يدعم أيضا أوامر موثقة في هذه الصفحة، ما يتيح لك التفاعل مع OpenCode برمجيا.
 
 ```bash
-innocode run "Explain how closures work in JavaScript"
+opencode run "Explain how closures work in JavaScript"
 ```
 
 ---
 
 ### tui
 
-بدء واجهة المستخدم terminal (TUI) الخاصة بـ InnoCode.
+بدء واجهة المستخدم terminal (TUI) الخاصة بـ OpenCode.
 
 ```bash
-innocode [project]
+opencode [project]
 ```
 
 #### الخيارات
@@ -44,36 +44,36 @@ innocode [project]
 
 ## الأوامر
 
-يتضمن CLI الخاص بـ InnoCode أيضا الأوامر التالية.
+يتضمن CLI الخاص بـ OpenCode أيضا الأوامر التالية.
 
 ---
 
 ### agent
 
-إدارة وكلاء InnoCode.
+إدارة وكلاء OpenCode.
 
 ```bash
-innocode agent [command]
+opencode agent [command]
 ```
 
 ---
 
 ### attach
 
-إرفاق terminal بخادم الواجهة الخلفية لـ InnoCode قيد التشغيل بالفعل، والذي تم تشغيله عبر الأمرين `serve` أو `web`.
+إرفاق terminal بخادم الواجهة الخلفية لـ OpenCode قيد التشغيل بالفعل، والذي تم تشغيله عبر الأمرين `serve` أو `web`.
 
 ```bash
-innocode attach [url]
+opencode attach [url]
 ```
 
-يتيح ذلك استخدام واجهة TUI مع واجهة خلفية لـ InnoCode تعمل عن بعد. على سبيل المثال:
+يتيح ذلك استخدام واجهة TUI مع واجهة خلفية لـ OpenCode تعمل عن بعد. على سبيل المثال:
 
 ```bash
 # ابدأ خادم الواجهة الخلفية للوصول عبر الويب/الجوال
-innocode web --port 4096 --hostname 0.0.0.0
+opencode web --port 4096 --hostname 0.0.0.0
 
 # في محطة طرفية (terminal) أخرى، اربط TUI بالواجهة الخلفية قيد التشغيل
-innocode attach http://10.20.30.40:4096
+opencode attach http://10.20.30.40:4096
 ```
 
 #### الرايات
@@ -90,7 +90,7 @@ innocode attach http://10.20.30.40:4096
 إنشاء وكيل جديد بإعدادات مخصصة.
 
 ```bash
-innocode agent create
+opencode agent create
 ```
 
 سيرشدك هذا الأمر خلال إنشاء وكيل جديد مع موجه نظام مخصص وإعدادات الأدوات.
@@ -102,7 +102,7 @@ innocode agent create
 عرض جميع الوكلاء المتاحين.
 
 ```bash
-innocode agent list
+opencode agent list
 ```
 
 ---
@@ -112,20 +112,20 @@ innocode agent list
 أمر لإدارة بيانات الاعتماد وتسجيل الدخول لمزودي الخدمة.
 
 ```bash
-innocode auth [command]
+opencode auth [command]
 ```
 
 ---
 
 #### login
 
-يعتمد InnoCode على قائمة المزودين في [Models.dev](https://models.dev)، لذا يمكنك استخدام `innocode auth login` لتهيئة مفاتيح API لأي مزود ترغب باستخدامه. يتم حفظ ذلك في `~/.local/share/innocode/auth.json`.
+يعتمد OpenCode على قائمة المزودين في [Models.dev](https://models.dev)، لذا يمكنك استخدام `opencode auth login` لتهيئة مفاتيح API لأي مزود ترغب باستخدامه. يتم حفظ ذلك في `~/.local/share/opencode/auth.json`.
 
 ```bash
-innocode auth login
+opencode auth login
 ```
 
-عند تشغيل InnoCode يقوم بتحميل المزودين من ملف بيانات الاعتماد، وكذلك أي مفاتيح معرّفة في متغيرات البيئة لديك أو في ملف `.env` ضمن مشروعك.
+عند تشغيل OpenCode يقوم بتحميل المزودين من ملف بيانات الاعتماد، وكذلك أي مفاتيح معرّفة في متغيرات البيئة لديك أو في ملف `.env` ضمن مشروعك.
 
 ---
 
@@ -134,13 +134,13 @@ innocode auth login
 يسرد جميع المزودين الذين تم توثيقهم كما هم محفوظون في ملف بيانات الاعتماد.
 
 ```bash
-innocode auth list
+opencode auth list
 ```
 
 أو النسخة المختصرة.
 
 ```bash
-innocode auth ls
+opencode auth ls
 ```
 
 ---
@@ -150,7 +150,7 @@ innocode auth ls
 يسجلك خارج مزود عبر حذفه من ملف بيانات الاعتماد.
 
 ```bash
-innocode auth logout
+opencode auth logout
 ```
 
 ---
@@ -160,7 +160,7 @@ innocode auth logout
 إدارة وكيل GitHub لأتمتة المستودع.
 
 ```bash
-innocode github [command]
+opencode github [command]
 ```
 
 ---
@@ -170,7 +170,7 @@ innocode github [command]
 تثبيت وكيل GitHub في مستودعك.
 
 ```bash
-innocode github install
+opencode github install
 ```
 
 يقوم ذلك بإعداد سير عمل GitHub Actions اللازم ويرشدك خلال عملية التهيئة. [اعرف المزيد](/docs/github).
@@ -182,7 +182,7 @@ innocode github install
 تشغيل وكيل GitHub. يُستخدم هذا عادة ضمن GitHub Actions.
 
 ```bash
-innocode github run
+opencode github run
 ```
 
 ##### الرايات
@@ -199,7 +199,7 @@ innocode github run
 إدارة خوادم Model Context Protocol.
 
 ```bash
-innocode mcp [command]
+opencode mcp [command]
 ```
 
 ---
@@ -209,7 +209,7 @@ innocode mcp [command]
 إضافة خادم MCP إلى تهيئتك.
 
 ```bash
-innocode mcp add
+opencode mcp add
 ```
 
 سيرشدك هذا الأمر خلال إضافة خادم MCP محلي أو بعيد.
@@ -221,13 +221,13 @@ innocode mcp add
 عرض جميع خوادم MCP المُهيأة وحالة اتصالها.
 
 ```bash
-innocode mcp list
+opencode mcp list
 ```
 
 أو استخدم النسخة المختصرة.
 
 ```bash
-innocode mcp ls
+opencode mcp ls
 ```
 
 ---
@@ -237,7 +237,7 @@ innocode mcp ls
 إجراء المصادقة مع خادم MCP يدعم OAuth.
 
 ```bash
-innocode mcp auth [name]
+opencode mcp auth [name]
 ```
 
 إذا لم تُحدِّد اسم خادم، فسيُطلب منك الاختيار من الخوادم المتاحة الداعمة لـ OAuth.
@@ -245,13 +245,13 @@ innocode mcp auth [name]
 يمكنك أيضا عرض الخوادم الداعمة لـ OAuth وحالة المصادقة الخاصة بها.
 
 ```bash
-innocode mcp auth list
+opencode mcp auth list
 ```
 
 أو استخدم النسخة المختصرة.
 
 ```bash
-innocode mcp auth ls
+opencode mcp auth ls
 ```
 
 ---
@@ -261,7 +261,7 @@ innocode mcp auth ls
 إزالة بيانات اعتماد OAuth لخادم MCP.
 
 ```bash
-innocode mcp logout [name]
+opencode mcp logout [name]
 ```
 
 ---
@@ -271,7 +271,7 @@ innocode mcp logout [name]
 تشخيص مشاكل اتصال OAuth لخادم MCP.
 
 ```bash
-innocode mcp debug <name>
+opencode mcp debug <name>
 ```
 
 ---
@@ -281,7 +281,7 @@ innocode mcp debug <name>
 عرض جميع النماذج المتاحة من المزودين المُهيأين.
 
 ```bash
-innocode models [provider]
+opencode models [provider]
 ```
 
 يعرض هذا الأمر جميع النماذج المتاحة عبر المزودين المُهيأين لديك بصيغة `provider/model`.
@@ -291,7 +291,7 @@ innocode models [provider]
 يمكنك اختياريا تمرير معرّف مزود لتصفية النماذج حسب ذلك المزود.
 
 ```bash
-innocode models anthropic
+opencode models anthropic
 ```
 
 #### الرايات
@@ -301,36 +301,36 @@ innocode models anthropic
 | `--refresh` | تحديث ذاكرة التخزين المؤقت للنماذج من models.dev              |
 | `--verbose` | استخدام مخرجات أكثر تفصيلا للنماذج (تشمل بيانات مثل التكاليف) |
 
-استخدم الراية `--refresh` لتحديث قائمة النماذج المخزنة مؤقتا. يفيد ذلك عند إضافة نماذج جديدة إلى مزود وتريد رؤيتها في InnoCode.
+استخدم الراية `--refresh` لتحديث قائمة النماذج المخزنة مؤقتا. يفيد ذلك عند إضافة نماذج جديدة إلى مزود وتريد رؤيتها في OpenCode.
 
 ```bash
-innocode models --refresh
+opencode models --refresh
 ```
 
 ---
 
 ### run
 
-تشغيل innocode في وضع غير تفاعلي عبر تمرير موجه مباشرة.
+تشغيل opencode في وضع غير تفاعلي عبر تمرير موجه مباشرة.
 
 ```bash
-innocode run [message..]
+opencode run [message..]
 ```
 
 هذا مفيد للبرمجة النصية والأتمتة، أو عندما تريد إجابة سريعة دون تشغيل واجهة TUI كاملة. على سبيل المثال.
 
-```bash "innocode run"
-innocode run Explain the use of context in Go
+```bash "opencode run"
+opencode run Explain the use of context in Go
 ```
 
-يمكنك أيضا الإرفاق بمثيل `innocode serve` قيد التشغيل لتجنّب زمن الإقلاع البارد لخوادم MCP في كل تشغيل:
+يمكنك أيضا الإرفاق بمثيل `opencode serve` قيد التشغيل لتجنّب زمن الإقلاع البارد لخوادم MCP في كل تشغيل:
 
 ```bash
 # ابدأ خادمًا بلا واجهة في محطة طرفية واحدة
-innocode serve
+opencode serve
 
 # في محطة طرفية أخرى، شغّل الأوامر التي ترتبط به
-innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
+opencode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 ```
 
 #### الرايات
@@ -347,20 +347,20 @@ innocode run --attach http://localhost:4096 "Explain async/await in JavaScript"
 | `--file`     | `-f`    | ملف/ملفات لإرفاقها بالرسالة                                       |
 | `--format`   |         | التنسيق: default (منسق) أو json (أحداث JSON خام)                  |
 | `--title`    |         | عنوان للجلسة (يستخدم موجهًا مقتطعًا إن لم تُحدَّد قيمة)           |
-| `--attach`   |         | الإرفاق بخادم innocode قيد التشغيل (مثل http://localhost:4096)    |
+| `--attach`   |         | الإرفاق بخادم opencode قيد التشغيل (مثل http://localhost:4096)    |
 | `--port`     |         | منفذ الخادم المحلي (الافتراضي منفذ عشوائي)                        |
 
 ---
 
 ### serve
 
-بدء خادم InnoCode بدون واجهة للوصول عبر API. راجع [توثيق الخادم](/docs/server) لواجهة HTTP الكاملة.
+بدء خادم OpenCode بدون واجهة للوصول عبر API. راجع [توثيق الخادم](/docs/server) لواجهة HTTP الكاملة.
 
 ```bash
-innocode serve
+opencode serve
 ```
 
-يشغّل هذا خادم HTTP يوفّر وصولا عبر API لوظائف innocode دون واجهة TUI. اضبط `INNOCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `innocode`).
+يشغّل هذا خادم HTTP يوفّر وصولا عبر API لوظائف opencode دون واجهة TUI. اضبط `OPENCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `opencode`).
 
 #### الرايات
 
@@ -375,20 +375,20 @@ innocode serve
 
 ### session
 
-إدارة جلسات InnoCode.
+إدارة جلسات OpenCode.
 
 ```bash
-innocode session [command]
+opencode session [command]
 ```
 
 ---
 
 #### list
 
-عرض جميع جلسات InnoCode.
+عرض جميع جلسات OpenCode.
 
 ```bash
-innocode session list
+opencode session list
 ```
 
 ##### الرايات
@@ -402,10 +402,10 @@ innocode session list
 
 ### stats
 
-عرض إحصاءات استخدام الرموز والتكلفة لجلسات InnoCode لديك.
+عرض إحصاءات استخدام الرموز والتكلفة لجلسات OpenCode لديك.
 
 ```bash
-innocode stats
+opencode stats
 ```
 
 #### الرايات
@@ -424,7 +424,7 @@ innocode stats
 تصدير بيانات الجلسة بصيغة JSON.
 
 ```bash
-innocode export [sessionID]
+opencode export [sessionID]
 ```
 
 إذا لم تُقدّم معرّف جلسة، فسيُطلب منك الاختيار من الجلسات المتاحة.
@@ -433,30 +433,30 @@ innocode export [sessionID]
 
 ### import
 
-استيراد بيانات الجلسة من ملف JSON أو رابط مشاركة InnoCode.
+استيراد بيانات الجلسة من ملف JSON أو رابط مشاركة OpenCode.
 
 ```bash
-innocode import <file>
+opencode import <file>
 ```
 
-يمكنك الاستيراد من ملف محلي أو من رابط مشاركة InnoCode.
+يمكنك الاستيراد من ملف محلي أو من رابط مشاركة OpenCode.
 
 ```bash
-innocode import session.json
-innocode import https://innocode.io/s/abc123
+opencode import session.json
+opencode import https://opncd.ai/s/abc123
 ```
 
 ---
 
 ### web
 
-بدء خادم InnoCode بدون واجهة مع واجهة ويب.
+بدء خادم OpenCode بدون واجهة مع واجهة ويب.
 
 ```bash
-innocode web
+opencode web
 ```
 
-يشغّل هذا خادم HTTP ويفتح متصفح ويب للوصول إلى InnoCode عبر واجهة ويب. اضبط `INNOCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `innocode`).
+يشغّل هذا خادم HTTP ويفتح متصفح ويب للوصول إلى OpenCode عبر واجهة ويب. اضبط `OPENCODE_SERVER_PASSWORD` لتفعيل مصادقة HTTP الأساسية (اسم المستخدم الافتراضي `opencode`).
 
 #### الرايات
 
@@ -474,7 +474,7 @@ innocode web
 بدء خادم ACP (Agent Client Protocol).
 
 ```bash
-innocode acp
+opencode acp
 ```
 
 يشغّل هذا الأمر خادم ACP يتواصل عبر stdin/stdout باستخدام nd-JSON.
@@ -491,10 +491,10 @@ innocode acp
 
 ### uninstall
 
-إلغاء تثبيت InnoCode وإزالة جميع الملفات ذات الصلة.
+إلغاء تثبيت OpenCode وإزالة جميع الملفات ذات الصلة.
 
 ```bash
-innocode uninstall
+opencode uninstall
 ```
 
 #### الرايات
@@ -510,22 +510,22 @@ innocode uninstall
 
 ### upgrade
 
-تحديث innocode إلى أحدث إصدار أو إلى إصدار محدد.
+تحديث opencode إلى أحدث إصدار أو إلى إصدار محدد.
 
 ```bash
-innocode upgrade [target]
+opencode upgrade [target]
 ```
 
 للترقية إلى أحدث إصدار.
 
 ```bash
-innocode upgrade
+opencode upgrade
 ```
 
 للترقية إلى إصدار محدد.
 
 ```bash
-innocode upgrade v0.1.48
+opencode upgrade v0.1.48
 ```
 
 #### الرايات
@@ -538,7 +538,7 @@ innocode upgrade v0.1.48
 
 ## الخيارات العامة
 
-يدعم سطر أوامر innocode الخيارات العامة التالية.
+يدعم سطر أوامر opencode الخيارات العامة التالية.
 
 | الراية         | المختصر | الوصف                                  |
 | -------------- | ------- | -------------------------------------- |
@@ -551,34 +551,34 @@ innocode upgrade v0.1.48
 
 ## متغيرات البيئة
 
-يمكن تهيئة InnoCode باستخدام متغيرات البيئة.
+يمكن تهيئة OpenCode باستخدام متغيرات البيئة.
 
 | المتغير                               | النوع   | الوصف                                                     |
 | ------------------------------------- | ------- | --------------------------------------------------------- |
-| `INNOCODE_AUTO_SHARE`                 | boolean | مشاركة الجلسات تلقائيا                                    |
-| `INNOCODE_GIT_BASH_PATH`              | string  | مسار ملف Git Bash التنفيذي على Windows                    |
-| `INNOCODE_CONFIG`                     | string  | مسار ملف التهيئة                                          |
-| `INNOCODE_CONFIG_DIR`                 | string  | مسار دليل التهيئة                                         |
-| `INNOCODE_CONFIG_CONTENT`             | string  | محتوى تهيئة JSON مُضمّن                                   |
-| `INNOCODE_DISABLE_AUTOUPDATE`         | boolean | تعطيل التحقق التلقائي من التحديثات                        |
-| `INNOCODE_DISABLE_PRUNE`              | boolean | تعطيل تنقية البيانات القديمة                              |
-| `INNOCODE_DISABLE_TERMINAL_TITLE`     | boolean | تعطيل تحديث عنوان terminal تلقائيا                        |
-| `INNOCODE_PERMISSION`                 | string  | تهيئة أذونات JSON مُضمّنة                                 |
-| `INNOCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | تعطيل الإضافات الافتراضية                                 |
-| `INNOCODE_DISABLE_LSP_DOWNLOAD`       | boolean | تعطيل تنزيل خوادم LSP تلقائيا                             |
-| `INNOCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | تفعيل النماذج التجريبية                                   |
-| `INNOCODE_DISABLE_AUTOCOMPACT`        | boolean | تعطيل ضغط السياق تلقائيا                                  |
-| `INNOCODE_DISABLE_CLAUDE_CODE`        | boolean | تعطيل القراءة من `.claude` (الموجه + المهارات)            |
-| `INNOCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | تعطيل قراءة `~/.claude/CLAUDE.md`                         |
-| `INNOCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | تعطيل تحميل `.claude/skills`                              |
-| `INNOCODE_DISABLE_MODELS_FETCH`       | boolean | تعطيل جلب النماذج من مصادر بعيدة                          |
-| `INNOCODE_FAKE_VCS`                   | string  | مزود VCS وهمي لأغراض الاختبار                             |
-| `INNOCODE_DISABLE_FILETIME_CHECK`     | boolean | تعطيل التحقق من وقت الملف لتحسين الأداء                   |
-| `INNOCODE_CLIENT`                     | string  | معرّف العميل (الافتراضي `cli`)                            |
-| `INNOCODE_ENABLE_EXA`                 | boolean | تفعيل أدوات بحث الويب من Exa                              |
-| `INNOCODE_SERVER_PASSWORD`            | string  | تفعيل المصادقة الأساسية لخادمي `serve`/`web`              |
-| `INNOCODE_SERVER_USERNAME`            | string  | تجاوز اسم مستخدم المصادقة الأساسية (الافتراضي `innocode`) |
-| `INNOCODE_MODELS_URL`                 | string  | رابط مخصص لجلب تهيئة النماذج                              |
+| `OPENCODE_AUTO_SHARE`                 | boolean | مشاركة الجلسات تلقائيا                                    |
+| `OPENCODE_GIT_BASH_PATH`              | string  | مسار ملف Git Bash التنفيذي على Windows                    |
+| `OPENCODE_CONFIG`                     | string  | مسار ملف التهيئة                                          |
+| `OPENCODE_CONFIG_DIR`                 | string  | مسار دليل التهيئة                                         |
+| `OPENCODE_CONFIG_CONTENT`             | string  | محتوى تهيئة JSON مُضمّن                                   |
+| `OPENCODE_DISABLE_AUTOUPDATE`         | boolean | تعطيل التحقق التلقائي من التحديثات                        |
+| `OPENCODE_DISABLE_PRUNE`              | boolean | تعطيل تنقية البيانات القديمة                              |
+| `OPENCODE_DISABLE_TERMINAL_TITLE`     | boolean | تعطيل تحديث عنوان terminal تلقائيا                        |
+| `OPENCODE_PERMISSION`                 | string  | تهيئة أذونات JSON مُضمّنة                                 |
+| `OPENCODE_DISABLE_DEFAULT_PLUGINS`    | boolean | تعطيل الإضافات الافتراضية                                 |
+| `OPENCODE_DISABLE_LSP_DOWNLOAD`       | boolean | تعطيل تنزيل خوادم LSP تلقائيا                             |
+| `OPENCODE_ENABLE_EXPERIMENTAL_MODELS` | boolean | تفعيل النماذج التجريبية                                   |
+| `OPENCODE_DISABLE_AUTOCOMPACT`        | boolean | تعطيل ضغط السياق تلقائيا                                  |
+| `OPENCODE_DISABLE_CLAUDE_CODE`        | boolean | تعطيل القراءة من `.claude` (الموجه + المهارات)            |
+| `OPENCODE_DISABLE_CLAUDE_CODE_PROMPT` | boolean | تعطيل قراءة `~/.claude/CLAUDE.md`                         |
+| `OPENCODE_DISABLE_CLAUDE_CODE_SKILLS` | boolean | تعطيل تحميل `.claude/skills`                              |
+| `OPENCODE_DISABLE_MODELS_FETCH`       | boolean | تعطيل جلب النماذج من مصادر بعيدة                          |
+| `OPENCODE_FAKE_VCS`                   | string  | مزود VCS وهمي لأغراض الاختبار                             |
+| `OPENCODE_DISABLE_FILETIME_CHECK`     | boolean | تعطيل التحقق من وقت الملف لتحسين الأداء                   |
+| `OPENCODE_CLIENT`                     | string  | معرّف العميل (الافتراضي `cli`)                            |
+| `OPENCODE_ENABLE_EXA`                 | boolean | تفعيل أدوات بحث الويب من Exa                              |
+| `OPENCODE_SERVER_PASSWORD`            | string  | تفعيل المصادقة الأساسية لخادمي `serve`/`web`              |
+| `OPENCODE_SERVER_USERNAME`            | string  | تجاوز اسم مستخدم المصادقة الأساسية (الافتراضي `opencode`) |
+| `OPENCODE_MODELS_URL`                 | string  | رابط مخصص لجلب تهيئة النماذج                              |
 
 ---
 
@@ -588,16 +588,16 @@ innocode upgrade v0.1.48
 
 | المتغير                                         | النوع   | الوصف                                       |
 | ----------------------------------------------- | ------- | ------------------------------------------- |
-| `INNOCODE_EXPERIMENTAL`                         | boolean | تفعيل جميع الميزات التجريبية                |
-| `INNOCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | تفعيل اكتشاف الأيقونات                      |
-| `INNOCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | تعطيل النسخ عند التحديد في TUI              |
-| `INNOCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | المهلة الافتراضية لأوامر bash بالميلي ثانية |
-| `INNOCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | الحد الأقصى لرموز المخرجات لاستجابات LLM    |
-| `INNOCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | تفعيل مراقب الملفات لكامل الدليل            |
-| `INNOCODE_EXPERIMENTAL_OXFMT`                   | boolean | تفعيل مُنسّق oxfmt                          |
-| `INNOCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | تفعيل أداة LSP تجريبية                      |
-| `INNOCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | تعطيل مراقب الملفات                         |
-| `INNOCODE_EXPERIMENTAL_EXA`                     | boolean | تفعيل ميزات Exa التجريبية                   |
-| `INNOCODE_EXPERIMENTAL_LSP_TY`                  | boolean | تفعيل تدقيق أنواع LSP تجريبي                |
-| `INNOCODE_EXPERIMENTAL_MARKDOWN`                | boolean | تفعيل ميزات markdown تجريبية                |
-| `INNOCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | تفعيل وضع الخطة                             |
+| `OPENCODE_EXPERIMENTAL`                         | boolean | تفعيل جميع الميزات التجريبية                |
+| `OPENCODE_EXPERIMENTAL_ICON_DISCOVERY`          | boolean | تفعيل اكتشاف الأيقونات                      |
+| `OPENCODE_EXPERIMENTAL_DISABLE_COPY_ON_SELECT`  | boolean | تعطيل النسخ عند التحديد في TUI              |
+| `OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS` | number  | المهلة الافتراضية لأوامر bash بالميلي ثانية |
+| `OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX`        | number  | الحد الأقصى لرموز المخرجات لاستجابات LLM    |
+| `OPENCODE_EXPERIMENTAL_FILEWATCHER`             | boolean | تفعيل مراقب الملفات لكامل الدليل            |
+| `OPENCODE_EXPERIMENTAL_OXFMT`                   | boolean | تفعيل مُنسّق oxfmt                          |
+| `OPENCODE_EXPERIMENTAL_LSP_TOOL`                | boolean | تفعيل أداة LSP تجريبية                      |
+| `OPENCODE_EXPERIMENTAL_DISABLE_FILEWATCHER`     | boolean | تعطيل مراقب الملفات                         |
+| `OPENCODE_EXPERIMENTAL_EXA`                     | boolean | تفعيل ميزات Exa التجريبية                   |
+| `OPENCODE_EXPERIMENTAL_LSP_TY`                  | boolean | تمكين TY LSP لملفات python                  |
+| `OPENCODE_EXPERIMENTAL_MARKDOWN`                | boolean | تفعيل ميزات markdown تجريبية                |
+| `OPENCODE_EXPERIMENTAL_PLAN_MODE`               | boolean | تفعيل وضع الخطة                             |
