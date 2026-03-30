@@ -2,6 +2,7 @@ import { BusEvent } from "@/bus/bus-event"
 import path from "path"
 import { $ } from "bun"
 import z from "zod"
+import semver from "semver"
 import { NamedError } from "@opencode-ai/util/error"
 import { Log } from "../util/log"
 import { iife } from "@/util/iife"
@@ -15,7 +16,20 @@ declare global {
 export namespace Installation {
   const log = Log.create({ service: "installation" })
 
-  export type Method = Awaited<ReturnType<typeof method>>
+  export type Method = "curl" | "npm" | "yarn" | "pnpm" | "bun" | "brew" | "scoop" | "choco" | "unknown"
+
+  export type ReleaseType = "patch" | "minor" | "major"
+
+  export function getReleaseType(current: string, latest: string): ReleaseType {
+    const currMajor = semver.major(current)
+    const currMinor = semver.minor(current)
+    const newMajor = semver.major(latest)
+    const newMinor = semver.minor(latest)
+
+    if (newMajor > currMajor) return "major"
+    if (newMinor > currMinor) return "minor"
+    return "patch"
+  }
 
   export const Event = {
     Updated: BusEvent.define(

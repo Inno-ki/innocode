@@ -9,6 +9,7 @@ import { BunProc } from "../bun"
 import { Hash } from "../util/hash"
 import { Plugin } from "../plugin"
 import { NamedError } from "@opencode-ai/util/error"
+import { type LanguageModelV3 } from "@ai-sdk/provider"
 import { ModelsDev } from "./models"
 import { Auth } from "../auth"
 import { Env } from "../env"
@@ -28,7 +29,7 @@ import { createVertex } from "@ai-sdk/google-vertex"
 import { createVertexAnthropic } from "@ai-sdk/google-vertex/anthropic"
 import { createOpenAI } from "@ai-sdk/openai"
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
-import { createOpenRouter, type LanguageModelV2 } from "@openrouter/ai-sdk-provider"
+import { createOpenRouter } from "@openrouter/ai-sdk-provider"
 import { createOpenaiCompatible as createGitHubCopilotOpenAICompatible } from "./sdk/copilot"
 import { createXai } from "@ai-sdk/xai"
 import { createMistral } from "@ai-sdk/mistral"
@@ -40,7 +41,7 @@ import { createGateway } from "@ai-sdk/gateway"
 import { createTogetherAI } from "@ai-sdk/togetherai"
 import { createPerplexity } from "@ai-sdk/perplexity"
 import { createVercel } from "@ai-sdk/vercel"
-import { createGitLab, VERSION as GITLAB_PROVIDER_VERSION } from "@gitlab/gitlab-ai-provider"
+import { createGitLab, VERSION as GITLAB_PROVIDER_VERSION } from "gitlab-ai-provider"
 import { fromNodeProviderChain } from "@aws-sdk/credential-providers"
 import { GoogleAuth } from "google-auth-library"
 import { ProviderTransform } from "./transform"
@@ -106,7 +107,11 @@ export namespace Provider {
     })
   }
 
-  const BUNDLED_PROVIDERS: Record<string, (options: any) => SDK> = {
+  type BundledSDK = {
+    languageModel(modelId: string): LanguageModelV3
+  }
+
+  const BUNDLED_PROVIDERS: Record<string, (options: any) => BundledSDK> = {
     "@ai-sdk/amazon-bedrock": createAmazonBedrock,
     "@ai-sdk/anthropic": createAnthropic,
     "@ai-sdk/azure": createAzure,
@@ -126,7 +131,7 @@ export namespace Provider {
     "@ai-sdk/togetherai": createTogetherAI,
     "@ai-sdk/perplexity": createPerplexity,
     "@ai-sdk/vercel": createVercel,
-    "@gitlab/gitlab-ai-provider": createGitLab,
+    "gitlab-ai-provider": createGitLab,
     // @ts-ignore (TODO: kill this code so we dont have to maintain it)
     "@ai-sdk/github-copilot": createGitHubCopilotOpenAICompatible,
   }
@@ -1013,14 +1018,14 @@ export namespace Provider {
     }
 
     const providers: { [providerID: string]: Info } = {}
-    const languages = new Map<string, LanguageModelV2>()
+    const languages = new Map<string, LanguageModelV3>()
     const modelLoaders: {
       [providerID: string]: CustomModelLoader
     } = {}
     const varsLoaders: {
       [providerID: string]: CustomVarsLoader
     } = {}
-    const sdk = new Map<string, SDK>()
+    const sdk = new Map<string, BundledSDK>()
 
     log.info("init")
 
@@ -1414,7 +1419,7 @@ export namespace Provider {
           ...options,
         })
         s.sdk.set(key, loaded)
-        return loaded as SDK
+        return loaded as BundledSDK
       }
 
       let installedPath: string
@@ -1433,7 +1438,7 @@ export namespace Provider {
         ...options,
       })
       s.sdk.set(key, loaded)
-      return loaded as SDK
+      return loaded as BundledSDK
     } catch (e) {
       throw new InitError({ providerID: model.providerID }, { cause: e })
     }
@@ -1463,7 +1468,7 @@ export namespace Provider {
     return info
   }
 
-  export async function getLanguage(model: Model): Promise<LanguageModelV2> {
+  export async function getLanguage(model: Model): Promise<LanguageModelV3> {
     const s = await state()
     const key = `${model.providerID}/${model.id}`
     if (s.models.has(key)) return s.models.get(key)!
