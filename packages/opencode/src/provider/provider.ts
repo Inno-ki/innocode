@@ -161,6 +161,9 @@ export namespace Provider {
       const env = Env.all()
       const config = await Config.get()
 
+      const configBaseURL = config.provider?.["innogpt"]?.options?.baseURL as string | undefined
+      const baseURL = configBaseURL || "https://app.innogpt.de/api/ext/v1"
+
       // Check for API key
       const apiKey = await (async () => {
         // Check environment variable
@@ -184,7 +187,7 @@ export namespace Provider {
 
       // Fetch models from InnoGPT API
       try {
-        const response = await fetch("https://app.innogpt.de/api/ext/v1/models/available", {
+        const response = await fetch(`${baseURL}/models/available`, {
           headers: {
             "Authorization": `Bearer ${apiKey}`,
             "User-Agent": `innocode/${Installation.VERSION}`,
@@ -221,7 +224,7 @@ export namespace Provider {
               family: model.owned_by || "",
               api: {
                 id: model.id,
-                url: "https://app.innogpt.de/api/ext/v1",
+                url: baseURL,
                 npm: "@ai-sdk/openai-compatible",
               },
               status: "active",
@@ -280,7 +283,7 @@ export namespace Provider {
             family: "",
             api: {
               id: m.id,
-              url: "https://app.innogpt.de/api/ext/v1",
+              url: baseURL,
               npm: "@ai-sdk/openai-compatible",
             },
             status: "active",
@@ -307,7 +310,7 @@ export namespace Provider {
       return {
         autoload: Object.keys(input.models).length > 0,
         options: {
-          baseURL: "https://app.innogpt.de/api/ext/v1",
+          baseURL,
           apiKey,
         },
       }
