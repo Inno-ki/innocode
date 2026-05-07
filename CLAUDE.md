@@ -66,13 +66,14 @@ innocode/
 
 When making changes, be aware:
 
-1. **Branding files** - These are customized and should NOT be synced from upstream:
-   - `README.md`
-   - `packages/opencode/package.json` (package name)
-   - `packages/opencode/src/global/index.ts` (app name)
-   - `packages/opencode/src/flag/flag.ts` (env vars)
-   - `packages/opencode/src/installation/index.ts` (URLs, branding)
-   - `packages/opencode/src/provider/provider.ts` (InnoGPT provider)
+1. **Branding files** - These carry InnoCode customizations:
+   - `README.md` — pure InnoCode (merge=ours)
+   - `packages/core/src/global.ts` — app name "innocode" + legacy `~/.opencode/` migration (merge=ours)
+   - `packages/core/src/flag/flag.ts` — `INNOCODE_` env-var prefix support (merge=ours)
+   - `packages/opencode/package.json` — package name + `innocode` bin (manual rebase against upstream)
+   - `packages/opencode/src/installation/index.ts` — URLs, formula names, brand strings (manual rebase against upstream)
+   - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader and database registration (manual rebase against upstream)
+   - `packages/opencode/src/provider/schema.ts` — `ProviderID.innogpt` (small additive patch)
 
 2. **Feature code** - Can be synced from upstream OpenCode
 

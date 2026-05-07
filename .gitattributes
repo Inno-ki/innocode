@@ -1,9 +1,12 @@
 # InnoCode branding files — always keep ours during upstream merges.
 # The "ours" merge driver discards upstream changes for these paths,
 # so our customizations are never overwritten by OpenCode.
+#
+# Note: packages/opencode/package.json, provider.ts and installation/index.ts
+# evolve frequently upstream. We do NOT mark them merge=ours; instead we accept
+# upstream and re-patch InnoCode customizations in. The merge=ours driver is
+# only used here for files we fully own (README.md and the small Innocode
+# branding tweaks in core).
 README.md merge=ours
-packages/opencode/package.json merge=ours
-packages/opencode/src/global/index.ts merge=ours
-packages/opencode/src/flag/flag.ts merge=ours
-packages/opencode/src/installation/index.ts merge=ours
-packages/opencode/src/provider/provider.ts merge=ours
+packages/core/src/global.ts merge=ours
+packages/core/src/flag/flag.ts merge=ours
