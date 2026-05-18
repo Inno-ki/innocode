@@ -13,10 +13,6 @@ on:
 permissions:
   contents: write
 
-env:
-  TAURI_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-  TAURI_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-
 jobs:
   build-desktop:
     name: Build desktop (${{ matrix.platform }})
@@ -27,34 +23,26 @@ jobs:
         include:
           - os: macos-14
             platform: macos-arm64
-            asset: innocode-desktop-darwin-aarch64.dmg
-            filter: "*.dmg"
-            rust: aarch64-apple-darwin
-            cli_asset: innocode-darwin-arm64.zip
-            cli_ext: zip
+            electron_flag: "--mac --arm64"
+            artifacts: |
+              innocode-desktop-darwin-aarch64.dmg=*-mac-arm64.dmg
           - os: macos-14-large
             platform: macos-x64
-            asset: innocode-desktop-darwin-x64.dmg
-            filter: "*.dmg"
-            rust: x86_64-apple-darwin
-            cli_asset: innocode-darwin-x64.zip
-            cli_ext: zip
+            electron_flag: "--mac --x64"
+            artifacts: |
+              innocode-desktop-darwin-x64.dmg=*-mac-x64.dmg
           - os: windows-latest
             platform: windows-x64
-            asset: innocode-desktop-windows-x64.exe
-            filter: "*setup*.exe"
-            rust: x86_64-pc-windows-msvc
-            cli_asset: innocode-windows-x64.zip
-            cli_ext: zip
+            electron_flag: "--win --x64"
+            artifacts: |
+              innocode-desktop-windows-x64.exe=*-win-x64.exe
           - os: ubuntu-22.04
             platform: linux-x64
-            assets: |
+            electron_flag: "--linux"
+            artifacts: |
               innocode-desktop-linux-amd64.AppImage=*.AppImage
               innocode-desktop-linux-amd64.deb=*.deb
               innocode-desktop-linux-x86_64.rpm=*.rpm
-            rust: x86_64-unknown-linux-gnu
-            cli_asset: innocode-linux-x64.tar.gz
-            cli_ext: tar.gz
 
     steps:
       - name: Checkout
@@ -67,25 +55,17 @@ jobs:
         with:
           bun-version: "1.3.9"
 
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
 
-      - name: Install Linux dependencies
+      - name: Install Linux build deps
         if: runner.os == 'Linux'
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y \
-            libgtk-3-dev \
-            libwebkit2gtk-4.1-dev \
-            libayatana-appindicator3-dev \
-            librsvg2-dev \
-            libssl-dev \
-            patchelf
-
-      - name: Install Windows dependencies
-        if: runner.os == 'Windows'
-        run: choco install -y nsis
+          sudo apt-get install -y --no-install-recommends rpm
 
       - name: Install dependencies
         run: bun install
@@ -93,74 +73,78 @@ jobs:
       - name: Resolve release tag
         id: release
         shell: bash
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+          REF_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          tag="${{ inputs.tag }}"
-          if [[ -z "${tag}" ]]; then
-            if [[ "${GITHUB_REF_NAME}" == v* ]]; then
-              tag="${GITHUB_REF_NAME}"
-            fi
+          tag="${INPUT_TAG}"
+          if [[ -z "${tag}" && "${REF_NAME}" == v* ]]; then
+            tag="${REF_NAME}"
           fi
           if [[ -z "${tag}" ]]; then
-            tag=$(curl -fsSL "https://api.github.com/repos/Inno-ki/innocode/releases/latest" | python -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
+            tag=$(curl -fsSL "https://api.github.com/repos/Inno-ki/innocode/releases/latest" \
+              | python3 -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
           fi
+          if [[ ! "${tag}" =~ ^v[0-9]+(\.[0-9]+){2}([-.][A-Za-z0-9]+)*$ ]]; then
+            echo "Refusing to use tag '${tag}': must look like vX.Y.Z[-suffix]" >&2
+            exit 1
+          fi
+          version="${tag#v}"
           echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
 
-      - name: Prepare CLI sidecar
+      - name: Prepare desktop (icons + node bundle)
+        working-directory: packages/desktop
+        env:
+          OPENCODE_CHANNEL: prod
+          OPENCODE_VERSION: ${{ steps.release.outputs.version }}
+        run: bun ./scripts/prepare.ts
+
+      - name: Build desktop (electron-vite)
+        working-directory: packages/desktop
+        env:
+          OPENCODE_CHANNEL: prod
+          OPENCODE_VERSION: ${{ steps.release.outputs.version }}
+        run: bun run build
+
+      - name: Package desktop (electron-builder, unsigned)
+        working-directory: packages/desktop
+        env:
+          OPENCODE_CHANNEL: prod
+          OPENCODE_VERSION: ${{ steps.release.outputs.version }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+          ELECTRON_FLAG: ${{ matrix.electron_flag }}
         shell: bash
         run: |
           set -euo pipefail
-          tag="${{ steps.release.outputs.tag }}"
-          mkdir -p packages/desktop/src-tauri/sidecars
-          mkdir -p /tmp/cli/unpack
-          url="https://github.com/Inno-ki/innocode/releases/download/${tag}/${{ matrix.cli_asset }}"
-          curl -L -f -o /tmp/cli/asset "${url}"
-          if [[ "${{ matrix.cli_ext }}" == "zip" ]]; then
-            unzip -q /tmp/cli/asset -d /tmp/cli/unpack
-          else
-            tar -xzf /tmp/cli/asset -C /tmp/cli/unpack
-          fi
-          bin="/tmp/cli/unpack/opencode"
-          dest="packages/desktop/src-tauri/sidecars/opencode-cli-${{ matrix.rust }}"
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            bin="/tmp/cli/unpack/opencode.exe"
-            dest="${dest}.exe"
-          fi
-          if [[ ! -f "${bin}" ]]; then
-            echo "Missing CLI binary at ${bin}"
-            exit 1
-          fi
-          cp "${bin}" "${dest}"
+          npx electron-builder ${ELECTRON_FLAG} \
+            --publish never \
+            --config electron-builder.innocode.config.ts
 
-      - name: Build desktop
-        run: bun run --cwd packages/desktop tauri build --config src-tauri/tauri.prod.conf.json
-
-      - name: Collect assets
+      - name: Collect and rename release assets
         shell: bash
+        env:
+          ARTIFACTS: ${{ matrix.artifacts }}
         run: |
           set -euo pipefail
-          mkdir -p dist
-          if [[ "${{ matrix.platform }}" == "linux-x64" ]]; then
-            while IFS="=" read -r out pattern; do
-              file=$(find packages/desktop/src-tauri/target -path "*/release/bundle/*" -name "${pattern}" -type f | head -n 1)
-              if [[ -z "${file}" ]]; then
-                echo "Missing asset for pattern ${pattern}"
-                exit 1
-              fi
-              cp "${file}" "dist/${out}"
-            done <<< "${{ matrix.assets }}"
-            exit 0
-          fi
-
-          file=$(find packages/desktop/src-tauri/target -path "*/release/bundle/*" -name "${{ matrix.filter }}" -type f | head -n 1)
-          if [[ -z "${file}" ]]; then
-            echo "Missing asset for pattern ${{ matrix.filter }}"
-            exit 1
-          fi
-          cp "${file}" "dist/${{ matrix.asset }}"
+          mkdir -p dist-out
+          while IFS="=" read -r out pattern; do
+            out=$(echo "${out}" | xargs)
+            pattern=$(echo "${pattern}" | xargs)
+            [[ -z "${out}" ]] && continue
+            file=$(find packages/desktop/dist -maxdepth 1 -name "${pattern}" -type f | head -n 1)
+            if [[ -z "${file}" ]]; then
+              echo "Missing asset for pattern '${pattern}' in packages/desktop/dist:"
+              ls -la packages/desktop/dist || true
+              exit 1
+            fi
+            cp "${file}" "dist-out/${out}"
+            echo "Renamed $(basename "${file}") -> ${out}"
+          done <<< "${ARTIFACTS}"
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.tag || github.ref_name }}
-          files: dist/*
+          tag_name: ${{ steps.release.outputs.tag }}
+          files: dist-out/*
