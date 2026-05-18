@@ -84,7 +84,7 @@ export function createMainWindow() {
     width: state.width,
     height: state.height,
     show: false,
-    title: "OpenCode",
+    title: "InnoCode",
     icon: iconPath(),
     backgroundColor,
     ...(process.platform === "darwin"

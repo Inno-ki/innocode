@@ -141,7 +141,7 @@ export const dict = {
   "dialog.model.manage": "管理模型",
   "dialog.model.manage.description": "自定义模型选择器中显示的模型。",
   "dialog.model.manage.provider.toggle": "切换所有 {{provider}} 模型",
-  "dialog.model.unpaid.freeModels.title": "OpenCode 提供的免费模型",
+  "dialog.model.unpaid.freeModels.title": "InnoCode 提供的免费模型",
   "dialog.model.unpaid.addMore.title": "从热门提供商添加更多模型",
 
   "dialog.provider.viewAll": "查看更多提供商",
@@ -606,7 +606,7 @@ export const dict = {
   "sidebar.project.viewAllSessions": "查看全部会话",
   "sidebar.project.clearNotifications": "清除通知",
 
-  "app.name.desktop": "OpenCode Desktop",
+  "app.name.desktop": "InnoCode Desktop",
 
   "settings.section.desktop": "桌面",
   "settings.section.server": "服务器",

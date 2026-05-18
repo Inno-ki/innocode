@@ -68,12 +68,20 @@ When making changes, be aware:
 
 1. **Branding files** - These carry InnoCode customizations:
    - `README.md` — pure InnoCode (merge=ours)
-   - `packages/core/src/global.ts` — app name "innocode" + legacy `~/.opencode/` migration (merge=ours)
-   - `packages/core/src/flag/flag.ts` — `INNOCODE_` env-var prefix support (merge=ours)
+   - `packages/opencode/src/global/index.ts` — app name "innocode" + legacy `~/.opencode/` migration (merge=ours)
+   - `packages/opencode/src/flag/flag.ts` — `INNOCODE_` env-var prefix support (merge=ours)
    - `packages/opencode/package.json` — package name + `innocode` bin (manual rebase against upstream)
    - `packages/opencode/src/installation/index.ts` — URLs, formula names, brand strings (manual rebase against upstream)
    - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader and database registration (manual rebase against upstream)
    - `packages/opencode/src/provider/schema.ts` — `ProviderID.innogpt` (small additive patch)
+   - `packages/desktop/electron-builder.innocode.config.ts` — unsigned-build wrapper + `productName: "InnoCode"` (InnoCode-only file, no upstream conflict)
+   - `packages/desktop/src/main/index.ts` — `APP_NAMES` ("InnoCode") and `app.setName` fallback (manual rebase against upstream)
+   - `packages/desktop/src/main/menu.ts` — macOS menu label "InnoCode" (manual rebase against upstream)
+   - `packages/desktop/src/main/windows.ts` — `BrowserWindow` `title: "InnoCode"` (manual rebase against upstream)
+   - `packages/desktop/src/renderer/index.html` — `<title>InnoCode</title>` (manual rebase against upstream)
+   - `packages/desktop/src/renderer/loading.html` — `<title>InnoCode</title>` (manual rebase against upstream)
+   - `.github/workflows/desktop-release.yml` — InnoCode-only Electron release pipeline (no upstream conflict)
+   - `packages/web/src/pages/download/` — InnoCode download page + proxy route (no upstream conflict)
 
 2. **Feature code** - Can be synced from upstream OpenCode
 
@@ -91,20 +99,19 @@ When making changes, be aware:
 
 ### InnoGPT Provider
 
-The InnoGPT provider is configured in `packages/opencode/src/provider/provider.ts`:
+The InnoGPT provider is registered in `packages/opencode/src/provider/provider.ts` and
+shows up as a recommended provider in the desktop UI
+(`packages/app/src/hooks/use-providers.ts`).
 
-```typescript
-async innogpt(input) {
-  return {
-    autoload: hasKey,
-    options: {
-      baseURL: "https://app.innogpt.de/api/v1",
-    },
-  }
-}
-```
+Default base URL: `https://app.innogpt.de/api/ext/v1`
+(overridable via `provider.innogpt.options.baseURL` in `innocode.json`)
 
-Environment variable: `INNOGPT_API_KEY`
+API key resolution order:
+1. `INNOGPT_API_KEY` environment variable
+2. Stored auth (`innocode auth login innogpt`)
+3. `provider.innogpt.options.apiKey` in `innocode.json`
+
+Models are auto-discovered from `${baseURL}/models` with `Authorization: Bearer <key>`.
 
 ## Code Style
 
