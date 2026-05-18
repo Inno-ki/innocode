@@ -24,16 +24,24 @@ export async function GET(ctx: APIContext) {
   const asset = assets[platform as Platform]
   if (!asset) return new Response("Not Found", { status: 404 })
 
-  const resp = await fetch(`https://github.com/Inno-ki/innocode/releases/latest/download/${asset}`, {
+  const upstream = `https://github.com/Inno-ki/innocode/releases/latest/download/${asset}`
+  const resp = await fetch(upstream, {
     cf: {
       cacheTtl: 60 * 5,
       cacheEverything: true,
     },
   } as RequestInit)
 
+  if (!resp.ok) {
+    return new Response(
+      `Asset "${asset}" is not available in the latest InnoCode release (upstream returned ${resp.status}).`,
+      { status: 502, headers: { "content-type": "text/plain; charset=utf-8" } },
+    )
+  }
+
   const name = names[platform as Platform]
   const headers = new Headers(resp.headers)
   if (name) headers.set("content-disposition", `attachment; filename="${name}"`)
 
-  return new Response(resp.body, { ...resp, headers })
+  return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers })
 }
