@@ -11,6 +11,12 @@ const config: Configuration = {
   // deep-link scheme stay on upstream values to avoid breaking parallel
   // installations and hardcoded scheme parsing in the renderer.
   productName: "InnoCode",
+  // Skip @electron/rebuild — windows-latest runners no longer detect a
+  // Visual Studio installation for node-gyp, and the transitive native
+  // module (msgpackr-extract) already ships prebuilds for the Electron
+  // ABI. Re-enable once InnoCode CI runs on a runner with MSVC, or once
+  // we need to compile a module that lacks prebuilds.
+  npmRebuild: false,
   // The upstream config pulls native/{index.js, mac_window.node, swift-build}
   // into the bundle. InnoCode doesn't build those add-ons, so drop them to
   // avoid electron-builder warnings about a missing source directory.
