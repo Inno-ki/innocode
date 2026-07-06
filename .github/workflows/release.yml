@@ -70,6 +70,7 @@ jobs:
           OPENCODE_VERSION="${VERSION}" OPENCODE_CHANNEL="${CHANNEL}" OPENCODE_RELEASE="1" bun run --cwd packages/opencode script/build.ts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
 
       - name: Publish GitHub release
         run: |
