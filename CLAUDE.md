@@ -66,22 +66,35 @@ innocode/
 
 When making changes, be aware:
 
-1. **Branding files** - These carry InnoCode customizations:
+1. **Branding files** - These carry InnoCode customizations (paths current as of the
+   Jul 2026 upstream sync, after the monorepo `core`/`cli`/`tui`/`llm` split):
    - `README.md` — pure InnoCode (merge=ours)
-   - `packages/opencode/src/global/index.ts` — app name "innocode" + legacy `~/.opencode/` migration (merge=ours)
-   - `packages/opencode/src/flag/flag.ts` — `INNOCODE_` env-var prefix support (merge=ours)
+   - `packages/core/src/global.ts` — app name "innocode" + legacy `~/.opencode/` migration (**merge=ours — see hazard below**)
+   - `packages/core/src/flag/flag.ts` — `INNOCODE_` env-var prefix support via `getEnv()` (**merge=ours — see hazard below**)
    - `packages/opencode/package.json` — package name + `innocode` bin (manual rebase against upstream)
    - `packages/opencode/src/installation/index.ts` — URLs, formula names, brand strings (manual rebase against upstream)
-   - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader and database registration (manual rebase against upstream)
-   - `packages/opencode/src/provider/schema.ts` — `ProviderID.innogpt` (small additive patch)
+   - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader (uses `ProviderV2.ID`/`ModelV2.ID`) + models.dev placeholder + state discovery (manual rebase against upstream)
+   - `packages/tui/src/logo.ts` — InnoCode ASCII logo rendered by the TUI (manual rebase; upstream moved the logo into the `tui` package)
+   - `packages/app/src/desktop-menu.ts` — macOS app menu label "InnoCode" (upstream made the desktop menu data-driven; the old `main/menu.ts` template is gone)
+   - `packages/core/src/oauth/page.ts` — InnoCode copy on the MCP OAuth callback page (upstream centralised this; the old inline HTML in `mcp/oauth-callback.ts` is gone)
    - `packages/desktop/electron-builder.innocode.config.ts` — unsigned-build wrapper + `productName: "InnoCode"` (InnoCode-only file, no upstream conflict)
    - `packages/desktop/src/main/index.ts` — `APP_NAMES` ("InnoCode") and `app.setName` fallback (manual rebase against upstream)
-   - `packages/desktop/src/main/menu.ts` — macOS menu label "InnoCode" (manual rebase against upstream)
    - `packages/desktop/src/main/windows.ts` — `BrowserWindow` `title: "InnoCode"` (manual rebase against upstream)
-   - `packages/desktop/src/renderer/index.html` — `<title>InnoCode</title>` (manual rebase against upstream)
-   - `packages/desktop/src/renderer/loading.html` — `<title>InnoCode</title>` (manual rebase against upstream)
+   - `packages/app/index.html` / `packages/ui/src/assets/favicon/site.webmanifest` — `<title>`/manifest name "InnoCode"
+   - `packages/web/config.mjs` — InnoCode URLs + Vercel deploy logic
+   - `packages/app/src/hooks/use-providers.ts` — InnoGPT listed as recommended provider
    - `.github/workflows/desktop-release.yml` — InnoCode-only Electron release pipeline (no upstream conflict)
    - `packages/web/src/pages/download/` — InnoCode download page + proxy route (no upstream conflict)
+
+   > **merge=ours hazard:** `global.ts` and `flag.ts` are marked `merge=ours` in
+   > `.gitattributes`, so upstream changes to them are silently discarded during a
+   > merge. When upstream adds/renames exports in these files (e.g. `flag.ts`'s
+   > exported `truthy`, `global.ts`'s `node`/`repos`), the app breaks at runtime with
+   > missing-export errors. After every sync, diff these two files against
+   > `upstream/production` and re-base our small customizations (`getEnv()` prefix
+   > logic; `app="innocode"` + `~/.innocode` migration) onto upstream's version.
+   > `ProviderID.innogpt` in the old `provider/schema.ts` is no longer needed —
+   > the loader uses `ProviderV2.ID.make("innogpt")`.
 
 2. **Feature code** - Can be synced from upstream OpenCode
 
