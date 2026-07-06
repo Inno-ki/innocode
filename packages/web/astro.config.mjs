@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config"
 import starlight from "@astrojs/starlight"
 import solidJs from "@astrojs/solid-js"
-import cloudflare from "@astrojs/cloudflare"
+import vercel from "@astrojs/vercel"
 import theme from "toolbeam-docs-theme"
 import config from "./config.mjs"
 import { rehypeHeadingIds } from "@astrojs/markdown-remark"
@@ -12,11 +12,15 @@ import { spawnSync } from "child_process"
 // https://astro.build/config
 export default defineConfig({
   site: config.url,
-  base: "/docs",
   output: "server",
-  adapter: cloudflare({
-    imageService: "passthrough",
+  adapter: vercel({
+    imageService: true,
   }),
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+  },
   devToolbar: {
     enabled: false,
   },

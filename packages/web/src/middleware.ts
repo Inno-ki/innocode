@@ -78,12 +78,6 @@ function localeFromAcceptLanguage(header: string | null) {
 }
 
 export const onRequest = defineMiddleware((ctx, next) => {
-  // The marketing home (the Lander) lives on the Starlight splash home under the
-  // "/docs" base. Redirect the bare domain root there so innocode.io/ lands on it.
-  if (ctx.url.pathname === "/") {
-    return redirect(ctx.url, "/docs/")
-  }
-
   const alias = docsAlias(ctx.url.pathname)
   if (alias) {
     return redirect(ctx.url, alias.path, alias.locale)
