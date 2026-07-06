@@ -5,9 +5,7 @@ import config from "virtual:starlight/user-config";
 
 import CopyIcon from "../assets/lander/copy.svg";
 import CheckIcon from "../assets/lander/check.svg";
-import TuiScreenshot from "../assets/lander/screenshot-splash.png";
-import VscodeScreenshot from "../assets/lander/screenshot-vscode.png";
-import GithubScreenshot from "../assets/lander/screenshot-github.png";
+import TuiScreenshot from "../assets/lander/screenshot.gif";
 
 const { data } = Astro.locals.starlightRoute.entry;
 const { title = data.title, tagline, image, actions = [] } = data.hero || {};
@@ -23,14 +21,12 @@ const github = (config.social || []).filter(s => s.icon === 'github')[0];
 const discord = (config.social || []).filter(s => s.icon === 'discord')[0];
 const locale = Astro.currentLocale || 'root';
 const t = Astro.locals.t as (key: string) => string;
-const docsHref = getRelativeLocaleUrl(locale, "")
+const docsHref = getRelativeLocaleUrl(locale, "intro")
 const docsCliHref = getRelativeLocaleUrl(locale, "cli")
-const docsIdeHref = getRelativeLocaleUrl(locale, "ide")
-const docsGithubHref = getRelativeLocaleUrl(locale, "github")
 
 const command = "curl -fsSL"
 const protocol = "https://"
-const url = "innocode.ai/install"
+const url = "innocode.io/install"
 const bash = "| bash"
 
 let darkImage: ImageMetadata | undefined;
@@ -81,22 +77,21 @@ if (image) {
 
     <section class="content">
       <ul>
-        <li><b>{t('app.lander.features.native_tui.title')}</b>: {t('app.lander.features.native_tui.description')}</li>
-        <li><b>{t('app.lander.features.lsp_enabled.title')}</b>: {t('app.lander.features.lsp_enabled.description')}</li>
-        <li><b>{t('app.lander.features.multi_session.title')}</b>: {t('app.lander.features.multi_session.description')}</li>
-        <li><b>{t('app.lander.features.shareable_links.title')}</b>: {t('app.lander.features.shareable_links.description')}</li>
-        <li><b>GitHub Copilot</b>: {t('app.lander.features.github_copilot.description')}</li>
-        <li><b>ChatGPT Plus/Pro</b>: {t('app.lander.features.chatgpt_plus_pro.description')}</li>
-        <li><b>{t('app.lander.features.use_any_model.title')}</b>: {t('app.lander.features.use_any_model.prefix')} <a href="https://models.dev">Models.dev</a>, {t('app.lander.features.use_any_model.suffix')}</li>
+        <li><b>InnoGPT models</b>: EU-hosted, GDPR-first models with a single API key.</li>
+        <li><b>Privacy by default</b>: Your code stays local and is never used for training.</li>
+        <li><b>LSP enabled</b>: Automatically loads the right LSPs for the model you use.</li>
+        <li><b>Multi-session</b>: Run multiple agents in parallel on the same project.</li>
+        <li><b>Every surface</b>: CLI, desktop, and IDE extension with consistent behavior.</li>
+        <li><b>Enterprise-ready</b>: Central config, access control, and compliance-friendly hosting.</li>
       </ul>
     </section>
 
     <section class="alternatives">
       <div class="col1">
         <h3>npm</h3>
-        <button class="command" data-command="npm install -g innocode-ai">
+        <button class="command" data-command="npm install -g innocode">
           <code>
-            <span>npm install -g</span> <span class="highlight">innocode-ai</span>
+            <span>npm install -g</span> <span class="highlight">innocode</span>
           </code>
           <span class="copy">
             <CopyIcon />
@@ -106,9 +101,9 @@ if (image) {
       </div>
       <div class="col2">
         <h3>Bun</h3>
-        <button class="command" data-command="bun install -g innocode-ai">
+        <button class="command" data-command="bun install -g innocode">
           <code>
-            <span>bun install -g</span> <span class="highlight">innocode-ai</span>
+            <span>bun install -g</span> <span class="highlight">innocode</span>
           </code>
           <span class="copy">
             <CopyIcon />
@@ -118,9 +113,9 @@ if (image) {
       </div>
       <div class="col3">
         <h3>Homebrew</h3>
-        <button class="command" data-command="brew install innocode">
+        <button class="command" data-command="brew install Inno-ki/tap/innocode">
           <code>
-            <span>brew install</span> <span class="highlight">innocode</span>
+            <span>brew install</span> <span class="highlight">Inno-ki/tap/innocode</span>
           </code>
           <span class="copy">
             <CopyIcon />
@@ -129,22 +124,10 @@ if (image) {
         </button>
       </div>
       <div class="col4">
-        <h3>Paru</h3>
-        <button class="command" data-command="paru -S innocode-bin">
+        <h3>Scoop</h3>
+        <button class="command" data-command="scoop install innocode">
           <code>
-            <span>paru -S</span> <span class="highlight">innocode-bin</span>
-          </code>
-          <span class="copy">
-            <CopyIcon />
-            <CheckIcon />
-          </span>
-        </button>
-      </div>
-      <div class="col4">
-        <h3>Mise</h3>
-        <button class="command" data-command="mise use -g github:anomalyco/innocode">
-          <code>
-            <span>mise use -g</span> <span class="highlight">github:anomalyco/innocode</span>
+            <span>scoop install</span> <span class="highlight">innocode</span>
           </code>
           <span class="copy">
             <CopyIcon />
@@ -154,7 +137,7 @@ if (image) {
       </div>
     </section>
 
-    <section class="images">
+    <section class="images single">
       <div class="left">
         <figure>
           <figcaption>{t('app.lander.images.tui.caption')}</figcaption>
@@ -163,35 +146,17 @@ if (image) {
           </a>
         </figure>
       </div>
-      <div class="right">
-        <div class="row1">
-          <figure>
-            <figcaption>{t('app.lander.images.vscode.caption')}</figcaption>
-            <a href={docsIdeHref}>
-              <Image src={VscodeScreenshot} alt={t('app.lander.images.vscode.alt')} />
-            </a>
-          </figure>
-        </div>
-        <div class="row2">
-          <figure>
-            <figcaption>{t('app.lander.images.github.caption')}</figcaption>
-            <a href={docsGithubHref}>
-              <Image src={GithubScreenshot} alt={t('app.lander.images.github.alt')} />
-            </a>
-          </figure>
-        </div>
-      </div>
     </section>
 
     <section class="footer">
       <div class="col1">
-        <a href={github.href} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={github?.href ?? "https://github.com/Inno-ki/innocode"} target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
       <div class="col2">
-        <a href={discord.href} target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer">InnoGPT</a>
       </div>
       <div class="col3">
-      <span>&copy;2025 <a href="https://anoma.ly" target="_blank" rel="noopener noreferrer">Anomaly Innovations</a></span>
+      <span>&copy;2026 <a href="https://inno-ki.de" target="_blank" rel="noopener noreferrer">Inno-KI GmbH</a></span>
       </div>
     </section>
 </div>
@@ -361,6 +326,11 @@ section.images {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: var(--images-height);
   border-top: 2px solid var(--sl-color-border);
+
+  &.single {
+    grid-template-columns: 1fr;
+    --images-height: 520px;
+  }
 
   & > div.left {
     display: flex;
