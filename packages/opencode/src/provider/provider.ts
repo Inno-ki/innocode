@@ -208,7 +208,6 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
               headers: { Authorization: `Bearer ${apiKey}` },
             })
             if (!response.ok) {
-              log.warn("innogpt models fetch failed", { status: response.status })
               return {}
             }
             const data = (await response.json()) as { data?: Array<{ id: string }> }
@@ -243,10 +242,8 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
                 variants: {},
               }
             }
-            log.info("innogpt models loaded", { count: Object.keys(models).length })
             return models
-          } catch (e) {
-            log.warn("innogpt models fetch error", { error: e })
+          } catch {
             return {}
           }
         },
@@ -1678,8 +1675,8 @@ const layer = Layer.effect(
                   providers[innogpt].models[modelID] = model
                 }
               }
-            } catch (e) {
-              log.warn("state discovery error", { id: "innogpt", error: e })
+            } catch {
+              // InnoGPT model discovery is best-effort; ignore failures.
             }
           })
         }
