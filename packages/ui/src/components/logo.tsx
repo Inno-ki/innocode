@@ -1,4 +1,4 @@
-import { ComponentProps } from "solid-js"
+import { type ComponentProps } from "solid-js"
 
 const FONT_FAMILY = "var(--font-ui, 'IBM Plex Mono', 'SF Mono', ui-monospace, monospace)"
 
