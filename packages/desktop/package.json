@@ -4,10 +4,10 @@
   "version": "1.17.13",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://opencode.ai",
+  "homepage": "https://innocode.io",
   "author": {
-    "name": "OpenCode",
-    "email": "hello@opencode.ai"
+    "name": "Inno-KI GmbH",
+    "email": "contact@innogpt.de"
   },
   "scripts": {
     "typecheck": "tsgo -b",

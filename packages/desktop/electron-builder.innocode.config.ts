@@ -11,6 +11,9 @@ const config: Configuration = {
   // deep-link scheme stay on upstream values to avoid breaking parallel
   // installations and hardcoded scheme parsing in the renderer.
   productName: "InnoCode",
+  // Keep the `opencode://` scheme (renderer parses it, and changing it breaks
+  // existing deep links) but show "InnoCode" as the handler name in OS prompts.
+  protocols: { name: "InnoCode", schemes: ["opencode"] },
   // Skip @electron/rebuild — windows-latest runners no longer detect a
   // Visual Studio installation for node-gyp, and the transitive native
   // module (msgpackr-extract) already ships prebuilds for the Electron
