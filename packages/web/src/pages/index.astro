@@ -1,0 +1,286 @@
+---
+import { Image } from "astro:assets"
+import Screenshot from "../assets/lander/screenshot.gif"
+
+const features = [
+  { title: "InnoGPT models", desc: "EU-hosted, GDPR-first models with a single API key." },
+  { title: "Privacy by default", desc: "Your code stays local and is never used for training." },
+  { title: "LSP enabled", desc: "Automatically loads the right LSPs for the model you use." },
+  { title: "Multi-session", desc: "Run multiple agents in parallel on the same project." },
+  { title: "Every surface", desc: "CLI, desktop, and IDE extension with consistent behavior." },
+  { title: "Enterprise-ready", desc: "Central config, access control, and compliance-friendly hosting." },
+]
+
+const faqs = [
+  {
+    q: "What is InnoCode?",
+    a: "InnoCode is an AI coding agent for the terminal, desktop, and IDE. It ships with InnoGPT — our EU-hosted model gateway.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Install InnoCode, sign in to InnoGPT to create an API key, and start coding.",
+  },
+  {
+    q: "Do I need other AI subscriptions?",
+    a: "No. InnoCode is optimized for InnoGPT, so a single InnoGPT key powers everything.",
+  },
+  {
+    q: "Can I use other providers?",
+    a: "Not by default. InnoCode is configured for InnoGPT to guarantee GDPR-grade hosting and consistent behavior.",
+  },
+  {
+    q: "Where is my data processed?",
+    a: "Requests route through InnoGPT's EU-hosted infrastructure. InnoCode does not store your code or context.",
+  },
+  {
+    q: "Is there a desktop app?",
+    a: "Yes — InnoCode Desktop is available for macOS, Windows, and Linux.",
+  },
+]
+
+const installs = [
+  { key: "curl", label: "curl", cmd: "curl -fsSL https://innocode.io/install | bash", hl: "innocode.io/install" },
+  { key: "npm", label: "npm", cmd: "npm install -g innocode", hl: "innocode" },
+  { key: "bun", label: "bun", cmd: "bun install -g innocode", hl: "innocode" },
+  { key: "brew", label: "brew", cmd: "brew install Inno-ki/tap/innocode", hl: "Inno-ki/tap/innocode" },
+  { key: "scoop", label: "scoop", cmd: "scoop install innocode", hl: "innocode" },
+]
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>InnoCode — The AI coding agent built for privacy</title>
+    <meta
+      name="description"
+      content="InnoCode is an AI coding agent for your terminal, desktop, and IDE. Built for GDPR-grade privacy with EU-hosted InnoGPT models and one API key."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon-v3.svg" />
+    <link rel="icon" type="image/png" href="/favicon-96x96-v3.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v3.png" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <a href="/" class="brand" aria-label="InnoCode home">innocode</a>
+        <nav class="nav">
+          <a href="https://github.com/Inno-ki/innocode" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="/intro">Docs</a>
+          <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer">InnoGPT</a>
+          <a href="/enterprise">Enterprise</a>
+        </nav>
+        <a href="/download" class="btn-download">Download</a>
+      </header>
+
+      <section class="section hero">
+        <p class="pill"><span class="pill-badge">New</span> InnoCode Desktop is in beta for macOS, Windows, and Linux. <a href="/download">Download now</a></p>
+        <h1>The AI coding agent built for privacy</h1>
+        <p class="lead">
+          Built for GDPR-grade privacy. InnoCode ships with InnoGPT — EU-hosted models and one API key for everything.
+        </p>
+
+        <div class="install">
+          <div class="install-tabs" role="tablist">
+            {installs.map((t, i) => (
+              <button class:list={["install-tab", { active: i === 0 }]} data-tab={t.key} role="tab">{t.label}</button>
+            ))}
+          </div>
+          <div class="install-body">
+            {installs.map((t, i) => (
+              <code class:list={["install-cmd", { active: i === 0 }]} data-panel={t.key}>
+                <span set:html={t.cmd.replace(t.hl, `<b>${t.hl}</b>`)} />
+              </code>
+            ))}
+            <button class="copy-btn" id="copy-btn" aria-label="Copy install command">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shot-section">
+        <div class="shot">
+          <Image src={Screenshot} alt="InnoCode running in the terminal" width={1200} height={798} loading="eager" />
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What is InnoCode?</h2>
+        <p class="section-lead">
+          InnoCode is an AI coding agent that helps you build faster in your terminal, IDE, or desktop — powered by InnoGPT's EU-hosted models.
+        </p>
+        <ul class="features">
+          {features.map((f) => (
+            <li><span class="mark">[*]</span> <b>{f.title}</b>&nbsp;&nbsp;{f.desc}</li>
+          ))}
+        </ul>
+        <a href="/intro" class="btn-solid">Read docs →</a>
+      </section>
+
+      <section class="section">
+        <h2>Built for privacy first</h2>
+        <p class="section-lead">
+          <span class="mark">[*]</span> InnoCode does not store your code or context. InnoGPT routes requests through EU-hosted
+          infrastructure designed for privacy-sensitive teams. Learn more about <a href="/enterprise" class="ul">privacy</a>.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>FAQ</h2>
+        <div class="faq">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="foot-links">
+          <a href="/intro">Docs</a>
+          <a href="https://app.innogpt.de" target="_blank" rel="noopener noreferrer">InnoGPT</a>
+          <a href="https://github.com/Inno-ki/innocode" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <span class="copy">©2026 <a href="https://inno-ki.de" target="_blank" rel="noopener noreferrer">Inno-KI GmbH</a></span>
+      </footer>
+    </div>
+
+    <script>
+      // Install tab switching
+      const tabs = document.querySelectorAll<HTMLButtonElement>(".install-tab")
+      const panels = document.querySelectorAll<HTMLElement>(".install-cmd")
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const key = tab.dataset.tab
+          tabs.forEach((t) => t.classList.toggle("active", t === tab))
+          panels.forEach((p) => p.classList.toggle("active", p.dataset.panel === key))
+        })
+      })
+      // Copy the active command
+      const copyBtn = document.getElementById("copy-btn")
+      copyBtn?.addEventListener("click", async () => {
+        const active = document.querySelector<HTMLElement>(".install-cmd.active")
+        if (!active) return
+        await navigator.clipboard.writeText(active.textContent?.trim() ?? "")
+        copyBtn.classList.add("copied")
+        setTimeout(() => copyBtn.classList.remove("copied"), 1200)
+      })
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+  :root {
+    --bg: #fafafa;
+    --panel: #ffffff;
+    --text: #111312;
+    --text-2: #4b524f;
+    --text-3: #8b918e;
+    --border: #e4e6e4;
+    --border-strong: #d4d7d4;
+    --accent: #111312;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0f0e;
+      --panel: #141716;
+      --text: #f2f4f3;
+      --text-2: #a9afac;
+      --text-3: #6c726f;
+      --border: #232725;
+      --border-strong: #2f3431;
+      --accent: #f2f4f3;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-family: var(--mono); font-size: 15px; line-height: 1.6; background: var(--bg); color: var(--text); }
+  body { min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .page { max-width: 760px; margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); min-height: 100vh; }
+
+  /* Header */
+  .header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); gap: 1rem; }
+  .brand { font-weight: 700; letter-spacing: -0.02em; font-size: 1.05rem; }
+  .nav { display: flex; gap: 1.5rem; margin-left: auto; }
+  .nav a { color: var(--text-2); font-size: 0.86rem; }
+  .nav a:hover { color: var(--text); }
+  .btn-download { border: 1px solid var(--border-strong); padding: 0.4rem 0.9rem; font-size: 0.82rem; border-radius: 4px; background: var(--accent); color: var(--bg); }
+  .btn-download:hover { opacity: 0.85; }
+
+  /* Sections */
+  .section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); }
+  .section h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1rem; }
+  .section-lead { color: var(--text-2); max-width: 46ch; margin-bottom: 1.5rem; }
+
+  /* Hero */
+  .pill { font-size: 0.8rem; color: var(--text-2); margin-bottom: 1.8rem; }
+  .pill-badge { border: 1px solid var(--border-strong); border-radius: 999px; padding: 0.05rem 0.5rem; margin-right: 0.4rem; color: var(--text); }
+  .pill a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+  .hero h1 { font-size: clamp(1.7rem, 4.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; text-wrap: balance; }
+  .lead { color: var(--text-2); font-size: 1rem; max-width: 42ch; margin-bottom: 2rem; text-wrap: balance; }
+
+  /* Install */
+  .install { border: 1px solid var(--border-strong); border-radius: 6px; overflow: hidden; max-width: 100%; }
+  .install-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--panel); }
+  .install-tab { font-family: var(--mono); background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 0.6rem 0.9rem; font-size: 0.82rem; color: var(--text-3); cursor: pointer; }
+  .install-tab:hover { color: var(--text-2); }
+  .install-tab.active { color: var(--text); border-bottom-color: var(--text); }
+  .install-body { display: flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1rem; background: var(--panel); overflow-x: auto; }
+  .install-cmd { display: none; font-family: var(--mono); font-size: 0.85rem; color: var(--text-2); white-space: nowrap; }
+  .install-cmd.active { display: inline; }
+  .install-cmd b { color: var(--text); font-weight: 500; }
+  .copy-btn { margin-left: auto; flex: none; background: none; border: none; color: var(--text-3); cursor: pointer; padding: 0.2rem; }
+  .copy-btn:hover { color: var(--text); }
+  .copy-btn.copied { color: #2f9f75; }
+
+  /* Screenshot */
+  .shot-section { padding: 0; }
+  .shot { padding: 1.5rem; }
+  .shot img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 6px; }
+
+  /* Features */
+  .features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.75rem; }
+  .features li { color: var(--text-2); }
+  .features b { color: var(--text); font-weight: 700; }
+  .mark { color: var(--text-3); }
+
+  .ul { text-decoration: underline; text-underline-offset: 3px; }
+  .btn-solid { display: inline-block; border: 1px solid var(--border-strong); padding: 0.5rem 1rem; font-size: 0.85rem; border-radius: 4px; background: var(--accent); color: var(--bg); }
+  .btn-solid:hover { opacity: 0.85; }
+
+  /* FAQ */
+  .faq { display: flex; flex-direction: column; }
+  .faq-item { border-top: 1px solid var(--border); }
+  .faq-item:first-child { border-top: none; }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 0.9rem 0; display: flex; gap: 0.6rem; align-items: baseline; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::before { content: "+"; color: var(--text-3); }
+  .faq-item[open] summary::before { content: "−"; }
+  .faq-item p { color: var(--text-2); padding: 0 0 1rem 1.3rem; max-width: 52ch; }
+
+  /* Footer */
+  .footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.5rem; }
+  .foot-links { display: flex; gap: 1.5rem; }
+  .foot-links a { color: var(--text-2); font-size: 0.85rem; }
+  .foot-links a:hover { color: var(--text); }
+  .copy { color: var(--text-3); font-size: 0.8rem; }
+  .copy a { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 640px) {
+    .nav { display: none; }
+    .section { padding: 2.25rem 1.25rem; }
+  }
+</style>

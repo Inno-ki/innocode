@@ -175,7 +175,7 @@ export default defineConfig({
         replacesTitle: true,
       },
       sidebar: [
-        "",
+        "intro",
         "config",
         "providers",
         "network",
