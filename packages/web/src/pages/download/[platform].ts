@@ -11,12 +11,6 @@ const assets = {
 
 type Platform = keyof typeof assets
 
-const names: Partial<Record<Platform, string>> = {
-  "darwin-aarch64-dmg": "InnoCode Desktop.dmg",
-  "darwin-x64-dmg": "InnoCode Desktop.dmg",
-  "windows-x64-nsis": "InnoCode Desktop Installer.exe",
-}
-
 export async function GET(ctx: APIContext) {
   const platform = ctx.params.platform
   if (!platform) return new Response("Not Found", { status: 404 })
@@ -24,24 +18,9 @@ export async function GET(ctx: APIContext) {
   const asset = assets[platform as Platform]
   if (!asset) return new Response("Not Found", { status: 404 })
 
-  const upstream = `https://github.com/Inno-ki/innocode/releases/latest/download/${asset}`
-  const resp = await fetch(upstream, {
-    cf: {
-      cacheTtl: 60 * 5,
-      cacheEverything: true,
-    },
-  } as RequestInit)
-
-  if (!resp.ok) {
-    return new Response(
-      `Asset "${asset}" is not available in the latest InnoCode release (upstream returned ${resp.status}).`,
-      { status: 502, headers: { "content-type": "text/plain; charset=utf-8" } },
-    )
-  }
-
-  const name = names[platform as Platform]
-  const headers = new Headers(resp.headers)
-  if (name) headers.set("content-disposition", `attachment; filename="${name}"`)
-
-  return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers })
+  // Redirect to the GitHub release asset instead of proxying the bytes.
+  // Streaming ~150MB binaries through a Vercel function truncates the
+  // download (function response limits + platform re-compression), which
+  // shipped corrupt DMGs.
+  return ctx.redirect(`https://github.com/Inno-ki/innocode/releases/latest/download/${asset}`, 307)
 }
