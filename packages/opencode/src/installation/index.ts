@@ -248,7 +248,7 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
         if (detectedMethod === "scoop") {
           const response = yield* httpOk.execute(
             HttpClientRequest.get(
-              "https://raw.githubusercontent.com/ScoopInstaller/Main/master/bucket/innocode.json",
+              "https://raw.githubusercontent.com/Inno-ki/scoop-bucket/main/innocode.json",
             ).pipe(HttpClientRequest.setHeaders({ Accept: "application/json" })),
           )
           const data = yield* HttpClientResponse.schemaBodyJson(ScoopManifest)(response)
