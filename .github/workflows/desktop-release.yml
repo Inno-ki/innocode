@@ -101,6 +101,9 @@ jobs:
         env:
           OPENCODE_CHANNEL: prod
           OPENCODE_VERSION: ${{ steps.release.outputs.version }}
+          # the renderer bundle exceeds Node's default heap on the 7GB
+          # macos-14 arm64 runners
+          NODE_OPTIONS: "--max-old-space-size=6144"
         run: bun run build
 
       # macOS signing + notarization run when the Apple secrets are set
