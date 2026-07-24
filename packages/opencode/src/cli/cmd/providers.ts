@@ -366,9 +366,21 @@ export const ProvidersLoginCommand = effectCmd({
     for (const [key, value] of Object.entries(allProviders)) {
       if ((enabled ? enabled.has(key) : true) && !disabled.has(key)) providers[key] = value
     }
+    // InnoGPT is not in models.dev, so inject it or it can never be selected
+    if (!providers["innogpt"] && (enabled ? enabled.has("innogpt") : true) && !disabled.has("innogpt")) {
+      providers["innogpt"] = {
+        id: "innogpt",
+        name: "InnoGPT",
+        api: "https://app.innogpt.de/api/ext/v1",
+        npm: "@ai-sdk/openai-compatible",
+        env: ["INNOGPT_API_KEY"],
+        models: {},
+      }
+    }
     const hooks = yield* pluginSvc.list()
 
     const priority: Record<string, number> = {
+      innogpt: -1,
       opencode: 0,
       openai: 1,
       "github-copilot": 2,
@@ -396,7 +408,7 @@ export const ProvidersLoginCommand = effectCmd({
           label: x.name,
           value: x.id,
           hint: {
-            opencode: "recommended",
+            innogpt: "recommended",
             openai: "ChatGPT Plus/Pro or API key",
           }[x.id],
         })),
@@ -465,6 +477,10 @@ export const ProvidersLoginCommand = effectCmd({
 
     if (provider === "opencode") {
       yield* Prompt.log.info("Create an api key at https://opencode.ai/auth")
+    }
+
+    if (provider === "innogpt") {
+      yield* Prompt.log.info("Create an api key at https://app.innogpt.de")
     }
 
     if (provider === "vercel") {

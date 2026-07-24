@@ -203,49 +203,45 @@ function custom(dep: CustomDep): Record<string, CustomLoader> {
           baseURL,
         },
         async discoverModels(): Promise<Record<string, Model>> {
-          try {
-            const response = await fetch(`${baseURL}/models`, {
-              headers: { Authorization: `Bearer ${apiKey}` },
-            })
-            if (!response.ok) {
-              return {}
-            }
-            const data = (await response.json()) as { data?: Array<{ id: string }> }
-            const list = data.data ?? []
-            const models: Record<string, Model> = {}
-            for (const m of list) {
-              models[m.id] = {
-                id: ModelV2.ID.make(m.id),
-                providerID: ProviderV2.ID.make("innogpt"),
-                name: m.id,
-                family: "",
-                api: {
-                  id: m.id,
-                  url: baseURL,
-                  npm: "@ai-sdk/openai-compatible",
-                },
-                status: "active",
-                headers: {},
-                options: {},
-                cost: { input: 0, output: 0, cache: { read: 0, write: 0 } },
-                limit: { context: 128000, output: 4096 },
-                capabilities: {
-                  temperature: true,
-                  reasoning: false,
-                  attachment: false,
-                  toolcall: true,
-                  input: { text: true, audio: false, image: false, video: false, pdf: false },
-                  output: { text: true, audio: false, image: false, video: false, pdf: false },
-                  interleaved: false,
-                },
-                release_date: "",
-                variants: {},
-              }
-            }
-            return models
-          } catch {
-            return {}
+          const response = await fetch(`${baseURL}/models`, {
+            headers: { Authorization: `Bearer ${apiKey}` },
+          })
+          if (!response.ok) {
+            throw new Error(`innogpt ${baseURL}/models returned ${response.status}`)
           }
+          const data = (await response.json()) as { data?: Array<{ id: string }> }
+          const list = data.data ?? []
+          const models: Record<string, Model> = {}
+          for (const m of list) {
+            models[m.id] = {
+              id: ModelV2.ID.make(m.id),
+              providerID: ProviderV2.ID.make("innogpt"),
+              name: m.id,
+              family: "",
+              api: {
+                id: m.id,
+                url: baseURL,
+                npm: "@ai-sdk/openai-compatible",
+              },
+              status: "active",
+              headers: {},
+              options: {},
+              cost: { input: 0, output: 0, cache: { read: 0, write: 0 } },
+              limit: { context: 128000, output: 4096 },
+              capabilities: {
+                temperature: true,
+                reasoning: false,
+                attachment: false,
+                toolcall: true,
+                input: { text: true, audio: false, image: false, video: false, pdf: false },
+                output: { text: true, audio: false, image: false, video: false, pdf: false },
+                interleaved: false,
+              },
+              release_date: "",
+              variants: {},
+            }
+          }
+          return models
         },
       }
     }),
@@ -1146,7 +1142,11 @@ export function toPublicInfo(provider: Info): Info {
 }
 
 export function defaultModelIDs<T extends { models: Record<string, { id: string }> }>(providers: Record<string, T>) {
-  return mapValues(providers, (item) => sort(Object.values(item.models))[0].id)
+  // providers can carry zero models (e.g. innogpt before/without discovery)
+  return mapValues(
+    pickBy(providers, (item) => Object.keys(item.models).length > 0),
+    (item) => sort(Object.values(item.models))[0].id,
+  )
 }
 
 export class ModelNotFoundError extends Schema.TaggedErrorClass<ModelNotFoundError>()("ProviderModelNotFoundError", {
@@ -1667,7 +1667,7 @@ const layer = Layer.effect(
 
         const innogpt = ProviderV2.ID.make("innogpt")
         if (discoveryLoaders[innogpt] && providers[innogpt] && isProviderAllowed(innogpt)) {
-          yield* Effect.promise(async () => {
+          const discoveryError = yield* Effect.promise(async () => {
             try {
               const discovered = await discoveryLoaders[innogpt]()
               for (const [modelID, model] of Object.entries(discovered)) {
@@ -1675,10 +1675,14 @@ const layer = Layer.effect(
                   providers[innogpt].models[modelID] = model
                 }
               }
-            } catch {
-              // InnoGPT model discovery is best-effort; ignore failures.
+              return undefined
+            } catch (e) {
+              return e
             }
           })
+          if (discoveryError !== undefined) {
+            yield* Effect.logWarning("innogpt model discovery failed", { error: String(discoveryError) })
+          }
         }
 
         for (const [id, provider] of Object.entries(providers)) {
@@ -1725,8 +1729,12 @@ const layer = Layer.effect(
           }
 
           if (Object.keys(provider.models).length === 0) {
-            delete providers[providerID]
-            continue
+            // keep innogpt visible with zero models so a failed discovery
+            // (expired key, unreachable API) doesn't silently hide it
+            if (providerID !== innogpt) {
+              delete providers[providerID]
+              continue
+            }
           }
         }
 

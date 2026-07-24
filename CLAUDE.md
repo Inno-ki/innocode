@@ -73,7 +73,12 @@ When making changes, be aware:
    - `packages/core/src/flag/flag.ts` — `INNOCODE_` env-var prefix support via `getEnv()` (**merge=ours — see hazard below**)
    - `packages/opencode/package.json` — package name + `innocode` bin (manual rebase against upstream)
    - `packages/opencode/src/installation/index.ts` — URLs, formula names, brand strings (manual rebase against upstream)
-   - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader (uses `ProviderV2.ID`/`ModelV2.ID`) + models.dev placeholder + state discovery (manual rebase against upstream)
+   - `packages/opencode/src/provider/provider.ts` — InnoGPT custom loader (uses `ProviderV2.ID`/`ModelV2.ID`) + models.dev placeholder + state discovery + innogpt exempt from the zero-models drop + `defaultModelIDs` skips empty providers (manual rebase against upstream)
+   - `packages/opencode/src/server/routes/instance/httpapi/handlers/provider.ts` — injects the InnoGPT placeholder into the `provider.list` response (**this was silently lost in the Jul 2026 restructure** — the old `server/routes/provider.ts` carried it and upstream deleted that file; without it InnoGPT can never be selected in the connect dialog)
+   - `packages/opencode/src/cli/cmd/providers.ts` — InnoGPT injected into the `auth login` menu, top priority + "recommended" hint (manual rebase against upstream)
+   - `packages/opencode/src/config/config.ts` — `enabled_providers` defaults to `["innogpt"]` (escape hatch `INNOCODE_ALL_PROVIDERS=1`, set by the test preload), `innocode.json(c)` config filename support, `INNOCODE_CONFIG_CONTENT` support (manual rebase against upstream)
+   - `packages/opencode/test/server/httpapi-innogpt.test.ts` — regression tests guarding the three customizations above (InnoCode-only file, no upstream conflict)
+   - `packages/opencode/test/preload.ts` / `packages/opencode/test/lib/cli-process.ts` — set `INNOCODE_ALL_PROVIDERS=1` so upstream tests see the full provider catalog (manual rebase against upstream)
    - `packages/tui/src/logo.ts` — InnoCode ASCII logo rendered by the TUI (manual rebase; upstream moved the logo into the `tui` package)
    - `packages/app/src/desktop-menu.ts` — macOS app menu label "InnoCode" (upstream made the desktop menu data-driven; the old `main/menu.ts` template is gone)
    - `packages/core/src/oauth/page.ts` — InnoCode copy on the MCP OAuth callback page (upstream centralised this; the old inline HTML in `mcp/oauth-callback.ts` is gone)
@@ -106,7 +111,8 @@ When making changes, be aware:
 |----------|----------|
 | `opencode` | `innocode` |
 | `@opencode-ai/*` | `@opencode-ai/*` (internal, unchanged) |
-| `opencode.json` | `innocode.json` |
+| `opencode.json` | `innocode.json` (both filenames load; `innocode.*` wins) |
+| all providers visible | only InnoGPT visible by default (`enabled_providers` defaults to `["innogpt"]`; override via config or `INNOCODE_ALL_PROVIDERS=1`) |
 | `~/.opencode/` | `~/.innocode/` |
 | `OPENCODE_*` | `INNOCODE_*` (both work) |
 

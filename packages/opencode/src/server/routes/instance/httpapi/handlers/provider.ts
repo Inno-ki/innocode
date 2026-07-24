@@ -46,6 +46,18 @@ export const providerHandlers = HttpApiBuilder.group(InstanceHttpApi, "provider"
       for (const [key, value] of Object.entries(all)) {
         if ((enabled ? enabled.has(key) : true) && !disabled.has(key)) filtered[key] = value
       }
+      // InnoGPT is not in models.dev, so inject it here or it can never be
+      // selected in the connect dialog before a key is stored
+      if (!filtered["innogpt"] && (enabled ? enabled.has("innogpt") : true) && !disabled.has("innogpt")) {
+        filtered["innogpt"] = {
+          id: "innogpt",
+          name: "InnoGPT",
+          api: "https://app.innogpt.de/api/ext/v1",
+          npm: "@ai-sdk/openai-compatible",
+          env: ["INNOGPT_API_KEY"],
+          models: {},
+        }
+      }
       const connected = yield* provider.list()
       const providers = Object.assign(
         mapValues(filtered, (item) => Provider.fromModelsDevProvider(item)),
