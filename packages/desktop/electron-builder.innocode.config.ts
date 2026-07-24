@@ -1,9 +1,16 @@
-// Unsigned electron-builder config for InnoCode CI.
-// Wraps the upstream config and strips Apple/Windows signing so builds
-// succeed without certificates. Replace with a signed config once
-// InnoCode has APPLE_API_KEY / Windows code-signing infrastructure.
+// InnoCode electron-builder config for CI.
+// Wraps the upstream config with InnoCode branding. macOS signing and
+// notarization activate automatically when the signing env is present
+// (CSC_LINK/CSC_KEY_PASSWORD for the Developer ID cert; APPLE_ID,
+// APPLE_APP_SPECIFIC_PASSWORD and APPLE_TEAM_ID for notarytool) and are
+// stripped otherwise so local/unsigned builds keep working. Windows
+// builds stay unsigned until InnoCode has Windows code-signing
+// infrastructure.
 import type { Configuration } from "electron-builder"
 import base from "./electron-builder.config"
+
+const hasMacCert = Boolean(process.env.CSC_LINK)
+const hasNotaryCreds = Boolean(process.env.APPLE_ID || process.env.APPLE_API_KEY)
 
 const config: Configuration = {
   ...base,
@@ -24,8 +31,12 @@ const config: Configuration = {
   // into the bundle. InnoCode doesn't build those add-ons, so drop them to
   // avoid electron-builder warnings about a missing source directory.
   extraResources: undefined,
-  mac: base.mac ? { ...base.mac, identity: null, notarize: false } : undefined,
-  dmg: base.dmg ? { ...base.dmg, sign: false } : undefined,
+  mac: base.mac
+    ? hasMacCert
+      ? { ...base.mac, notarize: hasNotaryCreds }
+      : { ...base.mac, identity: null, notarize: false }
+    : undefined,
+  dmg: base.dmg ? { ...base.dmg, sign: hasMacCert } : undefined,
   win: base.win ? { ...base.win, signtoolOptions: undefined } : undefined,
   publish: null,
 }
