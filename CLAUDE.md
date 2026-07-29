@@ -84,6 +84,22 @@ When making changes, be aware:
    - `packages/opencode/src/installation/index.ts` scoop check → `Inno-ki/scoop-bucket` root `innocode.json` (upstream points at ScoopInstaller/Main)
    - `.github/workflows/release.yml` — InnoCode release pipeline (npm/brew/scoop publish, `OPENCODE_SKIP_AUR=1`)
    - `packages/tui/src/logo.ts` — InnoCode ASCII logo rendered by the TUI (manual rebase; upstream moved the logo into the `tui` package)
+   - `packages/tui/src/feature-plugins/sidebar/footer.tsx` — sidebar status line renders the brand as two spans (`Inno` + `Code`, **not** one string, so a grep for `"InnoCode"` misses it) + getting-started copy referencing InnoGPT (**silently lost in the Jul 2026 restructure** — upstream moved the sidebar under `feature-plugins/`; the rebase caught `logo.ts` but not this file, so the TUI shipped reading "OpenCode 1.0.237")
+   - `packages/tui/src/app.tsx` — `setTerminalTitle("InnoCode")` (2 call sites) + the `IC | <title>` session-title prefix + the "Successfully updated to InnoCode v…" dialog (manual rebase against upstream)
+   - `packages/tui/src/feature-plugins/home/tips-view.tsx` — home-screen tips: `innocode` CLI invocations, `innocode.json`, `~/.config/innocode/`, `ghcr.io/inno-ki/innocode`. **Do not blanket-rename `opencode` here** — project-dir tips must stay `.opencode/` (see below), and `/opencode` + `/oc` GitHub triggers, the `opencode.ai` share link, and "OpenCode Zen" are upstream services we don't operate (manual rebase against upstream)
+
+   > **`.opencode/` is NOT rebranded.** Global config moved to `~/.config/innocode/`
+   > (`core/src/global.ts` `app = "innocode"`, with one-time migration), but the
+   > *project* config directory is still hardcoded `.opencode` in
+   > `packages/core/src/config.ts:181` and `packages/opencode/src/config/paths.ts:29,35`.
+   > `.innocode/` is never read. Docs/tips telling users to use `.innocode/commands/`
+   > or `.innocode/agents/` would be actively wrong.
+   >
+   > **Known gap:** `packages/core/src/config.ts:142` has
+   > `const names = ["opencode.json", "opencode.jsonc"]` — the Effect-based core config
+   > loader does *not* know about `innocode.json`, unlike
+   > `packages/opencode/src/config/config.ts:140`. If config resolution migrates fully to
+   > the core loader, `innocode.json` silently stops loading.
    - `packages/app/src/desktop-menu.ts` — macOS app menu label "InnoCode" (upstream made the desktop menu data-driven; the old `main/menu.ts` template is gone)
    - `packages/core/src/oauth/page.ts` — InnoCode copy on the MCP OAuth callback page (upstream centralised this; the old inline HTML in `mcp/oauth-callback.ts` is gone)
    - `packages/desktop/electron-builder.innocode.config.ts` — unsigned-build wrapper + `productName: "InnoCode"` (InnoCode-only file, no upstream conflict)
