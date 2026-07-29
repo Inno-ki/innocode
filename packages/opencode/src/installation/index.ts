@@ -15,7 +15,7 @@ import { InstallationChannel, InstallationVersion } from "@opencode-ai/core/inst
 import { NpmConfig } from "@opencode-ai/core/npm-config"
 import { InstallationEvent } from "@opencode-ai/schema/installation-event"
 
-export type Method = "curl" | "npm" | "yarn" | "pnpm" | "bun" | "brew" | "scoop" | "choco" | "unknown"
+export type Method = "curl" | "npm" | "yarn" | "pnpm" | "bun" | "brew" | "scoop" | "unknown"
 
 export type ReleaseType = "patch" | "minor" | "major"
 
@@ -66,9 +66,6 @@ const NpmPackage = Schema.Struct({ version: Schema.String })
 const BrewFormula = Schema.Struct({ versions: Schema.Struct({ stable: Schema.String }) })
 const BrewInfoV2 = Schema.Struct({
   formulae: Schema.Array(Schema.Struct({ versions: Schema.Struct({ stable: Schema.String }) })),
-})
-const ChocoPackage = Schema.Struct({
-  d: Schema.Struct({ results: Schema.Array(Schema.Struct({ Version: Schema.String })) }),
 })
 const ScoopManifest = NpmPackage
 
@@ -131,7 +128,6 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
     })
 
     const upgradeFailure = (method: Method, result?: { code: number; stdout: string; stderr: string }) => {
-      if (method === "choco") return "not running from an elevated command shell"
       if (result) return `Upgrade failed for ${method} (exit code ${result.code}).`
       return `Upgrade failed for ${method}.`
     }
@@ -184,7 +180,6 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
           { name: "bun", command: () => text(["bun", "pm", "ls", "-g"]) },
           { name: "brew", command: () => text(["brew", "list", "--formula", "innocode"]) },
           { name: "scoop", command: () => text(["scoop", "list", "innocode"]) },
-          { name: "choco", command: () => text(["choco", "list", "--limit-output", "innocode"]) },
         ]
 
         checks.sort((a, b) => {
@@ -197,9 +192,7 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
 
         for (const check of checks) {
           const output = yield* check.command()
-          const installedName =
-            check.name === "brew" || check.name === "choco" || check.name === "scoop" ? "innocode" : "innocode"
-          if (output.includes(installedName)) {
+          if (output.includes("innocode")) {
             return check.name
           }
         }
@@ -235,16 +228,6 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
           return data.version
         }
 
-        if (detectedMethod === "choco") {
-          const response = yield* httpOk.execute(
-            HttpClientRequest.get(
-              "https://community.chocolatey.org/api/v2/Packages?$filter=Id%20eq%20%27innocode%27%20and%20IsLatestVersion&$select=Version",
-            ).pipe(HttpClientRequest.setHeaders({ Accept: "application/json;odata=verbose" })),
-          )
-          const data = yield* HttpClientResponse.schemaBodyJson(ChocoPackage)(response)
-          return data.d.results[0].Version
-        }
-
         if (detectedMethod === "scoop") {
           const response = yield* httpOk.execute(
             HttpClientRequest.get(
@@ -271,6 +254,9 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
             break
           case "npm":
             upgradeResult = yield* run(["npm", "install", "-g", `innocode@${target}`])
+            break
+          case "yarn":
+            upgradeResult = yield* run(["yarn", "global", "add", `innocode@${target}`])
             break
           case "pnpm":
             upgradeResult = yield* run(["pnpm", "install", "-g", `innocode@${target}`])
@@ -300,9 +286,6 @@ const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProcess.Serv
             upgradeResult = yield* run(["brew", "upgrade", formula], { env })
             break
           }
-          case "choco":
-            upgradeResult = yield* run(["choco", "upgrade", "innocode", `--version=${target}`, "-y"])
-            break
           case "scoop":
             upgradeResult = yield* run(["scoop", "install", `innocode@${target}`])
             break

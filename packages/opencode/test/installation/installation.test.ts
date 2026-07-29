@@ -124,15 +124,6 @@ describe.skip("installation", () => {
       expect(result).toBe("2.3.4")
     })
 
-    test("reads chocolatey feed versions", async () => {
-      const layer = testLayer(() => jsonResponse({ d: { results: [{ Version: "3.4.5" }] } }))
-
-      const result = await Effect.runPromise(
-        Installation.Service.use((svc) => svc.latest("choco")).pipe(Effect.provide(layer)),
-      )
-      expect(result).toBe("3.4.5")
-    })
-
     test("reads brew formulae API versions", async () => {
       const layer = testLayer(
         () => jsonResponse({ versions: { stable: "2.0.0" } }),

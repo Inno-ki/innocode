@@ -79,14 +79,23 @@ When making changes, be aware:
    - `packages/opencode/src/config/config.ts` — `enabled_providers` defaults to `["innogpt"]` (escape hatch `INNOCODE_ALL_PROVIDERS=1`, set by the test preload), `innocode.json(c)` config filename support, `INNOCODE_CONFIG_CONTENT` support (manual rebase against upstream)
    - `packages/opencode/test/server/httpapi-innogpt.test.ts` — regression tests guarding the three customizations above (InnoCode-only file, no upstream conflict)
    - `packages/opencode/test/preload.ts` / `packages/opencode/test/lib/cli-process.ts` — set `INNOCODE_ALL_PROVIDERS=1` so upstream tests see the full provider catalog (manual rebase against upstream)
-   - `packages/opencode/script/publish.ts` — npm package name `innocode` (NOT upstream's `-ai` suffix), `ghcr.io/inno-ki/innocode` docker image, `Inno-ki/homebrew-tap` + `innocode.rb` formula, `innocode-bin` AUR (gated by `OPENCODE_SKIP_AUR`) (**silently reverted to anomalyco/opencode by the Jul 2026 sync — diff against `v1.0.235` tag when in doubt**)
+   - `packages/opencode/script/publish.ts` — npm package name `innocode` (NOT upstream's `-ai` suffix) + `Inno-ki/homebrew-tap` + `innocode.rb` formula. **Upstream's docker and AUR publishing are deliberately removed** — do not restore them on sync (see the supported-channels note below). (**silently reverted to anomalyco/opencode by the Jul 2026 sync — diff against `v1.0.235` tag when in doubt**)
    - `packages/opencode/script/postinstall.mjs` — resolves platform packages from `packageJson.name` so npm installs pull `innocode-*` binaries, not upstream's `opencode-*` (manual rebase against upstream)
    - `packages/opencode/src/installation/index.ts` scoop check → `Inno-ki/scoop-bucket` root `innocode.json` (upstream points at ScoopInstaller/Main)
-   - `.github/workflows/release.yml` — InnoCode release pipeline (npm/brew/scoop publish, `OPENCODE_SKIP_AUR=1`)
+   - `.github/workflows/release.yml` — InnoCode release pipeline (npm/brew/scoop publish; no docker/QEMU/buildx steps)
    - `packages/tui/src/logo.ts` — InnoCode ASCII logo rendered by the TUI (manual rebase; upstream moved the logo into the `tui` package)
    - `packages/tui/src/feature-plugins/sidebar/footer.tsx` — sidebar status line renders the brand as two spans (`Inno` + `Code`, **not** one string, so a grep for `"InnoCode"` misses it) + getting-started copy referencing InnoGPT (**silently lost in the Jul 2026 restructure** — upstream moved the sidebar under `feature-plugins/`; the rebase caught `logo.ts` but not this file, so the TUI shipped reading "OpenCode 1.0.237")
    - `packages/tui/src/app.tsx` — `setTerminalTitle("InnoCode")` (2 call sites) + the `IC | <title>` session-title prefix + the "Successfully updated to InnoCode v…" dialog (manual rebase against upstream)
-   - `packages/tui/src/feature-plugins/home/tips-view.tsx` — home-screen tips: `innocode` CLI invocations, `innocode.json`, `~/.config/innocode/`, `ghcr.io/inno-ki/innocode`. **Do not blanket-rename `opencode` here** — project-dir tips must stay `.opencode/` (see below), and `/opencode` + `/oc` GitHub triggers, the `opencode.ai` share link, and "OpenCode Zen" are upstream services we don't operate (manual rebase against upstream)
+   - `packages/tui/src/feature-plugins/home/tips-view.tsx` — home-screen tips: `innocode` CLI invocations, `innocode.json`, `~/.config/innocode/`. Upstream's docker tip is removed. **Do not blanket-rename `opencode` here** — project-dir tips must stay `.opencode/` (see below), and `/opencode` + `/oc` GitHub triggers, the `opencode.ai` share link, and "OpenCode Zen" are upstream services we don't operate (manual rebase against upstream)
+
+   > **Supported install channels: curl, npm (+yarn/pnpm/bun), brew, scoop.** Docker,
+   > AUR and Chocolatey were dropped in Jul 2026 because none of them worked:
+   > `ghcr.io/inno-ki/innocode` was pushed but its ghcr package is *private*, so
+   > anonymous `docker pull` fails (CI never caught this — `release.yml`'s verify step
+   > pulled while still authenticated by `docker/login-action`); `innocode-bin` was never
+   > on the AUR; and no `innocode` package was ever published to Chocolatey. If a sync
+   > reintroduces any of them, either publish the channel for real or drop it again —
+   > advertising an install path that 404s is worse than omitting it.
 
    > **`.opencode/` is NOT rebranded.** Global config moved to `~/.config/innocode/`
    > (`core/src/global.ts` `app = "innocode"`, with one-time migration), but the
